@@ -1540,6 +1540,12 @@
         <path name="hfp-sco headphones" />
     </path>
 
+    <path name="audio-transcode-loopback">
+        <ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia14" value="1" />
+        <ctl name="QUAT_MI2S_TX Channels" value="Two" />
+        <ctl name="MultiMedia18 Mixer QUAT_MI2S_TX" value="1" />
+    </path>
+
     <path name="compress-voip-call">
         <ctl name="SLIM_0_RX_Voice Mixer Voip" value="1" />
         <ctl name="Voip_Tx Mixer SLIM_0_TX_Voip" value="1" />
