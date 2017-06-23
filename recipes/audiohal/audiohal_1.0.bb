@@ -65,12 +65,8 @@ do_install_append() {
 
    #create /data/audio folder
    install -d ${D}${userfsdatadir}/audio
-
-   #Userspace expects hal name to be audio.primary.default
-   cd  ${D}/${libdir}/ && ln -s audio_primary_default.so audio.primary.default.so
 }
 
-FILES_${PN}-dbg  = "${libdir}/.debug/*"
-FILES_${PN}      = "${libdir}/*.so ${libdir}/*.so.* ${sysconfdir}/* ${libdir}/pkgconfig/* ${bindir}/* ${userfsdatadir}/*"
-FILES_${PN}-dev  = "${libdir}/*.la ${includedir}"
-INSANE_SKIP_${PN} = "dev-so"
+FILES_${PN} += "${libdir}/audio.primary.default.so"
+SOLIBS = ".so"
+FILES_SOLIBSDEV = ""
