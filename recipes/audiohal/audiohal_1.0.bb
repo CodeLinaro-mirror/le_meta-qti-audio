@@ -69,6 +69,6 @@ do_install_append() {
    install -d ${D}${userfsdatadir}/audio
 }
 
-FILES_${PN} += "${libdir}/audio.primary.default.so"
+FILES_${PN} += "${libdir}/audio.primary.default.so ${userfsdatadir}/*"
 SOLIBS = ".so"
 FILES_SOLIBSDEV = ""
