@@ -16,6 +16,9 @@ PR = "r0"
 DEPENDS = "glib-2.0 tinycompress tinyalsa expat system-media libhardware acdbloader surround-sound-3mic"
 DEPENDS_append_apq8098 = " audio-qaf audio-parsers"
 
+#apq8098 doesn't need surround sound recording
+DEPENDS_remove_apq8098 = "surround-sound-3mic"
+
 EXTRA_OEMAKE = "DEFAULT_INCLUDES= CPPFLAGS="-I. -I${STAGING_KERNEL_BUILDDIR}/usr/include -I${STAGING_INCDIR}/surround_sound_3mic -I${STAGING_INCDIR}/sound_trigger""
 EXTRA_OECONF = "--with-sanitized-headers=${STAGING_KERNEL_BUILDDIR}/usr/include"
 EXTRA_OECONF += "--with-glib"
@@ -58,6 +61,7 @@ EXTRA_OECONF_append_apq8098 = " AUDIO_FEATURE_IP_HDLR_ENABLED=true"
 EXTRA_OECONF_append_apq8098 = " AUDIO_FEATURE_ENABLED_AUDIO_HW_LOOPBACK=true"
 EXTRA_OECONF_append_apq8098 = " AUDIO_FEATURE_ENABLED_PARSER=true"
 EXTRA_OECONF_append_apq8098 = " AUDIO_FEATURE_ENABLED_DTSHD_PARSER=true"
+EXTRA_OECONF_append_apq8098 = " AUDIO_FEATURE_ENABLED_SSR=false"
 
 do_install_append() {
    if [ -d "${WORKDIR}/${BASEMACHINE}" ] && [ $(ls -1  ${WORKDIR}/${BASEMACHINE} | wc -l) -ne 0 ]; then
