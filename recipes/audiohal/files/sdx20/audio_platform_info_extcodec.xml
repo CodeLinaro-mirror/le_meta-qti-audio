@@ -31,6 +31,8 @@
         <usecase name="USECASE_VOICEMMODE1_CALL" type="out" id="18"/>
         <usecase name="USECASE_VOICEMMODE2_CALL" type="in" id="19"/>
         <usecase name="USECASE_VOICEMMODE2_CALL" type="out" id="19"/>
+        <usecase name="USECASE_AUDIO_PLAYBACK_OFFLOAD2" type="in" id="9"/>
+        <usecase name="USECASE_AUDIO_PLAYBACK_OFFLOAD2" type="out" id="9"/>
     </pcm_ids>
 
 </audio_platform_info_i2s>
