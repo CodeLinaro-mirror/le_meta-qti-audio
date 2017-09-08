@@ -125,6 +125,10 @@
     <ctl name="MultiMedia1 Mixer SLIM_0_TX" value="0" />
     <ctl name="MultiMedia1 Mixer SLIM_4_TX" value="0" />
     <ctl name="MultiMedia1 Mixer SLIM_7_TX" value="0" />
+    <ctl name="HDMI RX Format" value="LPCM" />
+    <ctl name="HDMI_RX Bit Format" value="S16_LE" />
+    <ctl name="HDMI_RX SampleRate" value="KHZ_48" />
+    <ctl name="HDMI_RX Channels" value="Two" />
     <ctl name="HDMI Mixer MultiMedia1" value="0" />
     <ctl name="HDMI Mixer MultiMedia2" value="0" />
     <ctl name="HDMI Mixer MultiMedia3" value="0" />
@@ -144,6 +148,10 @@
     <ctl name="HDMI Mixer MultiMedia23" value="0" />
     <ctl name="HDMI Mixer MultiMedia24" value="0" />
     <ctl name="HDMI Mixer MultiMedia25" value="0" />
+    <ctl name="Display Port RX Format" value="LPCM" />
+    <ctl name="Display Port RX Bit Format" value="S16_LE" />
+    <ctl name="Display Port RX SampleRate" value="KHZ_48" />
+    <ctl name="Display Port RX Channels" value="Two" />
     <ctl name="DISPLAY_PORT Mixer MultiMedia1" value="0" />
     <ctl name="DISPLAY_PORT Mixer MultiMedia2" value="0" />
     <ctl name="DISPLAY_PORT Mixer MultiMedia3" value="0" />
@@ -201,6 +209,12 @@
     <ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia23" value="0"/>
     <ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia24" value="0"/>
     <ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia25" value="0"/>
+    <ctl name="SLIMBUS_6_RX Audio Mixer MultiMedia9" value="0" />
+    <ctl name="SLIMBUS_6_RX Audio Mixer MultiMedia21" value="0" />
+    <ctl name="SLIMBUS_6_RX Audio Mixer MultiMedia22" value="0" />
+    <ctl name="SLIMBUS_6_RX Audio Mixer MultiMedia23" value="0" />
+    <ctl name="SLIMBUS_6_RX Audio Mixer MultiMedia24" value="0" />
+    <ctl name="SLIMBUS_6_RX Audio Mixer MultiMedia25" value="0" />
     <ctl name="USB_AUDIO_RX Audio Mixer MultiMedia1" value="0" />
     <ctl name="USB_AUDIO_RX Audio Mixer MultiMedia2" value="0" />
     <ctl name="USB_AUDIO_RX Audio Mixer MultiMedia3" value="0" />
@@ -495,9 +509,16 @@
 
     <!-- Audio BTSCO -->
     <ctl name="SLIMBUS_7_RX Audio Mixer MultiMedia1" value="0" />
+    <ctl name="SLIMBUS_7_RX Audio Mixer MultiMedia2" value="0" />
     <ctl name="SLIMBUS_7_RX Audio Mixer MultiMedia4" value="0" />
     <ctl name="SLIMBUS_7_RX Audio Mixer MultiMedia5" value="0" />
     <ctl name="SLIMBUS_7_RX Audio Mixer MultiMedia6" value="0" />
+    <ctl name="SLIMBUS_7_RX Audio Mixer MultiMedia9" value="0" />
+    <ctl name="SLIMBUS_7_RX Audio Mixer MultiMedia21" value="0" />
+    <ctl name="SLIMBUS_7_RX Audio Mixer MultiMedia22" value="0" />
+    <ctl name="SLIMBUS_7_RX Audio Mixer MultiMedia23" value="0" />
+    <ctl name="SLIMBUS_7_RX Audio Mixer MultiMedia24" value="0" />
+    <ctl name="SLIMBUS_7_RX Audio Mixer MultiMedia25" value="0" />
     <ctl name="MultiMedia1 Mixer SLIM_7_TX" value="0" />
     <!-- IIR/voice anc -->
     <ctl name="IIR0 Band1" id ="0" value="268435456" />
@@ -706,6 +727,38 @@
 
     <path name="deep-buffer-playback headphones">
         <ctl name="SLIMBUS_6_RX Audio Mixer MultiMedia1" value="1" />
+    </path>
+
+    <path name="audio-interactive-stream1 headphones">
+        <ctl name="SLIMBUS_6_RX Audio Mixer MultiMedia1" value="1" />
+    </path>
+
+    <path name="audio-interactive-stream2 headphones">
+        <ctl name="SLIMBUS_6_RX Audio Mixer MultiMedia2" value="1" />
+    </path>
+
+    <path name="audio-interactive-stream3 headphones">
+        <ctl name="SLIMBUS_6_RX Audio Mixer MultiMedia9" value="1" />
+    </path>
+
+    <path name="audio-interactive-stream4 headphones">
+        <ctl name="SLIMBUS_6_RX Audio Mixer MultiMedia21" value="1" />
+    </path>
+
+    <path name="audio-interactive-stream5 headphones">
+        <ctl name="SLIMBUS_6_RX Audio Mixer MultiMedia22" value="1" />
+    </path>
+
+    <path name="audio-interactive-stream6 headphones">
+        <ctl name="SLIMBUS_6_RX Audio Mixer MultiMedia23" value="1" />
+    </path>
+
+    <path name="audio-interactive-stream7 headphones">
+        <ctl name="SLIMBUS_6_RX Audio Mixer MultiMedia24" value="1" />
+    </path>
+
+    <path name="audio-interactive-stream8 headphones">
+        <ctl name="SLIMBUS_6_RX Audio Mixer MultiMedia25" value="1" />
     </path>
 
     <path name="deep-buffer-playback speaker-and-headphones">
@@ -1618,9 +1671,15 @@
     </path>
 
     <path name="audio-transcode-loopback">
-        <ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia14" value="1" />
+        <ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia26" value="1" />
         <ctl name="QUAT_MI2S_TX Channels" value="Two" />
-        <ctl name="MultiMedia18 Mixer QUAT_MI2S_TX" value="1" />
+        <ctl name="MultiMedia27 Mixer QUAT_MI2S_TX" value="1" />
+    </path>
+
+    <path name="audio-transcode-loopback headphones">
+        <ctl name="SLIMBUS_6_RX Audio Mixer MultiMedia26" value="1" />
+        <ctl name="QUAT_MI2S_TX Channels" value="Two" />
+        <ctl name="MultiMedia27 Mixer QUAT_MI2S_TX" value="1" />
     </path>
 
     <path name="compress-voip-call">
@@ -2678,6 +2737,38 @@
 
     <path name="audio-ull-playback bt-a2dp">
         <ctl name="SLIMBUS_7_RX Audio Mixer MultiMedia3" value="1" />
+    </path>
+
+    <path name="audio-interactive-stream1 bt-a2dp">
+        <ctl name="SLIMBUS_7_RX Audio Mixer MultiMedia1" value="1" />
+    </path>
+
+    <path name="audio-interactive-stream2 bt-a2dp">
+        <ctl name="SLIMBUS_7_RX Audio Mixer MultiMedia2" value="1" />
+    </path>
+
+    <path name="audio-interactive-stream3 bt-a2dp">
+        <ctl name="SLIMBUS_7_RX Audio Mixer MultiMedia9" value="1" />
+    </path>
+
+    <path name="audio-interactive-stream4 bt-a2dp">
+        <ctl name="SLIMBUS_7_RX Audio Mixer MultiMedia21" value="1" />
+    </path>
+
+    <path name="audio-interactive-stream5 bt-a2dp">
+        <ctl name="SLIMBUS_7_RX Audio Mixer MultiMedia22" value="1" />
+    </path>
+
+    <path name="audio-interactive-stream6 bt-a2dp">
+        <ctl name="SLIMBUS_7_RX Audio Mixer MultiMedia23" value="1" />
+    </path>
+
+    <path name="audio-interactive-stream7 bt-a2dp">
+        <ctl name="SLIMBUS_7_RX Audio Mixer MultiMedia24" value="1" />
+    </path>
+
+    <path name="audio-interactive-stream8 bt-a2dp">
+        <ctl name="SLIMBUS_7_RX Audio Mixer MultiMedia25" value="1" />
     </path>
 
     <path name="deep-buffer-playback speaker-and-bt-a2dp">
