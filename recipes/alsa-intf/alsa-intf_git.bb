@@ -8,7 +8,6 @@ DEPENDS = "acdbloader glib-2.0"
 
 FILESPATH =+ "${WORKSPACE}:"
 SRC_URI = "file://qcom-opensource/mm-audio/"
-prefix="/etc"
 
 S = "${WORKDIR}/qcom-opensource/mm-audio/"
 
