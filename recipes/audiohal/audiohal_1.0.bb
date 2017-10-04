@@ -12,7 +12,7 @@ SRC_URI += "file://${BASEMACHINE}/"
 
 S = "${WORKDIR}/hardware/qcom/audio/"
 PR = "r0"
-
+HALBINSUFFIX = "${@base_contains('TUNE_ARCH', 'aarch64', '_64bit', '', d)}"
 DEPENDS = "glib-2.0 tinycompress tinyalsa expat system-media libhardware acdbloader surround-sound-3mic"
 DEPENDS_append_apq8098 = " audio-qaf audio-parsers audio-qap-wrapper audio-ip-handler"
 DEPENDS_append_apq8017 = " ffv"
@@ -22,7 +22,7 @@ DEPENDS_remove_apq8098 = "surround-sound-3mic"
 
 EXTRA_OEMAKE = "DEFAULT_INCLUDES= CPPFLAGS="-I. -I${STAGING_KERNEL_BUILDDIR}/usr/include -I${STAGING_INCDIR}/surround_sound_3mic -I${STAGING_INCDIR}/sound_trigger""
 EXTRA_OECONF = "--with-sanitized-headers=${STAGING_KERNEL_BUILDDIR}/usr/include"
-EXTRA_OECONF += "--with-glib"
+EXTRA_OECONF += "--with-glib --program-suffix=${HALBINSUFFIX}"
 
 EXTRA_OECONF += "TARGET_SUPPORT=${BASEMACHINE}"
 EXTRA_OECONF += "BOARD_SUPPORTS_QAHW=true"
