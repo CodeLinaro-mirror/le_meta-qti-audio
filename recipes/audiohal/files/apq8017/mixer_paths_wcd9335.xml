@@ -2465,10 +2465,6 @@
     </path>
 
     <path name="line">
-          <path name="headphones" />
-    </path>
-
-    <path name="line-out">
         <ctl name="SLIM RX0 MUX" value="AIF_MIX1_PB" />
         <ctl name="SLIM RX1 MUX" value="AIF_MIX1_PB" />
         <ctl name="SLIM_0_RX Channels" value="Two" />
