@@ -14,5 +14,7 @@ PR = "r0"
 
 DEPENDS = "libhardware liblog libcutils"
 
+EXTRA_OECONF = "--with-glib"
+
 SOLIBS = ".so"
 FILES_SOLIBSDEV = ""
