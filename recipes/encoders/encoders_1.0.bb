@@ -13,10 +13,9 @@ S = "${WORKDIR}/hardware/qcom/audio/mm-audio/"
 EXTRA_OECONF_append += "--with-sanitized-headers=${STAGING_KERNEL_BUILDDIR}/usr/include"
 EXTRA_OECONF_append += "--with-glib"
 
-DEPENDS = "media"
+
+DEPENDS = "glib-2.0 system-core media"
 RDEPENDS_${PN} = "media"
 
-FILES_${PN}-dbg  = "${libdir}/.debug/*"
-FILES_${PN}      = "${libdir}/*.so ${libdir}/*.so.* ${sysconfdir}/* ${bindir}/* ${libdir}/pkgconfig/*"
-FILES_${PN}-dev  = "${libdir}/*.la ${includedir}"
-INSANE_SKIP_${PN} = "dev-so"
+SOLIBS = ".so"
+FILES_SOLIBSDEV = ""
