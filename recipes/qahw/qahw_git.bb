@@ -12,7 +12,7 @@ SRC_URI  = "file://hardware/qcom/audio/qahw/"
 S = "${WORKDIR}/hardware/qcom/audio/qahw/"
 PR = "r0"
 
-DEPENDS = "libhardware liblog libcutils"
+DEPENDS = "libhardware liblog libcutils system-media"
 
 EXTRA_OECONF = "--with-glib"
 
