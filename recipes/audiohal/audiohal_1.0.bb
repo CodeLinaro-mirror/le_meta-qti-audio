@@ -13,9 +13,11 @@ SRC_URI += "file://${BASEMACHINE}/"
 S = "${WORKDIR}/hardware/qcom/audio/"
 PR = "r0"
 HALBINSUFFIX = "${@base_contains('TUNE_ARCH', 'aarch64', '_64bit', '', d)}"
-DEPENDS = "glib-2.0 tinycompress tinyalsa expat system-media libhardware acdbloader surround-sound-3mic qti-audio-server qahw native-frameworks"
+DEPENDS = "glib-2.0 tinycompress tinyalsa expat system-media libhardware acdbloader surround-sound-3mic qahw"
 DEPENDS_append_apq8098 = " audio-qaf audio-parsers audio-qap-wrapper audio-ip-handler"
-DEPENDS_append_apq8017 = " ffv"
+DEPENDS_append_apq8017 = " ffv qti-audio-server native-frameworks"
+DEPENDS_append_apq8009 = " qti-audio-server native-frameworks"
+DEPENDS_append_apq8053 = " qti-audio-server native-frameworks"
 
 #apq8098 doesn't need surround sound recording
 DEPENDS_remove_apq8098 = "surround-sound-3mic"
@@ -26,7 +28,6 @@ EXTRA_OECONF += "--with-glib --program-suffix=${HALBINSUFFIX}"
 
 EXTRA_OECONF += "TARGET_SUPPORT=${BASEMACHINE}"
 EXTRA_OECONF += "BOARD_SUPPORTS_QAHW=true"
-EXTRA_OECONF += "BOARD_SUPPORTS_QTI_AUDIO_SERVER=true"
 EXTRA_OECONF += "AUDIO_FEATURE_ENABLED_HDMI_EDID=true"
 EXTRA_OECONF += "AUDIO_FEATURE_ENABLED_FM_POWER_OPT=false"
 EXTRA_OECONF += "AUDIO_FEATURE_ENABLED_USBAUDIO=false"
@@ -66,6 +67,9 @@ EXTRA_OECONF_append_apq8098 = " AUDIO_FEATURE_ENABLED_DTSHD_PARSER=true"
 EXTRA_OECONF_append_apq8098 = " AUDIO_FEATURE_ENABLED_SSR=false"
 EXTRA_OECONF_append_apq8098 = " AUDIO_FEATURE_ENABLED_QAP=true"
 EXTRA_OECONF_append_apq8017 = " AUDIO_FEATURE_ENABLED_FFV=true"
+EXTRA_OECONF_append_apq8017 = " BOARD_SUPPORTS_QTI_AUDIO_SERVER=true"
+EXTRA_OECONF_append_apq8009 = " BOARD_SUPPORTS_QTI_AUDIO_SERVER=true"
+EXTRA_OECONF_append_apq8053 = " BOARD_SUPPORTS_QTI_AUDIO_SERVER=true"
 
 do_install_append() {
    if [ -d "${WORKDIR}/${BASEMACHINE}" ] && [ $(ls -1  ${WORKDIR}/${BASEMACHINE} | wc -l) -ne 0 ]; then
