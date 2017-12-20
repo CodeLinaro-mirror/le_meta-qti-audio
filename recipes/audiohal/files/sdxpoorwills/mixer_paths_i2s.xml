@@ -124,9 +124,9 @@
 
     <!-- These are actual sound device specific mixer settings -->
     <path name="adc2">
-        <ctl name="AIF1_CAP Mixer SLIM TX6" value="1"/>
+        <ctl name="AIF1_CAP Mixer I2S TX6" value="1"/>
         <ctl name="MI2S_TX Channels" value="One" />
-        <ctl name="SLIM TX6 MUX" value="DEC6" />
+        <ctl name="CDC_IF TX6 MUX" value="DEC6" />
         <ctl name="ADC MUX6" value="AMIC" />
         <ctl name="AMIC MUX6" value="ADC2" />
     </path>
@@ -140,21 +140,23 @@
     </path>
 
     <path name="dmic2">
-        <ctl name="AIF1_CAP Mixer SLIM TX6" value="1"/>
+        <ctl name="AIF1_CAP Mixer I2S TX6" value="1"/>
         <ctl name="MI2S_TX Channels" value="One" />
-        <ctl name="SLIM TX6 MUX" value="DEC6" />
+        <ctl name="CDC_IF TX6 MUX" value="DEC6" />
         <ctl name="ADC MUX6" value="DMIC" />
         <ctl name="DMIC MUX6" value="DMIC2" />
     </path>
 
     <path name="speaker">
-        <ctl name="SLIM RX0 MUX" value="AIF1_PB" />
+        <ctl name="I2S RX0 MUX" value="AIF1_PB" />
         <ctl name="MI2S_RX Channels" value="One" />
-        <ctl name="RX INT7_1 MIX1 INP0" value="RX0" />
-        <ctl name="COMP7 Switch" value="1" />
-        <ctl name="SpkrLeft COMP Switch" value="1" />
-        <ctl name="SpkrLeft BOOST Switch" value="1" />
-        <ctl name="SpkrLeft SWR DAC_Port Switch" value="1" />
+        <ctl name="CDC_IF RX0 MUX" value="I2S RX0" />
+        <ctl name="RX INT8_1 MIX1 INP0" value="RX0" />
+        <ctl name="COMP8 Switch" value="1" />
+        <ctl name="SpkrRight COMP Switch" value="1" />
+        <ctl name="SpkrRight BOOST Switch" value="1" />
+        <ctl name="SpkrRight VISENSE Switch" value="1" />
+        <ctl name="SpkrRight SWR DAC_Port Switch" value="1" />
     </path>
 
     <path name="speaker-mic">
@@ -174,11 +176,13 @@
     </path>
 
     <path name="headphones">
-        <ctl name="SLIM RX0 MUX" value="AIF1_PB" />
-        <ctl name="SLIM RX1 MUX" value="AIF1_PB" />
+        <ctl name="I2S RX0 MUX" value="AIF1_PB" />
+        <ctl name="I2S RX1 MUX" value="AIF1_PB" />
+        <ctl name="CDC_IF RX0 MUX" value="I2S RX0" />
+        <ctl name="CDC_IF RX1 MUX" value="I2S RX1" />
         <ctl name="MI2S_RX Channels" value="Two" />
-        <ctl name="RX INT1_1 MIX1 INP0" value="RX0" />
-        <ctl name="RX INT2_1 MIX1 INP0" value="RX1" />
+        <ctl name="RX INT1_2 MUX" value="RX0" />
+        <ctl name="RX INT2_2 MUX" value="RX1" />
         <ctl name="RX INT1 DEM MUX" value="CLSH_DSM_OUT" />
         <ctl name="RX INT2 DEM MUX" value="CLSH_DSM_OUT" />
         <ctl name="COMP1 Switch" value="1" />
