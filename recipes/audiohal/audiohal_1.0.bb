@@ -67,6 +67,7 @@ EXTRA_OECONF_append_apq8098 = " AUDIO_FEATURE_ENABLED_SSR=false"
 EXTRA_OECONF_append_apq8098 = " AUDIO_FEATURE_ENABLED_QAP=true"
 EXTRA_OECONF_append_apq8017 = " AUDIO_FEATURE_ENABLED_FFV=true"
 EXTRA_OECONF_append_apq8009 = " AUDIO_FEATURE_ENABLED_FFV=true"
+EXTRA_OECONF_append_apq8009 = " AUDIO_FEATURE_ENABLED_CUSTOM_STEREO=true"
 
 do_install_append() {
    if [ -d "${WORKDIR}/${BASEMACHINE}" ] && [ $(ls -1  ${WORKDIR}/${BASEMACHINE} | wc -l) -ne 0 ]; then
