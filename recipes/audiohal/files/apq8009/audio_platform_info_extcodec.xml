@@ -48,6 +48,7 @@
     <pcm_ids>
         <usecase name="USECASE_AUDIO_PLAYBACK_OFFLOAD2" type="out" id="24"/>
         <usecase name="USECASE_AUDIO_EC_REF_LOOPBACK" type="in" id="14"/>
+        <usecase name="USECASE_AUDIO_PLAYBACK_SILENCE" type="out" id="14"/>
     </pcm_ids>
     <acdb_metainfo_key>
         <param name="aptx" value="456"/>
