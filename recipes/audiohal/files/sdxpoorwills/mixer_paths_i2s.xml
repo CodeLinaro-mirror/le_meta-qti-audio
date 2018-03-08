@@ -131,17 +131,17 @@
         <ctl name="AMIC MUX6" value="ADC2" />
     </path>
 
-    <path name="dmic0">
-        <ctl name="AIF1_CAP Mixer SLIM TX6" value="1"/>
-        <ctl name="MI2S_TX Channels" value="One" />
-        <ctl name="SLIM TX6 MUX" value="DEC6" />
+    <path name="dmic1">
+        <ctl name="AIF1_CAP Mixer I2S TX6" value="1"/>
+        <ctl name="PRI_MI2S_TX Channels" value="One" />
+        <ctl name="CDC_IF TX6 MUX" value="DEC6" />
         <ctl name="ADC MUX6" value="DMIC" />
-        <ctl name="DMIC MUX6" value="DMIC0" />
+        <ctl name="DMIC MUX6" value="DMIC1" />
     </path>
 
     <path name="dmic2">
         <ctl name="AIF1_CAP Mixer I2S TX6" value="1"/>
-        <ctl name="MI2S_TX Channels" value="One" />
+        <ctl name="PRI_MI2S_TX Channels" value="One" />
         <ctl name="CDC_IF TX6 MUX" value="DEC6" />
         <ctl name="ADC MUX6" value="DMIC" />
         <ctl name="DMIC MUX6" value="DMIC2" />
@@ -160,19 +160,21 @@
     </path>
 
     <path name="speaker-mic">
-        <path name="dmic2" />
+        <path name="dmic1" />
+        <ctrl name="DEC6 Volume" value="102" />
     </path>
 
     <path name="handset">
-        <ctl name="SLIM RX0 MUX" value="AIF1_PB" />
+        <ctl name="I2S RX0 MUX" value="AIF1_PB" />
         <ctl name="MI2S_RX Channels" value="One" />
+        <ctl name="CDC_IF RX0 MUX" value="I2S RX0" />
         <ctl name="RX INT0_1 MIX1 INP0" value="RX0" />
         <ctl name="RX INT0 DEM MUX" value="CLSH_DSM_OUT" />
         <ctl name="EAR PA Gain" value="G_6_DB" />
     </path>
 
     <path name="handset-mic">
-        <path name="dmic0" />
+        <path name="dmic2" />
     </path>
 
     <path name="headphones">
@@ -203,7 +205,7 @@
     </path>
 
     <path name="voice-speaker-mic">
-        <path name="handset-mic" />
+        <path name="speaker-mic" />
     </path>
 
     <path name="voice-headphones">
@@ -217,6 +219,7 @@
 
     <path name="voice-rec-mic">
         <path name="handset-mic" />
+        <ctrl name="DEC6 Volume" value="102" />
     </path>
 
     <path name="wsa-speaker">
