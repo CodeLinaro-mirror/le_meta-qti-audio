@@ -10,3 +10,6 @@ IMAGE_INSTALL += "${@base_contains('MULTILIB_VARIANTS', 'lib32', 'lib32-tinyalsa
 IMAGE_INSTALL += "${@base_contains('MULTILIB_VARIANTS', 'lib32', 'lib32-tinycompress', 'tinycompress', d)}"
 IMAGE_INSTALL += "${@base_contains('MULTILIB_VARIANTS', 'lib32', 'lib32-encoders', 'encoders', d)}"
 IMAGE_INSTALL += "${@base_contains('MULTILIB_VARIANTS', 'lib32', 'lib32-qahw', 'qahw', d)}"
+AUDIOMODULE_FLAG = "${@base_contains('PREFERRED_VERSION_linux-msm', '4.9%', 'True', 'False', d)}"
+IMAGE_INSTALL += "${@base_conditional('AUDIOMODULE_FLAG', 'True', base_contains('MULTILIB_VARIANTS', 'lib32', 'lib32-audiodlkm', 'audiodlkm', d), '', d)}"
+
