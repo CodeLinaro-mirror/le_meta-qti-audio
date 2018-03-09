@@ -14,6 +14,8 @@ PR = "r0"
 
 DEPENDS = "glib-2.0 libhardware liblog libcutils system-media"
 EXTRA_OECONF = "--with-glib"
+EXTRA_OECONF_append_apq8009 = " BOARD_SUPPORTS_SVA_AUDIO_CONCURRENCY=true"
+EXTRA_OECONF_append_apq8017 = " BOARD_SUPPORTS_SVA_AUDIO_CONCURRENCY=true"
 
 SOLIBS = ".so"
 FILES_SOLIBSDEV = ""
