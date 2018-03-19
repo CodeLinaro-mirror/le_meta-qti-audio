@@ -15,6 +15,9 @@ EXTRA_OECONF_append += "--with-glib"
 
 
 DEPENDS = "glib-2.0 system-core media"
+
+DEPENDS_append_apq8053 = "${@bb.utils.contains('PREFERRED_VERSION_linux-msm', '4.9%', ' audiodlkm', '', d)}"
+
 RDEPENDS_${PN} = "media"
 
 SOLIBS = ".so"
