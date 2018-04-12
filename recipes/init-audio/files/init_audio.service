@@ -29,6 +29,8 @@
 [Unit]
 Description=Init-audio Service
 SourcePath=/etc/initscripts/init_qcom_audio
+After=firmware.mount
+Requires=firmware.mount
 
 [Service]
 Restart=no
