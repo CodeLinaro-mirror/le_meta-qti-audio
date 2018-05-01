@@ -35,5 +35,9 @@
     <pcm_ids>
         <usecase name="USECASE_AUDIO_PLAYBACK_OFFLOAD2" type="out" id="24"/>
     </pcm_ids>
+    <acdb_metainfo_key>
+        <param name="ffv" value="9729"/>
+        <param name="allplay" value="789"/>
+    </acdb_metainfo_key>
 </audio_platform_info>
 
