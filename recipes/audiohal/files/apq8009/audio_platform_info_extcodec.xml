@@ -52,8 +52,8 @@
     </pcm_ids>
     <acdb_metainfo_key>
         <param name="aptx" value="456"/>
-        <param name="ffv" value="9729"/>
-        <param name="allplay" value="789"/>
+        <param name="ffv" value="16777"/>
+        <param name="allplay" value="4745"/>
     </acdb_metainfo_key>
 </audio_platform_info>
 
