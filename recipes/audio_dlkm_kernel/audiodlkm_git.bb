@@ -26,10 +26,12 @@ do_configure() {
 do_install_append() {
   install -d ${D}${includedir}/audio-kernel/
   install -d ${D}${includedir}/audio-kernel/linux
+  install -d ${D}${includedir}/audio-kernel/linux/mfd
+  install -d ${D}${includedir}/audio-kernel/linux/mfd/wcd9xxx
   install -d ${D}${includedir}/audio-kernel/sound
   install -d ${D}${base_libdir}/modules/${KERNEL_VERSION}/extra
 
-  install -m 0644 ${S}/linux/* ${D}${includedir}/audio-kernel/linux
+  cp -fr ${S}/linux/* ${D}${includedir}/audio-kernel/linux
   install -m 0644 ${S}/sound/* ${D}${includedir}/audio-kernel/sound
 
   install -m 0755 ${WORKDIR}/${BASEMACHINE}/audio_load.conf -D ${D}${sysconfdir}/modules-load.d/audio_load.conf
