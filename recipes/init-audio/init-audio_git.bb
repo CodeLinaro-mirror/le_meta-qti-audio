@@ -9,6 +9,7 @@ DEPENDS_append_mdm9635 +="alsa-intf"
 
 SRC_URI = "file://init_qcom_audio"
 SRC_URI += "file://init_audio.service"
+SRC_URI += "file://msm-audio-node.rules"
 
 do_compile[noexec] = "1"
 
@@ -28,6 +29,7 @@ do_install() {
         ln -sf /etc/systemd/system/init_audio.service ${D}/etc/systemd/system/multi-user.target.wants/init_audio.service
         install -d ${D}/etc/systemd/system/ffbm.target.wants
         ln -sf /etc/systemd/system/init_audio.service ${D}/etc/systemd/system/ffbm.target.wants/init_audio.service
+        install -m 0644 ${S}/msm-audio-node.rules -D ${D}${sysconfdir}/udev/rules.d/msm-audio-node.rules
     else
         install -m 0755 ${S}/init_qcom_audio -D ${D}${sysconfdir}/init.d/init_qcom_audio
     fi
