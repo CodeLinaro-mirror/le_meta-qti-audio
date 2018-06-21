@@ -14,7 +14,7 @@ SRC_URI += "file://${BASEMACHINE}/"
 
 S = "${WORKDIR}/vendor/qcom/opensource/audio-kernel"
 
-FILES_${PN} += "${base_libdir}/modules/${KERNEL_VERSION}/extra/*"
+FILES_${PN} += "${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra/*"
 FILES_${PN} += "${sysconfdir}/*"
 
 EXTRA_OEMAKE += "TARGET_SUPPORT=${BASEMACHINE}"
@@ -29,25 +29,25 @@ do_install_append() {
   install -d ${D}${includedir}/audio-kernel/linux/mfd
   install -d ${D}${includedir}/audio-kernel/linux/mfd/wcd9xxx
   install -d ${D}${includedir}/audio-kernel/sound
-  install -d ${D}${base_libdir}/modules/${KERNEL_VERSION}/extra
+  install -d ${D}${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra
 
   cp -fr ${S}/linux/* ${D}${includedir}/audio-kernel/linux
   install -m 0644 ${S}/sound/* ${D}${includedir}/audio-kernel/sound
 
   install -m 0755 ${WORKDIR}/${BASEMACHINE}/audio_load.conf -D ${D}${sysconfdir}/modules-load.d/audio_load.conf
 
-   for i in $(find ${D}/lib/modules/${KERNEL_VERSION}/extra/. -name "*.ko"); do
-   mv ${i} ${D}/lib/modules/${KERNEL_VERSION}/extra/
+   for i in $(find ${D}/${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra/. -name "*.ko"); do
+   mv ${i} ${D}/${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra/
    done
 
-   rm -fr ${D}/lib/modules/${KERNEL_VERSION}/extra/asoc
-   rm -fr ${D}/lib/modules/${KERNEL_VERSION}/extra/dsp
-   rm -fr ${D}/lib/modules/${KERNEL_VERSION}/extra/ipc
-   rm -fr ${D}/lib/modules/${KERNEL_VERSION}/extra/soc
+   rm -fr ${D}/${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra/asoc
+   rm -fr ${D}/${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra/dsp
+   rm -fr ${D}/${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra/ipc
+   rm -fr ${D}/${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra/soc
 }
 
 do_module_signing() {
-   for i in $(find ${PKGDEST}/${PN}/lib/modules/${KERNEL_VERSION}/extra/ -name "*.ko"); do
+   for i in $(find ${PKGDEST}/${PN}/${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra/ -name "*.ko"); do
    ${STAGING_KERNEL_BUILDDIR}/scripts/sign-file sha512 ${STAGING_KERNEL_BUILDDIR}/certs/signing_key.pem ${STAGING_KERNEL_BUILDDIR}/certs/signing_key.x509 ${i}
    done
 }
