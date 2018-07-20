@@ -16,6 +16,8 @@ S = "${WORKDIR}"
 S_msm8974 = "${WORKDIR}/${BASEMACHINE}"
 S_msm8610 = "${WORKDIR}/${BASEMACHINE}"
 
+do_compile[noexec] = "1"
+
 INITSCRIPT_NAME = "init_qcom_audio"
 INITSCRIPT_PARAMS = "start 99 2 3 4 5 . stop 1 0 1 6 ."
 INITSCRIPT_NAME_apq8009 = "init_qcom_audio"
