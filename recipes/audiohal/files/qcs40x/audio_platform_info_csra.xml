@@ -72,7 +72,9 @@
         <device name="SND_DEVICE_OUT_BT_SCO" backend="bt-sco" interface="SLIMBUS_7_RX"/>
         <device name="SND_DEVICE_OUT_BT_A2DP" backend="bt-a2dp" interface="SLIMBUS_7_RX"/>
         <device name="SND_DEVICE_OUT_LINE" backend="line" interface="SLIMBUS_0_RX"/>
+        <device name="SND_DEVICE_OUT_HEADPHONES" backend="headphones" interface="SLIMBUS_0_RX"/>
         <device name="SND_DEVICE_OUT_SPEAKER_AND_LINE" backend="speaker-and-line" interface="PRI_MI2S_RX-and-SLIMBUS_0_RX"/>
+        <device name="SND_DEVICE_OUT_SPEAKER_AND_HEADPHONES" backend="speaker-and-headphones" interface="PRI_MI2S_RX-and-SLIMBUS_0_RX"/>
         <device name="SND_DEVICE_OUT_SPEAKER_AND_BT_SCO" backend="speaker-and-bt-sco" interface="PRI_MI2S_RX-and-SLIMBUS_7_RX"/>
         <device name="SND_DEVICE_OUT_SPEAKER_AND_BT_SCO_WB" backend="speaker-and-bt-sco-wb" interface="PRI_MI2S_RX-and-SLIMBUS_7_RX"/>
     </backend_names>
