@@ -1038,6 +1038,10 @@
         <ctl name="MultiMedia1 Mixer VA_CDC_DMA_TX_0" value="1" />
     </path>
 
+    <path name="audio-record line-in">
+        <ctl name="MultiMedia1 Mixer SLIM_0_TX" value="1" />
+    </path>
+
     <path name="audio-record usb-headset-mic">
         <ctl name="MultiMedia1 Mixer USB_AUDIO_TX" value="1" />
     </path>
@@ -1108,7 +1112,7 @@
     </path>
 
     <path name="play-fm headphones">
-        <path name="play-fm line">
+        <path name="play-fm line" />
     </path>
 
     <path name="hfp-sco">
