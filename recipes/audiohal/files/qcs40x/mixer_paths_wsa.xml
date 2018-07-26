@@ -183,6 +183,29 @@
 
     <ctl name="AFE_PCM_RX Audio Mixer MultiMedia3" value="0" />
 
+    <!-- SPDIF / HDMI TX -->
+    <ctl name="MultiMedia1 Mixer PRI_SPDIF_TX" value="0" />
+    <ctl name="MultiMedia1 Mixer SEC_SPDIF_TX" value="0" />
+    <ctl name="MultiMedia1 Mixer SEC_MI2S_TX" value="0" />
+    <ctl name="MultiMedia18 Mixer PRI_SPDIF_TX" value="0" />
+    <ctl name="MultiMedia18 Mixer SEC_SPDIF_TX" value="0" />
+    <ctl name="MultiMedia18 Mixer SEC_MI2S_TX" value="0" />
+    <ctl name="PRIM_SPDIF_TX Format" value="S16_LE" />
+    <ctl name="PRIM_SPDIF_TX SampleRate" value="KHZ_48" />
+    <ctl name="PRIM_SPDIF_TX Channels" value="Two" />
+    <ctl name="PRI SPDIF TX Source" value="Optical" />
+    <ctl name="PRI SPDIF TX Format" value="LPCM" />
+    <ctl name="SEC_SPDIF_TX Format" value="S16_LE" />
+    <ctl name="SEC_SPDIF_TX SampleRate" value="KHZ_48" />
+    <ctl name="SEC_SPDIF_TX Channels" value="Two" />
+    <ctl name="SEC SPDIF TX Source" value="EXT-ARC" />
+    <ctl name="SEC SPDIF TX Format" value="LPCM" />
+    <ctl name="SEC_MI2S_TX Format" value="S16_LE" />
+    <ctl name="SEC_MI2S_TX SampleRate" value="KHZ_48" />
+    <ctl name="SEC_MI2S_TX Channels" value="Two" />
+    <ctl name="SEC MI2S TX Format" value="LPCM" />
+    <!-- SPDIF / HDMI TX end -->
+
     <!-- Codec controls -->
 
     <!-- VA controls -->
@@ -1050,6 +1073,47 @@
 
     <path name="audio-record-compress usb-headset-mic">
         <ctl name="MultiMedia8 Mixer USB_AUDIO_TX" value="1" />
+    </path>
+
+    <path name="spdif-in">
+        <ctl name="PRI SPDIF TX Source" value="Optical" />
+    </path>
+
+    <path name="audio-record spdif-in">
+        <ctl name="MultiMedia1 Mixer PRI_SPDIF_TX" value="1" />
+        <path name="spdif-in" />
+    </path>
+
+    <path name="audio-record-compress2 spdif-in">
+        <ctl name="MultiMedia18 Mixer PRI_SPDIF_TX" value="1" />
+        <path name="spdif-in" />
+    </path>
+
+    <path name="hdmi-in">
+    </path>
+
+    <path name="audio-record hdmi-in">
+        <ctl name="MultiMedia1 Mixer SEC_MI2S_TX" value="1" />
+        <path name="hdmi-in" />
+    </path>
+
+    <path name="audio-record-compress2 hdmi-in">
+        <ctl name="MultiMedia18 Mixer SEC_MI2S_TX" value="1" />
+        <path name="hdmi-in" />
+    </path>
+
+    <path name="hdmi-arc-in">
+        <ctl name="SEC SPDIF TX Source" value="EXT-ARC" />
+    </path>
+
+    <path name="audio-record hdmi-arc-in">
+        <ctl name="MultiMedia1 Mixer SEC_SPDIF_TX" value="1" />
+        <path name="hdmi-arc-in" />
+    </path>
+
+    <path name="audio-record-compress2 hdmi-arc-in">
+        <ctl name="MultiMedia18 Mixer SEC_SPDIF_TX" value="1" />
+        <path name="hdmi-arc-in" />
     </path>
 
     <path name="low-latency-record">
