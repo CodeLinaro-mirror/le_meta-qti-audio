@@ -31,9 +31,6 @@
 
     <acdb_ids>
         <device name="SND_DEVICE_OUT_SPEAKER" acdb_id="15"/>
-        <device name="SND_DEVICE_OUT_SPEAKER_PROTECTED" acdb_id="124"/>
-        <device name="SND_DEVICE_IN_CAPTURE_VI_FEEDBACK_MONO_1" acdb_id="151"/>
-        <device name="SND_DEVICE_IN_CAPTURE_VI_FEEDBACK_MONO_2" acdb_id="152"/>
         <device name="SND_DEVICE_IN_UNPROCESSED_USB_HEADSET_MIC" acdb_id="133"/>
         <device name="SND_DEVICE_IN_UNPROCESSED_MIC" acdb_id="143"/>
         <device name="SND_DEVICE_IN_UNPROCESSED_STEREO_MIC" acdb_id="144"/>
@@ -72,8 +69,6 @@
     </interface_names>
 
     <config_params>
-        <param key="spkr_1_tz_name" value="wsatz.13"/>
-        <param key="spkr_2_tz_name" value="wsatz.14"/>
         <param key="true_32_bit" value="true"/>
         <!-- In the below value string, first parameter indicates size -->
         <!-- followed by perf lock options                             -->
@@ -93,8 +88,7 @@
     </gain_db_to_level_mapping>
 
     <backend_names>
-        <device name="SND_DEVICE_OUT_SPEAKER" interface="WSA_CDC_DMA_RX_0"/>
-        <device name="SND_DEVICE_OUT_SPEAKER_PROTECTED" interface="WSA_CDC_DMA_RX_0"/>
+        <device name="SND_DEVICE_OUT_SPEAKER" interface="PRI_MI2S_RX"/>
         <device name="SND_DEVICE_IN_HANDSET_MIC" interface="VA_CDC_DMA_TX_0"/>
         <device name="SND_DEVICE_IN_HANDSET_MIC_EXTERNAL" interface="VA_CDC_DMA_TX_0"/>
         <device name="SND_DEVICE_IN_HANDSET_MIC_AEC" interface="VA_CDC_DMA_TX_0"/>
@@ -119,9 +113,6 @@
         <device name="SND_DEVICE_IN_QUAD_MIC" interface="VA_CDC_DMA_TX_0"/>
         <device name="SND_DEVICE_IN_HANDSET_STEREO_DMIC" interface="VA_CDC_DMA_TX_0"/>
         <device name="SND_DEVICE_IN_SPEAKER_STEREO_DMIC" interface="VA_CDC_DMA_TX_0"/>
-        <device name="SND_DEVICE_IN_CAPTURE_VI_FEEDBACK" interface="WSA_CDC_DMA_TX_0"/>
-        <device name="SND_DEVICE_IN_CAPTURE_VI_FEEDBACK_MONO_1" interface="WSA_CDC_DMA_TX_0"/>
-        <device name="SND_DEVICE_IN_CAPTURE_VI_FEEDBACK_MONO_2" interface="WSA_CDC_DMA_TX_0"/>
         <device name="SND_DEVICE_IN_SPEAKER_DMIC_BROADSIDE" interface="VA_CDC_DMA_TX_0"/>
         <device name="SND_DEVICE_IN_SPEAKER_DMIC_AEC_BROADSIDE" interface="VA_CDC_DMA_TX_0"/>
         <device name="SND_DEVICE_IN_SPEAKER_DMIC_NS_BROADSIDE" interface="VA_CDC_DMA_TX_0"/>
@@ -143,10 +134,10 @@
         <device name="SND_DEVICE_OUT_BT_A2DP" backend="bt-a2dp" interface="SLIMBUS_7_RX"/>
         <device name="SND_DEVICE_OUT_LINE" backend="line" interface="SLIMBUS_0_RX"/>
         <device name="SND_DEVICE_OUT_HEADPHONES" backend="headphones" interface="SLIMBUS_0_RX"/>
-        <device name="SND_DEVICE_OUT_SPEAKER_AND_LINE" backend="speaker-and-line" interface="WSA_CDC_DMA_RX_0-and-SLIMBUS_0_RX"/>
-        <device name="SND_DEVICE_OUT_SPEAKER_AND_HEADPHONES" backend="speaker-and-headphones" interface="WSA_CDC_DMA_RX_0-and-SLIMBUS_0_RX"/>
-        <device name="SND_DEVICE_OUT_SPEAKER_AND_BT_SCO" backend="speaker-and-bt-sco" interface="WSA_CDC_DMA_RX_0-and-SLIMBUS_7_RX"/>
-        <device name="SND_DEVICE_OUT_SPEAKER_AND_BT_SCO_WB" backend="speaker-and-bt-sco-wb" interface="WSA_CDC_DMA_RX_0-and-SLIMBUS_7_RX"/>
+        <device name="SND_DEVICE_OUT_SPEAKER_AND_LINE" backend="speaker-and-line" interface="PRI_MI2S_RX-and-SLIMBUS_0_RX"/>
+        <device name="SND_DEVICE_OUT_SPEAKER_AND_HEADPHONES" backend="speaker-and-headphones" interface="PRI_MI2S_RX-and-SLIMBUS_0_RX"/>
+        <device name="SND_DEVICE_OUT_SPEAKER_AND_BT_SCO" backend="speaker-and-bt-sco" interface="PRI_MI2S_RX-and-SLIMBUS_7_RX"/>
+        <device name="SND_DEVICE_OUT_SPEAKER_AND_BT_SCO_WB" backend="speaker-and-bt-sco-wb" interface="PRI_MI2S_RX-and-SLIMBUS_7_RX"/>
         <device name="SND_DEVICE_IN_LINE" backend="line-in" interface="SLIMBUS_0_TX"/>
     </backend_names>
 </audio_platform_info>

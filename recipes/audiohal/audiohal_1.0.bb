@@ -13,8 +13,7 @@ SRC_URI += "file://${BASEMACHINE}/"
 S = "${WORKDIR}/hardware/qcom/audio/"
 PR = "r0"
 HALBINSUFFIX = "${@base_contains('TUNE_ARCH', 'aarch64', '_64bit', '', d)}"
-#DEPENDS = "glib-2.0 tinycompress tinyalsa expat system-media libhardware acdbloader surround-sound-3mic qahw"
-DEPENDS = "glib-2.0 tinycompress tinyalsa expat system-media libhardware surround-sound-3mic qahw"
+DEPENDS = "glib-2.0 tinycompress tinyalsa expat system-media libhardware acdbloader surround-sound-3mic qahw"
 DEPENDS_append_apq8098 = " audio-qaf audio-parsers audio-qap-wrapper audio-ip-handler"
 DEPENDS_append_apq8009 = " ffv"
 DEPENDS_append_apq8017 = " ffv qti-audio-server binder"
@@ -76,6 +75,7 @@ EXTRA_OECONF_append_apq8053 = " BOARD_SUPPORTS_QTI_AUDIO_SERVER=true"
 EXTRA_OECONF_append_apq8009 = " AUDIO_FEATURE_ENABLED_FFV=true"
 EXTRA_OECONF_append_apq8009 = " AUDIO_FEATURE_ENABLED_CUSTOM_STEREO=true"
 EXTRA_OECONF_append_apq8009 = " AUDIO_FEATURE_ENABLED_KEEP_ALIVE_ARM_FFV=true"
+EXTRA_OECONF_append_qcs40x = " AUDIO_FEATURE_ENABLED_INSTANCE_ID=true"
 
 do_install_append() {
    if [ -d "${WORKDIR}/${BASEMACHINE}" ] && [ $(ls -1  ${WORKDIR}/${BASEMACHINE} | wc -l) -ne 0 ]; then
