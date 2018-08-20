@@ -61,6 +61,8 @@
         <usecase name="USECASE_AUDIO_PLAYBACK_MMAP" type="out" id="33" />
         <usecase name="USECASE_AUDIO_RECORD_MMAP" type="in" id="33" />
         <usecase name="USECASE_AUDIO_RECORD_COMPRESS2" type="in" id="38"/>
+        <usecase name="USECASE_AUDIO_HFP_SCO" type="in" id="38"/>
+        <usecase name="USECASE_AUDIO_HFP_SCO_WB" type="in" id="38"/>
     </pcm_ids>
 
     <interface_names>
