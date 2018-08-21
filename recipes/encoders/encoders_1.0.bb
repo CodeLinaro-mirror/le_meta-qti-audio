@@ -9,6 +9,7 @@ PR = "r0"
 
 SRC_DIR = "${WORKSPACE}/hardware/qcom/audio/mm-audio/"
 
+EXTRA_OEMAKE = "DEFAULT_INCLUDES=-I${STAGING_KERNEL_BUILDDIR}/usr/techpack/audio/include"
 S = "${WORKDIR}/hardware/qcom/audio/mm-audio/"
 EXTRA_OECONF_append += "--with-sanitized-headers=${STAGING_KERNEL_BUILDDIR}/usr/include"
 EXTRA_OECONF_append += "--with-glib"
