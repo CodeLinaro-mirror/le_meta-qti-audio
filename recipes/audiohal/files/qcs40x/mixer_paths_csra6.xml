@@ -109,7 +109,7 @@
     <ctl name="MultiMedia8 Mixer USB_AUDIO_TX" value="0" />
     <ctl name="MultiMedia10 Mixer USB_AUDIO_TX" value="0" />
     <ctl name="MultiMedia6 Mixer VA_CDC_DMA_TX_0" value="0" />
-    <ctl name="PRI_MI2S_RX Channels" value="Twelve" />
+    <ctl name="PRIM_MI2S_RX Channels" value="Twelve" />
     <ctl name="CSRA_12 MIXER Switch" value="0" />
     <ctl name="CSRA_34 MIXER Switch" value="0" />
     <ctl name="CSRA_56 MIXER Switch" value="0" />
@@ -241,43 +241,43 @@
     <ctl name="CSRA_12 PA BASS_XOVER FREQ" value="0" />
     <ctl name="CSRA_12 PA TREBLE GAIN" value="0" />
     <ctl name="CSRA_12 PA TREBLE_XOVER FREQ" value="0" />
-    <ctl name="CSRA_12 PA DE-EMPHASIS SWITCH" value="0" />
-    <ctl name="CSRA_12 PA MUTE_OUTPUT SWITCH" value="0" />
+    <ctl name="CSRA_12 PA DE-EMPHASIS SWITCH" value="DISABLED" />
+    <ctl name="CSRA_12 PA MUTE_OUTPUT SWITCH" value="MUTE" />
 
     <ctl name="CSRA_34 PA BASS GAIN" value="0" />
     <ctl name="CSRA_34 PA BASS_XOVER FREQ" value="0" />
     <ctl name="CSRA_34 PA TREBLE GAIN" value="0" />
     <ctl name="CSRA_34 PA TREBLE_XOVER FREQ" value="0" />
-    <ctl name="CSRA_34 PA DE-EMPHASIS SWITCH" value="0" />
-    <ctl name="CSRA_34 PA MUTE_OUTPUT SWITCH" value="0" />
+    <ctl name="CSRA_34 PA DE-EMPHASIS SWITCH" value="DISABLED" />
+    <ctl name="CSRA_34 PA MUTE_OUTPUT SWITCH" value="MUTE" />
 
     <ctl name="CSRA_56 PA BASS GAIN" value="0" />
     <ctl name="CSRA_56 PA BASS_XOVER FREQ" value="0" />
     <ctl name="CSRA_56 PA TREBLE GAIN" value="0" />
     <ctl name="CSRA_56 PA TREBLE_XOVER FREQ" value="0" />
-    <ctl name="CSRA_56 PA DE-EMPHASIS SWITCH" value="0" />
-    <ctl name="CSRA_56 PA MUTE_OUTPUT SWITCH" value="0" />
+    <ctl name="CSRA_56 PA DE-EMPHASIS SWITCH" value="DISABLED" />
+    <ctl name="CSRA_56 PA MUTE_OUTPUT SWITCH" value="MUTE" />
 
     <ctl name="CSRA_78 PA BASS GAIN" value="0" />
     <ctl name="CSRA_78 PA BASS_XOVER FREQ" value="0" />
     <ctl name="CSRA_78 PA TREBLE GAIN" value="0" />
     <ctl name="CSRA_78 PA TREBLE_XOVER FREQ" value="0" />
-    <ctl name="CSRA_78 PA DE-EMPHASIS SWITCH" value="0" />
-    <ctl name="CSRA_78 PA MUTE_OUTPUT SWITCH" value="0" />
+    <ctl name="CSRA_78 PA DE-EMPHASIS SWITCH" value="DISABLED" />
+    <ctl name="CSRA_78 PA MUTE_OUTPUT SWITCH" value="MUTE" />
 
     <ctl name="CSRA_9A PA BASS GAIN" value="0" />
     <ctl name="CSRA_9A PA BASS_XOVER FREQ" value="0" />
     <ctl name="CSRA_9A PA TREBLE GAIN" value="0" />
     <ctl name="CSRA_9A PA TREBLE_XOVER FREQ" value="0" />
-    <ctl name="CSRA_9A PA DE-EMPHASIS SWITCH" value="0" />
-    <ctl name="CSRA_9A PA MUTE_OUTPUT SWITCH" value="0" />
+    <ctl name="CSRA_9A PA DE-EMPHASIS SWITCH" value="DISABLED" />
+    <ctl name="CSRA_9A PA MUTE_OUTPUT SWITCH" value="MUTE" />
 
     <ctl name="CSRA_BC PA BASS GAIN" value="0" />
     <ctl name="CSRA_BC PA BASS_XOVER FREQ" value="0" />
     <ctl name="CSRA_BC PA TREBLE GAIN" value="0" />
     <ctl name="CSRA_BC PA TREBLE_XOVER FREQ" value="0" />
-    <ctl name="CSRA_BC PA DE-EMPHASIS SWITCH" value="0" />
-    <ctl name="CSRA_BC PA MUTE_OUTPUT SWITCH" value="0" />
+    <ctl name="CSRA_BC PA DE-EMPHASIS SWITCH" value="DISABLED" />
+    <ctl name="CSRA_BC PA MUTE_OUTPUT SWITCH" value="MUTE" />
 
     <!-- Volume controls -->
     <ctl name="LINEOUT1 Volume" value="13" />
@@ -1384,78 +1384,78 @@
     </path>
 
     <path name="speaker">
-        <ctl name="PRI_MI2S_RX Channels" value="Twelve" />
+        <ctl name="PRIM_MI2S_RX Channels" value="Twelve" />
         <ctl name="CSRA_12 PA VOLUME" value="281" />
         <ctl name="CSRA_12 PA BASS GAIN" value="0" />
         <ctl name="CSRA_12 PA BASS_XOVER FREQ" value="0" />
         <ctl name="CSRA_12 PA TREBLE GAIN" value="0" />
         <ctl name="CSRA_12 PA TREBLE_XOVER FREQ" value="0" />
-        <ctl name="CSRA_12 PA DE-EMPHASIS SWITCH" value="0" />
-        <ctl name="CSRA_12 PA MUTE_OUTPUT SWITCH" value="0" />
+        <ctl name="CSRA_12 PA DE-EMPHASIS SWITCH" value="DISABLED" />
+        <ctl name="CSRA_12 PA MUTE_OUTPUT SWITCH" value="PLAY" />
         <ctl name="CSRA_12 MIXER Switch" value="1" />
         <ctl name="CSRA_34 PA VOLUME" value="281" />
         <ctl name="CSRA_34 PA BASS GAIN" value="0" />
         <ctl name="CSRA_34 PA BASS_XOVER FREQ" value="0" />
         <ctl name="CSRA_34 PA TREBLE GAIN" value="0" />
         <ctl name="CSRA_34 PA TREBLE_XOVER FREQ" value="0" />
-        <ctl name="CSRA_34 PA DE-EMPHASIS SWITCH" value="0" />
-        <ctl name="CSRA_34 PA MUTE_OUTPUT SWITCH" value="0" />
+        <ctl name="CSRA_34 PA DE-EMPHASIS SWITCH" value="DISABLED" />
+        <ctl name="CSRA_34 PA MUTE_OUTPUT SWITCH" value="PLAY" />
         <ctl name="CSRA_34 MIXER Switch" value="1" />
         <ctl name="CSRA_56 PA VOLUME" value="281" />
         <ctl name="CSRA_56 PA BASS GAIN" value="0" />
         <ctl name="CSRA_56 PA BASS_XOVER FREQ" value="0" />
         <ctl name="CSRA_56 PA TREBLE GAIN" value="0" />
         <ctl name="CSRA_56 PA TREBLE_XOVER FREQ" value="0" />
-        <ctl name="CSRA_56 PA DE-EMPHASIS SWITCH" value="0" />
-        <ctl name="CSRA_56 PA MUTE_OUTPUT SWITCH" value="0" />
+        <ctl name="CSRA_56 PA DE-EMPHASIS SWITCH" value="DISABLED" />
+        <ctl name="CSRA_56 PA MUTE_OUTPUT SWITCH" value="PLAY" />
         <ctl name="CSRA_56 MIXER Switch" value="1" />
         <ctl name="CSRA_78 PA VOLUME" value="281" />
         <ctl name="CSRA_78 PA BASS GAIN" value="0" />
         <ctl name="CSRA_78 PA BASS_XOVER FREQ" value="0" />
         <ctl name="CSRA_78 PA TREBLE GAIN" value="0" />
         <ctl name="CSRA_78 PA TREBLE_XOVER FREQ" value="0" />
-        <ctl name="CSRA_78 PA DE-EMPHASIS SWITCH" value="0" />
-        <ctl name="CSRA_78 PA MUTE_OUTPUT SWITCH" value="0" />
+        <ctl name="CSRA_78 PA DE-EMPHASIS SWITCH" value="DISABLED" />
+        <ctl name="CSRA_78 PA MUTE_OUTPUT SWITCH" value="PLAY" />
         <ctl name="CSRA_78 MIXER Switch" value="1" />
         <ctl name="CSRA_9A PA VOLUME" value="281" />
         <ctl name="CSRA_9A PA BASS GAIN" value="0" />
         <ctl name="CSRA_9A PA BASS_XOVER FREQ" value="0" />
         <ctl name="CSRA_9A PA TREBLE GAIN" value="0" />
         <ctl name="CSRA_9A PA TREBLE_XOVER FREQ" value="0" />
-        <ctl name="CSRA_9A PA DE-EMPHASIS SWITCH" value="0" />
-        <ctl name="CSRA_9A PA MUTE_OUTPUT SWITCH" value="0" />
+        <ctl name="CSRA_9A PA DE-EMPHASIS SWITCH" value="DISABLED" />
+        <ctl name="CSRA_9A PA MUTE_OUTPUT SWITCH" value="PLAY" />
         <ctl name="CSRA_9A MIXER Switch" value="1" />
         <ctl name="CSRA_BC PA VOLUME" value="281" />
         <ctl name="CSRA_BC PA BASS GAIN" value="0" />
         <ctl name="CSRA_BC PA BASS_XOVER FREQ" value="0" />
         <ctl name="CSRA_BC PA TREBLE GAIN" value="0" />
         <ctl name="CSRA_BC PA TREBLE_XOVER FREQ" value="0" />
-        <ctl name="CSRA_BC PA DE-EMPHASIS SWITCH" value="0" />
-        <ctl name="CSRA_BC PA MUTE_OUTPUT SWITCH" value="0" />
+        <ctl name="CSRA_BC PA DE-EMPHASIS SWITCH" value="DISABLED" />
+        <ctl name="CSRA_BC PA MUTE_OUTPUT SWITCH" value="PLAY" />
         <ctl name="CSRA_BC MIXER Switch" value="1" />
     </path>
 
     <path name="speaker-mono">
-        <ctl name="PRI_MI2S_RX Channels" value="One" />
+        <ctl name="PRIM_MI2S_RX Channels" value="One" />
         <ctl name="CSRA_12 PA VOLUME" value="281" />
         <ctl name="CSRA_12 PA BASS GAIN" value="0" />
         <ctl name="CSRA_12 PA BASS_XOVER FREQ" value="0" />
         <ctl name="CSRA_12 PA TREBLE GAIN" value="0" />
         <ctl name="CSRA_12 PA TREBLE_XOVER FREQ" value="0" />
-        <ctl name="CSRA_12 PA DE-EMPHASIS SWITCH" value="0" />
-        <ctl name="CSRA_12 PA MUTE_OUTPUT SWITCH" value="0" />
+        <ctl name="CSRA_12 PA DE-EMPHASIS SWITCH" value="DISABLED" />
+        <ctl name="CSRA_12 PA MUTE_OUTPUT SWITCH" value="PLAY" />
         <ctl name="CSRA_12 MIXER Switch" value="1" />
     </path>
 
     <path name="speaker-mono-2">
-        <ctl name="PRI_MI2S_RX Channels" value="One" />
+        <ctl name="PRIM_MI2S_RX Channels" value="One" />
         <ctl name="CSRA_12 PA VOLUME" value="281" />
         <ctl name="CSRA_12 PA BASS GAIN" value="0" />
         <ctl name="CSRA_12 PA BASS_XOVER FREQ" value="0" />
         <ctl name="CSRA_12 PA TREBLE GAIN" value="0" />
         <ctl name="CSRA_12 PA TREBLE_XOVER FREQ" value="0" />
-        <ctl name="CSRA_12 PA DE-EMPHASIS SWITCH" value="0" />
-        <ctl name="CSRA_12 PA MUTE_OUTPUT SWITCH" value="0" />
+        <ctl name="CSRA_12 PA DE-EMPHASIS SWITCH" value="DISABLED" />
+        <ctl name="CSRA_12 PA MUTE_OUTPUT SWITCH" value="PLAY" />
         <ctl name="CSRA_12 MIXER Switch" value="1" />
     </path>
 
@@ -1485,14 +1485,14 @@
     </path>
 
     <path name="handset">
-        <ctl name="PRI_MI2S_RX Channels" value="One" />
+        <ctl name="PRIM_MI2S_RX Channels" value="One" />
         <ctl name="CSRA_12 PA VOLUME" value="281" />
         <ctl name="CSRA_12 PA BASS GAIN" value="0" />
         <ctl name="CSRA_12 PA BASS_XOVER FREQ" value="0" />
         <ctl name="CSRA_12 PA TREBLE GAIN" value="0" />
         <ctl name="CSRA_12 PA TREBLE_XOVER FREQ" value="0" />
-        <ctl name="CSRA_12 PA DE-EMPHASIS SWITCH" value="0" />
-        <ctl name="CSRA_12 PA MUTE_OUTPUT SWITCH" value="0" />
+        <ctl name="CSRA_12 PA DE-EMPHASIS SWITCH" value="DISABLED" />
+        <ctl name="CSRA_12 PA MUTE_OUTPUT SWITCH" value="PLAY" />
         <ctl name="CSRA_12 MIXER Switch" value="1" />
     </path>
 
