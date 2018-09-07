@@ -16,7 +16,8 @@ SRC_URI = "git://codeaurora.org/quic/le/platform/external/tinyalsa.git;protocol=
            file://0001-pcm-add-support-to-set-silence_size.patch \
            file://0001-tinyalsa-Enable-compilation-with-latest-TinyALSA.patch \
            file://0001-tinyalsa-add-mixer_read-api-to-read-event-informatio.patch \
-           file://0001-audio-Add-new-pcm-functions.patch"
+           file://0001-audio-Add-new-pcm-functions.patch \
+           file://0001-tinyalsa-Add-pcm_ioctl-support-for-pcm-driver.patch"
 
 S = "${WORKDIR}"
 
