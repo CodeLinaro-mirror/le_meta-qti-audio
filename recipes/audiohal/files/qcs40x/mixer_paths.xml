@@ -1104,7 +1104,7 @@
         <ctl name="HFP_SLIM7_UL_HL Switch" value="1" />
         <ctl name="SLIMBUS_0_RX Port Mixer SLIM_7_TX" value="1" />
         <ctl name="SLIMBUS_7_RX Audio Mixer MultiMedia6" value="1" />
-        <ctl name="MultiMedia6 Mixer SLIM_0_TX" value="1" />
+        <ctl name="MultiMedia6 Mixer VA_CDC_DMA_TX_0" value="1" />
         <ctl name="SLIMBUS_DL_HL Switch" value="1" />
     </path>
 
