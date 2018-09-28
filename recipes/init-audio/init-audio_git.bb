@@ -9,6 +9,7 @@ DEPENDS_append_mdm9635 +="alsa-intf"
 
 SRC_URI = "file://init_qcom_audio"
 SRC_URI += "file://init_audio.service"
+SRC_URI += "file://msm-audio-node.rules"
 
 do_compile[noexec] = "1"
 
@@ -21,15 +22,14 @@ INITSCRIPT_PARAMS_apq8009 = "start 38 2 3 4 5 . stop 1 0 1 6 ."
 
 do_install() {
     if ${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'true', 'false', d)}; then
-        install -m 0755 ${S}/init_qcom_audio -D ${D}${sysconfdir}/initscripts/init_qcom_audio
-        install -d ${D}/etc/systemd/system/
-        install -m 0755 ${S}/init_audio.service -D ${D}${sysconfdir}/systemd/system/init_audio.service
-        install -d ${D}/etc/systemd/system/multi-user.target.wants
-        ln -sf /etc/systemd/system/init_audio.service ${D}/etc/systemd/system/multi-user.target.wants/init_audio.service
-        install -d ${D}/etc/systemd/system/ffbm.target.wants
-        ln -sf /etc/systemd/system/init_audio.service ${D}/etc/systemd/system/ffbm.target.wants/init_audio.service
+        install -m 0644 ${S}/msm-audio-node.rules -D ${D}${sysconfdir}/udev/rules.d/msm-audio-node.rules
+        install -m 0644 ${S}/init_audio.service -D ${D}${systemd_unitdir}/system/init_audio.service
+        install -d ${D}/${systemd_unitdir}/system/sysinit.target.wants
+        ln -sf ${systemd_unitdir}/system/init_audio.service ${D}${systemd_unitdir}/system/sysinit.target.wants/init_audio.service
     else
         install -m 0755 ${S}/init_qcom_audio -D ${D}${sysconfdir}/init.d/init_qcom_audio
     fi
 
 }
+
+FILES_${PN} += "${systemd_unitdir}/system/*"
