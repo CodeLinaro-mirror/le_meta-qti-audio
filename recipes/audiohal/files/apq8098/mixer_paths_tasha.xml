@@ -1670,14 +1670,15 @@
         <path name="hfp-sco headphones" />
     </path>
 
-    <path name="audio-transcode-loopback">
+    <path name="audio-transcode-loopback-rx">
         <ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia26" value="1" />
-        <ctl name="QUAT_MI2S_TX Channels" value="Two" />
-        <ctl name="MultiMedia27 Mixer QUAT_MI2S_TX" value="1" />
     </path>
 
-    <path name="audio-transcode-loopback headphones">
+    <path name="audio-transcode-loopback-rx headphones">
         <ctl name="SLIMBUS_6_RX Audio Mixer MultiMedia26" value="1" />
+    </path>
+
+    <path name="audio-transcode-loopback-tx hdmi-mic">
         <ctl name="QUAT_MI2S_TX Channels" value="Two" />
         <ctl name="MultiMedia27 Mixer QUAT_MI2S_TX" value="1" />
     </path>
