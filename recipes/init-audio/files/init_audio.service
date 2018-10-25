@@ -28,12 +28,13 @@
 
 [Unit]
 Description=Init-audio Service
-SourcePath=/etc/initscripts/init_qcom_audio
+After=firmware.mount
+Requires=firmware.mount
 
 [Service]
-Restart=no
-ExecStart=/etc/initscripts/init_qcom_audio start
-ExecStop=/etc/initscripts/init_qcom_audio stop
+Type=oneshot
+ExecStart= /bin/sh -c '/bin/echo 0 > /sys/module/subsystem_restart/parameters/enable_debug'
+ExecStart= /bin/sh -c '/bin/echo 1 > /sys/kernel/boot_adsp/boot'
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=sysinit.target

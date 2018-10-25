@@ -15,6 +15,9 @@ EXTRA_OECONF_append += "--with-glib"
 
 
 DEPENDS = "glib-2.0 system-core media"
+
+DEPENDS_append = "${@bb.utils.contains('DISTRO_FEATURES', 'audio-dlkm', ' audiodlkm', '', d)}"
+
 RDEPENDS_${PN} = "media"
 
 SOLIBS = ".so"

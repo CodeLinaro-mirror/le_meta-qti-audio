@@ -19,6 +19,7 @@ DEPENDS_append_apq8009 = " ffv"
 DEPENDS_append_apq8017 = " ffv qti-audio-server binder"
 DEPENDS_append_apq8009 = " qti-audio-server binder"
 DEPENDS_append_apq8053 = " qti-audio-server binder"
+DEPENDS_append = "${@bb.utils.contains('DISTRO_FEATURES', 'audio-dlkm', ' audiodlkm', '', d)}"
 
 #apq8098 doesn't need surround sound recording
 DEPENDS_remove_apq8098 = "surround-sound-3mic"
@@ -61,8 +62,10 @@ EXTRA_OECONF += "AUDIO_FEATURE_ENABLED_GEF_SUPPORT=true"
 EXTRA_OECONF_append_apq8098 = " AUDIO_FEATURE_ENABLED_QAF=true"
 EXTRA_OECONF_append_apq8098 = " AUDIO_FEATURE_ADSP_HDLR_ENABLED=true"
 EXTRA_OECONF_append_apq8098 = " AUDIO_FEATURE_ENABLED_SPLIT_A2DP=true"
+EXTRA_OECONF_append_qcs40x = " AUDIO_FEATURE_ENABLED_SPLIT_A2DP=true"
 EXTRA_OECONF_append_apq8098 = " AUDIO_FEATURE_IP_HDLR_ENABLED=true"
 EXTRA_OECONF_append_apq8098 = " AUDIO_FEATURE_ENABLED_AUDIO_HW_LOOPBACK=true"
+EXTRA_OECONF_append_qcs40x = " AUDIO_FEATURE_ENABLED_AUDIO_HW_LOOPBACK=true"
 EXTRA_OECONF_append_apq8098 = " AUDIO_FEATURE_ENABLED_PARSER=true"
 EXTRA_OECONF_append_apq8098 = " AUDIO_FEATURE_ENABLED_DTSHD_PARSER=true"
 EXTRA_OECONF_append_apq8098 = " AUDIO_FEATURE_ENABLED_SSR=false"
@@ -74,6 +77,7 @@ EXTRA_OECONF_append_apq8053 = " BOARD_SUPPORTS_QTI_AUDIO_SERVER=true"
 EXTRA_OECONF_append_apq8009 = " AUDIO_FEATURE_ENABLED_FFV=true"
 EXTRA_OECONF_append_apq8009 = " AUDIO_FEATURE_ENABLED_CUSTOM_STEREO=true"
 EXTRA_OECONF_append_apq8009 = " AUDIO_FEATURE_ENABLED_KEEP_ALIVE_ARM_FFV=true"
+EXTRA_OECONF_append_qcs40x = " AUDIO_FEATURE_ENABLED_INSTANCE_ID=true"
 
 do_install_append() {
    if [ -d "${WORKDIR}/${BASEMACHINE}" ] && [ $(ls -1  ${WORKDIR}/${BASEMACHINE} | wc -l) -ne 0 ]; then
