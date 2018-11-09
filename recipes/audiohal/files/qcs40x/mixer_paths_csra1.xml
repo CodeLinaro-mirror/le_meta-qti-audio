@@ -242,7 +242,7 @@
     <!-- Volume controls -->
     <ctl name="LINEOUT1 Volume" value="13" />
     <ctl name="LINEOUT2 Volume" value="13" />
-    <ctl name="CSRA_12 PA VOLUME" value="281" />
+    <ctl name="CSRA_12 PA VOLUME" value="361" />
     <ctl name="VA_DEC0 Volume" value="84" />
     <ctl name="VA_DEC1 Volume" value="84" />
     <ctl name="VA_DEC2 Volume" value="84" />
@@ -1340,7 +1340,7 @@
 
     <path name="speaker">
         <ctl name="PRIM_MI2S_RX Channels" value="Two" />
-        <ctl name="CSRA_12 PA VOLUME" value="281" />
+        <ctl name="CSRA_12 PA VOLUME" value="361" />
         <ctl name="CSRA_12 PA BASS GAIN" value="0" />
         <ctl name="CSRA_12 PA BASS_XOVER FREQ" value="0" />
         <ctl name="CSRA_12 PA TREBLE GAIN" value="0" />
@@ -1352,7 +1352,7 @@
 
     <path name="speaker-mono">
         <ctl name="PRIM_MI2S_RX Channels" value="One" />
-        <ctl name="CSRA_12 PA VOLUME" value="281" />
+        <ctl name="CSRA_12 PA VOLUME" value="361" />
         <ctl name="CSRA_12 PA BASS GAIN" value="0" />
         <ctl name="CSRA_12 PA BASS_XOVER FREQ" value="0" />
         <ctl name="CSRA_12 PA TREBLE GAIN" value="0" />
@@ -1364,7 +1364,7 @@
 
     <path name="speaker-mono-2">
         <ctl name="PRIM_MI2S_RX Channels" value="One" />
-        <ctl name="CSRA_12 PA VOLUME" value="281" />
+        <ctl name="CSRA_12 PA VOLUME" value="361" />
         <ctl name="CSRA_12 PA BASS GAIN" value="0" />
         <ctl name="CSRA_12 PA BASS_XOVER FREQ" value="0" />
         <ctl name="CSRA_12 PA TREBLE GAIN" value="0" />
@@ -1401,7 +1401,7 @@
 
     <path name="handset">
         <ctl name="PRIM_MI2S_RX Channels" value="One" />
-        <ctl name="CSRA_12 PA VOLUME" value="281" />
+        <ctl name="CSRA_12 PA VOLUME" value="361" />
         <ctl name="CSRA_12 PA BASS GAIN" value="0" />
         <ctl name="CSRA_12 PA BASS_XOVER FREQ" value="0" />
         <ctl name="CSRA_12 PA TREBLE GAIN" value="0" />
