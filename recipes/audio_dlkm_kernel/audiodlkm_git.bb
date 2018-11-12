@@ -1,5 +1,8 @@
 inherit module
 
+# if is TARGET_KERNEL_ARCH is set inherit qtikernel-arch to compile for that arch.
+inherit ${@bb.utils.contains('TARGET_KERNEL_ARCH', 'aarch64', 'qtikernel-arch', '', d)}
+
 DESCRIPTION = "QTI Audio drivers"
 LICENSE = "GPL-2.0"
 LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/${LICENSE};md5=801f80980d171dd6425610833a22dbe6"
