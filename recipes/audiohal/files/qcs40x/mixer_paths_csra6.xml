@@ -1200,6 +1200,11 @@
         <path name="spdif-in" />
     </path>
 
+    <path name="audio-transcode-loopback-tx hdmi-in">
+        <ctl name="MultiMedia27 Mixer SEC_MI2S_TX" value="1" />
+        <path name="hdmi-in" />
+    </path>
+
     <path name="fm-virtual-record capture-fm">
         <ctl name="MultiMedia2 Mixer SLIM_8_TX" value="1" />
     </path>
