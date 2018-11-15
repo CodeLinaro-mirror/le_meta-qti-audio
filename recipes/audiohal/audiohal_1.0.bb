@@ -19,6 +19,7 @@ DEPENDS_append_apq8009 = " ffv"
 DEPENDS_append_apq8017 = " ffv qti-audio-server binder"
 DEPENDS_append_apq8009 = " qti-audio-server binder"
 DEPENDS_append_apq8053 = " qti-audio-server binder"
+DEPENDS_append = "${@bb.utils.contains('DISTRO_FEATURES', 'audio-dlkm', ' audiodlkm', '', d)}"
 
 #apq8098 doesn't need surround sound recording
 DEPENDS_remove_apq8098 = "surround-sound-3mic"
