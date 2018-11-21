@@ -18,6 +18,8 @@ EXTRA_OECONF += "--prefix=/etc \
 
 FILES_${PN} += "${prefix}/snd_soc_msm/*"
 
+do_configure[depends] += "virtual/kernel:do_shared_workdir"
+
 do_install_append_msm8610() {
     mv ${D}/usr/bin/aplay ${D}/usr/bin/qc-aplay
     mv ${D}/usr/bin/amix ${D}/usr/bin/qc-amix

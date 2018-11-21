@@ -79,6 +79,8 @@ EXTRA_OECONF_append_apq8009 = " AUDIO_FEATURE_ENABLED_CUSTOM_STEREO=true"
 EXTRA_OECONF_append_apq8009 = " AUDIO_FEATURE_ENABLED_KEEP_ALIVE_ARM_FFV=true"
 EXTRA_OECONF_append_qcs40x = " AUDIO_FEATURE_ENABLED_INSTANCE_ID=true"
 
+do_configure[depends] += "virtual/kernel:do_shared_workdir"
+
 do_install_append() {
    if [ -d "${WORKDIR}/${BASEMACHINE}" ] && [ $(ls -1  ${WORKDIR}/${BASEMACHINE} | wc -l) -ne 0 ]; then
       install -d ${D}${sysconfdir}
