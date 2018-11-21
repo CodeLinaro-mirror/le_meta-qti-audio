@@ -14,6 +14,8 @@ EXTRA_OECONF_append += "--with-sanitized-headers=${STAGING_KERNEL_BUILDDIR}/usr/
 EXTRA_OECONF_append += "--with-glib"
 
 
+do_configure[depends] += "virtual/kernel:do_shared_workdir"
+
 DEPENDS = "glib-2.0 system-core media"
 
 DEPENDS_append = "${@bb.utils.contains('DISTRO_FEATURES', 'audio-dlkm', ' audiodlkm', '', d)}"
