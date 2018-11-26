@@ -194,9 +194,18 @@
     <ctl name="MultiMedia18 Mixer PRI_SPDIF_TX" value="0" />
     <ctl name="MultiMedia18 Mixer SEC_SPDIF_TX" value="0" />
     <ctl name="MultiMedia18 Mixer SEC_MI2S_TX" value="0" />
-    <ctl name="PRI_SPDIF_TX Format" value="S16_LE" />
-    <ctl name="PRI_SPDIF_TX SampleRate" value="KHZ_48" />
-    <ctl name="PRI_SPDIF_TX Channels" value="Two" />
+    <ctl name="MultiMedia19 Mixer PRI_SPDIF_TX" value="0" />
+    <ctl name="MultiMedia19 Mixer SEC_SPDIF_TX" value="0" />
+    <ctl name="MultiMedia19 Mixer SEC_MI2S_TX" value="0" />
+    <ctl name="MultiMedia28 Mixer PRI_SPDIF_TX" value="0" />
+    <ctl name="MultiMedia28 Mixer SEC_SPDIF_TX" value="0" />
+    <ctl name="MultiMedia28 Mixer SEC_MI2S_TX" value="0" />
+    <ctl name="MultiMedia29 Mixer PRI_SPDIF_TX" value="0" />
+    <ctl name="MultiMedia29 Mixer SEC_SPDIF_TX" value="0" />
+    <ctl name="MultiMedia29 Mixer SEC_MI2S_TX" value="0" />
+    <ctl name="PRIM_SPDIF_TX Format" value="S16_LE" />
+    <ctl name="PRIM_SPDIF_TX SampleRate" value="KHZ_48" />
+    <ctl name="PRIM_SPDIF_TX Channels" value="Two" />
     <ctl name="PRI SPDIF TX Source" value="Optical" />
     <ctl name="PRI SPDIF TX Format" value="LPCM" />
     <ctl name="SEC_SPDIF_TX Format" value="S16_LE" />
@@ -1133,6 +1142,21 @@
         <path name="spdif-in" />
     </path>
 
+    <path name="audio-record-compress3 spdif-in">
+        <ctl name="MultiMedia19 Mixer PRI_SPDIF_TX" value="1" />
+        <path name="spdif-in" />
+    </path>
+
+    <path name="audio-record-compress4 spdif-in">
+        <ctl name="MultiMedia28 Mixer PRI_SPDIF_TX" value="1" />
+        <path name="spdif-in" />
+    </path>
+
+    <path name="audio-record-compress5 spdif-in">
+        <ctl name="MultiMedia29 Mixer PRI_SPDIF_TX" value="1" />
+        <path name="spdif-in" />
+    </path>
+
     <path name="hdmi-in">
     </path>
 
@@ -1143,6 +1167,21 @@
 
     <path name="audio-record-compress2 hdmi-in">
         <ctl name="MultiMedia18 Mixer SEC_MI2S_TX" value="1" />
+        <path name="hdmi-in" />
+    </path>
+
+    <path name="audio-record-compress3 hdmi-in">
+        <ctl name="MultiMedia19 Mixer SEC_MI2S_TX" value="1" />
+        <path name="hdmi-in" />
+    </path>
+
+    <path name="audio-record-compress4 hdmi-in">
+        <ctl name="MultiMedia28 Mixer SEC_MI2S_TX" value="1" />
+        <path name="hdmi-in" />
+    </path>
+
+    <path name="audio-record-compress5 hdmi-in">
+        <ctl name="MultiMedia29 Mixer SEC_MI2S_TX" value="1" />
         <path name="hdmi-in" />
     </path>
 
@@ -1157,6 +1196,21 @@
 
     <path name="audio-record-compress2 hdmi-arc-in">
         <ctl name="MultiMedia18 Mixer SEC_SPDIF_TX" value="1" />
+        <path name="hdmi-arc-in" />
+    </path>
+
+    <path name="audio-record-compress3 hdmi-arc-in">
+        <ctl name="MultiMedia19 Mixer SEC_SPDIF_TX" value="1" />
+        <path name="hdmi-arc-in" />
+    </path>
+
+    <path name="audio-record-compress4 hdmi-arc-in">
+        <ctl name="MultiMedia28 Mixer SEC_SPDIF_TX" value="1" />
+        <path name="hdmi-arc-in" />
+    </path>
+
+    <path name="audio-record-compress5 hdmi-arc-in">
+        <ctl name="MultiMedia29 Mixer SEC_SPDIF_TX" value="1" />
         <path name="hdmi-arc-in" />
     </path>
 
