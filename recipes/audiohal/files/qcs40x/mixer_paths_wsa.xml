@@ -1161,6 +1161,10 @@
         <ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia26" value="1" />
     </path>
 
+    <path name="audio-transcode-loopback-rx bt-a2dp">
+        <ctl name="SLIMBUS_7_RX Audio Mixer MultiMedia26" value="1" />
+    </path>
+
     <path name="audio-transcode-loopback-tx line-in">
         <ctl name="SLIMBUS_0_TX Channels" value="Two" />
         <ctl name="MultiMedia27 Mixer SLIM_0_TX" value="1" />
