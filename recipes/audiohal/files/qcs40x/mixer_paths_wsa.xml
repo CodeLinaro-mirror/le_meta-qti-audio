@@ -75,6 +75,8 @@
     <ctl name="MultiMedia27 Mixer SLIM_7_TX" value="0" />
     <ctl name="MultiMedia27 Mixer SLIM_9_TX" value="0" />
     <ctl name="MultiMedia27 Mixer PRI_SPDIF_TX" value="0" />
+    <ctl name="MultiMedia27 Mixer SEC_MI2S_TX" value="0" />
+    <ctl name="MultiMedia27 Mixer SEC_SPDIF_TX" value="0" />
     <ctl name="WSA_CDC_DMA_RX_0 Audio Mixer MultiMedia1" value="0" />
     <ctl name="WSA_CDC_DMA_RX_0 Audio Mixer MultiMedia2" value="0" />
     <ctl name="WSA_CDC_DMA_RX_0 Audio Mixer MultiMedia3" value="0" />
@@ -1187,6 +1189,11 @@
     <path name="audio-transcode-loopback-tx hdmi-in">
         <ctl name="MultiMedia27 Mixer SEC_MI2S_TX" value="1" />
         <path name="hdmi-in" />
+    </path>
+
+    <path name="audio-transcode-loopback-tx hdmi-arc-in">
+        <ctl name="MultiMedia27 Mixer SEC_SPDIF_TX" value="1" />
+        <path name="hdmi-arc-in" />
     </path>
 
     <path name="fm-virtual-record capture-fm">
