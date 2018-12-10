@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<!-- Copyright (c) 2015-2017, The Linux Foundation. All rights reserved.    -->
+<!-- Copyright (c) 2015-2017, 2018 The Linux Foundation. All rights reserved.    -->
 <!--                                                                        -->
 <!-- Redistribution and use in source and binary forms, with or without     -->
 <!-- modification, are permitted provided that the following conditions are -->
@@ -47,6 +47,20 @@
     <ctl name="DEC10 Volume" value="84" />
     <ctl name="COMP0 Switch" value="0" />
     <ctl name="COMP1 Switch" value="0" />
+    <ctl name="ADC MUX13" value="AMIC" />
+    <ctl name="ADC MUX12" value="AMIC" />
+    <ctl name="ADC MUX11" value="AMIC" />
+    <ctl name="ADC MUX10" value="AMIC" />
+    <ctl name="ADC MUX9" value="AMIC" />
+    <ctl name="ADC MUX8" value="AMIC" />
+    <ctl name="ADC MUX7" value="AMIC" />
+    <ctl name="ADC MUX6" value="AMIC" />
+    <ctl name="ADC MUX5" value="AMIC" />
+    <ctl name="ADC MUX4" value="AMIC" />
+    <ctl name="ADC MUX3" value="AMIC" />
+    <ctl name="ADC MUX2" value="AMIC" />
+    <ctl name="ADC MUX1" value="AMIC" />
+    <ctl name="ADC MUX0" value="AMIC" />
     <ctl name="AUX_PCM_RX Audio Mixer MultiMedia1" value="0" />
     <ctl name="AUX_PCM_RX Audio Mixer MultiMedia4" value="0" />
     <ctl name="AUX_PCM_RX Audio Mixer MultiMedia5" value="0" />
