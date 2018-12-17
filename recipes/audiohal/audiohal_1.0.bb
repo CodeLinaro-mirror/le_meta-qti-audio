@@ -1,4 +1,4 @@
-inherit autotools pkgconfig
+inherit autotools-brokensep pkgconfig
 
 DESCRIPTION = "audiohal"
 SECTION = "multimedia"
