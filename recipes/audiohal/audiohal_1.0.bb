@@ -1,4 +1,4 @@
-inherit autotools pkgconfig
+inherit autotools-brokensep pkgconfig
 
 DESCRIPTION = "audiohal"
 SECTION = "multimedia"
@@ -12,7 +12,7 @@ SRC_URI += "file://${BASEMACHINE}/"
 
 S = "${WORKDIR}/hardware/qcom/audio/"
 PR = "r0"
-HALBINSUFFIX = "${@base_contains('TUNE_ARCH', 'aarch64', '_64bit', '', d)}"
+HALBINSUFFIX = "${@bb.utils.contains('TUNE_ARCH', 'aarch64', '_64bit', '', d)}"
 DEPENDS = "glib-2.0 tinycompress tinyalsa expat system-media libhardware acdbloader surround-sound-3mic qahw"
 DEPENDS_append_apq8098 = " audio-qaf audio-parsers audio-qap-wrapper audio-ip-handler"
 DEPENDS_append_apq8009 = " ffv"
