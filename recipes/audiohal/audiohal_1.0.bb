@@ -81,8 +81,6 @@ EXTRA_OECONF_append_qcs40x = " AUDIO_FEATURE_ENABLED_INSTANCE_ID=true"
 EXTRA_OECONF_append_qcs40x = " AUDIO_USE_LL_AS_PRIMARY_OUTPUT=true"
 EXTRA_OECONF_append_sdxpoorwills = " AUDIO_FEATURE_ENABLED_QAHW_1_0=true"
 
-do_configure[depends] += "virtual/kernel:do_shared_workdir"
-
 do_install_append() {
    if [ -d "${WORKDIR}/${BASEMACHINE}" ] && [ $(ls -1  ${WORKDIR}/${BASEMACHINE} | wc -l) -ne 0 ]; then
       install -d ${D}${sysconfdir}

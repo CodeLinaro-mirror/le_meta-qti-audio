@@ -16,5 +16,3 @@ EXTRA_OECONF_append = " --with-sanitized-headers=${STAGING_KERNEL_BUILDDIR}/usr/
 S = "${WORKDIR}/git"
 
 DEPENDS = "virtual/kernel"
-
-do_configure[depends] += "virtual/kernel:do_shared_workdir"
