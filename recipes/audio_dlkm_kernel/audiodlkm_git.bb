@@ -1,4 +1,4 @@
-inherit module
+inherit module qperf
 
 # if is TARGET_KERNEL_ARCH is set inherit qtikernel-arch to compile for that arch.
 inherit ${@bb.utils.contains('TARGET_KERNEL_ARCH', 'aarch64', 'qtikernel-arch', '', d)}
@@ -47,6 +47,7 @@ do_install_append() {
    rm -fr ${D}/${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra/dsp
    rm -fr ${D}/${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra/ipc
    rm -fr ${D}/${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra/soc
+   cp ${D}/${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra/* ${S}
 }
 
 do_module_signing() {
