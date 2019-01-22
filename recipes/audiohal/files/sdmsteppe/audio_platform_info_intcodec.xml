@@ -57,11 +57,11 @@
         <usecase name="USECASE_AUDIO_PLAYBACK_AFE_PROXY" type="out" id="6"/>
         <usecase name="USECASE_AUDIO_RECORD_AFE_PROXY" type="in" id="7"/>
         <usecase name="USECASE_AUDIO_RECORD_LOW_LATENCY" type="in" id="17" />
-        <usecase name="USECASE_AUDIO_RECORD_COMPRESS2" type="in" id="65" />
-        <usecase name="USECASE_AUDIO_RECORD_COMPRESS3" type="in" id="66" />
-        <usecase name="USECASE_AUDIO_RECORD_COMPRESS4" type="in" id="67" />
-        <usecase name="USECASE_AUDIO_RECORD_COMPRESS5" type="in" id="68" />
-        <usecase name="USECASE_AUDIO_RECORD_COMPRESS6" type="in" id="69" />
+        <usecase name="USECASE_AUDIO_RECORD_COMPRESS2" type="in" id="40" />
+        <usecase name="USECASE_AUDIO_RECORD_COMPRESS3" type="in" id="41" />
+        <usecase name="USECASE_AUDIO_RECORD_COMPRESS4" type="in" id="42" />
+        <usecase name="USECASE_AUDIO_RECORD_COMPRESS5" type="in" id="43" />
+        <usecase name="USECASE_AUDIO_RECORD_COMPRESS6" type="in" id="44" />
         <usecase name="USECASE_AUDIO_PLAYBACK_ULL" type="out" id="17" />
         <usecase name="USECASE_AUDIO_PLAYBACK_SILENCE" type="out" id="27" />
         <usecase name="USECASE_AUDIO_PLAYBACK_MMAP" type="out" id="33" />
