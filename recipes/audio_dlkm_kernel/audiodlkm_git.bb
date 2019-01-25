@@ -1,4 +1,4 @@
-inherit module
+inherit module qperf
 
 DESCRIPTION = "QTI Audio drivers"
 LICENSE = "GPL-2.0"
@@ -44,6 +44,7 @@ do_install_append() {
    rm -fr ${D}/${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra/dsp
    rm -fr ${D}/${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra/ipc
    rm -fr ${D}/${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra/soc
+   cp ${D}/${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra/* ${S}
 }
 
 do_module_signing() {
