@@ -19,12 +19,18 @@ S = "${WORKDIR}/vendor/qcom/opensource/audio-kernel"
 
 FILES_${PN} += "${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra/*"
 FILES_${PN} += "${sysconfdir}/*"
+FILES_${PN}+="/etc/initscripts/start_audio_le"
+FILES_${PN}+= "${systemd_unitdir}/system/audio.service"
+FILES_${PN}+= "${systemd_unitdir}/system/multi-user.target.wants/audio.service"
 
 EXTRA_OEMAKE += "TARGET_SUPPORT=${BASEMACHINE}"
 
 do_configure() {
   cp -f ${WORKDIR}/vendor/qcom/opensource/audio-kernel/Makefile.am ${WORKDIR}/vendor/qcom/opensource/audio-kernel/Makefile
 }
+
+INITSCRIPT_NAME = "start_audio_le"
+INITSCRIPT_PARAMS = "start 35 5 . stop 15 0 1 6 ."
 
 do_install_append() {
   install -d ${D}${includedir}/audio-kernel/
@@ -37,7 +43,11 @@ do_install_append() {
   cp -fr ${S}/linux/* ${D}${includedir}/audio-kernel/linux
   install -m 0644 ${S}/sound/* ${D}${includedir}/audio-kernel/sound
 
+  if ${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'true', 'false', d)}; then
   install -m 0755 ${WORKDIR}/${BASEMACHINE}/audio_load.conf -D ${D}${sysconfdir}/modules-load.d/audio_load.conf
+  else
+    install -m 0755 ${WORKDIR}/${BASEMACHINE}/audio_load.conf -D ${D}${sysconfdir}/modules/audio_load.conf
+  fi
 
    for i in $(find ${D}/${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra/. -name "*.ko"); do
    mv ${i} ${D}/${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra/
@@ -47,7 +57,17 @@ do_install_append() {
    rm -fr ${D}/${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra/dsp
    rm -fr ${D}/${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra/ipc
    rm -fr ${D}/${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra/soc
-   cp ${D}/${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra/* ${S}
+}
+
+do_install_append_mdm() {
+  install -m 0755 ${WORKDIR}/${BASEMACHINE}/audio_load.conf -D ${D}${sysconfdir}/modprobe.d/audio_load.conf
+  install -d ${D}${sysconfdir}/initscripts
+  install -m 0755 ${WORKDIR}/${BASEMACHINE}/start_audio_le ${D}${sysconfdir}/initscripts
+  install -m 0644 ${WORKDIR}/${BASEMACHINE}/audio.service -D ${D}${systemd_unitdir}/system/audio.service
+  install -d ${D}${systemd_unitdir}/system/multi-user.target.wants/
+# enable the service for multi-user.target
+   ln -sf ${systemd_unitdir}/system/audio.service \
+   ${D}${systemd_unitdir}/system/multi-user.target.wants/audio.service
 }
 
 do_module_signing() {
