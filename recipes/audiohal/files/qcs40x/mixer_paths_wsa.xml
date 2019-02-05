@@ -1216,6 +1216,7 @@
     </path>
 
     <path name="audio-transcode-loopback-rx">
+        <ctl name="WSA_CDC_DMA_RX_0 Audio Mixer MultiMedia26" value="1" />
     </path>
 
     <path name="audio-transcode-loopback-rx line">
