@@ -149,4 +149,68 @@
         <device name="SND_DEVICE_IN_BT_A2DP" backend="bt-a2dp-cap" interface="SLIMBUS_9_TX"/>
         <device name="SND_DEVICE_IN_SPDIF" backend="spdif-in" interface="PRI_SPDIF_TX"/>
     </backend_names>
+    <custom_mtmx_params param_id="0" in_channel_count="6" out_channel_count="12" usecase="USECASE_AUDIO_PLAYBACK_OFFLOAD" snd_device="SND_DEVICE_OUT_SPEAKER">
+        <custom_mtmx_param_coeffs out_channel_index="0"  values="16384 0 0 0 0 0"/>
+        <custom_mtmx_param_coeffs out_channel_index="1"  values="16384 0 0 0 0 0"/>
+        <custom_mtmx_param_coeffs out_channel_index="2"  values="0 16384 0 0 0 0"/>
+        <custom_mtmx_param_coeffs out_channel_index="3"  values="0 16384 0 0 0 0"/>
+        <custom_mtmx_param_coeffs out_channel_index="4"  values="0 0 16384 0 0 0"/>
+        <custom_mtmx_param_coeffs out_channel_index="5"  values="0 0 16384 0 0 0"/>
+        <custom_mtmx_param_coeffs out_channel_index="6"  values="0 0 0 16384 0 0"/>
+        <custom_mtmx_param_coeffs out_channel_index="7"  values="0 0 0 16384 0 0"/>
+        <custom_mtmx_param_coeffs out_channel_index="8"  values="0 0 0 0 16384 0"/>
+        <custom_mtmx_param_coeffs out_channel_index="9"  values="0 0 0 0 16384 0"/>
+        <custom_mtmx_param_coeffs out_channel_index="10" values="0 0 0 0 0 16384"/>
+        <custom_mtmx_param_coeffs out_channel_index="11" values="0 0 0 0 0 16384"/>
+    </custom_mtmx_params>
+    <custom_mtmx_params param_id="0" in_channel_count="6" out_channel_count="16" usecase="USECASE_AUDIO_PLAYBACK_OFFLOAD" snd_device="SND_DEVICE_OUT_SPEAKER">
+        <custom_mtmx_param_coeffs out_channel_index="0"  values="16384 0 0 0 0 0"/>
+        <custom_mtmx_param_coeffs out_channel_index="1"  values="16384 0 0 0 0 0"/>
+        <custom_mtmx_param_coeffs out_channel_index="2"  values="0 16384 0 0 0 0"/>
+        <custom_mtmx_param_coeffs out_channel_index="3"  values="0 16384 0 0 0 0"/>
+        <custom_mtmx_param_coeffs out_channel_index="4"  values="0 0 16384 0 0 0"/>
+        <custom_mtmx_param_coeffs out_channel_index="5"  values="0 0 16384 0 0 0"/>
+        <custom_mtmx_param_coeffs out_channel_index="6"  values="0 0 0 16384 0 0"/>
+        <custom_mtmx_param_coeffs out_channel_index="7"  values="0 0 0 16384 0 0"/>
+        <custom_mtmx_param_coeffs out_channel_index="8"  values="0 0 0 0 16384 0"/>
+        <custom_mtmx_param_coeffs out_channel_index="9"  values="0 0 0 0 16384 0"/>
+        <custom_mtmx_param_coeffs out_channel_index="10" values="0 0 0 0 0 16384"/>
+        <custom_mtmx_param_coeffs out_channel_index="11" values="0 0 0 0 0 16384"/>
+        <custom_mtmx_param_coeffs out_channel_index="12" values="0 0 0 0 0 0"/>
+        <custom_mtmx_param_coeffs out_channel_index="13" values="0 0 0 0 0 0"/>
+        <custom_mtmx_param_coeffs out_channel_index="14" values="0 0 0 0 0 0"/>
+        <custom_mtmx_param_coeffs out_channel_index="15" values="0 0 0 0 0 0"/>
+    </custom_mtmx_params>
+    <custom_mtmx_params param_id="0" in_channel_count="8" out_channel_count="12" usecase="USECASE_AUDIO_PLAYBACK_OFFLOAD" snd_device="SND_DEVICE_OUT_SPEAKER">
+        <custom_mtmx_param_coeffs out_channel_index="0"  values="16384 0 0 0 0 0 0 0"/>
+        <custom_mtmx_param_coeffs out_channel_index="1"  values="16384 0 0 0 0 0 0 0"/>
+        <custom_mtmx_param_coeffs out_channel_index="2"  values="0 16384 0 0 0 0 0 0"/>
+        <custom_mtmx_param_coeffs out_channel_index="3"  values="0 16384 0 0 0 0 0 0"/>
+        <custom_mtmx_param_coeffs out_channel_index="4"  values="0 0 16384 0 0 0 0 0"/>
+        <custom_mtmx_param_coeffs out_channel_index="5"  values="0 0 16384 0 0 0 0 0"/>
+        <custom_mtmx_param_coeffs out_channel_index="6"  values="0 0 0 16384 0 0 0 0"/>
+        <custom_mtmx_param_coeffs out_channel_index="7"  values="0 0 0 16384 0 0 0 0"/>
+        <custom_mtmx_param_coeffs out_channel_index="8"  values="0 0 0 0 16384 0 0 0"/>
+        <custom_mtmx_param_coeffs out_channel_index="9"  values="0 0 0 0 16384 0 0 0"/>
+        <custom_mtmx_param_coeffs out_channel_index="10" values="0 0 0 0 0 0 16384 0"/>
+        <custom_mtmx_param_coeffs out_channel_index="11" values="0 0 0 0 0 0 0 16384"/>
+    </custom_mtmx_params>
+    <custom_mtmx_params param_id="0" in_channel_count="8" out_channel_count="16" usecase="USECASE_AUDIO_PLAYBACK_OFFLOAD" snd_device="SND_DEVICE_OUT_SPEAKER">
+        <custom_mtmx_param_coeffs out_channel_index="0"  values="16384 0 0 0 0 0 0 0"/>
+        <custom_mtmx_param_coeffs out_channel_index="1"  values="16384 0 0 0 0 0 0 0"/>
+        <custom_mtmx_param_coeffs out_channel_index="2"  values="0 16384 0 0 0 0 0 0"/>
+        <custom_mtmx_param_coeffs out_channel_index="3"  values="0 16384 0 0 0 0 0 0"/>
+        <custom_mtmx_param_coeffs out_channel_index="4"  values="0 0 16384 0 0 0 0 0"/>
+        <custom_mtmx_param_coeffs out_channel_index="5"  values="0 0 16384 0 0 0 0 0"/>
+        <custom_mtmx_param_coeffs out_channel_index="6"  values="0 0 0 16384 0 0 0 0"/>
+        <custom_mtmx_param_coeffs out_channel_index="7"  values="0 0 0 16384 0 0 0 0"/>
+        <custom_mtmx_param_coeffs out_channel_index="8"  values="0 0 0 0 16384 0 0 0"/>
+        <custom_mtmx_param_coeffs out_channel_index="9"  values="0 0 0 0 16384 0 0 0"/>
+        <custom_mtmx_param_coeffs out_channel_index="10" values="0 0 0 0 0 16384 0 0"/>
+        <custom_mtmx_param_coeffs out_channel_index="11" values="0 0 0 0 0 16384 0 0"/>
+        <custom_mtmx_param_coeffs out_channel_index="12" values="0 0 0 0 0 0 16384 0"/>
+        <custom_mtmx_param_coeffs out_channel_index="13" values="0 0 0 0 0 0 16384 0"/>
+        <custom_mtmx_param_coeffs out_channel_index="14" values="0 0 0 0 0 0 0 16384"/>
+        <custom_mtmx_param_coeffs out_channel_index="15" values="0 0 0 0 0 0 0 16384"/>
+    </custom_mtmx_params>
 </audio_platform_info>
