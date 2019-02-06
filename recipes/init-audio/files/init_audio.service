@@ -35,6 +35,8 @@ Requires=firmware.mount
 Type=oneshot
 ExecStart= /bin/sh -c '/bin/echo 0 > /sys/module/subsystem_restart/parameters/enable_debug'
 ExecStart= /bin/sh -c '/bin/echo 1 > /sys/kernel/boot_adsp/boot'
+ConditionPathExists=|/data/audio
+ExecStartPre=+/bin/chown audio:audio /data/audio
 
 [Install]
 WantedBy=sysinit.target
