@@ -93,7 +93,7 @@ do_install_append() {
    fi
 
    #create /data/audio folder
-   install -d ${D}${userfsdatadir}/audio
+   install -m 770 -d ${D}${userfsdatadir}/audio
 }
 
 FILES_${PN} += "${libdir}/audio.primary.default.so ${userfsdatadir}/*"
