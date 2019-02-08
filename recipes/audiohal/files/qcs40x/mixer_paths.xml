@@ -930,6 +930,10 @@
         <ctl name="MultiMedia1 Mixer SLIM_9_TX" value="1" />
     </path>
 
+    <path name="audio-record-compress2 bt-a2dp-cap">
+        <ctl name="MultiMedia18 Mixer SLIM_9_TX" value="1" />
+    </path>
+
     <path name="audio-record bt-sco-wb">
         <ctl name="BT SampleRate" value="KHZ_16" />
         <path name="audio-record bt-sco" />
@@ -941,6 +945,10 @@
 
     <path name="audio-record-compress">
         <ctl name="MultiMedia8 Mixer VA_CDC_DMA_TX_0" value="1" />
+    </path>
+
+    <path name="audio-record-compress2">
+        <ctl name="MultiMedia18 Mixer VA_CDC_DMA_TX_0" value="1" />
     </path>
 
     <path name="audio-record-compress bt-sco">
