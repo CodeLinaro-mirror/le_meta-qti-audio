@@ -63,12 +63,18 @@
     <ctl name="MultiMedia5 Mixer SLIM_8_TX" value="0" />
     <ctl name="MultiMedia5 Mixer SLIM_7_TX" value="0" />
     <ctl name="MultiMedia1 Mixer VA_CDC_DMA_TX_0" value="0" />
+    <ctl name="MultiMedia1 Mixer SLIM_0_TX" value="0" />
     <ctl name="MultiMedia1 Mixer SLIM_7_TX" value="0" />
     <ctl name="MultiMedia8 Mixer VA_CDC_DMA_TX_0" value="0" />
     <ctl name="MultiMedia8 Mixer SLIM_7_TX" value="0" />
     <ctl name="MultiMedia10 Mixer VA_CDC_DMA_TX_0" value="0" />
     <ctl name="MultiMedia10 Mixer SLIM_7_TX" value="0" />
     <ctl name="MultiMedia10 Mixer AFE_PCM_TX" value="0" />
+    <ctl name="MultiMedia18 Mixer SLIM_0_TX" value="0" />
+    <ctl name="MultiMedia19 Mixer SLIM_0_TX" value="0" />
+    <ctl name="MultiMedia27 Mixer SLIM_0_TX" value="0" />
+    <ctl name="MultiMedia28 Mixer SLIM_0_TX" value="0" />
+    <ctl name="MultiMedia29 Mixer SLIM_0_TX" value="0" />
     <ctl name="USB_AUDIO_RX Audio Mixer MultiMedia1" value="0" />
     <ctl name="USB_AUDIO_RX Audio Mixer MultiMedia2" value="0" />
     <ctl name="USB_AUDIO_RX Audio Mixer MultiMedia3" value="0" />
@@ -1007,6 +1013,22 @@
 
     <path name="audio-record line-in">
         <ctl name="MultiMedia1 Mixer SLIM_0_TX" value="1" />
+    </path>
+
+    <path name="audio-record-compress2 line-in">
+        <ctl name="MultiMedia18 Mixer SLIM_0_TX" value="1" />
+    </path>
+
+    <path name="audio-record-compress3 line-in">
+        <ctl name="MultiMedia19 Mixer SLIM_0_TX" value="1" />
+    </path>
+
+    <path name="audio-record-compress4 line-in">
+        <ctl name="MultiMedia28 Mixer SLIM_0_TX" value="1" />
+    </path>
+
+    <path name="audio-record-compress5 line-in">
+        <ctl name="MultiMedia29 Mixer SLIM_0_TX" value="1" />
     </path>
 
     <path name="audio-record usb-headset-mic">
