@@ -1338,19 +1338,32 @@
     </path>
 
     <path name="hfp-sco">
+        <ctl name="HFP_SLIM7_UL_HL Switch" value="1" />
+        <ctl name="PRI_MI2S_RX Port Mixer SLIM_7_TX" value="1" />
+        <ctl name="SLIMBUS_7_RX Audio Mixer MultiMedia6" value="1" />
+        <ctl name="MultiMedia6 Mixer VA_CDC_DMA_TX_0" value="1" />
+        <ctl name="PRI_MI2S_RX_DL_HL Switch" value="1" />
     </path>
 
     <path name="hfp-sco line">
+        <ctl name="HFP_SLIM7_UL_HL Switch" value="1" />
+        <ctl name="SLIMBUS_0_RX Port Mixer SLIM_7_TX" value="1" />
+        <ctl name="SLIMBUS_7_RX Audio Mixer MultiMedia6" value="1" />
+        <ctl name="MultiMedia6 Mixer VA_CDC_DMA_TX_0" value="1" />
+        <ctl name="SLIMBUS_DL_HL Switch" value="1" />
     </path>
 
     <path name="hfp-sco headphones">
+        <path name="hfp-sco line" />
     </path>
 
    <path name="hfp-sco-wb">
+        <ctl name="BT SampleRate" value="KHZ_16" />
         <path name="hfp-sco" />
    </path>
 
     <path name="hfp-sco-wb line">
+        <ctl name="BT SampleRate" value="KHZ_16" />
         <path name="hfp-sco line" />
     </path>
 
