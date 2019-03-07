@@ -65,16 +65,23 @@
     <ctl name="MultiMedia5 Mixer SLIM_8_TX" value="0" />
     <ctl name="MultiMedia5 Mixer SLIM_7_TX" value="0" />
     <ctl name="MultiMedia1 Mixer VA_CDC_DMA_TX_0" value="0" />
+    <ctl name="MultiMedia1 Mixer SLIM_0_TX" value="0" />
     <ctl name="MultiMedia1 Mixer SLIM_7_TX" value="0" />
     <ctl name="MultiMedia8 Mixer VA_CDC_DMA_TX_0" value="0" />
     <ctl name="MultiMedia8 Mixer SLIM_7_TX" value="0" />
     <ctl name="MultiMedia10 Mixer VA_CDC_DMA_TX_0" value="0" />
     <ctl name="MultiMedia10 Mixer SLIM_7_TX" value="0" />
     <ctl name="MultiMedia10 Mixer AFE_PCM_TX" value="0" />
+    <ctl name="MultiMedia18 Mixer SLIM_0_TX" value="0" />
+    <ctl name="MultiMedia19 Mixer SLIM_0_TX" value="0" />
     <ctl name="MultiMedia27 Mixer SLIM_0_TX" value="0" />
+    <ctl name="MultiMedia28 Mixer SLIM_0_TX" value="0" />
+    <ctl name="MultiMedia29 Mixer SLIM_0_TX" value="0" />
     <ctl name="MultiMedia27 Mixer SLIM_7_TX" value="0" />
     <ctl name="MultiMedia27 Mixer SLIM_9_TX" value="0" />
     <ctl name="MultiMedia27 Mixer PRI_SPDIF_TX" value="0" />
+    <ctl name="MultiMedia27 Mixer SEC_MI2S_TX" value="0" />
+    <ctl name="MultiMedia27 Mixer SEC_SPDIF_TX" value="0" />
     <ctl name="WSA_CDC_DMA_RX_0 Audio Mixer MultiMedia1" value="0" />
     <ctl name="WSA_CDC_DMA_RX_0 Audio Mixer MultiMedia2" value="0" />
     <ctl name="WSA_CDC_DMA_RX_0 Audio Mixer MultiMedia3" value="0" />
@@ -195,9 +202,18 @@
     <ctl name="MultiMedia18 Mixer PRI_SPDIF_TX" value="0" />
     <ctl name="MultiMedia18 Mixer SEC_SPDIF_TX" value="0" />
     <ctl name="MultiMedia18 Mixer SEC_MI2S_TX" value="0" />
-    <ctl name="PRI_SPDIF_TX Format" value="S16_LE" />
-    <ctl name="PRI_SPDIF_TX SampleRate" value="KHZ_48" />
-    <ctl name="PRI_SPDIF_TX Channels" value="Two" />
+    <ctl name="MultiMedia19 Mixer PRI_SPDIF_TX" value="0" />
+    <ctl name="MultiMedia19 Mixer SEC_SPDIF_TX" value="0" />
+    <ctl name="MultiMedia19 Mixer SEC_MI2S_TX" value="0" />
+    <ctl name="MultiMedia28 Mixer PRI_SPDIF_TX" value="0" />
+    <ctl name="MultiMedia28 Mixer SEC_SPDIF_TX" value="0" />
+    <ctl name="MultiMedia28 Mixer SEC_MI2S_TX" value="0" />
+    <ctl name="MultiMedia29 Mixer PRI_SPDIF_TX" value="0" />
+    <ctl name="MultiMedia29 Mixer SEC_SPDIF_TX" value="0" />
+    <ctl name="MultiMedia29 Mixer SEC_MI2S_TX" value="0" />
+    <ctl name="PRIM_SPDIF_TX Format" value="S16_LE" />
+    <ctl name="PRIM_SPDIF_TX SampleRate" value="KHZ_48" />
+    <ctl name="PRIM_SPDIF_TX Channels" value="Two" />
     <ctl name="PRI SPDIF TX Source" value="Optical" />
     <ctl name="PRI SPDIF TX Format" value="LPCM" />
     <ctl name="SEC_SPDIF_TX Format" value="S16_LE" />
@@ -317,14 +333,23 @@
 
     <path name="echo-reference">
         <ctl name="AUDIO_REF_EC_UL1 MUX" value="WSA_CDC_DMA_RX_0" />
+        <ctl name="EC Reference Channels" value="Two"/>
+        <ctl name="EC Reference Bit Format" value="S16_LE"/>
+        <ctl name="EC Reference SampleRate" value="48000"/>
     </path>
 
     <path name="echo-reference line">
         <ctl name="AUDIO_REF_EC_UL1 MUX" value="SLIM_0_RX" />
+        <ctl name="EC Reference Channels" value="Two"/>
+        <ctl name="EC Reference Bit Format" value="S16_LE"/>
+        <ctl name="EC Reference SampleRate" value="48000"/>
     </path>
 
     <path name="echo-reference headphones">
         <ctl name="AUDIO_REF_EC_UL1 MUX" value="SLIM_0_RX" />
+        <ctl name="EC Reference Channels" value="Two"/>
+        <ctl name="EC Reference Bit Format" value="S16_LE"/>
+        <ctl name="EC Reference SampleRate" value="48000"/>
     </path>
 
     <path name="deep-buffer-playback">
@@ -1050,6 +1075,22 @@
         <ctl name="MultiMedia1 Mixer SLIM_0_TX" value="1" />
     </path>
 
+    <path name="audio-record-compress2 line-in">
+        <ctl name="MultiMedia18 Mixer SLIM_0_TX" value="1" />
+    </path>
+
+    <path name="audio-record-compress3 line-in">
+        <ctl name="MultiMedia19 Mixer SLIM_0_TX" value="1" />
+    </path>
+
+    <path name="audio-record-compress4 line-in">
+        <ctl name="MultiMedia28 Mixer SLIM_0_TX" value="1" />
+    </path>
+
+    <path name="audio-record-compress5 line-in">
+        <ctl name="MultiMedia29 Mixer SLIM_0_TX" value="1" />
+    </path>
+
     <path name="audio-record usb-headset-mic">
         <ctl name="MultiMedia1 Mixer USB_AUDIO_TX" value="1" />
     </path>
@@ -1102,6 +1143,21 @@
         <path name="spdif-in" />
     </path>
 
+    <path name="audio-record-compress3 spdif-in">
+        <ctl name="MultiMedia19 Mixer PRI_SPDIF_TX" value="1" />
+        <path name="spdif-in" />
+    </path>
+
+    <path name="audio-record-compress4 spdif-in">
+        <ctl name="MultiMedia28 Mixer PRI_SPDIF_TX" value="1" />
+        <path name="spdif-in" />
+    </path>
+
+    <path name="audio-record-compress5 spdif-in">
+        <ctl name="MultiMedia29 Mixer PRI_SPDIF_TX" value="1" />
+        <path name="spdif-in" />
+    </path>
+
     <path name="hdmi-in">
     </path>
 
@@ -1112,6 +1168,21 @@
 
     <path name="audio-record-compress2 hdmi-in">
         <ctl name="MultiMedia18 Mixer SEC_MI2S_TX" value="1" />
+        <path name="hdmi-in" />
+    </path>
+
+    <path name="audio-record-compress3 hdmi-in">
+        <ctl name="MultiMedia19 Mixer SEC_MI2S_TX" value="1" />
+        <path name="hdmi-in" />
+    </path>
+
+    <path name="audio-record-compress4 hdmi-in">
+        <ctl name="MultiMedia28 Mixer SEC_MI2S_TX" value="1" />
+        <path name="hdmi-in" />
+    </path>
+
+    <path name="audio-record-compress5 hdmi-in">
+        <ctl name="MultiMedia29 Mixer SEC_MI2S_TX" value="1" />
         <path name="hdmi-in" />
     </path>
 
@@ -1126,6 +1197,21 @@
 
     <path name="audio-record-compress2 hdmi-arc-in">
         <ctl name="MultiMedia18 Mixer SEC_SPDIF_TX" value="1" />
+        <path name="hdmi-arc-in" />
+    </path>
+
+    <path name="audio-record-compress3 hdmi-arc-in">
+        <ctl name="MultiMedia19 Mixer SEC_SPDIF_TX" value="1" />
+        <path name="hdmi-arc-in" />
+    </path>
+
+    <path name="audio-record-compress4 hdmi-arc-in">
+        <ctl name="MultiMedia28 Mixer SEC_SPDIF_TX" value="1" />
+        <path name="hdmi-arc-in" />
+    </path>
+
+    <path name="audio-record-compress5 hdmi-arc-in">
+        <ctl name="MultiMedia29 Mixer SEC_SPDIF_TX" value="1" />
         <path name="hdmi-arc-in" />
     </path>
 
@@ -1151,6 +1237,7 @@
     </path>
 
     <path name="audio-transcode-loopback-rx">
+        <ctl name="WSA_CDC_DMA_RX_0 Audio Mixer MultiMedia26" value="1" />
     </path>
 
     <path name="audio-transcode-loopback-rx line">
@@ -1159,6 +1246,10 @@
 
     <path name="audio-transcode-loopback-rx headphones">
         <ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia26" value="1" />
+    </path>
+
+    <path name="audio-transcode-loopback-rx bt-a2dp">
+        <ctl name="SLIMBUS_7_RX Audio Mixer MultiMedia26" value="1" />
     </path>
 
     <path name="audio-transcode-loopback-tx line-in">
@@ -1178,6 +1269,16 @@
     <path name="audio-transcode-loopback-tx spdif-in">
         <ctl name="MultiMedia27 Mixer PRI_SPDIF_TX" value="1" />
         <path name="spdif-in" />
+    </path>
+
+    <path name="audio-transcode-loopback-tx hdmi-in">
+        <ctl name="MultiMedia27 Mixer SEC_MI2S_TX" value="1" />
+        <path name="hdmi-in" />
+    </path>
+
+    <path name="audio-transcode-loopback-tx hdmi-arc-in">
+        <ctl name="MultiMedia27 Mixer SEC_SPDIF_TX" value="1" />
+        <path name="hdmi-arc-in" />
     </path>
 
     <path name="fm-virtual-record capture-fm">

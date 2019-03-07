@@ -31,26 +31,12 @@
         <usecase name="USECASE_VOICEMMODE1_CALL" type="out" id="11"/>
         <usecase name="USECASE_VOICEMMODE2_CALL" type="in" id="12"/>
         <usecase name="USECASE_VOICEMMODE2_CALL" type="out" id="12"/>
-        <usecase name="USECASE_AUDIO_PLAYBACK_OFFLOAD2" type="in" id="7"/>
         <usecase name="USECASE_AUDIO_PLAYBACK_OFFLOAD2" type="out" id="7"/>
+        <usecase name="USECASE_VOICE_HPCM_RX_UPLINK" type="out" id="14"/>
+        <usecase name="USECASE_VOICE_HPCM_RX_DOWNLINK" type="in" id="13"/>
+        <usecase name="USECASE_VOICE_HPCM_TX_UPLINK" type="out" id="16"/>
+        <usecase name="USECASE_VOICE_HPCM_TX_DOWNLINK" type="in" id="15"/>
     </pcm_ids>
-
-    <config_params>
-        <!-- In the below value string, the value indicates fluence type -->
-        <!-- It can be set to none, fluence or fluencepro.               -->
-        <param key="fluence_type" value="none"/>
-        <!-- In the below value strings, the value indicates fluence     -->
-        <!-- features. It can be set to true or false.                   -->
-        <param key="fluence_voice" value="false"/>
-        <param key="fluence_voice_rec" value="false"/>
-        <param key="fluence_audio_rec" value="false"/>
-        <param key="fluence_speaker" value="false"/>
-        <param key="fluence_hfp" value="false"/>
-        <param key="fluence_tri_mic" value="false"/>
-        <!-- In the below value string, the value indicates fluence mode -->
-        <!-- It can be set to endfire or broadside.                      -->
-        <param key="fluence_mode" value="endfire"/>
-    </config_params>
 
 </audio_platform_info_i2s>
 
