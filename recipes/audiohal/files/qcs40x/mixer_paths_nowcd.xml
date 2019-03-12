@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<!-- Copyright (c) 2015-2018, The Linux Foundation. All rights reserved.    -->
+<!-- Copyright (c) 2015-2019, The Linux Foundation. All rights reserved.    -->
 <!--                                                                        -->
 <!-- Redistribution and use in source and binary forms, with or without     -->
 <!-- modification, are permitted provided that the following conditions are -->
@@ -521,11 +521,11 @@
     </path>
 
     <path name="compress-offload-playback3">
-        <ctl name="WSA_CDC_DMA_RX_0 Audio Mixer MultiMedia10" value="1" />
+        <ctl name="WSA_CDC_DMA_RX_0 Audio Mixer MultiMedia15" value="1" />
     </path>
 
     <path name="compress-offload-playback3 bt-sco">
-        <ctl name="SLIMBUS_7_RX Audio Mixer MultiMedia10" value="1" />
+        <ctl name="SLIMBUS_7_RX Audio Mixer MultiMedia15" value="1" />
     </path>
 
     <path name="compress-offload-playback3 bt-sco-wb">
@@ -534,15 +534,15 @@
     </path>
 
     <path name="compress-offload-playback3 afe-proxy">
-        <ctl name="AFE_PCM_RX Audio Mixer MultiMedia10" value="1" />
+        <ctl name="AFE_PCM_RX Audio Mixer MultiMedia15" value="1" />
     </path>
 
     <path name="compress-offload-playback3 usb-headphones">
-        <ctl name="USB_AUDIO_RX Audio Mixer MultiMedia10" value="1" />
+        <ctl name="USB_AUDIO_RX Audio Mixer MultiMedia15" value="1" />
     </path>
 
     <path name="compress-offload-playback3 usb-headset">
-        <ctl name="USB_AUDIO_RX Audio Mixer MultiMedia10" value="1" />
+        <ctl name="USB_AUDIO_RX Audio Mixer MultiMedia15" value="1" />
     </path>
 
     <path name="compress-offload-playback3 speaker-and-usb-headphones">
@@ -718,86 +718,6 @@
     <path name="compress-offload-playback7 speaker-and-bt-sco-wb">
         <path name="compress-offload-playback7 bt-sco-wb" />
         <path name="compress-offload-playback7" />
-    </path>
-
-    <path name="compress-offload-playback8">
-        <ctl name="WSA_CDC_DMA_RX_0 Audio Mixer MultiMedia15" value="1" />
-    </path>
-
-    <path name="compress-offload-playback8 bt-sco">
-        <ctl name="SLIMBUS_7_RX Audio Mixer MultiMedia15" value="1" />
-    </path>
-
-    <path name="compress-offload-playback8 bt-sco-wb">
-        <ctl name="BT SampleRate" value="KHZ_16" />
-        <path name="compress-offload-playback8 bt-sco" />
-    </path>
-
-    <path name="compress-offload-playback8 afe-proxy">
-        <ctl name="AFE_PCM_RX Audio Mixer MultiMedia15" value="1" />
-    </path>
-
-    <path name="compress-offload-playback8 usb-headphones">
-        <ctl name="USB_AUDIO_RX Audio Mixer MultiMedia15" value="1" />
-    </path>
-
-    <path name="compress-offload-playback8 usb-headset">
-        <ctl name="USB_AUDIO_RX Audio Mixer MultiMedia15" value="1" />
-    </path>
-
-    <path name="compress-offload-playback8 speaker-and-usb-headphones">
-        <path name="compress-offload-playback8 usb-headphones" />
-        <path name="compress-offload-playback8" />
-    </path>
-
-    <path name="compress-offload-playback8 speaker-and-bt-sco">
-        <path name="compress-offload-playback8 bt-sco" />
-        <path name="compress-offload-playback8" />
-    </path>
-
-    <path name="compress-offload-playback8 speaker-and-bt-sco-wb">
-        <path name="compress-offload-playback8 bt-sco-wb" />
-        <path name="compress-offload-playback8" />
-    </path>
-
-    <path name="compress-offload-playback9">
-        <ctl name="WSA_CDC_DMA_RX_0 Audio Mixer MultiMedia16" value="1" />
-    </path>
-
-    <path name="compress-offload-playback9 bt-sco">
-        <ctl name="SLIMBUS_7_RX Audio Mixer MultiMedia16" value="1" />
-    </path>
-
-    <path name="compress-offload-playback9 bt-sco-wb">
-        <ctl name="BT SampleRate" value="KHZ_16" />
-        <path name="compress-offload-playback9 bt-sco" />
-    </path>
-
-    <path name="compress-offload-playback9 afe-proxy">
-        <ctl name="AFE_PCM_RX Audio Mixer MultiMedia16" value="1" />
-    </path>
-
-    <path name="compress-offload-playback9 usb-headphones">
-        <ctl name="USB_AUDIO_RX Audio Mixer MultiMedia16" value="1" />
-    </path>
-
-    <path name="compress-offload-playback9 usb-headset">
-        <ctl name="USB_AUDIO_RX Audio Mixer MultiMedia16" value="1" />
-    </path>
-
-    <path name="compress-offload-playback9 speaker-and-usb-headphones">
-        <path name="compress-offload-playback9 usb-headphones" />
-        <path name="compress-offload-playback9" />
-    </path>
-
-    <path name="compress-offload-playback9 speaker-and-bt-sco">
-        <path name="compress-offload-playback9 bt-sco" />
-        <path name="compress-offload-playback9" />
-    </path>
-
-    <path name="compress-offload-playback9 speaker-and-bt-sco-wb">
-        <path name="compress-offload-playback9 bt-sco-wb" />
-        <path name="compress-offload-playback9" />
     </path>
 
     <path name="audio-record">
@@ -1386,7 +1306,7 @@
     </path>
 
     <path name="compress-offload-playback3 bt-a2dp">
-        <ctl name="SLIMBUS_7_RX Audio Mixer MultiMedia10" value="1" />
+        <ctl name="SLIMBUS_7_RX Audio Mixer MultiMedia15" value="1" />
     </path>
 
     <path name="compress-offload-playback4 bt-a2dp">
@@ -1403,14 +1323,6 @@
 
     <path name="compress-offload-playback7 bt-a2dp">
         <ctl name="SLIMBUS_7_RX Audio Mixer MultiMedia14" value="1" />
-    </path>
-
-    <path name="compress-offload-playback8 bt-a2dp">
-        <ctl name="SLIMBUS_7_RX Audio Mixer MultiMedia15" value="1" />
-    </path>
-
-    <path name="compress-offload-playback9 bt-a2dp">
-        <ctl name="SLIMBUS_7_RX Audio Mixer MultiMedia16" value="1" />
     </path>
 
     <path name="audio-ull-playback bt-a2dp">
@@ -1460,16 +1372,6 @@
     <path name="compress-offload-playback7 speaker-and-bt-a2dp">
         <path name="compress-offload-playback7 bt-a2dp" />
         <path name="compress-offload-playback7" />
-    </path>
-
-    <path name="compress-offload-playback8 speaker-and-bt-a2dp">
-        <path name="compress-offload-playback8 bt-a2dp" />
-        <path name="compress-offload-playback8" />
-    </path>
-
-    <path name="compress-offload-playback9 speaker-and-bt-a2dp">
-        <path name="compress-offload-playback9 bt-a2dp" />
-        <path name="compress-offload-playback9" />
     </path>
 
     <path name="audio-ull-playback speaker-and-bt-a2dp">
