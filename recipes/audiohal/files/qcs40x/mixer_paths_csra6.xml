@@ -89,6 +89,7 @@
     <ctl name="PRI_MI2S_RX Audio Mixer MultiMedia5" value="0" />
     <ctl name="PRI_MI2S_RX Audio Mixer MultiMedia7" value="0" />
     <ctl name="PRI_MI2S_RX Audio Mixer MultiMedia8" value="0" />
+    <ctl name="PRI_MI2S_RX Audio Mixer MultiMedia9" value="0" />
     <ctl name="PRI_MI2S_RX Audio Mixer MultiMedia10" value="0" />
     <ctl name="PRI_MI2S_RX Audio Mixer MultiMedia11" value="0" />
     <ctl name="PRI_MI2S_RX Audio Mixer MultiMedia12" value="0" />
@@ -348,6 +349,13 @@
     <ctl name="MultiMedia16 Mixer SLIM_7_TX" value="0" />
     <ctl name="MultiMedia16 Mixer SLIM_8_TX" value="0" />
     <ctl name="MultiMedia16 Mixer USB_AUDIO_TX" value="0" />
+
+    <!-- defaults for afe loopback tx -->
+    <ctl name="MultiMedia1 Mixer AFE_LOOPBACK_TX" value="0" />
+    <ctl name="AFE_LOOPBACK_TX Port" value="None" />
+    <ctl name="AFE_LOOPBACK_TX Channels" value="One" />
+    <ctl name="AFE_LOOPBACK_TX SampleRate" value="KHZ_48" />
+    <ctl name="AFE_LOOPBACK_TX Format" value="S16_LE" />
 
     <!-- These are audio route (FE to BE) specific mixer settings -->
 
@@ -971,6 +979,10 @@
         <path name="compress-offload-playback7" />
     </path>
 
+    <path name="silence-playback">
+        <ctl name="PRI_MI2S_RX Audio Mixer MultiMedia9" value="1" />
+    </path>
+
     <path name="audio-record">
         <ctl name="MultiMedia1 Mixer VA_CDC_DMA_TX_0" value="1" />
     </path>
@@ -1014,6 +1026,26 @@
 
     <path name="audio-record capture-fm">
         <ctl name="MultiMedia1 Mixer SLIM_8_TX" value="1" />
+    </path>
+
+    <path name="audio-record handset-dmic-and-ec-ref-loopback">
+        <ctl name="MultiMedia1 Mixer VA_CDC_DMA_TX_0" value="1" />
+        <ctl name="MultiMedia1 Mixer AFE_LOOPBACK_TX" value="1" />
+    </path>
+
+    <path name="audio-record handset-qmic-and-ec-ref-loopback">
+        <ctl name="MultiMedia1 Mixer VA_CDC_DMA_TX_0" value="1" />
+        <ctl name="MultiMedia1 Mixer AFE_LOOPBACK_TX" value="1" />
+    </path>
+
+    <path name="audio-record handset-6mic-and-ec-ref-loopback">
+        <ctl name="MultiMedia1 Mixer VA_CDC_DMA_TX_0" value="1" />
+        <ctl name="MultiMedia1 Mixer AFE_LOOPBACK_TX" value="1" />
+    </path>
+
+    <path name="audio-record handset-8mic-and-ec-ref-loopback">
+        <ctl name="MultiMedia1 Mixer VA_CDC_DMA_TX_0" value="1" />
+        <ctl name="MultiMedia1 Mixer AFE_LOOPBACK_TX" value="1" />
     </path>
 
     <path name="audio-record-compress">
@@ -1712,6 +1744,76 @@
 
     <path name="unprocessed-quad-mic">
         <path name="quad-mic" />
+    </path>
+
+    <path name="handset-6mic">
+        <ctl name="VA_CDC_DMA_TX_0 Channels" value="Six" />
+        <ctl name="VA_AIF1_CAP Mixer DEC0" value="1" />
+        <ctl name="VA_AIF1_CAP Mixer DEC1" value="1" />
+        <ctl name="VA_AIF1_CAP Mixer DEC2" value="1" />
+        <ctl name="VA_AIF1_CAP Mixer DEC3" value="1" />
+        <ctl name="VA_AIF1_CAP Mixer DEC4" value="1" />
+        <ctl name="VA_AIF1_CAP Mixer DEC5" value="1" />
+        <ctl name="VA DMIC MUX0" value="DMIC0" />
+        <ctl name="VA DMIC MUX1" value="DMIC1" />
+        <ctl name="VA DMIC MUX2" value="DMIC2" />
+        <ctl name="VA DMIC MUX3" value="DMIC3" />
+        <ctl name="VA DMIC MUX4" value="DMIC4" />
+        <ctl name="VA DMIC MUX5" value="DMIC5" />
+    </path>
+
+    <path name="handset-8mic">
+        <ctl name="VA_CDC_DMA_TX_0 Channels" value="Eight" />
+        <ctl name="VA_AIF1_CAP Mixer DEC0" value="1" />
+        <ctl name="VA_AIF1_CAP Mixer DEC1" value="1" />
+        <ctl name="VA_AIF1_CAP Mixer DEC2" value="1" />
+        <ctl name="VA_AIF1_CAP Mixer DEC3" value="1" />
+        <ctl name="VA_AIF1_CAP Mixer DEC4" value="1" />
+        <ctl name="VA_AIF1_CAP Mixer DEC5" value="1" />
+        <ctl name="VA_AIF1_CAP Mixer DEC6" value="1" />
+        <ctl name="VA_AIF1_CAP Mixer DEC7" value="1" />
+        <ctl name="VA DMIC MUX0" value="DMIC0" />
+        <ctl name="VA DMIC MUX1" value="DMIC1" />
+        <ctl name="VA DMIC MUX2" value="DMIC2" />
+        <ctl name="VA DMIC MUX3" value="DMIC3" />
+        <ctl name="VA DMIC MUX4" value="DMIC4" />
+        <ctl name="VA DMIC MUX5" value="DMIC5" />
+        <ctl name="VA DMIC MUX6" value="DMIC6" />
+        <ctl name="VA DMIC MUX7" value="DMIC7" />
+    </path>
+
+    <path name="ec-ref-loopback">
+        <ctl name="AFE_LOOPBACK_TX Port" value="I2S_RX" />
+        <ctl name="AFE_LOOPBACK_TX Channels" value="Twelve" />
+        <ctl name="AFE_LOOPBACK_TX SampleRate" value="KHZ_48" />
+        <ctl name="AFE_LOOPBACK_TX Format" value="S16_LE" />
+    </path>
+
+    <path name="ec-ref-loopback line">
+        <ctl name="AFE_LOOPBACK_TX Port" value="SLIM_RX" />
+        <ctl name="AFE_LOOPBACK_TX Channels" value="Two" />
+        <ctl name="AFE_LOOPBACK_TX SampleRate" value="KHZ_48" />
+        <ctl name="AFE_LOOPBACK_TX Format" value="S16_LE" />
+    </path>
+
+    <path name="handset-dmic-and-ec-ref-loopback">
+        <path name="dmic-endfire" />
+        <path name="ec-ref-loopback" />
+    </path>
+
+    <path name="handset-qmic-and-ec-ref-loopback">
+        <path name="quad-mic" />
+        <path name="ec-ref-loopback" />
+    </path>
+
+    <path name="handset-6mic-and-ec-ref-loopback">
+        <path name="handset-6mic" />
+        <path name="ec-ref-loopback" />
+    </path>
+
+    <path name="handset-8mic-and-ec-ref-loopback">
+        <path name="handset-8mic" />
+        <path name="ec-ref-loopback" />
     </path>
 
     <path name="bt-a2dp">
