@@ -26,6 +26,15 @@ do_install() {
         install -m 0644 ${S}/init_audio.service -D ${D}${systemd_unitdir}/system/init_audio.service
         install -d ${D}/${systemd_unitdir}/system/sysinit.target.wants
         ln -sf ${systemd_unitdir}/system/init_audio.service ${D}${systemd_unitdir}/system/sysinit.target.wants/init_audio.service
+        echo "\
+        # Create directory in /data/audio for location with audio:audio permissions
+        d /data/audio 0755 audio audio - -
+        # Change selinux context of new directory. Use Z to apply for subdirectories as well.
+        T /data/audio - - - - security.selinux="system_u:object_r:audio_data_file_t:s0"
+        " > ${WORKDIR}/${BPN}.conf
+        ## Install systemd-tmpfiles config file
+        install -d ${D}${sysconfdir}/tmpfiles.d/
+        install -m 0644 ${WORKDIR}/${BPN}.conf ${D}${sysconfdir}/tmpfiles.d/${BPN}.conf
     else
         install -m 0755 ${S}/init_qcom_audio -D ${D}${sysconfdir}/init.d/init_qcom_audio
     fi
