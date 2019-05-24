@@ -156,16 +156,16 @@
         <device name="SND_DEVICE_IN_LINE" backend="line-in" interface="SLIMBUS_0_TX"/>
         <device name="SND_DEVICE_IN_BT_A2DP" backend="bt-a2dp-cap" interface="SLIMBUS_9_TX"/>
         <device name="SND_DEVICE_IN_SPDIF" backend="spdif-in" interface="PRI_SPDIF_TX"/>
-        <device name="SND_DEVICE_IN_HANDSET_6MIC" backend="handset-6mic" interface="VA_CDC_DMA_TX_0"/>
-        <device name="SND_DEVICE_IN_HANDSET_8MIC" backend="handset-8mic" interface="VA_CDC_DMA_TX_0"/>
-        <device name="SND_DEVICE_IN_EC_REF_LOOPBACK" backend="ec-ref-loopback" interface="AFE_LOOPBACK_TX"/>
-        <device name="SND_DEVICE_IN_HANDSET_DMIC_AND_EC_REF_LOOPBACK" backend="handset-dmic-and-ec-ref-loopback" interface="VA_CDC_DMA_TX_0-and-AFE_LOOPBACK_TX"/>
-        <device name="SND_DEVICE_IN_HANDSET_QMIC_AND_EC_REF_LOOPBACK" backend="handset-qmic-and-ec-ref-loopback" interface="VA_CDC_DMA_TX_0-and-AFE_LOOPBACK_TX"/>
-        <device name="SND_DEVICE_IN_HANDSET_6MIC_AND_EC_REF_LOOPBACK" backend="handset-6mic-and-ec-ref-loopback" interface="VA_CDC_DMA_TX_0-and-AFE_LOOPBACK_TX"/>
-        <device name="SND_DEVICE_IN_HANDSET_8MIC_AND_EC_REF_LOOPBACK" backend="handset-8mic-and-ec-ref-loopback" interface="VA_CDC_DMA_TX_0-and-AFE_LOOPBACK_TX"/>
+        <device name="SND_DEVICE_IN_HANDSET_6MIC" interface="VA_CDC_DMA_TX_0"/>
+        <device name="SND_DEVICE_IN_HANDSET_8MIC" interface="VA_CDC_DMA_TX_0"/>
+        <device name="SND_DEVICE_IN_EC_REF_LOOPBACK" interface="AFE_LOOPBACK_TX"/>
+        <device name="SND_DEVICE_IN_HANDSET_DMIC_AND_EC_REF_LOOPBACK" backend="handset-mic-and-ec-ref-loopback" interface="VA_CDC_DMA_TX_0-and-AFE_LOOPBACK_TX"/>
+        <device name="SND_DEVICE_IN_HANDSET_QMIC_AND_EC_REF_LOOPBACK" backend="handset-mic-and-ec-ref-loopback" interface="VA_CDC_DMA_TX_0-and-AFE_LOOPBACK_TX"/>
+        <device name="SND_DEVICE_IN_HANDSET_6MIC_AND_EC_REF_LOOPBACK" backend="handset-mic-and-ec-ref-loopback" interface="VA_CDC_DMA_TX_0-and-AFE_LOOPBACK_TX"/>
+        <device name="SND_DEVICE_IN_HANDSET_8MIC_AND_EC_REF_LOOPBACK" backend="handset-mic-and-ec-ref-loopback" interface="VA_CDC_DMA_TX_0-and-AFE_LOOPBACK_TX"/>
     </backend_names>
 
-    <custom_mtmx_params param_id="0" in_channel_count="8" out_channel_count="10" usecase="USECASE_AUDIO_RECORD" snd_device="SND_DEVICE_IN_HANDSET_6MIC_AND_EC_REF_LOOPBACK" fe_name="MultiMedia1" >
+    <custom_mtmx_params param_id="0" in_channel_count="8" out_channel_count="10" usecase="USECASE_AUDIO_RECORD,USECASE_AUDIO_RECORD_COMPRESS2,USECASE_AUDIO_RECORD_COMPRESS3,USECASE_AUDIO_RECORD_COMPRESS4,USECASE_AUDIO_RECORD_COMPRESS5" snd_device="SND_DEVICE_IN_HANDSET_6MIC_AND_EC_REF_LOOPBACK" fe_id="1,18,19,28,29" >
         <custom_mtmx_param_coeffs out_channel_index="0"  values="16384 0 0 0 0 0 0 0"/>
         <custom_mtmx_param_coeffs out_channel_index="1"  values="0 16384 0 0 0 0 0 0"/>
         <custom_mtmx_param_coeffs out_channel_index="2"  values="0 0 16384 0 0 0 0 0"/>
@@ -178,7 +178,7 @@
         <custom_mtmx_param_coeffs out_channel_index="9" values="0 0 0 0 0 0 0 0"/>
     </custom_mtmx_params>
 
-    <custom_mtmx_params param_id="0" in_channel_count="6" out_channel_count="6" usecase="USECASE_AUDIO_RECORD" snd_device="SND_DEVICE_IN_HANDSET_QMIC_AND_EC_REF_LOOPBACK" fe_name="MultiMedia1" >
+    <custom_mtmx_params param_id="0" in_channel_count="6" out_channel_count="6" usecase="USECASE_AUDIO_RECORD,USECASE_AUDIO_RECORD_COMPRESS2,USECASE_AUDIO_RECORD_COMPRESS3,USECASE_AUDIO_RECORD_COMPRESS4,USECASE_AUDIO_RECORD_COMPRESS5" snd_device="SND_DEVICE_IN_HANDSET_QMIC_AND_EC_REF_LOOPBACK" fe_id="1,18,19,28,29" >
         <custom_mtmx_param_coeffs out_channel_index="0"  values="16384 0 0 0 0 0"/>
         <custom_mtmx_param_coeffs out_channel_index="1"  values="0 16384 0 0 0 0"/>
         <custom_mtmx_param_coeffs out_channel_index="2"  values="0 0 16384 0 0 0"/>
@@ -187,12 +187,12 @@
         <custom_mtmx_param_coeffs out_channel_index="5"  values="0 0 0 0 0 16384"/>
     </custom_mtmx_params>
 
-    <custom_mtmx_in_params usecase="USECASE_AUDIO_RECORD" out_channel_count="10" >
+    <custom_mtmx_in_params usecase="USECASE_AUDIO_RECORD,USECASE_AUDIO_RECORD_COMPRESS2,USECASE_AUDIO_RECORD_COMPRESS3,USECASE_AUDIO_RECORD_COMPRESS4,USECASE_AUDIO_RECORD_COMPRESS5" out_channel_count="10" >
         <custom_mtmx_param_in_chs in_channel_index="0" channel_count="6" device="AUDIO_DEVICE_IN_BUILTIN_MIC" interface="VA_CDC_DMA_TX_0" />
         <custom_mtmx_param_in_chs in_channel_index="1" channel_count="2" device="AUDIO_DEVICE_IN_LOOPBACK" interface="AFE_LOOPBACK_TX" />
     </custom_mtmx_in_params>
 
-    <custom_mtmx_in_params usecase="USECASE_AUDIO_RECORD" out_channel_count="6" >
+    <custom_mtmx_in_params usecase="USECASE_AUDIO_RECORD,USECASE_AUDIO_RECORD_COMPRESS2,USECASE_AUDIO_RECORD_COMPRESS3,USECASE_AUDIO_RECORD_COMPRESS4,USECASE_AUDIO_RECORD_COMPRESS5" out_channel_count="6" >
         <custom_mtmx_param_in_chs in_channel_index="0" channel_count="4" device="AUDIO_DEVICE_IN_BUILTIN_MIC" interface="VA_CDC_DMA_TX_0" />
         <custom_mtmx_param_in_chs in_channel_index="1" channel_count="2" device="AUDIO_DEVICE_IN_LOOPBACK" interface="AFE_LOOPBACK_TX" />
     </custom_mtmx_in_params>
