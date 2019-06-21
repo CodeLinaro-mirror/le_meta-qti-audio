@@ -1505,6 +1505,14 @@
         <path name="speaker-mic" />
     </path>
 
+    <path name="voice-speaker-hfp">
+        <path name="speaker" />
+    </path>
+
+    <path name="voice-speaker-mic-hfp">
+        <path name="speaker-mic" />
+    </path>
+
     <path name="voice-line">
         <path name="line" />
     </path>
