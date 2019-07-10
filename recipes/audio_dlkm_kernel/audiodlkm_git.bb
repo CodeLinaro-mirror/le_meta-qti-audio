@@ -36,15 +36,15 @@ INITSCRIPT_NAME = "start_audio_le"
 INITSCRIPT_PARAMS = "start 35 5 . stop 15 0 1 6 ."
 
 do_install_append() {
-  install -d ${D}${includedir}/audio-kernel/
-  install -d ${D}${includedir}/audio-kernel/linux
-  install -d ${D}${includedir}/audio-kernel/linux/mfd
-  install -d ${D}${includedir}/audio-kernel/linux/mfd/wcd9xxx
-  install -d ${D}${includedir}/audio-kernel/sound
+  install -d ${STAGING_KERNEL_BUILDDIR}/audio-kernel/
+  install -d ${STAGING_KERNEL_BUILDDIR}/audio-kernel/linux
+  install -d ${STAGING_KERNEL_BUILDDIR}/audio-kernel/linux/mfd
+  install -d ${STAGING_KERNEL_BUILDDIR}/audio-kernel/linux/mfd/wcd9xxx
+  install -d ${STAGING_KERNEL_BUILDDIR}/audio-kernel/sound
   install -d ${D}${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra
 
-  cp -fr ${S}/linux/* ${D}${includedir}/audio-kernel/linux
-  install -m 0644 ${S}/sound/* ${D}${includedir}/audio-kernel/sound
+  cp -fr ${S}/linux/* ${STAGING_KERNEL_BUILDDIR}/audio-kernel/linux
+  install -m 0644 ${S}/sound/* ${STAGING_KERNEL_BUILDDIR}/audio-kernel/sound
 
   if ${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'true', 'false', d)}; then
   install -m 0755 ${WORKDIR}/${BASEMACHINE}/audio_load.conf -D ${D}${sysconfdir}/modules-load.d/audio_load.conf
