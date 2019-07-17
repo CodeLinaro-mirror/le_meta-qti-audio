@@ -73,10 +73,14 @@
     <ctl name="MultiMedia10 Mixer VA_CDC_DMA_TX_0" value="0" />
     <ctl name="MultiMedia10 Mixer SLIM_7_TX" value="0" />
     <ctl name="MultiMedia10 Mixer AFE_PCM_TX" value="0" />
+    <ctl name="MultiMedia18 Mixer VA_CDC_DMA_TX_0" value="0" />
     <ctl name="MultiMedia18 Mixer SLIM_0_TX" value="0" />
+    <ctl name="MultiMedia19 Mixer VA_CDC_DMA_TX_0" value="0" />
     <ctl name="MultiMedia19 Mixer SLIM_0_TX" value="0" />
     <ctl name="MultiMedia27 Mixer SLIM_0_TX" value="0" />
+    <ctl name="MultiMedia28 Mixer VA_CDC_DMA_TX_0" value="0" />
     <ctl name="MultiMedia28 Mixer SLIM_0_TX" value="0" />
+    <ctl name="MultiMedia29 Mixer VA_CDC_DMA_TX_0" value="0" />
     <ctl name="MultiMedia29 Mixer SLIM_0_TX" value="0" />
     <ctl name="MultiMedia27 Mixer SLIM_7_TX" value="0" />
     <ctl name="MultiMedia27 Mixer SLIM_9_TX" value="0" />
@@ -285,6 +289,10 @@
 
     <!-- defaults for afe loopback tx -->
     <ctl name="MultiMedia1 Mixer AFE_LOOPBACK_TX" value="0" />
+    <ctl name="MultiMedia18 Mixer AFE_LOOPBACK_TX" value="0" />
+    <ctl name="MultiMedia19 Mixer AFE_LOOPBACK_TX" value="0" />
+    <ctl name="MultiMedia28 Mixer AFE_LOOPBACK_TX" value="0" />
+    <ctl name="MultiMedia29 Mixer AFE_LOOPBACK_TX" value="0" />
     <ctl name="AFE_LOOPBACK_TX Port" value="None" />
     <ctl name="AFE_LOOPBACK_TX Channels" value="One" />
     <ctl name="AFE_LOOPBACK_TX SampleRate" value="KHZ_48" />
@@ -955,24 +963,29 @@
         <ctl name="MultiMedia1 Mixer SLIM_8_TX" value="1" />
     </path>
 
-    <path name="audio-record handset-dmic-and-ec-ref-loopback">
+    <path name="audio-record handset-mic-and-ec-ref-loopback">
         <ctl name="MultiMedia1 Mixer VA_CDC_DMA_TX_0" value="1" />
         <ctl name="MultiMedia1 Mixer AFE_LOOPBACK_TX" value="1" />
     </path>
 
-    <path name="audio-record handset-qmic-and-ec-ref-loopback">
-        <ctl name="MultiMedia1 Mixer VA_CDC_DMA_TX_0" value="1" />
-        <ctl name="MultiMedia1 Mixer AFE_LOOPBACK_TX" value="1" />
+    <path name="audio-record-compress2 handset-mic-and-ec-ref-loopback">
+        <ctl name="MultiMedia18 Mixer VA_CDC_DMA_TX_0" value="1" />
+        <ctl name="MultiMedia18 Mixer AFE_LOOPBACK_TX" value="1" />
     </path>
 
-    <path name="audio-record handset-6mic-and-ec-ref-loopback">
-        <ctl name="MultiMedia1 Mixer VA_CDC_DMA_TX_0" value="1" />
-        <ctl name="MultiMedia1 Mixer AFE_LOOPBACK_TX" value="1" />
+    <path name="audio-record-compress3 handset-mic-and-ec-ref-loopback">
+        <ctl name="MultiMedia19 Mixer VA_CDC_DMA_TX_0" value="1" />
+        <ctl name="MultiMedia19 Mixer AFE_LOOPBACK_TX" value="1" />
     </path>
 
-    <path name="audio-record handset-8mic-and-ec-ref-loopback">
-        <ctl name="MultiMedia1 Mixer VA_CDC_DMA_TX_0" value="1" />
-        <ctl name="MultiMedia1 Mixer AFE_LOOPBACK_TX" value="1" />
+    <path name="audio-record-compress4 handset-mic-and-ec-ref-loopback">
+        <ctl name="MultiMedia28 Mixer VA_CDC_DMA_TX_0" value="1" />
+        <ctl name="MultiMedia28 Mixer AFE_LOOPBACK_TX" value="1" />
+    </path>
+
+    <path name="audio-record-compress5 handset-mic-and-ec-ref-loopback">
+        <ctl name="MultiMedia29 Mixer VA_CDC_DMA_TX_0" value="1" />
+        <ctl name="MultiMedia29 Mixer AFE_LOOPBACK_TX" value="1" />
     </path>
 
     <path name="audio-record-compress">
