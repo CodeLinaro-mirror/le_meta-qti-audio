@@ -28,7 +28,7 @@ libtinyalsa_la_LIBADD = -lcutils
 libtinyalsa_la_CFLAGS = $(AM_CFLAGS)
 libtinyalsa_la_LDFLAGS = -shared -version-info 1:0:0
 
-bin_PROGRAMS = tinyplay tinycap tinymix
+bin_PROGRAMS = tinyplay tinycap tinymix tinyhostless
 tinyplay_SOURCES = git/utils/tinyplay.c
 tinyplay_LDADD = libtinyalsa.la -lcutils
 tinyplay_CFLAGS = $(AM_CFLAGS)
@@ -40,3 +40,7 @@ tinycap_CFLAGS = $(AM_CFLAGS)
 tinymix_SOURCES = git/utils/tinymix.c
 tinymix_LDADD =  libtinyalsa.la -lcutils
 tinymix_CFLAGS = $(AM_CFLAGS)
+
+tinyhostless_SOURCES = git/utils/tinyhostless.c
+tinyhostless_LDADD =  libtinyalsa.la -lcutils
+tinyhostless_CFLAGS = $(AM_CFLAGS)
