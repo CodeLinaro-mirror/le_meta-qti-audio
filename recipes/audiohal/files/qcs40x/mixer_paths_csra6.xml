@@ -101,6 +101,20 @@
     <ctl name="PRI_MI2S_RX Audio Mixer MultiMedia14" value="0" />
     <ctl name="PRI_MI2S_RX Audio Mixer MultiMedia15" value="0" />
     <ctl name="PRI_MI2S_RX Audio Mixer MultiMedia16" value="0" />
+    <ctl name="TERT_MI2S_RX Audio Mixer MultiMedia4" value="0" />
+    <ctl name="TERT_MI2S_RX Audio Mixer MultiMedia7" value="0" />
+    <ctl name="TERT_MI2S_RX Audio Mixer MultiMedia11" value="0" />
+    <ctl name="TERT_MI2S_RX Audio Mixer MultiMedia12" value="0" />
+    <ctl name="TERT_MI2S_RX Audio Mixer MultiMedia13" value="0" />
+    <ctl name="TERT_MI2S_RX Audio Mixer MultiMedia14" value="0" />
+    <ctl name="TERT_MI2S_RX Audio Mixer MultiMedia15" value="0" />
+    <ctl name="QUAT_MI2S_RX Audio Mixer MultiMedia4" value="0" />
+    <ctl name="QUAT_MI2S_RX Audio Mixer MultiMedia7" value="0" />
+    <ctl name="QUAT_MI2S_RX Audio Mixer MultiMedia11" value="0" />
+    <ctl name="QUAT_MI2S_RX Audio Mixer MultiMedia12" value="0" />
+    <ctl name="QUAT_MI2S_RX Audio Mixer MultiMedia13" value="0" />
+    <ctl name="QUAT_MI2S_RX Audio Mixer MultiMedia14" value="0" />
+    <ctl name="QUAT_MI2S_RX Audio Mixer MultiMedia15" value="0" />
     <ctl name="USB_AUDIO_RX Audio Mixer MultiMedia1" value="0" />
     <ctl name="USB_AUDIO_RX Audio Mixer MultiMedia2" value="0" />
     <ctl name="USB_AUDIO_RX Audio Mixer MultiMedia3" value="0" />
@@ -122,6 +136,8 @@
     <ctl name="MultiMedia10 Mixer USB_AUDIO_TX" value="0" />
     <ctl name="MultiMedia6 Mixer VA_CDC_DMA_TX_0" value="0" />
     <ctl name="PRIM_MI2S_RX Channels" value="Twelve" />
+    <ctl name="TERT_MI2S_RX Channels" value="Four" />
+    <ctl name="QUAT_MI2S_RX Channels" value="Four" />
     <ctl name="CSRA_12 MIXER Switch" value="0" />
     <ctl name="CSRA_34 MIXER Switch" value="0" />
     <ctl name="CSRA_56 MIXER Switch" value="0" />
@@ -581,6 +597,14 @@
         <ctl name="PRI_MI2S_RX Audio Mixer MultiMedia4" value="1" />
     </path>
 
+    <path name="compress-offload-playback speaker2">
+        <ctl name="TERT_MI2S_RX Audio Mixer MultiMedia4" value="1" />
+    </path>
+
+    <path name="compress-offload-playback speaker3">
+        <ctl name="QUAT_MI2S_RX Audio Mixer MultiMedia4" value="1" />
+    </path>
+
     <path name="compress-offload-playback speaker-protected">
         <path name="compress-offload-playback" />
     </path>
@@ -643,6 +667,14 @@
         <ctl name="PRI_MI2S_RX Audio Mixer MultiMedia7" value="1" />
     </path>
 
+    <path name="compress-offload-playback2 speaker2">
+        <ctl name="TERT_MI2S_RX Audio Mixer MultiMedia7" value="1" />
+    </path>
+
+    <path name="compress-offload-playback2 speaker3">
+        <ctl name="QUAT_MI2S_RX Audio Mixer MultiMedia7" value="1" />
+    </path>
+
     <path name="compress-offload-playback2 bt-sco">
         <ctl name="SLIMBUS_7_RX Audio Mixer MultiMedia7" value="1" />
     </path>
@@ -699,6 +731,14 @@
 
     <path name="compress-offload-playback3">
         <ctl name="PRI_MI2S_RX Audio Mixer MultiMedia15" value="1" />
+    </path>
+
+    <path name="compress-offload-playback3 speaker2">
+        <ctl name="TERT_MI2S_RX Audio Mixer MultiMedia15" value="1" />
+    </path>
+
+    <path name="compress-offload-playback3 speaker3">
+        <ctl name="QUAT_MI2S_RX Audio Mixer MultiMedia15" value="1" />
     </path>
 
     <path name="compress-offload-playback3 bt-sco">
@@ -759,6 +799,14 @@
         <ctl name="PRI_MI2S_RX Audio Mixer MultiMedia11" value="1" />
     </path>
 
+    <path name="compress-offload-playback4 speaker2">
+        <ctl name="TERT_MI2S_RX Audio Mixer MultiMedia11" value="1" />
+    </path>
+
+    <path name="compress-offload-playback4 speaker3">
+        <ctl name="QUAT_MI2S_RX Audio Mixer MultiMedia11" value="1" />
+    </path>
+
     <path name="compress-offload-playback4 bt-sco">
         <ctl name="SLIMBUS_7_RX Audio Mixer MultiMedia11" value="1" />
     </path>
@@ -815,6 +863,14 @@
 
     <path name="compress-offload-playback5">
         <ctl name="PRI_MI2S_RX Audio Mixer MultiMedia12" value="1" />
+    </path>
+
+    <path name="compress-offload-playback5 speaker2">
+        <ctl name="TERT_MI2S_RX Audio Mixer MultiMedia12" value="1" />
+    </path>
+
+    <path name="compress-offload-playback5 speaker3">
+        <ctl name="QUAT_MI2S_RX Audio Mixer MultiMedia12" value="1" />
     </path>
 
     <path name="compress-offload-playback5 bt-sco">
@@ -875,6 +931,14 @@
         <ctl name="PRI_MI2S_RX Audio Mixer MultiMedia13" value="1" />
     </path>
 
+    <path name="compress-offload-playback6 speaker2">
+        <ctl name="TERT_MI2S_RX Audio Mixer MultiMedia13" value="1" />
+    </path>
+
+    <path name="compress-offload-playback6 speaker3">
+        <ctl name="QUAT_MI2S_RX Audio Mixer MultiMedia13" value="1" />
+    </path>
+
     <path name="compress-offload-playback6 bt-sco">
         <ctl name="SLIMBUS_7_RX Audio Mixer MultiMedia13" value="1" />
     </path>
@@ -931,6 +995,14 @@
 
     <path name="compress-offload-playback7">
         <ctl name="PRI_MI2S_RX Audio Mixer MultiMedia14" value="1" />
+    </path>
+
+    <path name="compress-offload-playback7 speaker2">
+        <ctl name="TERT_MI2S_RX Audio Mixer MultiMedia14" value="1" />
+    </path>
+
+    <path name="compress-offload-playback7 speaker3">
+        <ctl name="QUAT_MI2S_RX Audio Mixer MultiMedia14" value="1" />
     </path>
 
     <path name="compress-offload-playback7 bt-sco">
@@ -1508,6 +1580,14 @@
         <ctl name="CSRA_12 PA DE-EMPHASIS SWITCH" value="DISABLED" />
         <ctl name="CSRA_12 PA MUTE_OUTPUT SWITCH" value="PLAY" />
         <ctl name="CSRA_12 MIXER Switch" value="1" />
+    </path>
+
+    <path name="speaker2">
+        <ctl name="TERT_MI2S_RX Channels" value="Four" />
+    </path>
+
+    <path name="speaker3">
+        <ctl name="QUAT_MI2S_RX Channels" value="Four" />
     </path>
 
     <path name="speaker-mic">
