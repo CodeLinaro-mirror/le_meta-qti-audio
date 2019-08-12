@@ -35,6 +35,12 @@ case "$1" in
         echo -n "Starting/Loading audio module: "
 
         echo "audio:start/load" > /dev/kmsg
+        insmod $MODULE_BASE/kernel/sound/core/snd-compress.ko
+        insmod $MODULE_BASE/kernel/sound/soc/snd-soc-core.ko
+        insmod $MODULE_BASE/kernel/sound/core/snd-hwdep.ko
+        insmod $MODULE_BASE/kernel/sound/core/snd-rawmidi.ko
+        insmod $MODULE_BASE/kernel/sound/usb/snd-usbmidi-lib.ko
+        insmod $MODULE_BASE/kernel/sound/usb/snd-usb-audio.ko
         insmod $MODULE_BASE/extra/q6_notifier_dlkm.ko
         insmod $MODULE_BASE/extra/apr_dlkm.ko
         insmod $MODULE_BASE/extra/adsp_loader_dlkm.ko
@@ -74,6 +80,13 @@ case "$1" in
         modprobe -r apr_dlkm
         modprobe -r q6_notifier_dlkm
         modprobe -r q6_notifier_dlkm
+        modprobe -r snd-usb-audio
+        modprobe -r snd-usbmidi-lib
+        modprobe -r snd-rawmidi
+        modprobe -r snd-hwdep
+        modprobe -r snd-soc-core
+        modprobe -r snd-compress
+
         echo "done unloading audio_kernel module"
         ;;
   restart)
