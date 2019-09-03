@@ -9,7 +9,6 @@ DEPENDS_append_mdm9635 +="alsa-intf"
 
 SRC_URI = "file://init_qcom_audio"
 SRC_URI += "file://init_audio.service"
-SRC_URI += "file://init_data.service"
 SRC_URI += "file://msm-audio-node.rules"
 SRC_URI  += "file://init-audio.conf"
 
@@ -27,7 +26,6 @@ do_install() {
         install -d ${D}${sysconfdir}/udev/rules.d/
         install -m 0644 ${S}/msm-audio-node.rules -D ${D}${sysconfdir}/udev/rules.d/msm-audio-node.rules
         install -m 0644 ${S}/init_audio.service -D ${D}${systemd_unitdir}/system/init_audio.service
-        install -m 0644 ${S}/init_data.service -D ${D}${systemd_unitdir}/system/init_data.service
         install -d ${D}/${systemd_unitdir}/system/sysinit.target.wants
         ln -sf ${systemd_unitdir}/system/init_audio.service ${D}${systemd_unitdir}/system/sysinit.target.wants/init_audio.service
         ln -sf ${systemd_unitdir}/system/init_data.service ${D}${systemd_unitdir}/system/sysinit.target.wants/init_data.service
