@@ -69,6 +69,7 @@
     <ctl name="SLIM RX3 MUX" value="AIF1_PB" />
     <ctl name="CLASS_H_DSM MUX" value="ZERO" />
     <ctl name="PRI_MI2S_RX Port Mixer PRI_MI2S_TX" value="0" />
+    <ctl name="PRI_MI2S_RX Audio Mixer DTMF" value="0" />
 
     <!-- Audio ctl -->
     <ctl name="MultiMedia1 Mixer PRI_MI2S_TX" value="0" />
@@ -215,7 +216,7 @@
 
     <path name="headset-mic">
         <path name="adc2" />
-        <ctl name="DEC6 Volume" value="13" />
+        <ctl name="DEC6 Volume" value="84" />
     </path>
 
     <path name="voice-speaker">
@@ -357,10 +358,10 @@
     </path>
 
     <path name="audio-afe-loopback">
-        <path name="PRI_MI2S_RX Port Mixer PRI_MI2S_TX" value="1" />
+        <ctl name="PRI_MI2S_RX Port Mixer PRI_MI2S_TX" value="1" />
     </path>
 
     <path name="audio-dtmf-playback">
-        <path name="PRI_MI2S_RX Audio Mixer DTMF" value="1" />
+        <ctl name="PRI_MI2S_RX Audio Mixer DTMF" value="1" />
     </path>
 </mixer>
