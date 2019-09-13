@@ -31,9 +31,11 @@ do_install() {
         ln -sf ${systemd_unitdir}/system/init_data.service ${D}${systemd_unitdir}/system/sysinit.target.wants/init_data.service
         echo "\
         # Create directory in /data/audio for location with audio:audio permissions
-        d /data/audio 0755 audio audio - -
+        d /data/audio 0770 audio audio - -
         # Change selinux context of new directory. Use Z to apply for subdirectories as well.
-        T /data/audio - - - - security.selinux="system_u:object_r:audio_data_file_t:s0"
+        if ${@bb.utils.contains('DISTRO_FEATURES', 'selinux', 'true', 'false', d)}; then
+            T /data/audio - - - - security.selinux="system_u:object_r:audio_data_file_t:s0"
+        fi
         " > ${WORKDIR}/${BPN}.conf
         ## Install systemd-tmpfiles config file
         install -d ${D}${sysconfdir}/tmpfiles.d/
