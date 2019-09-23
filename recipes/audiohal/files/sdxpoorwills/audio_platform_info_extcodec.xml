@@ -31,8 +31,8 @@
         <usecase name="USECASE_VOICEMMODE1_CALL" type="out" id="2"/>
         <usecase name="USECASE_VOICEMMODE2_CALL" type="in" id="14"/>
         <usecase name="USECASE_VOICEMMODE2_CALL" type="out" id="14"/>
-        <usecase name="USECASE_AUDIO_PLAYBACK_OFFLOAD2" type="in" id="7"/>
-        <usecase name="USECASE_AUDIO_PLAYBACK_OFFLOAD2" type="out" id="7"/>
+        <usecase name="USECASE_AUDIO_PLAYBACK_OFFLOAD2" type="in" id="33"/>
+        <usecase name="USECASE_AUDIO_PLAYBACK_OFFLOAD2" type="out" id="33"/>
     </pcm_ids>
 
     <config_params>
@@ -51,6 +51,10 @@
         <!-- It can be set to endfire or broadside.                      -->
         <param key="fluence_mode" value="endfire"/>
     </config_params>
+
+    <backend_names>
+        <device name="SND_DEVICE_OUT_VOICE_TX" backend="voice-tx" interface="VOICE_PLAYBACK_TX"/>
+    </backend_names>
 
 </audio_platform_info_i2s>
 

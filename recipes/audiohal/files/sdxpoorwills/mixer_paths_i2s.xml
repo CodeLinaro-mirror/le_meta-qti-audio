@@ -70,6 +70,8 @@
     <ctl name="CLASS_H_DSM MUX" value="ZERO" />
     <ctl name="PRI_MI2S_RX Port Mixer PRI_MI2S_TX" value="0" />
     <ctl name="PRI_MI2S_RX Audio Mixer DTMF" value="0" />
+    <ctl name="Incall_Music Audio Mixer MultiMedia2" value="0" />
+    <ctl name="Incall_Music Audio Mixer MultiMedia4" value="0" />
 
     <!-- Audio ctl -->
     <ctl name="MultiMedia1 Mixer PRI_MI2S_TX" value="0" />
@@ -115,7 +117,7 @@
         <ctl name="PRI_MI2S_RX Audio Mixer MultiMedia1" value="1" />
     </path>
 
-     <path name="compress-offload-playback">
+    <path name="compress-offload-playback">
         <ctl name="PRI_MI2S_RX Audio Mixer MultiMedia4" value="1" />
     </path>
 
@@ -123,21 +125,12 @@
         <ctl name="AFE_PCM_RX Audio Mixer MultiMedia4" value="1" />
     </path>
 
-    <path name="compress-offload-playback usb-headphones">
-        <ctl name="USB_AUDIO_RX Audio Mixer MultiMedia4" value="1" />
-    </path>
-
-    <path name="compress-offload-playback usb-headset">
-        <ctl name="USB_AUDIO_RX Audio Mixer MultiMedia4" value="1" />
-    </path>
-
-    <path name="compress-offload-playback speaker-and-usb-headphones">
-        <path name="compress-offload-playback usb-headphones" />
-        <path name="compress-offload-playback" />
-    </path>
-
      <path name="compress-offload-playback2">
-        <ctl name="PRI_MI2S_RX Audio Mixer MultiMedia4" value="1" />
+        <ctl name="PRI_MI2S_RX Audio Mixer MultiMedia7" value="1" />
+    </path>
+
+    <path name="compress-offload-playback2 afe-proxy">
+        <ctl name="AFE_PCM_RX Audio Mixer MultiMedia7" value="1" />
     </path>
 
     <!-- These are actual sound device specific mixer settings -->
@@ -364,4 +357,29 @@
     <path name="audio-dtmf-playback">
         <ctl name="PRI_MI2S_RX Audio Mixer DTMF" value="1" />
     </path>
+
+    <path name="incall_music_uplink">
+        <ctl name="Incall_Music Audio Mixer MultiMedia2" value="1" />
+    </path>
+
+    <path name="incall_music_uplink voice-tx">
+        <path name="incall_music_uplink" />
+    </path>
+
+    <path name="compress-offload-playback voice-tx">
+        <ctl name="Incall_Music Audio Mixer MultiMedia4" value="1" />
+    </path>
+
+    <path name="compress-offload-playback2 voice-tx">
+        <ctl name="Incall_Music Audio Mixer MultiMedia7" value="1" />
+    </path>
+
+    <path name="incall-rec-downlink">
+        <ctl name="MultiMedia1 Mixer VOC_REC_DL" value="1" />
+    </path>
+
+    <path name="incall-rec-downlink incall-rec-rx">
+        <path name="incall-rec-downlink" />
+    </path>
+
 </mixer>
