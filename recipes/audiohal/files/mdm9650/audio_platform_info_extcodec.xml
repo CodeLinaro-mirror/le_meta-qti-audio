@@ -32,6 +32,12 @@
         <usecase name="USECASE_VOICEMMODE2_CALL" type="in" id="19"/>
         <usecase name="USECASE_VOICEMMODE2_CALL" type="out" id="19"/>
     </pcm_ids>
+    <!-- for headset on secondary MI2S uncomment the below routing -->
+    <!---
+    <backend_names>
+        <device name="SND_DEVICE_OUT_HEADPHONES" backend="secondary"/>
+        <device name="SND_DEVICE_IN_HEADSET_MIC" backend="secondary"/>
+    </backend_names>  -->
 
 </audio_platform_info_i2s>
 
