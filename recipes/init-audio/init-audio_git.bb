@@ -10,6 +10,7 @@ DEPENDS_append_mdm9635 +="alsa-intf"
 SRC_URI = "file://init_qcom_audio"
 SRC_URI += "file://init_audio.service"
 SRC_URI += "file://msm-audio-node.rules"
+SRC_URI  += "file://init-audio.conf"
 
 do_compile[noexec] = "1"
 
@@ -26,18 +27,8 @@ do_install() {
         install -m 0644 ${S}/init_audio.service -D ${D}${systemd_unitdir}/system/init_audio.service
         install -d ${D}/${systemd_unitdir}/system/sysinit.target.wants
         ln -sf ${systemd_unitdir}/system/init_audio.service ${D}${systemd_unitdir}/system/sysinit.target.wants/init_audio.service
-        ln -sf ${systemd_unitdir}/system/init_data.service ${D}${systemd_unitdir}/system/sysinit.target.wants/init_data.service
-        echo "\
-        # Create directory in /data/audio for location with audio:audio permissions
-        d /data/audio 0770 audio audio - -
-        # Change selinux context of new directory. Use Z to apply for subdirectories as well.
-        if ${@bb.utils.contains('DISTRO_FEATURES', 'selinux', 'true', 'false', d)}; then
-            T /data/audio - - - - security.selinux="system_u:object_r:audio_data_file_t:s0"
-        fi
-        " > ${WORKDIR}/${BPN}.conf
-        ## Install systemd-tmpfiles config file
-        install -d ${D}${sysconfdir}/tmpfiles.d/
-        install -m 0644 ${WORKDIR}/${BPN}.conf ${D}${sysconfdir}/tmpfiles.d/${BPN}.conf
+        install -d ${D}${sysconfdir}/tmpfiles.d
+        install -m 0644 ${WORKDIR}/init-audio.conf -D ${D}${sysconfdir}/tmpfiles.d/init-audio.conf
     else
         install -m 0755 ${S}/init_qcom_audio -D ${D}${sysconfdir}/init.d/init_qcom_audio
     fi
