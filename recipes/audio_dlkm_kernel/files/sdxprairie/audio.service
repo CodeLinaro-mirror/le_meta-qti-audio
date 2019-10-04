@@ -1,5 +1,5 @@
 [Unit]
-Description= Embms kernel service
+Description= Load audio dlkm service
 SourcePath=/etc/initscripts/start_audio_le
 
 [Service]
