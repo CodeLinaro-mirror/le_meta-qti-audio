@@ -93,6 +93,9 @@
       <ctl name="Voice_Tx Mixer PRI_MI2S_TX_Voice" value="0" />
     <!-- CS voice end -->
 
+    <ctl name="Incall_Music_DL Audio Mixer MultiMedia4" value="0" />
+    <ctl name="Incall_Music_DL Audio Mixer MultiMedia7" value="0" />
+
 <!-- voice and audio paths -->
    <path name="voice-call">
       <ctl name="PRI_MI2S_RX_Voice Mixer CSVoice" value="1" />
@@ -380,6 +383,14 @@
 
     <path name="incall-rec-downlink incall-rec-rx">
         <path name="incall-rec-downlink" />
+    </path>
+
+    <path name="compress-offload-playback voice-dl-tx">
+        <ctl name="Incall_Music_DL Audio Mixer MultiMedia4" value="1" />
+    </path>
+
+    <path name="compress-offload-playback2 voice-dl-tx">
+        <ctl name="Incall_Music_DL Audio Mixer MultiMedia7" value="1" />
     </path>
 
 </mixer>
