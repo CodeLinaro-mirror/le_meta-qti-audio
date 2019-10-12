@@ -14,6 +14,7 @@ DEPENDS = "virtual/kernel"
 FILESPATH =+ "${WORKSPACE}:"
 SRC_URI = "file://vendor/qcom/opensource/audio-kernel/"
 SRC_URI += "file://${BASEMACHINE}/"
+SRC_URI_append_sa515m += "file://${MACHINE}/"
 
 S = "${WORKDIR}/vendor/qcom/opensource/audio-kernel"
 
@@ -49,10 +50,12 @@ do_install_append() {
   cp -fr ${S}/linux/* ${STAGING_KERNEL_BUILDDIR}/audio-kernel/linux
   install -m 0644 ${S}/sound/* ${STAGING_KERNEL_BUILDDIR}/audio-kernel/sound
 
-  if ${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'true', 'false', d)}; then
-  install -m 0755 ${WORKDIR}/${BASEMACHINE}/audio_load.conf -D ${D}${sysconfdir}/modules-load.d/audio_load.conf
-  else
-    install -m 0755 ${WORKDIR}/${BASEMACHINE}/audio_load.conf -D ${D}${sysconfdir}/modules/audio_load.conf
+  if [ ${BASEMACHINE} != "sdxprairie" ];then
+    if ${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'true', 'false', d)}; then
+      install -m 0755 ${WORKDIR}/${BASEMACHINE}/audio_load.conf -D ${D}${sysconfdir}/modules-load.d/audio_load.conf
+    else
+      install -m 0755 ${WORKDIR}/${BASEMACHINE}/audio_load.conf -D ${D}${sysconfdir}/modules/audio_load.conf
+    fi
   fi
 
    for i in $(find ${D}/${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra/. -name "*.ko"); do
@@ -66,10 +69,10 @@ do_install_append() {
 }
 
 do_install_append_mdm() {
-  install -m 0755 ${WORKDIR}/${BASEMACHINE}/audio_load.conf -D ${D}${sysconfdir}/modprobe.d/audio_load.conf
+  install -m 0755 ${WORKDIR}/${MACHINE}/audio_load.conf -D ${D}${sysconfdir}/modprobe.d/audio_load.conf
   install -d ${D}${sysconfdir}/initscripts
-  install -m 0755 ${WORKDIR}/${BASEMACHINE}/start_audio_le ${D}${sysconfdir}/initscripts
-  install -m 0644 ${WORKDIR}/${BASEMACHINE}/audio.service -D ${D}${systemd_unitdir}/system/audio.service
+  install -m 0755 ${WORKDIR}/${MACHINE}/start_audio_le ${D}${sysconfdir}/initscripts
+  install -m 0644 ${WORKDIR}/${MACHINE}/audio.service -D ${D}${systemd_unitdir}/system/audio.service
   install -d ${D}${systemd_unitdir}/system/multi-user.target.wants/
 # enable the service for multi-user.target
    ln -sf ${systemd_unitdir}/system/audio.service \
