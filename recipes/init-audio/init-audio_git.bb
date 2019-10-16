@@ -9,7 +9,6 @@ DEPENDS_append_mdm9635 +="alsa-intf"
 
 SRC_URI = "file://init_qcom_audio"
 SRC_URI += "file://init_audio.service"
-SRC_URI += "file://init_data.service"
 SRC_URI += "file://msm-audio-node.rules"
 
 do_compile[noexec] = "1"
@@ -25,15 +24,16 @@ do_install() {
     if ${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'true', 'false', d)}; then
         install -m 0644 ${S}/msm-audio-node.rules -D ${D}${sysconfdir}/udev/rules.d/msm-audio-node.rules
         install -m 0644 ${S}/init_audio.service -D ${D}${systemd_unitdir}/system/init_audio.service
-        install -m 0644 ${S}/init_data.service -D ${D}${systemd_unitdir}/system/init_data.service
         install -d ${D}/${systemd_unitdir}/system/sysinit.target.wants
         ln -sf ${systemd_unitdir}/system/init_audio.service ${D}${systemd_unitdir}/system/sysinit.target.wants/init_audio.service
         ln -sf ${systemd_unitdir}/system/init_data.service ${D}${systemd_unitdir}/system/sysinit.target.wants/init_data.service
         echo "\
         # Create directory in /data/audio for location with audio:audio permissions
-        d /data/audio 0755 audio audio - -
+        d /data/audio 0770 audio audio - -
         # Change selinux context of new directory. Use Z to apply for subdirectories as well.
-        T /data/audio - - - - security.selinux="system_u:object_r:audio_data_file_t:s0"
+        if ${@bb.utils.contains('DISTRO_FEATURES', 'selinux', 'true', 'false', d)}; then
+            T /data/audio - - - - security.selinux="system_u:object_r:audio_data_file_t:s0"
+        fi
         " > ${WORKDIR}/${BPN}.conf
         ## Install systemd-tmpfiles config file
         install -d ${D}${sysconfdir}/tmpfiles.d/

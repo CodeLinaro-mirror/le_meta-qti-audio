@@ -28,6 +28,9 @@ EXTRA_OEMAKE += "TARGET_SUPPORT=${BASEMACHINE}"
 # Disable parallel make
 PARALLEL_MAKE = ""
 
+# Disable parallel make
+PARALLEL_MAKE = "-j1"
+
 do_configure() {
   cp -f ${WORKDIR}/vendor/qcom/opensource/audio-kernel/Makefile.am ${WORKDIR}/vendor/qcom/opensource/audio-kernel/Makefile
 }
@@ -84,10 +87,6 @@ do_module_signing() {
       do
    ${STAGING_KERNEL_BUILDDIR}/scripts/sign-file sha512 ${STAGING_KERNEL_BUILDDIR}/certs/signing_key.pem ${STAGING_KERNEL_BUILDDIR}/certs/signing_key.x509 ${i}
    done
-    for i in ${PKGDEST}/${PN}/${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra/*
-      do
-        ${STAGING_KERNEL_BUILDDIR}/scripts/sign-file sha512 ${STAGING_KERNEL_BUILDDIR}/certs/signing_key.pem ${STAGING_KERNEL_BUILDDIR}/certs/signing_key.x509 ${i}
-      done
   fi
 }
 

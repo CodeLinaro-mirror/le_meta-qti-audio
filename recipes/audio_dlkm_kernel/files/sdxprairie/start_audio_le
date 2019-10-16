@@ -35,6 +35,9 @@ case "$1" in
         echo -n "Starting/Loading audio module: "
 
         echo "audio:start/load" > /dev/kmsg
+        insmod $MODULE_BASE/kernel/sound/core/snd-compress.ko
+        insmod $MODULE_BASE/kernel/sound/soc/snd-soc-core.ko
+        insmod $MODULE_BASE/kernel/sound/core/snd-hwdep.ko
         insmod $MODULE_BASE/extra/q6_notifier_dlkm.ko
         insmod $MODULE_BASE/extra/apr_dlkm.ko
         insmod $MODULE_BASE/extra/adsp_loader_dlkm.ko
@@ -55,26 +58,7 @@ case "$1" in
         echo "done loading audio_kernel module"
         ;;
   stop)
-        echo -n "Unloading audio_kernel modules "
-
-        modprobe -r machine_dlkm
-        modprobe -r wsa881x_dlkm
-        modprobe -r wcd934x_dlkm
-        modprobe -r swr_ctrl_dlkm
-        modprobe -r wcd9xxx_dlkm
-        modprobe -r mbhc_dlkm
-        modprobe -r wcd_core_dlkm
-        modprobe -r stub_dlkm
-        modprobe -r swr_dlkm
-        modprobe -r pinctrl_wcd_dlkm
-        modprobe -r native_dlkm
-        modprobe -r platform_dlkm
-        modprobe -r q6_dlkm
-        modprobe -r adsp_loader_dlkm
-        modprobe -r apr_dlkm
-        modprobe -r q6_notifier_dlkm
-        modprobe -r q6_notifier_dlkm
-        echo "done unloading audio_kernel module"
+        echo -n "Bypassing Unloading of  audio_kernel modules "
         ;;
   restart)
         $0 stop
