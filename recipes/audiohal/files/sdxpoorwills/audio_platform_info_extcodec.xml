@@ -50,6 +50,9 @@
         <!-- In the below value string, the value indicates fluence mode -->
         <!-- It can be set to endfire or broadside.                      -->
         <param key="fluence_mode" value="endfire"/>
+        <!-- In the below value strings, the value indicates Multi offload-->
+        <!-- features. It can be set to true or false.                   -->
+        <param key="multi_offload_enable" value="false"/>
     </config_params>
 
     <backend_names>
