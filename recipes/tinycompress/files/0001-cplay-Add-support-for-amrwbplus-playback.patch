@@ -1,0 +1,54 @@
+From 9aa8bd28125e62ad1fe418106e8782fcb28d7373 Mon Sep 17 00:00:00 2001
+From: Asish Bhattacharya <asishb@codeaurora.org>
+Date: Tue, 22 Oct 2019 10:07:46 +0530
+Subject: [PATCH] cplay: Add support for amrwbplus playback
+
+Change-Id: I5acf280e6bec04b6c0bedfda17df5ae259659752
+---
+ src/utils/cplay.c | 23 ++++++-----------------
+ 1 file changed, 6 insertions(+), 17 deletions(-)
+
+diff --git a/src/utils/cplay.c b/src/utils/cplay.c
+index 01a7097..4a8feff 100644
+--- a/src/utils/cplay.c
++++ b/src/utils/cplay.c
+@@ -217,23 +217,11 @@ void play_samples(char *name, unsigned int card, unsigned int device,
+ 		exit(EXIT_FAILURE);
+ 	}
+ 
+-	read = fread(&header, sizeof(header), 1, file);
+-	if (read != 1) {
+-		fprintf(stderr, "Unable to read header \n");
+-		fclose(file);
+-		exit(EXIT_FAILURE);
+-	}
+-
+-	if (parse_mp3_header(&header, &channels, &rate, &bits) == -1) {
+-		fclose(file);
+-		exit(EXIT_FAILURE);
+-	}
+-
+-	codec.id = SND_AUDIOCODEC_MP3;
+-	codec.ch_in = channels;
+-	codec.ch_out = channels;
+-	codec.sample_rate = rate;
+-        codec.compr_passthr = 0;
++	codec.id = SND_AUDIOCODEC_AMRWBPLUS;
++	codec.ch_in = 2;
++	codec.ch_out = 2;
++	codec.sample_rate = 48000;
++        codec.compr_passthr = 1;
+ 	if (!codec.sample_rate) {
+ 		fprintf(stderr, "invalid sample rate %d\n", rate);
+ 		fclose(file);
+@@ -253,6 +241,7 @@ void play_samples(char *name, unsigned int card, unsigned int device,
+ 		config.fragment_size = 0;
+ 		config.fragments = 0;
+ 	}
++	codec.options.amrwbplus.bit_stream_fmt = 1;
+ 	config.codec = &codec;
+ 
+ 	compress = compress_open(card, device, COMPRESS_IN, &config);
+-- 
+2.7.4
+
