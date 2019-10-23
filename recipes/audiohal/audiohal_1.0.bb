@@ -24,9 +24,13 @@ DEPENDS_append = "${@bb.utils.contains('DISTRO_FEATURES', 'audio-dlkm', ' audiod
 #apq8098 doesn't need surround sound recording
 DEPENDS_remove_apq8098 = "surround-sound-3mic"
 
+AUDIO_KERNEL_HEADERS="${STAGING_KERNEL_BUILDDIR}/audio-kernel"
+CFLAGS += "-I${AUDIO_KERNEL_HEADERS}"
+
 EXTRA_OEMAKE = "DEFAULT_INCLUDES= CPPFLAGS="-I. -I${STAGING_KERNEL_BUILDDIR}/usr/include -I${STAGING_KERNEL_BUILDDIR}/usr/techpack/audio/include -I${STAGING_INCDIR}/surround_sound_3mic -I${STAGING_INCDIR}/sound_trigger""
 EXTRA_OECONF = "--with-sanitized-headers=${STAGING_KERNEL_BUILDDIR}/usr/include"
 EXTRA_OECONF += "--with-glib --program-suffix=${HALBINSUFFIX}"
+EXTRA_OECONF += " --with-audio-kernel-headers=${AUDIO_KERNEL_HEADERS}"
 
 EXTRA_OECONF += "TARGET_SUPPORT=${BASEMACHINE}"
 EXTRA_OECONF += "BOARD_SUPPORTS_QAHW=true"
