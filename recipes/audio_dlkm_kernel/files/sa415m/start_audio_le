@@ -35,6 +35,9 @@ case "$1" in
         echo -n "Starting/Loading audio module: "
 
         echo "audio:start/load" > /dev/kmsg
+        insmod $MODULE_BASE/kernel/sound/core/snd-compress.ko
+        insmod $MODULE_BASE/kernel/sound/soc/snd-soc-core.ko
+        insmod $MODULE_BASE/kernel/sound/core/snd-hwdep.ko
         insmod $MODULE_BASE/extra/apr_dlkm.ko
         insmod $MODULE_BASE/extra/adsp_loader_dlkm.ko
         echo 1 > /sys/kernel/boot_adsp/boot
@@ -50,6 +53,7 @@ case "$1" in
         insmod $MODULE_BASE/extra/swr_ctrl_dlkm.ko
         insmod $MODULE_BASE/extra/wcd934x_dlkm.ko
         insmod $MODULE_BASE/extra/wsa881x_dlkm.ko
+        insmod $MODULE_BASE/kernel/sound/soc/codecs/snd-soc-tlv320aic3x.ko
         insmod $MODULE_BASE/extra/machine_dlkm.ko
 
         echo "done loading audio_kernel module"
