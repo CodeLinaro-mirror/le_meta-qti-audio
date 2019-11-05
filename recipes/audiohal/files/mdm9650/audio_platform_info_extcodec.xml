@@ -38,6 +38,10 @@
         <device name="SND_DEVICE_OUT_HEADPHONES" backend="secondary"/>
         <device name="SND_DEVICE_IN_HEADSET_MIC" backend="secondary"/>
     </backend_names>  -->
+    <config_params>
+        <!-- for headset on secondary MI2S to enable value="true" else value="false"-->
+        <param key="sec_mi2s_headset_enable" value="false"/>
+    </config_params>
 
 </audio_platform_info_i2s>
 
