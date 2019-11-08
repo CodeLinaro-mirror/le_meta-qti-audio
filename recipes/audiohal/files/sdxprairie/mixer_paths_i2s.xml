@@ -218,7 +218,7 @@
 
     <path name="headset-mic">
         <path name="adc2" />
-        <ctl name="DEC6 Volume" value="13" />
+        <ctl name="DEC6 Volume" value="84" />
     </path>
 
     <path name="voice-speaker">
