@@ -21,7 +21,8 @@ SRC_URI = "git://codeaurora.org/quic/le/platform/external/tinyalsa.git;protocol=
            file://0001-tinyalsa-Fix-tinyplay-runtime-issue.patch \
            file://0001-tinyhostless.patch "
 
-SRC_URI_append_sdxprairie = "file://0001-tinymix_multi.patch"
+SRC_URI_append_sdxprairie = "file://0001-tinymix_multi.patch \
+                             file://0001-tinyplay-lower-threshold-values.patch"
 
 S = "${WORKDIR}"
 
