@@ -1131,6 +1131,7 @@
 
     <path name="hdmi-in-dsd">
         <ctl name="QUAT MI2S TX Format" value="NATIVE_DSD_DATA" />
+        <ctl name="QUAT_MI2S_TX DataFormat" value="NATIVE_DSD_DATA" />
     </path>
 
     <path name="audio-record hdmi-in">
@@ -1608,6 +1609,7 @@
 
     <path name="speaker-native-dsd-4ch">
         <ctl name="PRIM_MI2S_RX Channels" value="Four" />
+        <ctl name="PRIM_MI2S_RX DataFormat" value="NATIVE_DSD_DATA" />
         <ctl name="CSRA_34 PA VOLUME" value="0" />
         <ctl name="CSRA_56 PA VOLUME" value="0" />
         <ctl name="CSRA_78 PA VOLUME" value="0" />
@@ -1619,6 +1621,7 @@
 
     <path name="speaker-native-dsd-12ch">
         <ctl name="PRIM_MI2S_RX Channels" value="Twelve" />
+        <ctl name="PRIM_MI2S_RX DataFormat" value="NATIVE_DSD_DATA" />
         <ctl name="CSRA_DE PA VOLUME" value="0" />
         <ctl name="CSRA_F0 PA VOLUME" value="0" />
     </path>
