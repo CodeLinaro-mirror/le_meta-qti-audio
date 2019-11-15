@@ -38,9 +38,6 @@ case "$1" in
         insmod $MODULE_BASE/kernel/sound/core/snd-compress.ko
         insmod $MODULE_BASE/kernel/sound/soc/snd-soc-core.ko
         insmod $MODULE_BASE/kernel/sound/core/snd-hwdep.ko
-        insmod $MODULE_BASE/kernel/sound/core/snd-rawmidi.ko
-        insmod $MODULE_BASE/kernel/sound/usb/snd-usbmidi-lib.ko
-        insmod $MODULE_BASE/kernel/sound/usb/snd-usb-audio.ko
         insmod $MODULE_BASE/extra/q6_notifier_dlkm.ko
         insmod $MODULE_BASE/extra/apr_dlkm.ko
         insmod $MODULE_BASE/extra/adsp_loader_dlkm.ko

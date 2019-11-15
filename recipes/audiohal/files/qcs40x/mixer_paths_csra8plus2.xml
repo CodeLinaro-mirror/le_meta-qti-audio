@@ -81,12 +81,13 @@
     <ctl name="MultiMedia27 Mixer SLIM_7_TX" value="0" />
     <ctl name="MultiMedia27 Mixer SLIM_9_TX" value="0" />
     <ctl name="MultiMedia27 Mixer PRI_SPDIF_TX" value="0" />
-    <ctl name="MultiMedia27 Mixer SEC_MI2S_TX" value="0" />
+    <ctl name="MultiMedia27 Mixer QUAT_MI2S_TX" value="0" />
     <ctl name="MultiMedia27 Mixer SEC_SPDIF_TX" value="0" />
     <ctl name="PRI_META_MI2S_RX Audio Mixer MultiMedia1" value="0" />
     <ctl name="PRI_META_MI2S_RX Audio Mixer MultiMedia2" value="0" />
     <ctl name="PRI_META_MI2S_RX Audio Mixer MultiMedia3" value="0" />
     <ctl name="PRI_META_MI2S_RX Audio Mixer MultiMedia4" value="0" />
+    <ctl name="PRI_MI2S_RX Audio Mixer MultiMedia4" value="0" />
     <ctl name="PRI_META_MI2S_RX Audio Mixer MultiMedia5" value="0" />
     <ctl name="PRI_META_MI2S_RX Audio Mixer MultiMedia7" value="0" />
     <ctl name="PRI_META_MI2S_RX Audio Mixer MultiMedia8" value="0" />
@@ -199,19 +200,19 @@
     <!-- SPDIF / HDMI TX -->
     <ctl name="MultiMedia1 Mixer PRI_SPDIF_TX" value="0" />
     <ctl name="MultiMedia1 Mixer SEC_SPDIF_TX" value="0" />
-    <ctl name="MultiMedia1 Mixer SEC_MI2S_TX" value="0" />
+    <ctl name="MultiMedia1 Mixer QUAT_MI2S_TX" value="0" />
     <ctl name="MultiMedia18 Mixer PRI_SPDIF_TX" value="0" />
     <ctl name="MultiMedia18 Mixer SEC_SPDIF_TX" value="0" />
-    <ctl name="MultiMedia18 Mixer SEC_MI2S_TX" value="0" />
+    <ctl name="MultiMedia18 Mixer QUAT_MI2S_TX" value="0" />
     <ctl name="MultiMedia19 Mixer PRI_SPDIF_TX" value="0" />
     <ctl name="MultiMedia19 Mixer SEC_SPDIF_TX" value="0" />
-    <ctl name="MultiMedia19 Mixer SEC_MI2S_TX" value="0" />
+    <ctl name="MultiMedia19 Mixer QUAT_MI2S_TX" value="0" />
     <ctl name="MultiMedia28 Mixer PRI_SPDIF_TX" value="0" />
     <ctl name="MultiMedia28 Mixer SEC_SPDIF_TX" value="0" />
-    <ctl name="MultiMedia28 Mixer SEC_MI2S_TX" value="0" />
+    <ctl name="MultiMedia28 Mixer QUAT_MI2S_TX" value="0" />
     <ctl name="MultiMedia29 Mixer PRI_SPDIF_TX" value="0" />
     <ctl name="MultiMedia29 Mixer SEC_SPDIF_TX" value="0" />
-    <ctl name="MultiMedia29 Mixer SEC_MI2S_TX" value="0" />
+    <ctl name="MultiMedia29 Mixer QUAT_MI2S_TX" value="0" />
     <ctl name="PRIM_SPDIF_TX Format" value="S16_LE" />
     <ctl name="PRIM_SPDIF_TX SampleRate" value="KHZ_48" />
     <ctl name="PRIM_SPDIF_TX Channels" value="Two" />
@@ -222,10 +223,10 @@
     <ctl name="SEC_SPDIF_TX Channels" value="Two" />
     <ctl name="SEC SPDIF TX Source" value="EXT-ARC" />
     <ctl name="SEC SPDIF TX Format" value="LPCM" />
-    <ctl name="SEC_MI2S_TX Format" value="S16_LE" />
-    <ctl name="SEC_MI2S_TX SampleRate" value="KHZ_48" />
-    <ctl name="SEC_MI2S_TX Channels" value="Two" />
-    <ctl name="SEC MI2S TX Format" value="LPCM" />
+    <ctl name="QUAT_MI2S_TX Format" value="S16_LE" />
+    <ctl name="QUAT_MI2S_TX SampleRate" value="KHZ_48" />
+    <ctl name="QUAT_MI2S_TX Channels" value="Two" />
+    <ctl name="QUAT MI2S TX Format" value="LPCM" />
     <!-- SPDIF / HDMI TX end -->
 
     <!-- Codec controls -->
@@ -590,6 +591,10 @@
 
     <path name="compress-offload-playback">
         <ctl name="PRI_META_MI2S_RX Audio Mixer MultiMedia4" value="1" />
+    </path>
+
+    <path name="compress-offload-playback dsd-native">
+        <ctl name="PRI_MI2S_RX Audio Mixer MultiMedia4" value="1" />
     </path>
 
     <path name="compress-offload-playback speaker-protected">
@@ -1124,28 +1129,53 @@
     <path name="hdmi-in">
     </path>
 
+    <path name="hdmi-in-dsd">
+        <ctl name="QUAT MI2S TX Format" value="NATIVE_DSD_DATA" />
+        <ctl name="QUAT_MI2S_TX DataFormat" value="NATIVE_DSD_DATA" />
+    </path>
+
     <path name="audio-record hdmi-in">
-        <ctl name="MultiMedia1 Mixer SEC_MI2S_TX" value="1" />
+        <ctl name="MultiMedia1 Mixer QUAT_MI2S_TX" value="1" />
         <path name="hdmi-in" />
     </path>
 
     <path name="audio-record-compress2 hdmi-in">
-        <ctl name="MultiMedia18 Mixer SEC_MI2S_TX" value="1" />
+        <ctl name="MultiMedia18 Mixer QUAT_MI2S_TX" value="1" />
         <path name="hdmi-in" />
     </path>
 
     <path name="audio-record-compress3 hdmi-in">
-        <ctl name="MultiMedia19 Mixer SEC_MI2S_TX" value="1" />
+        <ctl name="MultiMedia19 Mixer QUAT_MI2S_TX" value="1" />
         <path name="hdmi-in" />
     </path>
 
     <path name="audio-record-compress4 hdmi-in">
-        <ctl name="MultiMedia28 Mixer SEC_MI2S_TX" value="1" />
+        <ctl name="MultiMedia28 Mixer QUAT_MI2S_TX" value="1" />
         <path name="hdmi-in" />
     </path>
 
     <path name="audio-record-compress5 hdmi-in">
-        <ctl name="MultiMedia29 Mixer SEC_MI2S_TX" value="1" />
+        <ctl name="MultiMedia29 Mixer QUAT_MI2S_TX" value="1" />
+        <path name="hdmi-in" />
+    </path>
+
+    <path name="audio-record-compress2 hdmi-in-dsd">
+        <ctl name="MultiMedia18 Mixer QUAT_MI2S_TX" value="1" />
+        <path name="hdmi-in" />
+    </path>
+
+    <path name="audio-record-compress3 hdmi-in-dsd">
+        <ctl name="MultiMedia19 Mixer QUAT_MI2S_TX" value="1" />
+        <path name="hdmi-in" />
+    </path>
+
+    <path name="audio-record-compress4 hdmi-in-dsd">
+        <ctl name="MultiMedia28 Mixer QUAT_MI2S_TX" value="1" />
+        <path name="hdmi-in" />
+    </path>
+
+    <path name="audio-record-compress5 hdmi-in-dsd">
+        <ctl name="MultiMedia29 Mixer QUAT_MI2S_TX" value="1" />
         <path name="hdmi-in" />
     </path>
 
@@ -1235,7 +1265,7 @@
     </path>
 
     <path name="audio-transcode-loopback-tx hdmi-in">
-        <ctl name="MultiMedia27 Mixer SEC_MI2S_TX" value="1" />
+        <ctl name="MultiMedia27 Mixer QUAT_MI2S_TX" value="1" />
         <path name="hdmi-in" />
     </path>
 
@@ -1508,6 +1538,93 @@
         <ctl name="CSRA_F0 MIXER Switch" value="1" />
     </path>
 
+    <path name="speaker-dsd">
+        <ctl name="PRIM_META_MI2S_RX Channels" value="Twenty" />
+        <ctl name="PRI MI2S RX Format" value="NATIVE_DSD_DATA" />
+        <ctl name="CSRA_12 PA VOLUME" value="361" />
+        <ctl name="CSRA_12 PA BASS GAIN" value="0" />
+        <ctl name="CSRA_12 PA BASS_XOVER FREQ" value="0" />
+        <ctl name="CSRA_12 PA TREBLE GAIN" value="0" />
+        <ctl name="CSRA_12 PA TREBLE_XOVER FREQ" value="0" />
+        <ctl name="CSRA_12 PA DE-EMPHASIS SWITCH" value="DISABLED" />
+        <ctl name="CSRA_12 PA MUTE_OUTPUT SWITCH" value="PLAY" />
+        <ctl name="CSRA_12 MIXER Switch" value="1" />
+        <ctl name="CSRA_34 PA VOLUME" value="361" />
+        <ctl name="CSRA_34 PA BASS GAIN" value="0" />
+        <ctl name="CSRA_34 PA BASS_XOVER FREQ" value="0" />
+        <ctl name="CSRA_34 PA TREBLE GAIN" value="0" />
+        <ctl name="CSRA_34 PA TREBLE_XOVER FREQ" value="0" />
+        <ctl name="CSRA_34 PA DE-EMPHASIS SWITCH" value="DISABLED" />
+        <ctl name="CSRA_34 PA MUTE_OUTPUT SWITCH" value="PLAY" />
+        <ctl name="CSRA_34 MIXER Switch" value="1" />
+        <ctl name="CSRA_56 PA VOLUME" value="361" />
+        <ctl name="CSRA_56 PA BASS GAIN" value="0" />
+        <ctl name="CSRA_56 PA BASS_XOVER FREQ" value="0" />
+        <ctl name="CSRA_56 PA TREBLE GAIN" value="0" />
+        <ctl name="CSRA_56 PA TREBLE_XOVER FREQ" value="0" />
+        <ctl name="CSRA_56 PA DE-EMPHASIS SWITCH" value="DISABLED" />
+        <ctl name="CSRA_56 PA MUTE_OUTPUT SWITCH" value="PLAY" />
+        <ctl name="CSRA_56 MIXER Switch" value="1" />
+        <ctl name="CSRA_78 PA VOLUME" value="361" />
+        <ctl name="CSRA_78 PA BASS GAIN" value="0" />
+        <ctl name="CSRA_78 PA BASS_XOVER FREQ" value="0" />
+        <ctl name="CSRA_78 PA TREBLE GAIN" value="0" />
+        <ctl name="CSRA_78 PA TREBLE_XOVER FREQ" value="0" />
+        <ctl name="CSRA_78 PA DE-EMPHASIS SWITCH" value="DISABLED" />
+        <ctl name="CSRA_78 PA MUTE_OUTPUT SWITCH" value="PLAY" />
+        <ctl name="CSRA_78 MIXER Switch" value="1" />
+        <ctl name="CSRA_9A PA VOLUME" value="361" />
+        <ctl name="CSRA_9A PA BASS GAIN" value="0" />
+        <ctl name="CSRA_9A PA BASS_XOVER FREQ" value="0" />
+        <ctl name="CSRA_9A PA TREBLE GAIN" value="0" />
+        <ctl name="CSRA_9A PA TREBLE_XOVER FREQ" value="0" />
+        <ctl name="CSRA_9A PA DE-EMPHASIS SWITCH" value="DISABLED" />
+        <ctl name="CSRA_9A PA MUTE_OUTPUT SWITCH" value="PLAY" />
+        <ctl name="CSRA_9A MIXER Switch" value="1" />
+        <ctl name="CSRA_BC PA VOLUME" value="361" />
+        <ctl name="CSRA_BC PA BASS GAIN" value="0" />
+        <ctl name="CSRA_BC PA BASS_XOVER FREQ" value="0" />
+        <ctl name="CSRA_BC PA TREBLE GAIN" value="0" />
+        <ctl name="CSRA_BC PA TREBLE_XOVER FREQ" value="0" />
+        <ctl name="CSRA_BC PA DE-EMPHASIS SWITCH" value="DISABLED" />
+        <ctl name="CSRA_BC PA MUTE_OUTPUT SWITCH" value="PLAY" />
+        <ctl name="CSRA_BC MIXER Switch" value="1" />
+        <ctl name="CSRA_DE PA VOLUME" value="361" />
+        <ctl name="CSRA_DE PA BASS GAIN" value="0" />
+        <ctl name="CSRA_DE PA BASS_XOVER FREQ" value="0" />
+        <ctl name="CSRA_DE PA TREBLE GAIN" value="0" />
+        <ctl name="CSRA_DE PA TREBLE_XOVER FREQ" value="0" />
+        <ctl name="CSRA_DE PA DE-EMPHASIS SWITCH" value="DISABLED" />
+        <ctl name="CSRA_DE PA MUTE_OUTPUT SWITCH" value="PLAY" />
+        <ctl name="CSRA_DE MIXER Switch" value="1" />
+        <ctl name="CSRA_F0 PA VOLUME" value="361" />
+        <ctl name="CSRA_F0 PA BASS GAIN" value="0" />
+        <ctl name="CSRA_F0 PA BASS_XOVER FREQ" value="0" />
+        <ctl name="CSRA_F0 PA TREBLE GAIN" value="0" />
+        <ctl name="CSRA_F0 PA TREBLE_XOVER FREQ" value="0" />
+        <ctl name="CSRA_F0 PA DE-EMPHASIS SWITCH" value="DISABLED" />
+        <ctl name="CSRA_F0 PA MUTE_OUTPUT SWITCH" value="PLAY" />
+        <ctl name="CSRA_F0 MIXER Switch" value="1" />
+    </path>
+
+    <path name="speaker-native-dsd-4ch">
+        <ctl name="PRIM_MI2S_RX Channels" value="Four" />
+        <ctl name="PRIM_MI2S_RX DataFormat" value="NATIVE_DSD_DATA" />
+        <ctl name="CSRA_34 PA VOLUME" value="0" />
+        <ctl name="CSRA_56 PA VOLUME" value="0" />
+        <ctl name="CSRA_78 PA VOLUME" value="0" />
+        <ctl name="CSRA_9A PA VOLUME" value="0" />
+        <ctl name="CSRA_BC PA VOLUME" value="0" />
+        <ctl name="CSRA_DE PA VOLUME" value="0" />
+        <ctl name="CSRA_F0 PA VOLUME" value="0" />
+    </path>
+
+    <path name="speaker-native-dsd-12ch">
+        <ctl name="PRIM_MI2S_RX Channels" value="Twelve" />
+        <ctl name="PRIM_MI2S_RX DataFormat" value="NATIVE_DSD_DATA" />
+        <ctl name="CSRA_DE PA VOLUME" value="0" />
+        <ctl name="CSRA_F0 PA VOLUME" value="0" />
+    </path>
     <path name="speaker-mono">
         <ctl name="PRIM_META_MI2S_RX Channels" value="One" />
         <ctl name="CSRA_12 PA VOLUME" value="361" />
