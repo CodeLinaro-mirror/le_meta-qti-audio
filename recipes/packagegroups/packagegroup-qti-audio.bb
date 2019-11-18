@@ -15,3 +15,4 @@ PACKAGES = ' \
 RDEPENDS_packagegroup-qti-audio = ' \
     ${@bb.utils.contains("COMBINED_FEATURES", "qti-audio", "audiodlkm init-audio audiohal encoders", "", d)} \
 '
+RDEPENDS_packagegroup-qti-audio_remove_qcs40x = "encoders"
