@@ -31,6 +31,10 @@
         <device name="SND_DEVICE_IN_HANDSET_QMIC_AND_EC_REF_LOOPBACK" bit_width="16"/>
         <device name="SND_DEVICE_IN_HANDSET_6MIC_AND_EC_REF_LOOPBACK" bit_width="16"/>
         <device name="SND_DEVICE_IN_HANDSET_8MIC_AND_EC_REF_LOOPBACK" bit_width="16"/>
+        <device name="SND_DEVICE_IN_HANDSET_GENERIC_DMIC_AND_EC_REF_LOOPBACK" bit_width="16"/>
+        <device name="SND_DEVICE_IN_HANDSET_GENERIC_QMIC_AND_EC_REF_LOOPBACK" bit_width="16"/>
+        <device name="SND_DEVICE_IN_HANDSET_GENERIC_6MIC_AND_EC_REF_LOOPBACK" bit_width="16"/>
+        <device name="SND_DEVICE_IN_HANDSET_GENERIC_8MIC_AND_EC_REF_LOOPBACK" bit_width="16"/>
     </bit_width_configs>
 
     <acdb_ids>
@@ -48,6 +52,10 @@
         <device name="SND_DEVICE_IN_SPDIF" acdb_id="144"/>
         <device name="SND_DEVICE_IN_HDMI_MIC" acdb_id="144"/>
         <device name="SND_DEVICE_IN_HDMI_ARC" acdb_id="144"/>
+        <device name="SND_DEVICE_IN_HANDSET_GENERIC_8MIC" acdb_id="171"/>
+        <device name="SND_DEVICE_IN_HANDSET_GENERIC_DMIC" acdb_id="172"/>
+        <device name="SND_DEVICE_IN_HANDSET_GENERIC_QMIC" acdb_id="173"/>
+        <device name="SND_DEVICE_IN_HANDSET_GENERIC_6MIC" acdb_id="174"/>
     </acdb_ids>
 
     <pcm_ids>
@@ -173,6 +181,14 @@
         <device name="SND_DEVICE_IN_HANDSET_8MIC_AND_EC_REF_LOOPBACK" backend="handset-mic-and-ec-ref-loopback" interface="VA_CDC_DMA_TX_0-and-AFE_LOOPBACK_TX"/>
         <device name="SND_DEVICE_OUT_SPEAKER2" backend="speaker2" interface="TERT_MI2S_RX"/>
         <device name="SND_DEVICE_OUT_SPEAKER3" backend="speaker3" interface="QUAT_MI2S_RX"/>
+        <device name="SND_DEVICE_IN_HANDSET_GENERIC_DMIC" interface="VA_CDC_DMA_TX_0"/>
+        <device name="SND_DEVICE_IN_HANDSET_GENERIC_DMIC_AND_EC_REF_LOOPBACK" backend="handset-mic-and-ec-ref-loopback" interface="VA_CDC_DMA_TX_0-and-AFE_LOOPBACK_TX"/>
+        <device name="SND_DEVICE_IN_HANDSET_GENERIC_QMIC" interface="VA_CDC_DMA_TX_0"/>
+        <device name="SND_DEVICE_IN_HANDSET_GENERIC_QMIC_AND_EC_REF_LOOPBACK" backend="handset-mic-and-ec-ref-loopback" interface="VA_CDC_DMA_TX_0-and-AFE_LOOPBACK_TX"/>
+        <device name="SND_DEVICE_IN_HANDSET_GENERIC_6MIC" interface="VA_CDC_DMA_TX_0"/>
+        <device name="SND_DEVICE_IN_HANDSET_GENERIC_6MIC_AND_EC_REF_LOOPBACK" backend="handset-mic-and-ec-ref-loopback" interface="VA_CDC_DMA_TX_0-and-AFE_LOOPBACK_TX"/>
+        <device name="SND_DEVICE_IN_HANDSET_GENERIC_8MIC" interface="VA_CDC_DMA_TX_0"/>
+        <device name="SND_DEVICE_IN_HANDSET_GENERIC_8MIC_AND_EC_REF_LOOPBACK" backend="handset-mic-and-ec-ref-loopback" interface="VA_CDC_DMA_TX_0-and-AFE_LOOPBACK_TX"/>
     </backend_names>
 
     <custom_mtmx_params param_id="0" in_channel_count="6" out_channel_count="16" usecase="USECASE_AUDIO_PLAYBACK_OFFLOAD" snd_device="SND_DEVICE_OUT_SPEAKER">
