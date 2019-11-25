@@ -11,6 +11,7 @@ SRC_URI = "file://init_qcom_audio"
 SRC_URI += "file://init_audio.service"
 SRC_URI += "file://init_data.service"
 SRC_URI += "file://msm-audio-node.rules"
+SRC_URI  += "file://init-audio.conf"
 
 do_compile[noexec] = "1"
 
@@ -30,6 +31,8 @@ do_install() {
         install -d ${D}/${systemd_unitdir}/system/sysinit.target.wants
         ln -sf ${systemd_unitdir}/system/init_audio.service ${D}${systemd_unitdir}/system/sysinit.target.wants/init_audio.service
         ln -sf ${systemd_unitdir}/system/init_data.service ${D}${systemd_unitdir}/system/sysinit.target.wants/init_data.service
+        install -d ${D}${sysconfdir}/tmpfiles.d
+        install -m 0644 ${WORKDIR}/init-audio.conf -D ${D}${sysconfdir}/tmpfiles.d/init-audio.conf
     else
         install -m 0755 ${S}/init_qcom_audio -D ${D}${sysconfdir}/init.d/init_qcom_audio
     fi
