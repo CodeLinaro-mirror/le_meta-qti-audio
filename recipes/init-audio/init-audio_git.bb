@@ -24,6 +24,9 @@ do_install() {
     if ${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'true', 'false', d)}; then
         install -m 0644 ${S}/msm-audio-node.rules -D ${D}${sysconfdir}/udev/rules.d/msm-audio-node.rules
         install -m 0644 ${S}/init_audio.service -D ${D}${systemd_unitdir}/system/init_audio.service
+        if ${@bb.utils.contains('MACHINE_FEATURES','qti-ab-boot','true','false',d)}; then
+            sed -i 's/firmware.mount/firmware-mount.service/g' ${D}${systemd_unitdir}/system/init_audio.service
+        fi
         install -d ${D}/${systemd_unitdir}/system/sysinit.target.wants
         ln -sf ${systemd_unitdir}/system/init_audio.service ${D}${systemd_unitdir}/system/sysinit.target.wants/init_audio.service
         echo "\
