@@ -40,11 +40,6 @@ INITSCRIPT_NAME = "start_audio_le"
 INITSCRIPT_PARAMS = "start 35 5 . stop 15 0 1 6 ."
 
 do_install_append() {
-  install -d ${D}${includedir}/audio-kernel/
-  install -d ${D}${includedir}/audio-kernel/linux
-  install -d ${D}${includedir}/audio-kernel/linux/mfd
-  install -d ${D}${includedir}/audio-kernel/linux/mfd/wcd9xxx
-  install -d ${D}${includedir}/audio-kernel/sound
   install -d ${STAGING_KERNEL_BUILDDIR}/audio-kernel/
   install -d ${STAGING_KERNEL_BUILDDIR}/audio-kernel/linux
   install -d ${STAGING_KERNEL_BUILDDIR}/audio-kernel/linux/mfd
@@ -52,8 +47,6 @@ do_install_append() {
   install -d ${STAGING_KERNEL_BUILDDIR}/audio-kernel/sound
   install -d ${D}${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra
 
-  cp -fr ${S}/linux/* ${D}${includedir}/audio-kernel/linux
-  install -m 0644 ${S}/sound/* ${D}${includedir}/audio-kernel/sound
   cp -fr ${S}/linux/* ${STAGING_KERNEL_BUILDDIR}/audio-kernel/linux
   install -m 0644 ${S}/sound/* ${STAGING_KERNEL_BUILDDIR}/audio-kernel/sound
 
@@ -132,4 +125,4 @@ RPROVIDES_${PN} += "${@'kernel-module-rx-macro-dlkm-${KERNEL_VERSION}'.replace('
 RPROVIDES_${PN} += "${@'kernel-module-tx-macro-dlkm-${KERNEL_VERSION}'.replace('_', '-')}"
 RPROVIDES_${PN} += "${@'kernel-module-wcd937x-dlkm-${KERNEL_VERSION}'.replace('_', '-')}"
 RPROVIDES_${PN} += "${@'kernel-module-wcd937x-slave-dlkm-${KERNEL_VERSION}'.replace('_', '-')}"
-RPROVIDES_${PN} += "${@'kernel-module-machine-digcdc-dlkm-${KERNEL_VERSION}'.replace('_', '-')}"
+
