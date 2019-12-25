@@ -12,7 +12,8 @@ S = "${WORKDIR}/hardware/libhardware/modules/usbaudio/"
 
 PR = "r0"
 
-DEPENDS = "tinyalsa system-media libhardware"
+DEPENDS = "tinyalsa libhardware"
+DEPENDS_append = "${@bb.utils.contains('COMBINED_FEATURES', 'qti-audio', ' media-headers alsa-utils audio-utils', ' system-media', d)}"
 
 FILES_${PN} += "${libdir}/*.so"
 INSANE_SKIP_${PN} = "dev-deps"
