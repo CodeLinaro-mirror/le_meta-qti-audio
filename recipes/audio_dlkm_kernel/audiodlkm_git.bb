@@ -79,22 +79,6 @@ do_install_append_mdm() {
    ${D}${systemd_unitdir}/system/multi-user.target.wants/audio.service
 }
 
-do_module_signing() {
-  if [ -f ${STAGING_KERNEL_BUILDDIR}/signing_key.priv ]; then
-    for i in ${PKGDEST}/${PN}/${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra/*
-      do
-        ${STAGING_KERNEL_DIR}/scripts/sign-file sha512 ${STAGING_KERNEL_BUILDDIR}/signing_key.priv ${STAGING_KERNEL_BUILDDIR}/signing_key.x509 ${i}
-      done
-  elif [ -f ${STAGING_KERNEL_BUILDDIR}/certs/signing_key.pem ]; then
-    for i in $(find ${PKGDEST}/${PN}/${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra/* -name "*.ko");
-      do
-   ${STAGING_KERNEL_BUILDDIR}/scripts/sign-file sha512 ${STAGING_KERNEL_BUILDDIR}/certs/signing_key.pem ${STAGING_KERNEL_BUILDDIR}/certs/signing_key.x509 ${i}
-   done
-  fi
-}
-
-addtask do_module_signing after do_package before do_package_write_ipk
-
 # The inherit of module.bbclass will automatically name module packages with
 # kernel-module-" prefix as required by the oe-core build environment. Also it
 # replaces '_' with '-' in the module name.
