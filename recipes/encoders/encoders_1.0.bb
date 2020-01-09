@@ -22,6 +22,8 @@ DEPENDS += "glib-2.0 media"
 DEPENDS_append = "${@bb.utils.contains('DISTRO_FEATURES', 'audio-dlkm', ' audiodlkm', '', d)}"
 DEPENDS_append = "${@bb.utils.contains('COMBINED_FEATURES', 'qti-audio', ' liblog libcutils', ' system-core', d)}"
 
+do_configure[depends] += "audiodlkm:do_install"
+
 RDEPENDS_${PN} = "media"
 
 SOLIBS = ".so"
