@@ -23,6 +23,8 @@ DEPENDS = "glib-2.0 system-core media"
 
 DEPENDS_append = "${@bb.utils.contains('DISTRO_FEATURES', 'audio-dlkm', ' audiodlkm', '', d)}"
 
+do_configure[depends] += "audiodlkm:do_install"
+
 RDEPENDS_${PN} = "media"
 
 SOLIBS = ".so"
