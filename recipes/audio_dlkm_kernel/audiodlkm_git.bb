@@ -40,6 +40,11 @@ INITSCRIPT_NAME = "start_audio_le"
 INITSCRIPT_PARAMS = "start 35 5 . stop 15 0 1 6 ."
 
 do_install_append() {
+  install -d ${D}${includedir}/audio-kernel/
+  install -d ${D}${includedir}/audio-kernel/linux
+  install -d ${D}${includedir}/audio-kernel/linux/mfd
+  install -d ${D}${includedir}/audio-kernel/linux/mfd/wcd9xxx
+  install -d ${D}${includedir}/audio-kernel/sound
   install -d ${STAGING_KERNEL_BUILDDIR}/audio-kernel/
   install -d ${STAGING_KERNEL_BUILDDIR}/audio-kernel/linux
   install -d ${STAGING_KERNEL_BUILDDIR}/audio-kernel/linux/mfd
@@ -47,6 +52,8 @@ do_install_append() {
   install -d ${STAGING_KERNEL_BUILDDIR}/audio-kernel/sound
   install -d ${D}${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra
 
+  cp -fr ${S}/linux/* ${D}${includedir}/audio-kernel/linux
+  install -m 0644 ${S}/sound/* ${D}${includedir}/audio-kernel/sound
   cp -fr ${S}/linux/* ${STAGING_KERNEL_BUILDDIR}/audio-kernel/linux
   install -m 0644 ${S}/sound/* ${STAGING_KERNEL_BUILDDIR}/audio-kernel/sound
 
@@ -78,22 +85,6 @@ do_install_append_mdm() {
    ln -sf ${systemd_unitdir}/system/audio.service \
    ${D}${systemd_unitdir}/system/multi-user.target.wants/audio.service
 }
-
-do_module_signing() {
-  if [ -f ${STAGING_KERNEL_BUILDDIR}/signing_key.priv ]; then
-    for i in ${PKGDEST}/${PN}/${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra/*
-      do
-        ${STAGING_KERNEL_DIR}/scripts/sign-file sha512 ${STAGING_KERNEL_BUILDDIR}/signing_key.priv ${STAGING_KERNEL_BUILDDIR}/signing_key.x509 ${i}
-      done
-  elif [ -f ${STAGING_KERNEL_BUILDDIR}/certs/signing_key.pem ]; then
-    for i in $(find ${PKGDEST}/${PN}/${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra/* -name "*.ko");
-      do
-   ${STAGING_KERNEL_BUILDDIR}/scripts/sign-file sha512 ${STAGING_KERNEL_BUILDDIR}/certs/signing_key.pem ${STAGING_KERNEL_BUILDDIR}/certs/signing_key.x509 ${i}
-   done
-  fi
-}
-
-addtask do_module_signing after do_package before do_package_write_ipk
 
 # The inherit of module.bbclass will automatically name module packages with
 # kernel-module-" prefix as required by the oe-core build environment. Also it
@@ -141,4 +132,4 @@ RPROVIDES_${PN} += "${@'kernel-module-rx-macro-dlkm-${KERNEL_VERSION}'.replace('
 RPROVIDES_${PN} += "${@'kernel-module-tx-macro-dlkm-${KERNEL_VERSION}'.replace('_', '-')}"
 RPROVIDES_${PN} += "${@'kernel-module-wcd937x-dlkm-${KERNEL_VERSION}'.replace('_', '-')}"
 RPROVIDES_${PN} += "${@'kernel-module-wcd937x-slave-dlkm-${KERNEL_VERSION}'.replace('_', '-')}"
-
+RPROVIDES_${PN} += "${@'kernel-module-machine-digcdc-dlkm-${KERNEL_VERSION}'.replace('_', '-')}"
