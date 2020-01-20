@@ -12,7 +12,8 @@ SRC_URI  = "file://hardware/qcom/audio/qahw/"
 S = "${WORKDIR}/hardware/qcom/audio/qahw/"
 PR = "r0"
 
-DEPENDS = "libhardware liblog libcutils system-media"
+DEPENDS += "libhardware liblog libcutils"
+DEPENDS_append = "${@bb.utils.contains('COMBINED_FEATURES', 'qti-audio', ' media-headers audio-route audio-utils glib-2.0', ' system-media', d)}"
 
 EXTRA_OECONF = "--with-glib"
 EXTRA_OECONF_append_apq8009 = " BOARD_SUPPORTS_SVA_AUDIO_CONCURRENCY=true"
