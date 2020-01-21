@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<!-- Copyright (c) 2015-2019, The Linux Foundation. All rights reserved.    -->
+<!-- Copyright (c) 2015-2020, The Linux Foundation. All rights reserved.    -->
 <!--                                                                        -->
 <!-- Redistribution and use in source and binary forms, with or without     -->
 <!-- modification, are permitted provided that the following conditions are -->
@@ -29,6 +29,24 @@
     <!-- These are the initial mixer settings -->
     <ctl name="PCM Playback Volume" value="0xffffe732 0xffffe732" />
     <ctl name="PGA Capture Volume" value="0 0" />
+    <ctl name="Voice Rx Device Mute" id="0" value="0" />
+    <ctl name="Voice Rx Device Mute" id="1" value="-1" />
+    <ctl name="Voice Rx Device Mute" id="2" value="20" />
+    <ctl name="Voice Tx Mute" id="0" value="0" />
+    <ctl name="Voice Tx Mute" id="1" value="-1" />
+    <ctl name="Voice Tx Mute" id="2" value="500" />
+    <ctl name="Voice Rx Gain" id="0" value="0" />
+    <ctl name="Voice Rx Gain" id="1" value="-1" />
+    <ctl name="Voice Rx Gain" id="2" value="20" />
+    <ctl name="AUX_PCM_RX Audio Mixer MultiMedia1" value="0" />
+    <ctl name="AUX_PCM_RX Audio Mixer MultiMedia4" value="0" />
+    <ctl name="AUX_PCM_RX Audio Mixer MultiMedia5" value="0" />
+    <ctl name="MultiMedia1 Mixer AUX_PCM_UL_TX" value="0" />
+    <ctl name="MultiMedia8 Mixer AUX_PCM_UL_TX" value="0" />
+    <ctl name="PRI_MI2S_RX Port Mixer PRI_MI2S_TX" value="0" />
+    <ctl name="PRI_MI2S_RX Audio Mixer DTMF" value="0" />
+    <ctl name="Incall_Music Audio Mixer MultiMedia2" value="0" />
+    <ctl name="Incall_Music Audio Mixer MultiMedia4" value="0" />
 
     <!-- Audio ctl -->
     <ctl name="MultiMedia1 Mixer PRI_MI2S_TX" value="0" />
@@ -49,6 +67,9 @@
       <ctl name="PRI_MI2S_RX_Voice Mixer CSVoice" value="0" />
       <ctl name="Voice_Tx Mixer PRI_MI2S_TX_Voice" value="0" />
     <!-- CS voice end -->
+
+    <ctl name="Incall_Music_DL Audio Mixer MultiMedia4" value="0" />
+    <ctl name="Incall_Music_DL Audio Mixer MultiMedia7" value="0" />
 
 <!-- voice and audio paths -->
    <path name="voice-call">
@@ -80,13 +101,23 @@
         <ctl name="PRI_MI2S_RX Audio Mixer MultiMedia1" value="1" />
     </path>
 
-     <path name="compress-offload-playback">
+    <path name="compress-offload-playback">
         <ctl name="PRI_MI2S_RX Audio Mixer MultiMedia4" value="1" />
     </path>
 
+    <path name="compress-offload-playback afe-proxy">
+        <ctl name="AFE_PCM_RX Audio Mixer MultiMedia4" value="1" />
+    </path>
+
+     <path name="compress-offload-playback2">
+        <ctl name="PRI_MI2S_RX Audio Mixer MultiMedia7" value="1" />
+    </path>
+
+    <path name="compress-offload-playback2 afe-proxy">
+        <ctl name="AFE_PCM_RX Audio Mixer MultiMedia7" value="1" />
+    </path>
 
     <!-- These are actual sound device specific mixer settings -->
-
     <path name="speaker">
     </path>
 
@@ -129,5 +160,48 @@
 
     <path name="wsa-voice-speaker">
         <path name="speaker" />
+    </path>
+
+    <path name="audio-afe-loopback">
+        <ctl name="PRI_MI2S_RX Port Mixer PRI_MI2S_TX" value="1" />
+    </path>
+
+    <path name="audio-dtmf-playback">
+        <ctl name="PRI_MI2S_RX Audio Mixer DTMF" value="1" />
+    </path>
+
+    <path name="incall_music_uplink">
+        <ctl name="Incall_Music Audio Mixer MultiMedia2" value="1" />
+    </path>
+
+    <path name="incall_music_uplink voice-tx">
+        <path name="incall_music_uplink" />
+    </path>
+
+    <path name="compress-offload-playback voice-tx">
+        <ctl name="Incall_Music Audio Mixer MultiMedia4" value="1" />
+    </path>
+
+    <path name="compress-offload-playback2 voice-tx">
+        <ctl name="Incall_Music Audio Mixer MultiMedia7" value="1" />
+    </path>
+
+    <path name="incall-rec-downlink">
+        <ctl name="MultiMedia1 Mixer VOC_REC_DL" value="1" />
+    </path>
+
+    <path name="incall-rec-downlink incall-rec-rx">
+        <path name="incall-rec-downlink" />
+    </path>
+
+    <path name="compress-offload-playback voice-dl-tx">
+        <ctl name="Incall_Music_DL Audio Mixer MultiMedia4" value="1" />
+    </path>
+
+    <path name="compress-offload-playback2 voice-dl-tx">
+        <ctl name="Incall_Music_DL Audio Mixer MultiMedia7" value="1" />
+    </path>
+
+    <path name="afe-proxy-record afe-proxy">
     </path>
 </mixer>
