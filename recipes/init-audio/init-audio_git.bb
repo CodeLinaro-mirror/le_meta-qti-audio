@@ -23,6 +23,7 @@ INITSCRIPT_PARAMS_apq8009 = "start 38 2 3 4 5 . stop 1 0 1 6 ."
 
 do_install() {
     if ${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'true', 'false', d)}; then
+        install -d ${D}${sysconfdir}/udev/rules.d/
         install -m 0644 ${S}/msm-audio-node.rules -D ${D}${sysconfdir}/udev/rules.d/msm-audio-node.rules
         install -m 0644 ${S}/init_audio.service -D ${D}${systemd_unitdir}/system/init_audio.service
         install -m 0644 ${S}/init_data.service -D ${D}${systemd_unitdir}/system/init_data.service
