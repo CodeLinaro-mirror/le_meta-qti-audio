@@ -13,11 +13,12 @@ SRC_URI += "file://${BASEMACHINE}/"
 S = "${WORKDIR}/hardware/qcom/audio/"
 PR = "r0"
 HALBINSUFFIX = "${@bb.utils.contains('TUNE_ARCH', 'aarch64', '_64bit', '', d)}"
-DEPENDS = "glib-2.0 tinycompress tinyalsa expat system-media libhardware acdbloader surround-sound-3mic qahw"
+
+DEPENDS += "glib-2.0 tinycompress tinyalsa expat libhardware acdbloader surround-sound-3mic qahw"
+DEPENDS_append = "${@bb.utils.contains('COMBINED_FEATURES', 'qti-audio', ' media-headers audio-utils audio-route', ' system-media', d)}"
 DEPENDS_append_apq8098 = " audio-qaf audio-parsers audio-qap-wrapper audio-ip-handler"
-DEPENDS_append_apq8009 = " ffv"
+DEPENDS_append_apq8009 = " ffv qti-audio-server binder"
 DEPENDS_append_apq8017 = " ffv qti-audio-server binder"
-DEPENDS_append_apq8009 = " qti-audio-server binder"
 DEPENDS_append_apq8053 = " qti-audio-server binder"
 DEPENDS_append = "${@bb.utils.contains('DISTRO_FEATURES', 'audio-dlkm', ' audiodlkm', '', d)}"
 
@@ -25,6 +26,8 @@ DEPENDS_append = "${@bb.utils.contains('DISTRO_FEATURES', 'audio-dlkm', ' audiod
 DEPENDS_remove_apq8098 = "surround-sound-3mic"
 #sdxprairie doesn't need surround sound recording
 DEPENDS_remove_sdxprairie = "surround-sound-3mic"
+
+do_configure[depends] += "audiodlkm:do_install"
 
 AUDIO_KERNEL_HEADERS="${STAGING_KERNEL_BUILDDIR}/audio-kernel"
 CFLAGS += "-I${AUDIO_KERNEL_HEADERS}"
