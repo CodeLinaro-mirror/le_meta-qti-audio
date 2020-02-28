@@ -37,7 +37,7 @@ index 01a7097..4a8feff 100644
 +	codec.ch_in = 2;
 +	codec.ch_out = 2;
 +	codec.sample_rate = 48000;
-+        codec.compr_passthr = 1;
++        codec.compr_passthr = 0;
  	if (!codec.sample_rate) {
  		fprintf(stderr, "invalid sample rate %d\n", rate);
  		fclose(file);
