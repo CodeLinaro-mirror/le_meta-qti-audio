@@ -13,5 +13,6 @@ PACKAGES = ' \
 '
 
 RDEPENDS_packagegroup-qti-audio = ' \
-    ${@bb.utils.contains("COMBINED_FEATURES", "qti-audio", "audiodlkm init-audio audiohal encoders", "", d)} \
+    ${@bb.utils.contains("COMBINED_FEATURES", "qti-audio", "audiodlkm init-audio audiohal", "", d)} \
+    ${@bb.utils.contains("COMBINED_FEATURES", "qti-audio qti-audio-encoder", "encoders", "", d)} \
 '
