@@ -38,6 +38,8 @@ case "$1" in
         insmod $MODULE_BASE/kernel/sound/core/snd-compress.ko
         insmod $MODULE_BASE/kernel/sound/soc/snd-soc-core.ko
         insmod $MODULE_BASE/kernel/sound/core/snd-hwdep.ko
+        insmod $MODULE_BASE/extra/q6_notifier_dlkm.ko
+        insmod $MODULE_BASE/extra/snd_event_dlkm.ko
         insmod $MODULE_BASE/extra/apr_dlkm.ko
         insmod $MODULE_BASE/extra/adsp_loader_dlkm.ko
         echo 1 > /sys/kernel/boot_adsp/boot
@@ -55,11 +57,33 @@ case "$1" in
         insmod $MODULE_BASE/extra/wsa881x_dlkm.ko
         insmod $MODULE_BASE/kernel/sound/soc/codecs/snd-soc-tlv320aic3x.ko
         insmod $MODULE_BASE/extra/machine_dlkm.ko
-
-        echo "done loading audio_kernel module"
+        echo "done loading audio_kernel module"  > /dev/kmsg
         ;;
   stop)
-        echo -n "Bypassing Unloading of  audio_kernel modules "
+        echo "Unloading of  audio_kernel modules "  > /dev/kmsg
+        rmmod machine_dlkm.ko
+        rmmod snd-soc-tlv320aic3x.ko
+        rmmod wsa881x_dlkm.ko
+        rmmod wcd934x_dlkm.ko
+        rmmod swr_ctrl_dlkm.ko
+        rmmod wcd9xxx_dlkm.ko
+        rmmod mbhc_dlkm.ko
+        rmmod wcd_core_dlkm.ko
+        rmmod stub_dlkm.ko
+        rmmod swr_dlkm.ko
+        rmmod pinctrl_wcd_dlkm.ko
+        rmmod native_dlkm.ko
+        rmmod platform_dlkm.ko
+        rmmod q6_dlkm.ko
+        echo 0 > /sys/kernel/boot_adsp/boot
+        rmmod adsp_loader_dlkm.ko
+        rmmod apr_dlkm.ko
+        rmmod snd_event_dlkm.ko
+        rmmod q6_notifier_dlkm.ko
+        rmmod snd-hwdep.ko
+        rmmod soc/snd-soc-core.ko
+        rmmod snd-compress.ko
+        echo "Unloading done audio_kernel modules "  > /dev/kmsg
         ;;
   restart)
         $0 stop
