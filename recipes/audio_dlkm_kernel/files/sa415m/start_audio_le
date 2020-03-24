@@ -1,5 +1,5 @@
 #! /bin/sh
-# Copyright (c) 2019, The Linux Foundation. All rights reserved.
+# Copyright (c) 2019-2020, The Linux Foundation. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are
@@ -77,12 +77,6 @@ case "$1" in
         rmmod q6_dlkm.ko
         echo 0 > /sys/kernel/boot_adsp/boot
         rmmod adsp_loader_dlkm.ko
-        rmmod apr_dlkm.ko
-        rmmod snd_event_dlkm.ko
-        rmmod q6_notifier_dlkm.ko
-        rmmod snd-hwdep.ko
-        rmmod soc/snd-soc-core.ko
-        rmmod snd-compress.ko
         echo "Unloading done audio_kernel modules "  > /dev/kmsg
         ;;
   restart)
