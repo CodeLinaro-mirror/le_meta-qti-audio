@@ -8,14 +8,14 @@ ${LICENSE};md5=3775480a712fc46a69647678acb234cb"
 PR = "r0"
 
 FILESPATH   =+ "${WORKSPACE}/:"
-SRC_URI     =  "file://vendor/qcom/opensource/audio-hal/primary-hal/mm-audio"
+SRC_URI     =  "file://hardware/qcom/audio/mm-audio"
 
-S = "${WORKDIR}/vendor/qcom/opensource/audio-hal/primary-hal/mm-audio"
+S = "${WORKDIR}/hardware/qcom/audio/mm-audio"
 EXTRA_OECONF_append += "--with-sanitized-headers=${STAGING_KERNEL_BUILDDIR}/usr/include"
 EXTRA_OECONF_append += "--with-glib"
 
 
-DEPENDS = "glib-2.0 system-core media"
+DEPENDS = "glib-2.0 liblog media"
 
 DEPENDS_append = "${@bb.utils.contains('DISTRO_FEATURES', 'audio-dlkm', ' audiodlkm', '', d)}"
 
