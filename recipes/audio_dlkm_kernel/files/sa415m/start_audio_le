@@ -61,22 +61,8 @@ case "$1" in
         ;;
   stop)
         echo "Unloading of  audio_kernel modules "  > /dev/kmsg
-        rmmod machine_dlkm.ko
-        rmmod snd-soc-tlv320aic3x.ko
-        rmmod wsa881x_dlkm.ko
-        rmmod wcd934x_dlkm.ko
-        rmmod swr_ctrl_dlkm.ko
-        rmmod wcd9xxx_dlkm.ko
-        rmmod mbhc_dlkm.ko
-        rmmod wcd_core_dlkm.ko
-        rmmod stub_dlkm.ko
-        rmmod swr_dlkm.ko
-        rmmod pinctrl_wcd_dlkm.ko
-        rmmod native_dlkm.ko
-        rmmod platform_dlkm.ko
-        rmmod q6_dlkm.ko
         echo 0 > /sys/kernel/boot_adsp/boot
-        rmmod adsp_loader_dlkm.ko
+
         echo "Unloading done audio_kernel modules "  > /dev/kmsg
         ;;
   restart)
