@@ -122,12 +122,13 @@ do_install_append() {
    install -m 770 -d ${D}${userfsdatadir}/audio
 }
 
-FILES_${PN} += "${libdir}/audio.primary.default.so ${userfsdatadir}/*"
-FILES_${PN} += "${libdir}/audio.compress.capture.so ${userfsdatadir}/*"
-FILES_${PN} += "${libdir}/audio.hdmi.edid.so ${userfsdatadir}/*"
-FILES_${PN} += "${libdir}/audio.spkr.prot.so ${userfsdatadir}/*"
-FILES_${PN} += "${libdir}/audio.a2dp.offload.so ${userfsdatadir}/*"
-FILES_${PN} += "${libdir}/audio.snd.monitor.so ${userfsdatadir}/*"
-FILES_${PN} += "${libdir}/audio.ssrec.so ${userfsdatadir}/*"
+FILES_${PN} += "${userfsdatadir}/*"
+FILES_${PN} += "${libdir}/audio.primary.default.so"
+FILES_${PN} += "${libdir}/audio.compress.capture.so"
+FILES_${PN} += "${libdir}/audio.hdmi.edid.so"
+FILES_${PN} += "${libdir}/audio.spkr.prot.so"
+FILES_${PN} += "${libdir}/audio.a2dp.offload.so"
+FILES_${PN} += "${libdir}/audio.snd.monitor.so"
+FILES_${PN} += "${libdir}/audio.ssrec.so"
 SOLIBS = ".so"
 FILES_SOLIBSDEV = ""
