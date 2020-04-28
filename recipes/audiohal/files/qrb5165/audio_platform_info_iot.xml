@@ -96,10 +96,8 @@
         <usecase name="USECASE_AUDIO_RECORD_COMPRESS2" type="in" id="37" />
     </pcm_ids>
     <config_params>
-        <!-- In the below value string, the value indicates default mono -->
-        <!-- speaker. It can be set to either left or right              -->
-        <param key="mono_speaker" value="right"/>
-        <param key="spkr_2_tz_name" value="wsatz.14"/>
+        <param key="spkr_1_tz_name" value="wsatz.11"/>
+        <param key="spkr_2_tz_name" value="wsatz.12"/>
         <param key="true_32_bit" value="true"/>
         <param key="hifi_filter" value="false"/>
         <param key="native_audio_mode" value="multiple_mix_dsp"/>
