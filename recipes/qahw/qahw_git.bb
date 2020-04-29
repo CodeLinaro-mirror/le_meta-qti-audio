@@ -15,6 +15,7 @@ PR = "r0"
 DEPENDS = "libhardware liblog libcutils glib-2.0"
 
 DEPENDS_append = "${@bb.utils.contains('DISTRO_FEATURES', 'qti-audio', ' media-headers audio-route audio-utils', ' system-media', d)}"
+DEPENDS += "libhardware liblog libcutils media-headers audio-route audio-utils glib-2.0"
 
 EXTRA_OECONF = "--with-glib"
 EXTRA_OECONF_append_apq8009 = " BOARD_SUPPORTS_SVA_AUDIO_CONCURRENCY=true"

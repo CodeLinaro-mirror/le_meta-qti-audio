@@ -10,6 +10,7 @@ DEPENDS_append_mdm9635 +="alsa-intf"
 SRC_URI = "file://init_qcom_audio"
 SRC_URI += "file://init_audio.service"
 SRC_URI += "file://msm-audio-node.rules"
+SRC_URI  += "file://init-audio.conf"
 
 do_compile[noexec] = "1"
 

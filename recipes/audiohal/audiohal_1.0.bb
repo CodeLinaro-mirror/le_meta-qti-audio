@@ -14,11 +14,12 @@ S = "${WORKDIR}/hardware/qcom/audio/"
 PR = "r0"
 HALBINSUFFIX = "${@bb.utils.contains('TUNE_ARCH', 'aarch64', '_64bit', '', d)}"
 DEPENDS = "glib-2.0 tinycompress tinyalsa expat libhardware acdbloader surround-sound-3mic qahw"
-DEPENDS_append_apq8098 = " audio-qaf audio-parsers audio-qap-wrapper audio-ip-handler"
 DEPENDS_append_qrb5165 = " audio-parsers"
-DEPENDS_append_apq8009 = " ffv"
+
+DEPENDS += "glib-2.0 tinycompress tinyalsa expat libhardware acdbloader surround-sound-3mic qahw media-headers audio-utils audio-route"
+DEPENDS_append_apq8098 = " audio-qaf audio-parsers audio-qap-wrapper audio-ip-handler"
+DEPENDS_append_apq8009 = " ffv qti-audio-server binder"
 DEPENDS_append_apq8017 = " ffv qti-audio-server binder"
-DEPENDS_append_apq8009 = " qti-audio-server binder"
 DEPENDS_append_apq8053 = " qti-audio-server binder"
 DEPENDS_append = "${@bb.utils.contains('DISTRO_FEATURES', 'audio-dlkm', ' audiodlkm', '', d)}"
 DEPENDS_append = "${@bb.utils.contains('DISTRO_FEATURES', 'qti-audio', ' audio-route audio-utils libutils', ' system-media', d)}"
@@ -30,9 +31,15 @@ DEPENDS_remove_apq8098 = "surround-sound-3mic"
 #sdxprairie doesn't need surround sound recording
 DEPENDS_remove_sdxprairie = "surround-sound-3mic"
 
+do_configure[depends] += "audiodlkm:do_install"
+
+AUDIO_KERNEL_HEADERS="${STAGING_KERNEL_BUILDDIR}/audio-kernel"
+CFLAGS += "-I${AUDIO_KERNEL_HEADERS}"
+
 EXTRA_OEMAKE = "DEFAULT_INCLUDES= CPPFLAGS="-I. -I${STAGING_KERNEL_BUILDDIR}/usr/include -I${STAGING_KERNEL_BUILDDIR}/usr/techpack/audio/include -I${STAGING_INCDIR}/surround_sound_3mic -I${STAGING_INCDIR}/sound_trigger""
-EXTRA_OECONF = "--with-sanitized-headers=${STAGING_KERNEL_BUILDDIR}/usr/include"
+EXTRA_OECONF += "--with-sanitized-headers=${STAGING_KERNEL_BUILDDIR}/usr/include"
 EXTRA_OECONF += "--with-glib --program-suffix=${HALBINSUFFIX}"
+EXTRA_OECONF += " --with-audio-kernel-headers=${AUDIO_KERNEL_HEADERS}"
 
 EXTRA_OECONF += "TARGET_SUPPORT=${BASEMACHINE}"
 EXTRA_OECONF += "BOARD_SUPPORTS_QAHW=true"
@@ -58,6 +65,7 @@ EXTRA_OECONF += "AUDIO_FEATURE_ENABLED_EXTN_FLAC_DECODER=true"
 EXTRA_OECONF += "AUDIO_FEATURE_ENABLED_EXTN_ALAC_DECODER=true"
 EXTRA_OECONF += "AUDIO_FEATURE_ENABLED_EXTN_VORBIS_DECODER=true"
 EXTRA_OECONF += "AUDIO_FEATURE_ENABLED_EXTN_WMA_DECODER=true"
+EXTRA_OECONF += "AUDIO_FEATURE_ENABLED_EXTN_AMR_DECODER=true"
 EXTRA_OECONF += "AUDIO_FEATURE_ENABLED_MULTI_RECORD=true"
 EXTRA_OECONF += "AUDIO_FEATURE_ENABLED_PROXY_DEVICE=true"
 EXTRA_OECONF += "AUDIO_FEATURE_ENABLED_COMPRESS_INPUT=true"
@@ -67,8 +75,10 @@ EXTRA_OECONF += "AUDIO_FEATURE_ENABLED_APTX_DECODER=true"
 EXTRA_OECONF += "AUDIO_FEATURE_ENABLED_GEF_SUPPORT=true"
 EXTRA_OECONF_append_apq8098 = " AUDIO_FEATURE_ENABLED_QAF=true"
 EXTRA_OECONF_append_apq8098 = " AUDIO_FEATURE_ADSP_HDLR_ENABLED=true"
+EXTRA_OECONF_append_qcs40x = " AUDIO_FEATURE_ADSP_HDLR_ENABLED=true"
 EXTRA_OECONF_append_apq8098 = " AUDIO_FEATURE_ENABLED_SPLIT_A2DP=true"
 EXTRA_OECONF_append_qcs40x = " AUDIO_FEATURE_ENABLED_SPLIT_A2DP=true"
+EXTRA_OECONF_append_qcs40x = " AUDIO_FEATURE_ENABLED_SPLIT_A2DP_SINK=true"
 EXTRA_OECONF_append_apq8098 = " AUDIO_FEATURE_IP_HDLR_ENABLED=true"
 EXTRA_OECONF_append_qcs40x = " AUDIO_FEATURE_IP_HDLR_ENABLED=true"
 EXTRA_OECONF_append_apq8098 = " AUDIO_FEATURE_ENABLED_AUDIO_HW_LOOPBACK=true"
@@ -89,11 +99,18 @@ EXTRA_OECONF_append_apq8009 = " AUDIO_FEATURE_ENABLED_KEEP_ALIVE_ARM_FFV=true"
 EXTRA_OECONF_append_qcs40x = " AUDIO_FEATURE_ENABLED_INSTANCE_ID=true"
 EXTRA_OECONF_append_sdxprairie = " AUDIO_FEATURE_ENABLED_SSR=false"
 EXTRA_OECONF_append_qcs40x = " AUDIO_USE_LL_AS_PRIMARY_OUTPUT=true"
+EXTRA_OECONF_append_qcs40x = " AUDIO_FEATURE_ENABLED_AHAL_EXT=true"
 EXTRA_OECONF_append_sdmsteppe = " AUDIO_FEATURE_ENABLED_INSTANCE_ID=true"
 EXTRA_OECONF_append_qrb5165 = " AUDIO_FEATURE_ENABLED_INSTANCE_ID=true"
 EXTRA_OECONF_append_qrb5165 = " AUDIO_FEATURE_ENABLED_COMPRESS_VOIP=true"
 EXTRA_OECONF_append_qrb5165 = " AUDIO_FEATURE_ENABLED_USBAUDIO=true"
 EXTRA_OECONF_append_qrb5165 = " AUDIO_FEATURE_ENABLED_FM_POWER_OPT=true"
+EXTRA_OECONF_append_sdmsteppe = " AUDIO_FEATURE_ENABLED_FLUENCE=true"
+EXTRA_OECONF_append_sdxpoorwills = " AUDIO_FEATURE_ENABLED_QAHW_1_0=true"
+EXTRA_OECONF_append_sdxprairie = " AUDIO_FEATURE_ENABLED_QAHW_1_0=true"
+EXTRA_OECONF_append_qcs40x = " AUDIO_FEATURE_ENABLED_TRUEHD_PLAYBACK=true"
+EXTRA_OECONF_append_sdxprairie = " AUDIO_FEATURE_ENABLED_INSTANCE_ID=true"
+EXTRA_OECONF_append_sdxprairie = " AUDIO_FEATURE_ADSP_HDLR_ENABLED=true AUDIO_FEATURE_ENABLED_DTMF=true AUDIO_FEATURE_ENABLED_AFE_LOOPBACK=true"
 
 do_install_append() {
    if [ -d "${WORKDIR}/${BASEMACHINE}" ] && [ $(ls -1  ${WORKDIR}/${BASEMACHINE} | wc -l) -ne 0 ]; then
@@ -102,9 +119,15 @@ do_install_append() {
    fi
 
    #create /data/audio folder
-   install -d ${D}${userfsdatadir}/audio
+   install -m 770 -d ${D}${userfsdatadir}/audio
 }
 
 FILES_${PN} += "${libdir}/audio.primary.default.so ${userfsdatadir}/*"
+FILES_${PN} += "${libdir}/audio.compress.capture.so ${userfsdatadir}/*"
+FILES_${PN} += "${libdir}/audio.hdmi.edid.so ${userfsdatadir}/*"
+FILES_${PN} += "${libdir}/audio.spkr.prot.so ${userfsdatadir}/*"
+FILES_${PN} += "${libdir}/audio.a2dp.offload.so ${userfsdatadir}/*"
+FILES_${PN} += "${libdir}/audio.snd.monitor.so ${userfsdatadir}/*"
+FILES_${PN} += "${libdir}/audio.ssrec.so ${userfsdatadir}/*"
 SOLIBS = ".so"
 FILES_SOLIBSDEV = ""

@@ -1,4 +1,4 @@
-# Copyright (c) 2019, The Linux Foundation. All rights reserved.
+# Copyright (c) 2019-2020, The Linux Foundation. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are
@@ -30,8 +30,8 @@ Rxdevice:0
 
 enable
 PRI_MI2S_RX Audio Mixer MultiMedia1:1
-PRI_MI2S_RX Channels:Two
-CSRA_12 PA VOLUME:281
+PRIM_MI2S_RX Channels:Two
+CSRA_12 PA VOLUME:361
 CSRA_12 PA BASS GAIN:0
 CSRA_12 PA BASS_XOVER FREQ:0
 CSRA_12 PA TREBLE GAIN:0
