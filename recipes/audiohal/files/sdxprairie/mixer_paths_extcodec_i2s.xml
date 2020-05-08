@@ -84,6 +84,16 @@
         <ctl name="PRI_MI2S_RX_Voice Mixer VoiceMMode2" value="1" />
     </path>
 
+    <path name="voicemmode1-call secondary">
+        <ctl name="VoiceMMode1_Tx Mixer SEC_MI2S_TX_MMode1" value="1" />
+        <ctl name="SEC_MI2S_RX_Voice Mixer VoiceMMode1" value="1" />
+    </path>
+
+    <path name="voicemmode2-call secondary">
+        <ctl name="VoiceMMode2_Tx Mixer SEC_MI2S_TX_MMode2" value="1" />
+        <ctl name="SEC_MI2S_RX_Voice Mixer VoiceMMode2" value="1" />
+    </path>
+
     <path name="audio-record">
         <ctl name="PGA Capture Volume" value="80 80" />
         <ctl name="MultiMedia1 Mixer PRI_MI2S_TX" value="1" />
