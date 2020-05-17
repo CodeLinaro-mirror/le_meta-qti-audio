@@ -1,0 +1,155 @@
+From b14975cd6a396cbae9af0bb513e62834accef545 Mon Sep 17 00:00:00 2001
+From: Asish Bhattacharya <asishb@codeaurora.org>
+Date: Fri, 15 May 2020 22:25:48 +0530
+Subject: [PATCH] pcm: add support to check soundcard status
+
+check and wait for sound card status to be ONLINE before closing
+the pcm session.
+
+Change-Id: I727ef3300111535432071255a4bd1415f0eb86a5
+---
+ git/src/pcm.c | 100 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 100 insertions(+)
+
+diff --git a/git/src/pcm.c b/git/src/pcm.c
+index 289ac3e..d3a656e 100644
+--- a/git/src/pcm.c
++++ b/git/src/pcm.c
+@@ -52,6 +52,12 @@
+ #define PARAM_MAX SNDRV_PCM_HW_PARAM_LAST_INTERVAL
+ #define SNDRV_PCM_HW_PARAMS_NO_PERIOD_WAKEUP (1<<2)
+ 
++typedef enum card_status_t {
++    CARD_STATUS_ERR,
++    CARD_STATUS_OFFLINE,
++    CARD_STATUS_ONLINE,
++} card_status_t;
++
+ static inline int param_is_mask(int p)
+ {
+     return (p >= SNDRV_PCM_HW_PARAM_FIRST_MASK) &&
+@@ -192,6 +198,7 @@ struct pcm {
+     long pcm_delay;
+     /** The subdevice corresponding to the PCM */
+     unsigned int subdevice;
++    int card_no;
+ };
+ 
+ /* ioctl function for PCM driver */
+@@ -876,6 +883,97 @@ unsigned int pcm_params_get_max(struct pcm_params *pcm_params,
+     return param_get_max(params, p);
+ }
+ 
++card_status_t on_sndcard_state_update(int card_no, int fd)
++{
++    char rd_buf[9]={0};
++    char path[128] = {0};
++
++    snprintf(path, sizeof(path), "/proc/asound/card%d/state", card_no);
++
++
++    if (read(fd, rd_buf, 8) <= 0)
++        return -1;
++
++    rd_buf[8] = '\0';
++    lseek(fd, 0, SEEK_SET);
++
++    fprintf(stderr, "card num %d, new state %s", card_no, rd_buf);
++
++    if (strstr(rd_buf, "OFFLINE"))
++        return CARD_STATUS_OFFLINE;
++    else if (strstr(rd_buf, "ONLINE"))
++        return CARD_STATUS_ONLINE;
++    else {
++        fprintf(stderr, "unknown state");
++        return CARD_STATUS_ERR;
++    }
++}
++
++int wait_for_online(struct pcm *pcm)
++{
++    card_status_t status;
++    int fd = -1;
++    char path[128] = {0};
++    int ret = 0;
++
++    snprintf(path, sizeof(path), "/proc/asound/card%d/state", pcm->card_no);
++
++    fd = open(path, O_RDONLY);
++    if (fd == -1) {
++            fprintf(stderr, "Open %s failed : %s", path, strerror(errno));
++            return -ENODEV;
++    }
++
++retry:
++    status = on_sndcard_state_update(pcm->card_no, fd);
++
++    switch (status) {
++    case CARD_STATUS_ONLINE:
++         ret = 0;
++         goto exit;
++    case CARD_STATUS_OFFLINE:
++        {
++            fprintf(stderr, "Start threadLoop()");
++            struct pollfd *pfd = (struct pollfd *)calloc(sizeof(struct pollfd), 1);
++            if (!pfd) {
++                ret = -ENOMEM;
++                break;
++            }
++
++            pfd[0].fd = fd;
++            pfd[0].events = POLLPRI|POLLIN;
++
++            while (1) {
++                if (poll(pfd, 1, -1) < 0) {
++                    ret = errno;
++                    fprintf(stderr, "poll() failed w/ err %s", strerror(ret));
++                    switch (ret) {
++                        case EINTR:
++                        case ENOMEM:
++                            sleep(2);
++                            continue;
++                        default:
++                            break;
++                    }
++                }
++                fprintf(stderr, "out of poll()");
++                break;
++            }
++            free(pfd);
++            goto retry;
++        }
++        break;
++    case CARD_STATUS_ERR:
++    default:
++         ret = -ENODEV;
++         goto exit;
++
++    }
++exit:
++    close(fd);
++    return ret;
++}
++
+ /** Closes a PCM returned by @ref pcm_open.
+  * @param pcm A PCM returned by @ref pcm_open.
+  *  May not be NULL.
+@@ -887,6 +985,7 @@ int pcm_close(struct pcm *pcm)
+     if (pcm == &bad_pcm)
+         return 0;
+ 
++    wait_for_online(pcm);
+     pcm_hw_munmap_status(pcm);
+ 
+     if (pcm->flags & PCM_MMAP) {
+@@ -992,6 +1091,7 @@ struct pcm *pcm_open(unsigned int card, unsigned int device,
+         oops(pcm, errno, "cannot open device '%s'", fn);
+         return pcm;
+     }
++    pcm->card_no = card;
+ 
+     if (ioctl(pcm->fd, SNDRV_PCM_IOCTL_INFO, &info)) {
+         oops(pcm, errno, "cannot get info");
+-- 
+2.7.4
+
