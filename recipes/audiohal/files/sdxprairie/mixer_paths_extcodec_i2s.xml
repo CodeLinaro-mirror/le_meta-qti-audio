@@ -151,4 +151,15 @@
     <path name="wsa-voice-speaker">
         <path name="speaker" />
     </path>
+
+    <path name="audio-dtmf-playback">
+        <ctl name="PRI_MI2S_RX Audio Mixer DTMF" value="1" />
+    </path>
+
+    <path name="audio-afe-loopback">
+        <ctl name="PRI_MI2S_RX Port Mixer PRI_MI2S_TX" value="1" />
+    </path>
+
+    <path name="afe-proxy-record afe-proxy">
+    </path>
 </mixer>
