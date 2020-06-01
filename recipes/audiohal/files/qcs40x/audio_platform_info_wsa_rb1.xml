@@ -113,6 +113,7 @@
         <param key="hfp_pcm_rx_lineout_dev_id" value="5"/>
         <param key="hfp_pcm_rx_speaker_dev_id" value="35"/>
         <param key="input_mic_max_count" value="4"/>
+        <param key="capture_device_chmap" value="8, 1, 2, 6, 3, 4, 5, 8, 9"/>
     </config_params>
 
     <gain_db_to_level_mapping>
