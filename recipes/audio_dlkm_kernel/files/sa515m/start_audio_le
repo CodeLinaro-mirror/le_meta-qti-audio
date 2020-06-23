@@ -1,5 +1,5 @@
 #! /bin/sh
-# Copyright (c) 2019, The Linux Foundation. All rights reserved.
+# Copyright (c) 2019, 2020 The Linux Foundation. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are
@@ -35,33 +35,33 @@ case "$1" in
         echo -n "Starting/Loading audio module: "
 
         echo "audio:start/load" > /dev/kmsg
-        insmod $MODULE_BASE/kernel/sound/core/snd-compress.ko
-        insmod $MODULE_BASE/kernel/sound/soc/snd-soc-core.ko
-        insmod $MODULE_BASE/kernel/sound/core/snd-hwdep.ko
+        modprobe snd-compress
+        modprobe snd-soc-core
+        modprobe snd-hwdep
         file="$MODULE_BASE/extra/snd_event_dlkm.ko"
         if [ -f "$file" ]
         then
-	     insmod $file
+            modprobe snd_event_dlkm
         else
-	     echo "$file not found."  > /dev/kmsg
+            echo "$file not found."  > /dev/kmsg
         fi
-        insmod $MODULE_BASE/extra/q6_notifier_dlkm.ko
-        insmod $MODULE_BASE/extra/apr_dlkm.ko
-        insmod $MODULE_BASE/extra/adsp_loader_dlkm.ko
-        insmod $MODULE_BASE/extra/q6_dlkm.ko
-        insmod $MODULE_BASE/extra/platform_dlkm.ko
-        insmod $MODULE_BASE/extra/native_dlkm.ko
-        insmod $MODULE_BASE/extra/pinctrl_wcd_dlkm.ko
-        insmod $MODULE_BASE/extra/swr_dlkm.ko
-        insmod $MODULE_BASE/extra/stub_dlkm.ko
-        insmod $MODULE_BASE/extra/wcd_core_dlkm.ko
-        insmod $MODULE_BASE/extra/mbhc_dlkm.ko
-        insmod $MODULE_BASE/extra/wcd9xxx_dlkm.ko
-        insmod $MODULE_BASE/extra/swr_ctrl_dlkm.ko
-        insmod $MODULE_BASE/extra/wcd934x_dlkm.ko
-        insmod $MODULE_BASE/extra/wsa881x_dlkm.ko
-        insmod $MODULE_BASE/kernel/sound/soc/codecs/snd-soc-tlv320aic3x.ko
-        insmod $MODULE_BASE/extra/machine_dlkm.ko
+        modprobe q6_notifier_dlkm
+        modprobe apr_dlkm
+        modprobe adsp_loader_dlkm
+        modprobe q6_dlkm
+        modprobe platform_dlkm
+        modprobe native_dlkm
+        modprobe pinctrl_wcd_dlkm
+        modprobe swr_dlkm
+        modprobe stub_dlkm
+        modprobe wcd_core_dlkm
+        modprobe mbhc_dlkm
+        modprobe wcd9xxx_dlkm
+        modprobe swr_ctrl_dlkm
+        modprobe wcd934x_dlkm
+        modprobe wsa881x_dlkm
+        modprobe snd-soc-tlv320aic3x
+        modprobe machine_dlkm
 
         echo "done loading audio_kernel module"
         ;;
