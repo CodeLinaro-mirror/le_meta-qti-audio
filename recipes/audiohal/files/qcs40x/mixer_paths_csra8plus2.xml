@@ -151,6 +151,22 @@
     <ctl name="MultiMedia1 Mixer AFE_PCM_TX" value="0" />
     <ctl name="AFE_PCM_RX Audio Mixer MultiMedia5" value="0" />
     <!-- usb headset end -->
+    <!-- SPDIF playback -->
+    <ctl name="PRI_SPDIF_RX Audio Mixer MultiMedia4" value="0" />
+    <ctl name="PRI_SPDIF_RX Audio Mixer MultiMedia7" value="0" />
+    <ctl name="PRI_SPDIF_RX Audio Mixer MultiMedia15" value="0" />
+    <ctl name="PRI_SPDIF_RX Audio Mixer MultiMedia11" value="0" />
+    <ctl name="PRI_SPDIF_RX Audio Mixer MultiMedia12" value="0" />
+    <ctl name="PRI_SPDIF_RX Audio Mixer MultiMedia13" value="0" />
+    <ctl name="PRI_SPDIF_RX Audio Mixer MultiMedia14" value="0" />
+    <ctl name="SEC_SPDIF_RX Audio Mixer MultiMedia4" value="0" />
+    <ctl name="SEC_SPDIF_RX Audio Mixer MultiMedia7" value="0" />
+    <ctl name="SEC_SPDIF_RX Audio Mixer MultiMedia15" value="0" />
+    <ctl name="SEC_SPDIF_RX Audio Mixer MultiMedia11" value="0" />
+    <ctl name="SEC_SPDIF_RX Audio Mixer MultiMedia12" value="0" />
+    <ctl name="SEC_SPDIF_RX Audio Mixer MultiMedia13" value="0" />
+    <ctl name="SEC_SPDIF_RX Audio Mixer MultiMedia14" value="0" />
+    <!-- SPDIF playback end -->
     <!-- fm -->
     <ctl name="SLIMBUS_8 LOOPBACK Volume" value="0" />
     <ctl name="MultiMedia1 Mixer SLIM_8_TX" value="0" />
@@ -639,6 +655,14 @@
         <ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia4" value="1" />
     </path>
 
+    <path name="compress-offload-playback spdif">
+        <ctl name="PRI_SPDIF_RX Audio Mixer MultiMedia4" value="1" />
+    </path>
+
+    <path name="compress-offload-playback optical">
+        <ctl name="SEC_SPDIF_RX Audio Mixer MultiMedia4" value="1" />
+    </path>
+
     <path name="compress-offload-playback speaker-and-line">
         <path name="compress-offload-playback line" />
         <path name="compress-offload-playback" />
@@ -699,6 +723,14 @@
 
     <path name="compress-offload-playback2 headphones">
         <ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia7" value="1" />
+    </path>
+
+    <path name="compress-offload-playback2 spdif">
+        <ctl name="PRI_SPDIF_RX Audio Mixer MultiMedia7" value="1" />
+    </path>
+
+    <path name="compress-offload-playback2 optical">
+        <ctl name="SEC_SPDIF_RX Audio Mixer MultiMedia7" value="1" />
     </path>
 
     <path name="compress-offload-playback2 speaker-and-line">
@@ -763,6 +795,14 @@
         <ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia15" value="1" />
     </path>
 
+    <path name="compress-offload-playback3 spdif">
+        <ctl name="PRI_SPDIF_RX Audio Mixer MultiMedia15" value="1" />
+    </path>
+
+    <path name="compress-offload-playback3 optical">
+        <ctl name="SEC_SPDIF_RX Audio Mixer MultiMedia15" value="1" />
+    </path>
+
     <path name="compress-offload-playback3 speaker-and-line">
         <path name="compress-offload-playback3 line" />
         <path name="compress-offload-playback3" />
@@ -823,6 +863,14 @@
 
     <path name="compress-offload-playback4 headphones">
         <ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia11" value="1" />
+    </path>
+
+    <path name="compress-offload-playback4 spdif">
+        <ctl name="PRI_SPDIF_RX Audio Mixer MultiMedia11" value="1" />
+    </path>
+
+    <path name="compress-offload-playback4 optical">
+        <ctl name="SEC_SPDIF_RX Audio Mixer MultiMedia11" value="1" />
     </path>
 
     <path name="compress-offload-playback4 speaker-and-line">
@@ -887,6 +935,14 @@
         <ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia12" value="1" />
     </path>
 
+    <path name="compress-offload-playback5 spdif">
+        <ctl name="PRI_SPDIF_RX Audio Mixer MultiMedia12" value="1" />
+    </path>
+
+    <path name="compress-offload-playback5 optical">
+        <ctl name="SEC_SPDIF_RX Audio Mixer MultiMedia12" value="1" />
+    </path>
+
     <path name="compress-offload-playback5 speaker-and-line">
         <path name="compress-offload-playback5 headphones" />
         <path name="compress-offload-playback5" />
@@ -949,6 +1005,14 @@
         <ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia13" value="1" />
     </path>
 
+    <path name="compress-offload-playback6 spdif">
+        <ctl name="PRI_SPDIF_RX Audio Mixer MultiMedia13" value="1" />
+    </path>
+
+    <path name="compress-offload-playback6 optical">
+        <ctl name="SEC_SPDIF_RX Audio Mixer MultiMedia13" value="1" />
+    </path>
+
     <path name="compress-offload-playback6 speaker-and-line">
         <path name="compress-offload-playback6 line" />
         <path name="compress-offload-playback6" />
@@ -1009,6 +1073,14 @@
 
     <path name="compress-offload-playback7 headphones">
         <ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia14" value="1" />
+    </path>
+
+    <path name="compress-offload-playback7 spdif">
+        <ctl name="PRI_SPDIF_RX Audio Mixer MultiMedia14" value="1" />
+    </path>
+
+    <path name="compress-offload-playback7 optical">
+        <ctl name="SEC_SPDIF_RX Audio Mixer MultiMedia14" value="1" />
     </path>
 
     <path name="compress-offload-playback7 speaker-and-line">
@@ -1158,6 +1230,12 @@
     </path>
 
     <path name="hdmi">
+    </path>
+
+    <path name="spdif">
+    </path>
+
+    <path name="optical">
     </path>
 
     <path name="hdmi-in-dsd">

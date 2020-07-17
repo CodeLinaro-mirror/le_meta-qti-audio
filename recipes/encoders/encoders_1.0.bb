@@ -18,11 +18,8 @@ EXTRA_OECONF_append += "--with-sanitized-headers=${STAGING_KERNEL_BUILDDIR}/usr/
 EXTRA_OECONF_append += "--with-glib"
 EXTRA_OECONF_append = " --with-audio-kernel-headers=${AUDIO_KERNEL_HEADERS}"
 
-
-DEPENDS = "glib-2.0 liblog media"
-
+DEPENDS = "glib-2.0 media liblog libcutils"
 DEPENDS_append = "${@bb.utils.contains('DISTRO_FEATURES', 'audio-dlkm', ' audiodlkm', '', d)}"
-DEPENDS_append = "${@bb.utils.contains('COMBINED_FEATURES', 'qti-audio', ' liblog libcutils', ' system-core', d)}"
 
 do_configure[depends] += "audiodlkm:do_install"
 

@@ -1,5 +1,5 @@
 #! /bin/sh
-# Copyright (c) 2019, The Linux Foundation. All rights reserved.
+# Copyright (c) 2019-2020 The Linux Foundation. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are
@@ -38,6 +38,13 @@ case "$1" in
         insmod $MODULE_BASE/kernel/sound/core/snd-compress.ko
         insmod $MODULE_BASE/kernel/sound/soc/snd-soc-core.ko
         insmod $MODULE_BASE/kernel/sound/core/snd-hwdep.ko
+	file="$MODULE_BASE/extra/snd_event_dlkm.ko"
+	if [ -f "$file" ]
+	then
+	     insmod $file
+	else
+	     echo "$file not found."  > /dev/kmsg
+	fi
         insmod $MODULE_BASE/extra/q6_notifier_dlkm.ko
         insmod $MODULE_BASE/extra/apr_dlkm.ko
         insmod $MODULE_BASE/extra/adsp_loader_dlkm.ko
