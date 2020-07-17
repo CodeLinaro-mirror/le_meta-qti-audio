@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<!-- Copyright (c) 2015-2018, 2019 The Linux Foundation. All rights reserved.    -->
+<!-- Copyright (c) 2015-2018, 2019-2020, The Linux Foundation. All rights reserved.    -->
 <!--                                                                        -->
 <!-- Redistribution and use in source and binary forms, with or without     -->
 <!-- modification, are permitted provided that the following conditions are -->
@@ -69,6 +69,8 @@
     <ctl name="SLIM RX3 MUX" value="AIF1_PB" />
     <ctl name="CLASS_H_DSM MUX" value="ZERO" />
     <ctl name="PRI_MI2S_RX Port Mixer PRI_MI2S_TX" value="0" />
+    <ctl name="Incall_Music Audio Mixer MultiMedia2" value="0" />
+    <ctl name="Incall_Music Audio Mixer MultiMedia4" value="0" />
 
     <!-- Audio ctl -->
     <ctl name="MultiMedia1 Mixer PRI_MI2S_TX" value="0" />
@@ -90,6 +92,9 @@
       <ctl name="Voice_Tx Mixer PRI_MI2S_TX_Voice" value="0" />
       <ctl name="PRI_MI2S_RX_Voice Mixer DTMF" value="0" />
     <!-- CS voice end -->
+
+    <ctl name="Incall_Music_DL Audio Mixer MultiMedia4" value="0" />
+    <ctl name="Incall_Music_DL Audio Mixer MultiMedia7" value="0" />
 
 <!-- voice and audio paths -->
    <path name="voice-call">
@@ -148,13 +153,12 @@
     </path>
 
      <path name="compress-offload-playback2">
-        <ctl name="PRI_MI2S_RX Audio Mixer MultiMedia4" value="1" />
+        <ctl name="PRI_MI2S_RX Audio Mixer MultiMedia7" value="1" />
     </path>
 
-    <path name="compress-offload-playback2 afe-proxy">
-        <ctl name="AFE_PCM_RX Audio Mixer MultiMedia4" value="1" />
+     <path name="compress-offload-playback2 afe-proxy">
+        <ctl name="AFE_PCM_RX Audio Mixer MultiMedia7" value="1" />
     </path>
-
 
 <!-- Incall Recording -->
     <ctl name="MultiMedia1 Mixer VOC_REC_UL" value="0" />
@@ -386,14 +390,6 @@
         <ctl name="MultiMedia1 Mixer VOC_REC_UL" value="1" />
     </path>
 
-    <path name="incall-rec-downlink">
-        <ctl name="MultiMedia1 Mixer VOC_REC_DL"  value="1" />
-    </path>
-
-    <path name="incall_music_uplink">
-        <ctl name="Incall_Music Audio Mixer MultiMedia1"  value="1" />
-    </path>
-
   <!-- TTY devices -->
 
     <path name="tty-headphones">
@@ -440,6 +436,38 @@
     </path>
 
     <path name="bt-sco-headset">
+    </path>
+
+    <path name="incall_music_uplink">
+        <ctl name="Incall_Music Audio Mixer MultiMedia2" value="1" />
+    </path>
+
+    <path name="incall_music_uplink voice-tx">
+        <path name="incall_music_uplink" />
+    </path>
+
+    <path name="compress-offload-playback voice-tx">
+        <ctl name="Incall_Music Audio Mixer MultiMedia4" value="1" />
+    </path>
+
+    <path name="compress-offload-playback2 voice-tx">
+        <ctl name="Incall_Music Audio Mixer MultiMedia7" value="1" />
+    </path>
+
+    <path name="incall-rec-downlink">
+        <ctl name="MultiMedia1 Mixer VOC_REC_DL" value="1" />
+    </path>
+
+    <path name="incall-rec-downlink incall-rec-rx">
+        <path name="incall-rec-downlink" />
+    </path>
+
+    <path name="compress-offload-playback voice-dl-tx">
+        <ctl name="Incall_Music_DL Audio Mixer MultiMedia4" value="1" />
+    </path>
+
+    <path name="compress-offload-playback2 voice-dl-tx">
+        <ctl name="Incall_Music_DL Audio Mixer MultiMedia7" value="1" />
     </path>
 
     <path name="afe-proxy-record afe-proxy">
