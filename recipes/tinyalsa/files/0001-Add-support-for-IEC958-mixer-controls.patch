@@ -1,0 +1,105 @@
+From 82c63a124412ff64622af0c0fc8752335dfac87a Mon Sep 17 00:00:00 2001
+From: Nirav Khatri <khatri@codeaurora.org>
+Date: Tue, 26 May 2020 15:47:51 +0530
+Subject: [PATCH] Add support for IEC958 mixer controls
+
+Add control type IEC958 support inside mixer_ctl_set_array
+
+Signed-off-by: Nirav Khatri <khatri@codeaurora.org>
+---
+ git/src/mixer.c     |  5 +++++
+ git/utils/tinymix.c | 48 ++++++++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 53 insertions(+)
+
+diff --git a/git/src/mixer.c b/git/src/mixer.c
+index f1b5a30..05e93f2 100644
+--- a/git/src/mixer.c
++++ b/git/src/mixer.c
+@@ -821,6 +821,11 @@ int mixer_ctl_set_array(struct mixer_ctl *ctl, const void *array, size_t count)
+         }
+         break;
+ 
++    case SNDRV_CTL_ELEM_TYPE_IEC958:
++        size = sizeof(struct snd_aes_iec958);
++        dest = &ev.value.iec958;
++        break;
++
+     default:
+         return -EINVAL;
+     }
+diff --git a/git/utils/tinymix.c b/git/utils/tinymix.c
+index 53b5285..41bdff6 100644
+--- a/git/utils/tinymix.c
++++ b/git/utils/tinymix.c
+@@ -34,6 +34,9 @@
+ #include <ctype.h>
+ #include <string.h>
+ #include <limits.h>
++#include <sound/asound.h>
++
++#define IEC958_CHSTATUS_SIZE 24
+ 
+ static void tinymix_list_controls(struct mixer *mixer, int print_all);
+ 
+@@ -264,6 +267,46 @@ static void tinymix_detail_control(struct mixer *mixer, const char *control)
+     free(buf);
+ }
+ 
++static void tinymix_set_iec958_ctl(struct mixer_ctl *ctl,
++                unsigned char **values, unsigned int num_values)
++{
++    int ret;
++    unsigned int i;
++    long n;
++    unsigned int size;
++    struct snd_aes_iec958 buf;
++
++    size = (num_values > IEC958_CHSTATUS_SIZE) ?
++                        IEC958_CHSTATUS_SIZE : num_values;
++
++    memset(&buf, 0, sizeof(buf));
++
++    for (i = 0; i < num_values; i++) {
++        errno = 0;
++        n = strtol(values[i], NULL, 16);
++
++        if (errno) {
++            fprintf(stderr, "strtol: %s: %s\n", values[i],
++                strerror(errno));
++            goto fail;
++        }
++
++        /* start filling after tlv header */
++        buf.status[i] = (unsigned char)n;
++    }
++
++    ret = mixer_ctl_set_array(ctl, (void *)&buf, 1);
++    if (ret < 0) {
++        fprintf(stderr, "Failed to set binary control\n");
++        goto fail;
++    }
++
++    return;
++
++fail:
++    exit(EXIT_FAILURE);
++}
++
+ static void tinymix_set_byte_ctl(struct mixer_ctl *ctl,
+     char **values, unsigned int num_values)
+ {
+@@ -366,6 +409,11 @@ static void tinymix_set_value(struct mixer *mixer, const char *control,
+         return;
+     }
+ 
++    if (type == MIXER_CTL_TYPE_IEC958) {
++        tinymix_set_iec958_ctl(ctl, values, num_values);
++        return;
++    }
++
+     if (is_int(values[0])) {
+         if (num_values == 1) {
+             /* Set all values the same */
+-- 
+2.7.4
+
