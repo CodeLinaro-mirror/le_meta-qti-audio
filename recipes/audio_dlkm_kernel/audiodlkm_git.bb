@@ -27,9 +27,6 @@ FILES_${PN}+= "${systemd_unitdir}/system/multi-user.target.wants/audio.service"
 EXTRA_OEMAKE += "TARGET_SUPPORT=${BASEMACHINE}"
 
 # Disable parallel make
-PARALLEL_MAKE = ""
-
-# Disable parallel make
 PARALLEL_MAKE = "-j1"
 
 do_configure() {
@@ -133,3 +130,7 @@ RPROVIDES_${PN} += "${@'kernel-module-tx-macro-dlkm-${KERNEL_VERSION}'.replace('
 RPROVIDES_${PN} += "${@'kernel-module-wcd937x-dlkm-${KERNEL_VERSION}'.replace('_', '-')}"
 RPROVIDES_${PN} += "${@'kernel-module-wcd937x-slave-dlkm-${KERNEL_VERSION}'.replace('_', '-')}"
 RPROVIDES_${PN} += "${@'kernel-module-machine-digcdc-dlkm-${KERNEL_VERSION}'.replace('_', '-')}"
+RPROVIDES_${PN} += "${@'kernel-module-wcd938x-dlkm-${KERNEL_VERSION}'.replace('_', '-')}"
+RPROVIDES_${PN} += "${@'kernel-module-wcd938x-slave-dlkm-${KERNEL_VERSION}'.replace('_', '-')}"
+
+do_configure[depends] += "virtual/kernel:do_shared_workdir"
