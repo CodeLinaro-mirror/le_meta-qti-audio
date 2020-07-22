@@ -100,6 +100,7 @@ EXTRA_OECONF_append_auto += "AUDIO_FEATURE_ENABLED_COMPRESS_INPUT=false"
 EXTRA_OECONF_append_auto += "AUDIO_FEATURE_ENABLED_HDMI_PASSTHROUGH=false"
 EXTRA_OECONF_append_auto += "AUDIO_FEATURE_ENABLED_APTX_DECODER=false"
 EXTRA_OECONF_append_auto += "AUDIO_FEATURE_ENABLED_GEF_SUPPORT=false"
+EXTRA_OECONF_append_auto += "AUDIO_FEATURE_ENABLED_SND_MONITOR=true"
 
 do_install_append() {
    if [ -d "${WORKDIR}/${BASEMACHINE}" ] && [ $(ls -1  ${WORKDIR}/${BASEMACHINE} | wc -l) -ne 0 ]; then

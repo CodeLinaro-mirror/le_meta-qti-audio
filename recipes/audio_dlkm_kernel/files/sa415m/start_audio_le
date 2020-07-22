@@ -38,8 +38,14 @@ case "$1" in
         insmod $MODULE_BASE/kernel/sound/core/snd-compress.ko
         insmod $MODULE_BASE/kernel/sound/soc/snd-soc-core.ko
         insmod $MODULE_BASE/kernel/sound/core/snd-hwdep.ko
+        file="$MODULE_BASE/extra/snd_event_dlkm.ko"
+        if [ -f "$file" ]
+        then
+	     insmod $file
+        else
+	     echo "$file not found."  > /dev/kmsg
+        fi
         insmod $MODULE_BASE/extra/q6_notifier_dlkm.ko
-        insmod $MODULE_BASE/extra/snd_event_dlkm.ko
         insmod $MODULE_BASE/extra/apr_dlkm.ko
         insmod $MODULE_BASE/extra/adsp_loader_dlkm.ko
         echo 1 > /sys/kernel/boot_adsp/boot
