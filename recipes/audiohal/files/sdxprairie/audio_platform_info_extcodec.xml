@@ -31,7 +31,6 @@
         <usecase name="USECASE_VOICEMMODE1_CALL" type="out" id="11"/>
         <usecase name="USECASE_VOICEMMODE2_CALL" type="in" id="12"/>
         <usecase name="USECASE_VOICEMMODE2_CALL" type="out" id="12"/>
-        <usecase name="USECASE_AUDIO_PLAYBACK_OFFLOAD2" type="out" id="7"/>
         <usecase name="USECASE_VOICE_HPCM_RX_UPLINK" type="out" id="14"/>
         <usecase name="USECASE_VOICE_HPCM_RX_DOWNLINK" type="in" id="13"/>
         <usecase name="USECASE_VOICE_HPCM_TX_UPLINK" type="out" id="16"/>
