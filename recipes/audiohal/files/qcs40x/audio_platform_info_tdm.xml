@@ -145,5 +145,7 @@
         <device name="SND_DEVICE_OUT_SPEAKER_AND_BT_SCO" backend="speaker-and-bt-sco" interface="PRI_MI2S_RX-and-SLIMBUS_7_RX"/>
         <device name="SND_DEVICE_OUT_SPEAKER_AND_BT_SCO_WB" backend="speaker-and-bt-sco-wb" interface="PRI_MI2S_RX-and-SLIMBUS_7_RX"/>
         <device name="SND_DEVICE_IN_LINE" backend="line-in" interface="SLIMBUS_0_TX"/>
+        <device name="SND_DEVICE_IN_SPEAKER_MIC2" backend="speaker-mic2" interface="QUAT_TDM_TX_0"/>
+        <device name="SND_DEVICE_IN_SPEAKER_MIC3" backend="speaker-mic3" interface="SEN_TDM_TX_0"/>
     </backend_names>
 </audio_platform_info>
