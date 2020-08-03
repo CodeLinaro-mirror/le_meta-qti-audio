@@ -248,6 +248,47 @@
     <ctl name="QUAT MI2S TX Format" value="LPCM" />
     <!-- SPDIF / HDMI TX end -->
 
+    <!-- TDM TX -->
+    <ctl name="MultiMedia1 Mixer QUAT_TDM_TX_0" value="0" />
+    <ctl name="MultiMedia1 Mixer SEN_TDM_TX_0" value="0" />
+    <ctl name="MultiMedia18 Mixer QUAT_TDM_TX_0" value="0" />
+    <ctl name="MultiMedia18 Mixer SEN_TDM_TX_0" value="0" />
+    <ctl name="MultiMedia19 Mixer QUAT_TDM_TX_0" value="0" />
+    <ctl name="MultiMedia19 Mixer SEN_TDM_TX_0" value="0" />
+    <ctl name="MultiMedia28 Mixer QUAT_TDM_TX_0" value="0" />
+    <ctl name="MultiMedia28 Mixer SEN_TDM_TX_0" value="0" />
+    <ctl name="MultiMedia29 Mixer QUAT_TDM_TX_0" value="0" />
+    <ctl name="MultiMedia29 Mixer SEN_TDM_TX_0" value="0" />
+    <ctl name="QUAT_TDM_TX_0 SampleRate" value="KHZ_48"/>
+    <ctl name="QUAT_TDM_TX_0 Channels" value="Two"/>
+    <ctl name="QUAT_TDM_TX_0 Format" value="S16_LE"/>
+    <ctl name="QUAT_TDM SlotNumber" value="Eight" />
+    <ctl name="QUAT_TDM SlotWidth" value="16" />
+    <ctl name="QUAT_TDM_TX SlotMapping" id="0" value="0"/>
+    <ctl name="QUAT_TDM_TX SlotMapping" id="1" value="2"/>
+    <ctl name="QUAT_TDM_TX SlotMapping" id="2" value="4"/>
+    <ctl name="QUAT_TDM_TX SlotMapping" id="3" value="6"/>
+    <ctl name="QUAT_TDM_TX SlotMapping" id="4" value="8"/>
+    <ctl name="QUAT_TDM_TX SlotMapping" id="5" value="10"/>
+    <ctl name="QUAT_TDM_TX SlotMapping" id="6" value="12"/>
+    <ctl name="QUAT_TDM_TX SlotMapping" id="7" value="14"/>
+    <ctl name="QUAT_TDM_TX SlotMapping" id="8" value="65535"/>
+    <ctl name="SEN_TDM_TX_0 SampleRate" value="KHZ_48"/>
+    <ctl name="SEN_TDM_TX_0 Channels" value="Eight"/>
+    <ctl name="SEN_TDM_TX_0 Format" value="S16_LE"/>
+    <ctl name="SEN_TDM SlotNumber" value="Eight" />
+    <ctl name="SEN_TDM SlotWidth" value="16" />
+    <ctl name="SEN_TDM_TX SlotMapping" id="0" value="0"/>
+    <ctl name="SEN_TDM_TX SlotMapping" id="1" value="2"/>
+    <ctl name="SEN_TDM_TX SlotMapping" id="2" value="4"/>
+    <ctl name="SEN_TDM_TX SlotMapping" id="3" value="6"/>
+    <ctl name="SEN_TDM_TX SlotMapping" id="4" value="8"/>
+    <ctl name="SEN_TDM_TX SlotMapping" id="5" value="10"/>
+    <ctl name="SEN_TDM_TX SlotMapping" id="6" value="12"/>
+    <ctl name="SEN_TDM_TX SlotMapping" id="7" value="14"/>
+    <ctl name="SEN_TDM_TX SlotMapping" id="8" value="65535"/>
+    <!-- TDM TX end -->
+
     <!-- Codec controls -->
 
     <!-- VA controls -->
@@ -1330,6 +1371,76 @@
     <path name="audio-record-compress5 hdmi-arc-in">
         <ctl name="MultiMedia29 Mixer SEC_SPDIF_TX" value="1" />
         <path name="hdmi-arc-in" />
+    </path>
+
+    <path name="speaker-mic2">
+        <ctl name="QUAT_TDM SlotNumber" value="Eight" />
+        <ctl name="QUAT_TDM SlotWidth" value="32" />
+        <ctl name="QUAT_TDM_TX_0 Format" value="S32_LE"/>
+        <ctl name="QUAT_TDM_TX SlotMapping" id="0" value="0"/>
+        <ctl name="QUAT_TDM_TX SlotMapping" id="1" value="4"/>
+        <ctl name="QUAT_TDM_TX SlotMapping" id="2" value="8"/>
+        <ctl name="QUAT_TDM_TX SlotMapping" id="3" value="12"/>
+        <ctl name="QUAT_TDM_TX SlotMapping" id="4" value="16"/>
+        <ctl name="QUAT_TDM_TX SlotMapping" id="5" value="20"/>
+        <ctl name="QUAT_TDM_TX SlotMapping" id="6" value="24"/>
+        <ctl name="QUAT_TDM_TX SlotMapping" id="7" value="28"/>
+        <ctl name="QUAT_TDM_TX SlotMapping" id="8" value="65535"/>
+    </path>
+
+    <path name="speaker-mic3" >
+        <ctl name="SEN_TDM SlotNumber" value="Eight" />
+        <ctl name="SEN_TDM SlotWidth" value="32" />
+        <ctl name="SEN_TDM_TX_0 Format" value="S32_LE"/>
+        <ctl name="SEN_TDM_TX SlotMapping" id="0" value="0"/>
+        <ctl name="SEN_TDM_TX SlotMapping" id="1" value="4"/>
+        <ctl name="SEN_TDM_TX SlotMapping" id="2" value="8"/>
+        <ctl name="SEN_TDM_TX SlotMapping" id="3" value="12"/>
+        <ctl name="SEN_TDM_TX SlotMapping" id="4" value="16"/>
+        <ctl name="SEN_TDM_TX SlotMapping" id="5" value="20"/>
+        <ctl name="SEN_TDM_TX SlotMapping" id="6" value="24"/>
+        <ctl name="SEN_TDM_TX SlotMapping" id="7" value="28"/>
+        <ctl name="SEN_TDM_TX SlotMapping" id="8" value="65535"/>
+    </path>
+
+    <path name="audio-record speaker-mic2">
+        <ctl name="MultiMedia1 Mixer QUAT_TDM_TX_0" value="1" />
+    </path>
+
+    <path name="audio-record-compress2 speaker-mic2">
+        <ctl name="MultiMedia18 Mixer QUAT_TDM_TX_0" value="1" />
+    </path>
+
+    <path name="audio-record-compress3 speaker-mic2">
+        <ctl name="MultiMedia19 Mixer QUAT_TDM_TX_0" value="1" />
+    </path>
+
+    <path name="audio-record-compress4 speaker-mic2">
+        <ctl name="MultiMedia28 Mixer QUAT_TDM_TX_0" value="1" />
+    </path>
+
+    <path name="audio-record-compress5 speaker-mic2">
+        <ctl name="MultiMedia29 Mixer QUAT_TDM_TX_0" value="1" />
+    </path>
+
+    <path name="audio-record speaker-mic3">
+        <ctl name="MultiMedia1 Mixer SEN_TDM_TX_0" value="1" />
+    </path>
+
+    <path name="audio-record-compress2 speaker-mic3">
+        <ctl name="MultiMedia18 Mixer SEN_TDM_TX_0" value="1" />
+    </path>
+
+    <path name="audio-record-compress3 speaker-mic3">
+        <ctl name="MultiMedia19 Mixer SEN_TDM_TX_0" value="1" />
+    </path>
+
+    <path name="audio-record-compress4 speaker-mic3">
+        <ctl name="MultiMedia28 Mixer SEN_TDM_TX_0" value="1" />
+    </path>
+
+    <path name="audio-record-compress5 speaker-mic3">
+        <ctl name="MultiMedia29 Mixer SEN_TDM_TX_0" value="1" />
     </path>
 
     <path name="low-latency-record">

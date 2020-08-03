@@ -197,6 +197,8 @@
         <device name="SND_DEVICE_IN_HANDSET_GENERIC_6MIC_AND_EC_REF_LOOPBACK" backend="handset-mic-and-ec-ref-loopback" interface="VA_CDC_DMA_TX_0-and-AFE_LOOPBACK_TX"/>
         <device name="SND_DEVICE_IN_HANDSET_GENERIC_8MIC" interface="VA_CDC_DMA_TX_0"/>
         <device name="SND_DEVICE_IN_HANDSET_GENERIC_8MIC_AND_EC_REF_LOOPBACK" backend="handset-mic-and-ec-ref-loopback" interface="VA_CDC_DMA_TX_0-and-AFE_LOOPBACK_TX"/>
+        <device name="SND_DEVICE_IN_SPEAKER_MIC2" backend="speaker-mic2" interface="QUAT_TDM_TX_0"/>
+        <device name="SND_DEVICE_IN_SPEAKER_MIC3" backend="speaker-mic3" interface="SEN_TDM_TX_0"/>
     </backend_names>
 
     <custom_mtmx_params param_id="0" in_channel_count="8" out_channel_count="10" usecase="USECASE_AUDIO_RECORD,USECASE_AUDIO_RECORD_COMPRESS2,USECASE_AUDIO_RECORD_COMPRESS3,USECASE_AUDIO_RECORD_COMPRESS4,USECASE_AUDIO_RECORD_COMPRESS5" snd_device="SND_DEVICE_IN_HANDSET_6MIC_AND_EC_REF_LOOPBACK" fe_id="1,18,19,28,29" >
