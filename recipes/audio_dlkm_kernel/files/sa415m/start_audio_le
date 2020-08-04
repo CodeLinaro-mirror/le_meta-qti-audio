@@ -35,34 +35,15 @@ case "$1" in
         echo -n "Starting/Loading audio module: "
 
         echo "audio:start/load" > /dev/kmsg
-        insmod $MODULE_BASE/kernel/sound/core/snd-compress.ko
-        insmod $MODULE_BASE/kernel/sound/soc/snd-soc-core.ko
-        insmod $MODULE_BASE/kernel/sound/core/snd-hwdep.ko
-        file="$MODULE_BASE/extra/snd_event_dlkm.ko"
-        if [ -f "$file" ]
-        then
-	     insmod $file
-        else
-	     echo "$file not found."  > /dev/kmsg
-        fi
-        insmod $MODULE_BASE/extra/q6_notifier_dlkm.ko
-        insmod $MODULE_BASE/extra/apr_dlkm.ko
-        insmod $MODULE_BASE/extra/adsp_loader_dlkm.ko
-        echo 1 > /sys/kernel/boot_adsp/boot
-        insmod $MODULE_BASE/extra/q6_dlkm.ko
-        insmod $MODULE_BASE/extra/platform_dlkm.ko
-        insmod $MODULE_BASE/extra/native_dlkm.ko
-        insmod $MODULE_BASE/extra/pinctrl_wcd_dlkm.ko
-        insmod $MODULE_BASE/extra/swr_dlkm.ko
-        insmod $MODULE_BASE/extra/stub_dlkm.ko
-        insmod $MODULE_BASE/extra/wcd_core_dlkm.ko
-        insmod $MODULE_BASE/extra/mbhc_dlkm.ko
-        insmod $MODULE_BASE/extra/wcd9xxx_dlkm.ko
-        insmod $MODULE_BASE/extra/swr_ctrl_dlkm.ko
-        insmod $MODULE_BASE/extra/wcd934x_dlkm.ko
-        insmod $MODULE_BASE/extra/wsa881x_dlkm.ko
-        insmod $MODULE_BASE/kernel/sound/soc/codecs/snd-soc-tlv320aic3x.ko
-        insmod $MODULE_BASE/extra/machine_dlkm.ko
+	modprobe snd-hwdep
+	modprobe snd-soc-core
+	modprobe stub_dlkm
+	modprobe adsp_loader_dlkm
+	echo 1 > /sys/kernel/boot_adsp/boot
+	modprobe platform_dlkm
+	modprobe pinctrl_wcd_dlkm
+	modprobe snd-soc-tlv320aic3x
+	modprobe machine_dlkm
         echo "done loading audio_kernel module"  > /dev/kmsg
         ;;
   stop)
