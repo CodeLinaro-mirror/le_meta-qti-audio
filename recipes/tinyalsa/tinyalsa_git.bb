@@ -18,7 +18,9 @@ SRC_URI = "git://codeaurora.org/quic/le/platform/external/tinyalsa.git;protocol=
            file://0001-tinyalsa-add-mixer_read-api-to-read-event-informatio.patch \
            file://0001-audio-Add-new-pcm-functions.patch \
            file://0001-tinyalsa-Add-pcm_ioctl-support-for-pcm-driver.patch \
-           file://0001-tinyalsa-Fix-tinyplay-runtime-issue.patch"
+           file://0001-tinyalsa-Fix-tinyplay-runtime-issue.patch \
+           file://0001-Add-support-for-event-handling.patch \
+           file://0001-tinyalsa-add-functions-to-export.patch"
 
 S = "${WORKDIR}"
 

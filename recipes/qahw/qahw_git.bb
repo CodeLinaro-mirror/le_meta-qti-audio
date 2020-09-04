@@ -7,12 +7,12 @@ LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/\
 ${LICENSE};md5=3775480a712fc46a69647678acb234cb"
 
 FILESPATH =+ "${WORKSPACE}/:"
-SRC_URI  = "file://hardware/qcom/audio/qahw/"
+SRC_URI  = "file://vendor/qcom/opensource/audio-hal/primary-hal/qahw/"
 
-S = "${WORKDIR}/hardware/qcom/audio/qahw/"
+S = "${WORKDIR}/vendor/qcom/opensource/audio-hal/primary-hal/qahw/"
 PR = "r0"
 
-DEPENDS = "libhardware liblog libcutils system-media"
+DEPENDS = "libhardware liblog libcutils media-headers audio-utils glib-2.0"
 
 EXTRA_OECONF = "--with-glib"
 EXTRA_OECONF_append_apq8009 = " BOARD_SUPPORTS_SVA_AUDIO_CONCURRENCY=true"
