@@ -185,6 +185,9 @@
     <ctl name="BT SampleRate" value="KHZ_8" />
     <ctl name="AFE Input Channels" value="Zero" />
     <ctl name="SLIM7_RX ADM Channels" value="Zero" />
+    <ctl name="MultiMedia19 Mixer SLIM_9_TX" value="0" />
+    <ctl name="MultiMedia28 Mixer SLIM_9_TX" value="0" />
+    <ctl name="MultiMedia29 Mixer SLIM_9_TX" value="0" />
     <!-- split a2dp end-->
 
     <!-- ADSP testfwk -->
@@ -984,6 +987,18 @@
 
     <path name="audio-record-compress2 bt-a2dp-cap">
         <ctl name="MultiMedia18 Mixer SLIM_9_TX" value="1" />
+    </path>
+
+    <path name="audio-record-compress3 bt-a2dp-cap">
+        <ctl name="MultiMedia19 Mixer SLIM_9_TX" value="1" />
+    </path>
+
+    <path name="audio-record-compress4 bt-a2dp-cap">
+        <ctl name="MultiMedia28 Mixer SLIM_9_TX" value="1" />
+    </path>
+
+    <path name="audio-record-compress5 bt-a2dp-cap">
+        <ctl name="MultiMedia29 Mixer SLIM_9_TX" value="1" />
     </path>
 
     <path name="audio-record bt-sco-wb">
