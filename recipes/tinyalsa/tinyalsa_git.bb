@@ -24,6 +24,12 @@ SRC_URI = "git://codeaurora.org/quic/le/platform/external/tinyalsa.git;protocol=
 SRC_URI_append_sdxprairie = "file://0001-tinymix_multi.patch \
                              file://0001-tinyplay-lower-threshold-values.patch"
 
+SRC_URI_append_sdxlemur = "file://0001-Add-support-for-event-handling.patch \
+                           file://0001-tinyalsa-add-functions-to-export.patch"
+
+SRC_URI_append_mdm9650 = "file://0001-Add-support-for-event-handling.patch \
+                          file://0001-tinyalsa-add-functions-to-export.patch"
+
 S = "${WORKDIR}"
 
 EXTRA_OEMAKE = "DEFAULT_INCLUDES=-I${WORKDIR}/git/include/"
