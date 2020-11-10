@@ -450,6 +450,14 @@
         <ctl name="Incall_Music Audio Mixer MultiMedia7" value="1" />
     </path>
 
+    <path name="compress-offload-playback voice2-tx">
+        <ctl name="Incall_Music_2 Audio Mixer MultiMedia4" value="1" />
+    </path>
+
+    <path name="compress-offload-playback2 voice2-tx">
+        <ctl name="Incall_Music_2 Audio Mixer MultiMedia7" value="1" />
+    </path>
+
     <path name="incall-rec-downlink">
         <ctl name="MultiMedia1 Mixer VOC_REC_DL" value="1" />
     </path>
