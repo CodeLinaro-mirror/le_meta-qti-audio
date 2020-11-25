@@ -105,7 +105,7 @@
         <param key="hfp_pcm_dev_id" value="36"/>
         <param key="hfp_pcm_rx_lineout_dev_id" value="5"/>
         <param key="hfp_pcm_rx_speaker_dev_id" value="46"/>
-        <param key="input_mic_max_count" value="4"/>
+        <param key="input_mic_max_count" value="8"/>
         <param key="spkr_device_chmap" value="16, 1, 2, 3, 4, 5, 8, 9, 14, 15, 17, 18, 6, 7, 16, 20, 21"/>
         <param key="capture_device_chmap" value="8, 1, 2, 6, 3, 4, 5, 8, 9"/>
     </config_params>
@@ -190,6 +190,8 @@
         <device name="SND_DEVICE_IN_HANDSET_GENERIC_6MIC_AND_EC_REF_LOOPBACK" backend="handset-mic-and-ec-ref-loopback" interface="VA_CDC_DMA_TX_0-and-AFE_LOOPBACK_TX"/>
         <device name="SND_DEVICE_IN_HANDSET_GENERIC_8MIC" interface="VA_CDC_DMA_TX_0"/>
         <device name="SND_DEVICE_IN_HANDSET_GENERIC_8MIC_AND_EC_REF_LOOPBACK" backend="handset-mic-and-ec-ref-loopback" interface="VA_CDC_DMA_TX_0-and-AFE_LOOPBACK_TX"/>
+        <device name="SND_DEVICE_IN_SPEAKER_MIC2" backend="speaker-mic2" interface="QUAT_TDM_TX_0"/>
+        <device name="SND_DEVICE_IN_SPEAKER_MIC3" backend="speaker-mic3" interface="SEN_TDM_TX_0"/>
     </backend_names>
 
     <custom_mtmx_params param_id="0" in_channel_count="6" out_channel_count="16" usecase="USECASE_AUDIO_PLAYBACK_OFFLOAD" snd_device="SND_DEVICE_OUT_SPEAKER">
