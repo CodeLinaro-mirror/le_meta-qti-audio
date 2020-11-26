@@ -259,6 +259,8 @@
     <ctl name="MultiMedia28 Mixer SEN_TDM_TX_0" value="0" />
     <ctl name="MultiMedia29 Mixer QUAT_TDM_TX_0" value="0" />
     <ctl name="MultiMedia29 Mixer SEN_TDM_TX_0" value="0" />
+    <ctl name="MultiMedia30 Mixer QUAT_TDM_TX_0" value="0" />
+    <ctl name="MultiMedia30 Mixer SEN_TDM_TX_0" value="0" />
     <ctl name="QUAT_TDM_TX_0 SampleRate" value="KHZ_48"/>
     <ctl name="QUAT_TDM_TX_0 Channels" value="Two"/>
     <ctl name="QUAT_TDM_TX_0 Format" value="S16_LE"/>
@@ -1175,6 +1177,10 @@
         <ctl name="MultiMedia29 Mixer SLIM_0_TX" value="1" />
     </path>
 
+    <path name="audio-record-compress6 line-in">
+        <ctl name="MultiMedia30 Mixer SLIM_0_TX" value="1" />
+    </path>
+
     <path name="audio-record usb-headset-mic">
         <ctl name="MultiMedia1 Mixer USB_AUDIO_TX" value="1" />
     </path>
@@ -1201,6 +1207,10 @@
 
     <path name="audio-record-compress5 bt-a2dp-cap">
         <ctl name="MultiMedia29 Mixer SLIM_9_TX" value="1" />
+    </path>
+
+    <path name="audio-record-compress6 bt-a2dp-cap">
+        <ctl name="MultiMedia30 Mixer SLIM_9_TX" value="1" />
     </path>
 
     <path name="audio-record bt-sco-wb">
@@ -1282,6 +1292,11 @@
         <path name="spdif-in" />
     </path>
 
+    <path name="audio-record-compress6 spdif-in">
+        <ctl name="MultiMedia30 Mixer PRI_SPDIF_TX" value="1" />
+        <path name="spdif-in" />
+    </path>
+
     <path name="hdmi-in">
     </path>
 
@@ -1324,6 +1339,11 @@
         <path name="hdmi-in" />
     </path>
 
+    <path name="audio-record-compress6 hdmi-in">
+        <ctl name="MultiMedia30 Mixer QUAT_MI2S_TX" value="1" />
+        <path name="hdmi-in" />
+    </path>
+
     <path name="audio-record-compress2 hdmi-in-dsd">
         <ctl name="MultiMedia18 Mixer QUAT_MI2S_TX" value="1" />
         <path name="hdmi-in" />
@@ -1341,6 +1361,11 @@
 
     <path name="audio-record-compress5 hdmi-in-dsd">
         <ctl name="MultiMedia29 Mixer QUAT_MI2S_TX" value="1" />
+        <path name="hdmi-in" />
+    </path>
+
+    <path name="audio-record-compress6 hdmi-in-dsd">
+        <ctl name="MultiMedia30 Mixer QUAT_MI2S_TX" value="1" />
         <path name="hdmi-in" />
     </path>
 
@@ -1370,6 +1395,11 @@
 
     <path name="audio-record-compress5 hdmi-arc-in">
         <ctl name="MultiMedia29 Mixer SEC_SPDIF_TX" value="1" />
+        <path name="hdmi-arc-in" />
+    </path>
+
+    <path name="audio-record-compress6 hdmi-arc-in">
+        <ctl name="MultiMedia30 Mixer SEC_SPDIF_TX" value="1" />
         <path name="hdmi-arc-in" />
     </path>
 
@@ -1423,6 +1453,10 @@
         <ctl name="MultiMedia29 Mixer QUAT_TDM_TX_0" value="1" />
     </path>
 
+    <path name="audio-record-compress6 speaker-mic2">
+        <ctl name="MultiMedia30 Mixer QUAT_TDM_TX_0" value="1" />
+    </path>
+
     <path name="audio-record speaker-mic3">
         <ctl name="MultiMedia1 Mixer SEN_TDM_TX_0" value="1" />
     </path>
@@ -1441,6 +1475,10 @@
 
     <path name="audio-record-compress5 speaker-mic3">
         <ctl name="MultiMedia29 Mixer SEN_TDM_TX_0" value="1" />
+    </path>
+
+    <path name="audio-record-compress6 speaker-mic3">
+        <ctl name="MultiMedia30 Mixer SEN_TDM_TX_0" value="1" />
     </path>
 
     <path name="low-latency-record">
