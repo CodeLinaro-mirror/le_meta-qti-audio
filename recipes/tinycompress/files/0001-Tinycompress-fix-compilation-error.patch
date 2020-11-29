@@ -1,0 +1,24 @@
+From c9dcf393d15e06be1fc5dfa6aac19612b63d95c2 Mon Sep 17 00:00:00 2001
+From: Asish Bhattacharya <asishb@codeaurora.org>
+Date: Sun, 12 Jul 2020 00:17:03 +0530
+Subject: [PATCH] Tinycompress: fix compilation error
+
+Change-Id: Id9e00c7f0517dfecd5489cdd01aa7e383dfa4180
+---
+ include/tinycompress/tinycompress.h | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/include/tinycompress/tinycompress.h b/include/tinycompress/tinycompress.h
+index 6cceabc..5580365 100644
+--- a/include/tinycompress/tinycompress.h
++++ b/include/tinycompress/tinycompress.h
+@@ -294,3 +294,6 @@ int compress_set_metadata(struct compress *compress,
+ int compress_get_metadata(struct compress *compress,
+ 	    struct snd_compr_metadata *mdata);
+ #endif
++#if defined(__cplusplus)
++}
++#endif
+-- 
+2.7.4
+
