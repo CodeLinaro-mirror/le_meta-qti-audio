@@ -27,7 +27,7 @@ DEPENDS_remove_mdm9650 = "surround-sound-3mic"
 #sdxprairie doesn't need surround sound recording
 DEPENDS_remove_sdxprairie = "surround-sound-3mic"
 
-AUDIO_KERNEL_HEADERS="${STAGING_KERNEL_BUILDDIR}/audio-kernel"
+AUDIO_KERNEL_HEADERS="${STAGING_KERNEL_BUILDDIR}/usr/include/audio/"
 CFLAGS += "-I${AUDIO_KERNEL_HEADERS}"
 
 EXTRA_OEMAKE = "DEFAULT_INCLUDES= CPPFLAGS="-I. -I${STAGING_KERNEL_BUILDDIR}/usr/include -I${STAGING_KERNEL_BUILDDIR}/usr/techpack/audio/include -I${STAGING_INCDIR}/surround_sound_3mic -I${STAGING_INCDIR}/sound_trigger""
