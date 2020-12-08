@@ -37,6 +37,10 @@
         <usecase name="USECASE_VOICE_HPCM_TX_DOWNLINK" type="in" id="15"/>
         <usecase name="USECASE_AUDIO_PLAYBACK_OFFLOAD2" type="in" id="33"/>
         <usecase name="USECASE_AUDIO_PLAYBACK_OFFLOAD2" type="out" id="33"/>
+        <usecase name="USECASE_AUDIO_AFE_LOOPBACK2" type="in" id="30"/>
+        <usecase name="USECASE_AUDIO_AFE_LOOPBACK2" type="out" id="29"/>
+        <usecase name="USECASE_AUDIO_AFE_LOOPBACK3" type="in" id="35"/>
+        <usecase name="USECASE_AUDIO_AFE_LOOPBACK3" type="out" id="34"/>
     </pcm_ids>
 
     <config_params>
