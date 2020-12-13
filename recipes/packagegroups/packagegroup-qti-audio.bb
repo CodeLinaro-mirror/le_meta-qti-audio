@@ -18,4 +18,5 @@ RDEPENDS_packagegroup-qti-audio += ' \
     tinycompress \
     audiohal \
     qahw \
+    init-audio \
 '
