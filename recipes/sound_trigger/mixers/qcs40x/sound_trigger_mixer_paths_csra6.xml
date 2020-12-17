@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--- Copyright (c) 2014, 2016, 2018-2020, The Linux Foundation. All rights     -->
+<!--- reserved.                                                                 -->
+<!--- Redistribution and use in source and binary forms, with or without        -->
+<!--- modification, are permitted provided that the following conditions are    -->
+<!--- met:                                                                      -->
+<!---     * Redistributions of source code must retain the above copyright      -->
+<!---       notice, this list of conditions and the following disclaimer.       -->
+<!---     * Redistributions in binary form must reproduce the above             -->
+<!---       copyright notice, this list of conditions and the following         -->
+<!---       disclaimer in the documentation and/or other materials provided     -->
+<!---       with the distribution.                                              -->
+<!---     * Neither the name of The Linux Foundation nor the names of its       -->
+<!---       contributors may be used to endorse or promote products derived     -->
+<!---       from this software without specific prior written permission.       -->
+<!---                                                                           -->
+<!--- THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESS OR IMPLIED              -->
+<!--- WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF      -->
+<!--- MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT    -->
+<!--- ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS    -->
+<!--- BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR    -->
+<!--- CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF      -->
+<!--- SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR           -->
+<!--- BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,     -->
+<!--- WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE      -->
+<!--- OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN    -->
+<!--- IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.                             -->
+
+<mixer>
+    <!-- These are the initial mixer settings -->
+    <ctl name="LSM1 Mixer VA_CDC_DMA_TX_0" value="0" />
+    <ctl name="LSM2 Mixer VA_CDC_DMA_TX_0" value="0" />
+    <ctl name="LSM3 Mixer VA_CDC_DMA_TX_0" value="0" />
+    <ctl name="LSM4 Mixer VA_CDC_DMA_TX_0" value="0" />
+    <ctl name="LSM5 Mixer VA_CDC_DMA_TX_0" value="0" />
+    <ctl name="LSM6 Mixer VA_CDC_DMA_TX_0" value="0" />
+    <ctl name="LSM7 Mixer VA_CDC_DMA_TX_0" value="0" />
+    <ctl name="LSM8 Mixer VA_CDC_DMA_TX_0" value="0" />
+    <ctl name="LSM1 Port" value="None" />
+    <ctl name="LSM2 Port" value="None" />
+    <ctl name="LSM3 Port" value="None" />
+    <ctl name="LSM4 Port" value="None" />
+    <ctl name="LSM5 Port" value="None" />
+    <ctl name="LSM6 Port" value="None" />
+    <ctl name="LSM7 Port" value="None" />
+    <ctl name="LSM8 Port" value="None" />
+    <ctl name="VA_CDC_DMA_TX_0 Channels" value="One" />
+    <ctl name="VA_AIF1_CAP Mixer DEC0" value="0" />
+    <ctl name="VA_AIF1_CAP Mixer DEC1" value="0" />
+    <ctl name="VA_AIF1_CAP Mixer DEC2" value="0" />
+    <ctl name="VA_AIF1_CAP Mixer DEC3" value="0" />
+    <ctl name="VA_AIF1_CAP Mixer DEC4" value="0" />
+    <ctl name="VA_AIF1_CAP Mixer DEC5" value="0" />
+    <ctl name="VA_AIF1_CAP Mixer DEC6" value="0" />
+    <ctl name="VA_AIF1_CAP Mixer DEC7" value="0" />
+    <ctl name="VA DEC0 MUX" value="MSM_DMIC" />
+    <ctl name="VA DEC1 MUX" value="MSM_DMIC" />
+    <ctl name="VA DEC2 MUX" value="MSM_DMIC" />
+    <ctl name="VA DEC3 MUX" value="MSM_DMIC" />
+    <ctl name="VA DEC4 MUX" value="MSM_DMIC" />
+    <ctl name="VA DEC5 MUX" value="MSM_DMIC" />
+    <ctl name="VA DEC6 MUX" value="MSM_DMIC" />
+    <ctl name="VA DEC7 MUX" value="MSM_DMIC" />
+    <ctl name="VA DMIC MUX0" value="ZERO" />
+    <ctl name="VA DMIC MUX1" value="ZERO" />
+    <ctl name="VA DMIC MUX2" value="ZERO" />
+    <ctl name="VA DMIC MUX3" value="ZERO" />
+    <ctl name="VA DMIC MUX4" value="ZERO" />
+    <ctl name="VA DMIC MUX5" value="ZERO" />
+    <ctl name="VA DMIC MUX6" value="ZERO" />
+    <ctl name="VA DMIC MUX7" value="ZERO" />
+
+    <ctl name="MultiMedia2 Mixer VA_CDC_DMA_TX_0" value="0" />
+    <ctl name="MultiMedia9 Mixer VA_CDC_DMA_TX_1" value="0" />
+
+    <ctl name="AUDIO_REF_EC_UL1 MUX" value="None"/>
+    <ctl name="EC Reference Channels" value="Zero"/>
+    <ctl name="EC Reference Bit Format" value="0"/>
+    <ctl name="EC Reference SampleRate" value="0"/>
+    <ctl name="EC Reference Downmixed Channels" value="Zero"/>
+    <ctl name="EC Reference ChMixer Weights Ch1" value="0"/>
+    <ctl name="EC Reference ChMixer Weights Ch2" value="0"/>
+    <ctl name="EC Reference ChMixer Weights Ch3" value="0"/>
+    <ctl name="EC Reference ChMixer Weights Ch4" value="0"/>
+    <ctl name="EC Reference ChMixer Weights Ch5" value="0"/>
+    <ctl name="EC Reference ChMixer Weights Ch6" value="0"/>
+
+    <path name="listen-voice-wakeup-1">
+        <ctl name="LSM1 Mixer VA_CDC_DMA_TX_0" value="1" />
+    </path>
+
+    <path name="listen-voice-wakeup-2">
+        <ctl name="LSM2 Mixer VA_CDC_DMA_TX_0" value="1" />
+    </path>
+
+    <path name="listen-voice-wakeup-3">
+        <ctl name="LSM3 Mixer VA_CDC_DMA_TX_0" value="1" />
+    </path>
+
+    <path name="listen-voice-wakeup-4">
+        <ctl name="LSM4 Mixer VA_CDC_DMA_TX_0" value="1" />
+    </path>
+
+    <path name="listen-voice-wakeup-5">
+        <ctl name="LSM5 Mixer VA_CDC_DMA_TX_0" value="1" />
+    </path>
+
+    <path name="listen-voice-wakeup-6">
+        <ctl name="LSM6 Mixer VA_CDC_DMA_TX_0" value="1" />
+    </path>
+
+    <path name="listen-voice-wakeup-7">
+        <ctl name="LSM7 Mixer VA_CDC_DMA_TX_0" value="1" />
+    </path>
+
+    <path name="listen-voice-wakeup-8">
+        <ctl name="LSM8 Mixer VA_CDC_DMA_TX_0" value="1" />
+    </path>
+
+    <path name="listen-voice-wakeup-1 preproc">
+        <ctl name="LSM1 Mixer VA_CDC_DMA_TX_0" value="1" />
+    </path>
+
+    <path name="listen-voice-wakeup-2 preproc">
+        <ctl name="LSM2 Mixer VA_CDC_DMA_TX_0" value="1" />
+    </path>
+
+    <path name="listen-voice-wakeup-3 preproc">
+        <ctl name="LSM3 Mixer VA_CDC_DMA_TX_0" value="1" />
+    </path>
+
+    <path name="listen-voice-wakeup-4 preproc">
+        <ctl name="LSM4 Mixer VA_CDC_DMA_TX_0" value="1" />
+    </path>
+
+    <path name="listen-voice-wakeup-5 preproc">
+        <ctl name="LSM5 Mixer VA_CDC_DMA_TX_0" value="1" />
+    </path>
+
+    <path name="listen-voice-wakeup-6 preproc">
+        <ctl name="LSM6 Mixer VA_CDC_DMA_TX_0" value="1" />
+    </path>
+
+    <path name="listen-voice-wakeup-7 preproc">
+        <ctl name="LSM7 Mixer VA_CDC_DMA_TX_0" value="1" />
+    </path>
+
+    <path name="listen-voice-wakeup-8 preproc">
+        <ctl name="LSM8 Mixer VA_CDC_DMA_TX_0" value="1" />
+    </path>
+
+    <path name="listen-voice-wakeup-1 port">
+        <ctl name="LSM1 Port" value="VA_CDC_DMA_TX_0" />
+    </path>
+
+    <path name="listen-voice-wakeup-2 port">
+        <ctl name="LSM2 Port" value="VA_CDC_DMA_TX_0" />
+    </path>
+
+    <path name="listen-voice-wakeup-3 port">
+        <ctl name="LSM3 Port" value="VA_CDC_DMA_TX_0" />
+    </path>
+
+    <path name="listen-voice-wakeup-4 port">
+        <ctl name="LSM4 Port" value="VA_CDC_DMA_TX_0" />
+    </path>
+
+    <path name="listen-voice-wakeup-5 port">
+        <ctl name="LSM5 Port" value="VA_CDC_DMA_TX_0" />
+    </path>
+
+    <path name="listen-voice-wakeup-6 port">
+        <ctl name="LSM6 Port" value="VA_CDC_DMA_TX_0" />
+    </path>
+
+    <path name="listen-voice-wakeup-7 port">
+        <ctl name="LSM7 Port" value="VA_CDC_DMA_TX_0" />
+    </path>
+
+    <path name="listen-voice-wakeup-8 port">
+        <ctl name="LSM8 Port" value="VA_CDC_DMA_TX_0" />
+    </path>
+
+    <path name="listen-voice-wakeup-1 preproc port">
+        <ctl name="LSM1 Port" value="ADM_LSM_TX" />
+    </path>
+
+    <path name="listen-voice-wakeup-2 preproc port">
+        <ctl name="LSM2 Port" value="ADM_LSM_TX" />
+    </path>
+
+    <path name="listen-voice-wakeup-3 preproc port">
+        <ctl name="LSM3 Port" value="ADM_LSM_TX" />
+    </path>
+
+    <path name="listen-voice-wakeup-4 preproc port">
+        <ctl name="LSM4 Port" value="ADM_LSM_TX" />
+    </path>
+
+    <path name="listen-voice-wakeup-5 preproc port">
+        <ctl name="LSM5 Port" value="ADM_LSM_TX" />
+    </path>
+
+    <path name="listen-voice-wakeup-6 preproc port">
+        <ctl name="LSM6 Port" value="ADM_LSM_TX" />
+    </path>
+
+    <path name="listen-voice-wakeup-7 preproc port">
+        <ctl name="LSM7 Port" value="ADM_LSM_TX" />
+    </path>
+
+    <path name="listen-voice-wakeup-8 preproc port">
+        <ctl name="LSM8 Port" value="ADM_LSM_TX" />
+    </path>
+
+    <path name="audio-capture">
+        <ctl name="MultiMedia2 Mixer VA_CDC_DMA_TX_0" value="1" />
+    </path>
+
+    <path name="listen-ape-handset-mic">
+        <ctl name="VA_AIF1_CAP Mixer DEC0" value="1" />
+        <ctl name="VA DMIC MUX0" value="DMIC0" />
+    </path>
+
+    <path name="listen-ape-handset-mic-preproc">
+        <path name="listen-ape-handset-mic" />
+    </path>
+
+    <path name="listen-ape-handset-dmic">
+        <ctl name="VA_CDC_DMA_TX_0 Channels" value="Two" />
+        <ctl name="VA_AIF1_CAP Mixer DEC3" value="1" />
+        <ctl name="VA_AIF1_CAP Mixer DEC7" value="1" />
+        <ctl name="VA DMIC MUX3" value="DMIC3" />
+        <ctl name="VA DMIC MUX7" value="DMIC7" />
+    </path>
+
+    <path name="listen-ape-handset-tmic">
+        <ctl name="VA_CDC_DMA_TX_0 Channels" value="Three" />
+        <ctl name="VA_AIF1_CAP Mixer DEC2" value="1" />
+        <ctl name="VA_AIF1_CAP Mixer DEC4" value="1" />
+        <ctl name="VA_AIF1_CAP Mixer DEC7" value="1" />
+        <ctl name="VA DMIC MUX2" value="DMIC2" />
+        <ctl name="VA DMIC MUX4" value="DMIC4" />
+        <ctl name="VA DMIC MUX7" value="DMIC7" />
+    </path>
+
+    <path name="listen-ape-handset-qmic">
+        <ctl name="VA_CDC_DMA_TX_0 Channels" value="Four" />
+        <ctl name="VA_AIF1_CAP Mixer DEC0" value="1" />
+        <ctl name="VA_AIF1_CAP Mixer DEC2" value="1" />
+        <ctl name="VA_AIF1_CAP Mixer DEC4" value="1" />
+        <ctl name="VA_AIF1_CAP Mixer DEC6" value="1" />
+        <ctl name="VA DMIC MUX0" value="DMIC0" />
+        <ctl name="VA_DEC0 Volume" value="96" />
+        <ctl name="VA DMIC MUX2" value="DMIC2" />
+        <ctl name="VA_DEC2 Volume" value="96" />
+        <ctl name="VA DMIC MUX4" value="DMIC4" />
+        <ctl name="VA_DEC4 Volume" value="96" />
+        <ctl name="VA DMIC MUX6" value="DMIC6" />
+        <ctl name="VA_DEC6 Volume" value="96" />
+    </path>
+
+    <path name="listen-ape-handset-6mic">
+        <ctl name="VA_CDC_DMA_TX_0 Channels" value="Six" />
+        <ctl name="VA_AIF1_CAP Mixer DEC2" value="1" />
+        <ctl name="VA_AIF1_CAP Mixer DEC3" value="1" />
+        <ctl name="VA_AIF1_CAP Mixer DEC4" value="1" />
+        <ctl name="VA_AIF1_CAP Mixer DEC6" value="1" />
+        <ctl name="VA_AIF1_CAP Mixer DEC7" value="1" />
+        <ctl name="VA_AIF1_CAP Mixer DEC0" value="1" />
+        <ctl name="VA DMIC MUX2" value="DMIC2" />
+        <ctl name="VA DMIC MUX3" value="DMIC3" />
+        <ctl name="VA DMIC MUX4" value="DMIC4" />
+        <ctl name="VA DMIC MUX6" value="DMIC6" />
+        <ctl name="VA DMIC MUX7" value="DMIC7" />
+        <ctl name="VA DMIC MUX0" value="DMIC0" />
+    </path>
+
+    <path name="listen-ape-handset-7mic">
+        <ctl name="VA_CDC_DMA_TX_0 Channels" value="Seven" />
+        <ctl name="VA_AIF1_CAP Mixer DEC0" value="1" />
+        <ctl name="VA_AIF1_CAP Mixer DEC1" value="1" />
+        <ctl name="VA_AIF1_CAP Mixer DEC2" value="1" />
+        <ctl name="VA_AIF1_CAP Mixer DEC3" value="1" />
+        <ctl name="VA_AIF1_CAP Mixer DEC4" value="1" />
+        <ctl name="VA_AIF1_CAP Mixer DEC5" value="1" />
+        <ctl name="VA_AIF1_CAP Mixer DEC6" value="1" />
+        <ctl name="VA DMIC MUX0" value="DMIC0" />
+        <ctl name="VA DMIC MUX1" value="DMIC1" />
+        <ctl name="VA DMIC MUX2" value="DMIC2" />
+        <ctl name="VA DMIC MUX3" value="DMIC3" />
+        <ctl name="VA DMIC MUX4" value="DMIC4" />
+        <ctl name="VA DMIC MUX5" value="DMIC5" />
+        <ctl name="VA DMIC MUX6" value="DMIC6" />
+    </path>
+
+    <path name="listen-ape-handset-8mic">
+        <ctl name="VA_CDC_DMA_TX_0 Channels" value="Eight" />
+        <ctl name="VA_AIF1_CAP Mixer DEC0" value="1" />
+        <ctl name="VA_AIF1_CAP Mixer DEC1" value="1" />
+        <ctl name="VA_AIF1_CAP Mixer DEC2" value="1" />
+        <ctl name="VA_AIF1_CAP Mixer DEC3" value="1" />
+        <ctl name="VA_AIF1_CAP Mixer DEC4" value="1" />
+        <ctl name="VA_AIF1_CAP Mixer DEC5" value="1" />
+        <ctl name="VA_AIF1_CAP Mixer DEC6" value="1" />
+        <ctl name="VA_AIF1_CAP Mixer DEC7" value="1" />
+        <ctl name="VA DMIC MUX0" value="DMIC0" />
+        <ctl name="VA DMIC MUX1" value="DMIC1" />
+        <ctl name="VA DMIC MUX2" value="DMIC2" />
+        <ctl name="VA DMIC MUX3" value="DMIC3" />
+        <ctl name="VA DMIC MUX4" value="DMIC4" />
+        <ctl name="VA DMIC MUX5" value="DMIC5" />
+        <ctl name="VA DMIC MUX6" value="DMIC6" />
+        <ctl name="VA DMIC MUX7" value="DMIC7" />
+    </path>
+
+    <path name="echo-reference">
+        <ctl name="AUDIO_REF_EC_UL1 MUX" value="I2S_RX"/>
+        <ctl name="EC Reference Channels" value="Twelve"/>
+        <ctl name="EC Reference Bit Format" value="S16_LE"/>
+        <ctl name="EC Reference SampleRate" value="48000"/>
+        <!-- Output channel Co-efficients are required if downmix channels != ec_ref channels -->
+        <ctl name="EC Reference Downmixed Channels" value="Six"/>
+        <!-- EC Reference Downmix Co-efficients (16384 is Unity) -->
+        <!-- Set value(without id) to default/0 explicitly, to avoid garbage initialization-->
+        <!-- Co-efficients for First Output channel -->
+        <ctl name="EC Reference ChMixer Weights Ch1" value="0"/>
+        <ctl name="EC Reference ChMixer Weights Ch1" id="0" value="8174"/>
+        <ctl name="EC Reference ChMixer Weights Ch1" id="1" value="8174"/>
+        <!-- Co-efficients for Second Output channel -->
+        <ctl name="EC Reference ChMixer Weights Ch2" value="0"/>
+        <ctl name="EC Reference ChMixer Weights Ch2" id="2" value="8174"/>
+        <ctl name="EC Reference ChMixer Weights Ch2" id="3" value="8174"/>
+        <!-- Co-efficients for Third Output channel -->
+        <ctl name="EC Reference ChMixer Weights Ch3" value="0"/>
+        <ctl name="EC Reference ChMixer Weights Ch3" id="4" value="8174"/>
+        <ctl name="EC Reference ChMixer Weights Ch3" id="5" value="8174"/>
+        <!-- Co-efficients for Fourth Output channel -->
+        <ctl name="EC Reference ChMixer Weights Ch4" value="0"/>
+        <ctl name="EC Reference ChMixer Weights Ch4" id="6" value="8174"/>
+        <ctl name="EC Reference ChMixer Weights Ch4" id="7" value="8174"/>
+        <!-- Co-efficient for Fifth Output channel -->
+        <ctl name="EC Reference ChMixer Weights Ch5" value="0"/>
+        <ctl name="EC Reference ChMixer Weights Ch5" id="8" value="8174"/>
+        <ctl name="EC Reference ChMixer Weights Ch5" id="9" value="8174"/>
+        <!-- Co-efficient for Sixth Output channel -->
+        <ctl name="EC Reference ChMixer Weights Ch6" value="0"/>
+        <ctl name="EC Reference ChMixer Weights Ch6" id="10" value="8174"/>
+        <ctl name="EC Reference ChMixer Weights Ch6" id="11" value="8174"/>
+    </path>
+
+    <path name="echo-reference line">
+        <ctl name="AUDIO_REF_EC_UL1 MUX" value="SLIM_RX"/>
+        <ctl name="EC Reference Channels" value="Two"/>
+        <ctl name="EC Reference Bit Format" value="S16_LE"/>
+        <ctl name="EC Reference SampleRate" value="48000"/>
+    </path>
+
+    <!-- TODO: add controls for ec-ref on other devices -->
+</mixer>

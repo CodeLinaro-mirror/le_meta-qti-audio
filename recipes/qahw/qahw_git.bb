@@ -12,6 +12,9 @@ SRC_URI  = "file://hardware/qcom/audio/qahw/"
 S = "${WORKDIR}/hardware/qcom/audio/qahw/"
 PR = "r0"
 
+DEPENDS = "libhardware liblog libcutils glib-2.0"
+
+DEPENDS_append = "${@bb.utils.contains('DISTRO_FEATURES', 'qti-audio', ' media-headers audio-route audio-utils', ' system-media', d)}"
 DEPENDS += "libhardware liblog libcutils media-headers audio-route audio-utils glib-2.0"
 
 EXTRA_OECONF = "--with-glib"
