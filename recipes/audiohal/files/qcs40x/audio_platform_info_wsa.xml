@@ -86,6 +86,7 @@
         <usecase name="USECASE_AUDIO_RECORD_COMPRESS3" type="in" id="43"/>
         <usecase name="USECASE_AUDIO_RECORD_COMPRESS4" type="in" id="44"/>
         <usecase name="USECASE_AUDIO_RECORD_COMPRESS5" type="in" id="45"/>
+        <usecase name="USECASE_AUDIO_RECORD_COMPRESS6" type="in" id="47"/>
         <usecase name="USECASE_AUDIO_HFP_SCO" type="in" id="39" />
         <usecase name="USECASE_AUDIO_HFP_SCO_WB" type="in" id="39" />
         <usecase name="USECASE_AUDIO_TRANSCODE_LOOPBACK_RX" type="out" id="41" />
@@ -201,7 +202,7 @@
         <device name="SND_DEVICE_IN_SPEAKER_MIC3" backend="speaker-mic3" interface="SEN_TDM_TX_0"/>
     </backend_names>
 
-    <custom_mtmx_params param_id="0" in_channel_count="8" out_channel_count="10" usecase="USECASE_AUDIO_RECORD,USECASE_AUDIO_RECORD_COMPRESS2,USECASE_AUDIO_RECORD_COMPRESS3,USECASE_AUDIO_RECORD_COMPRESS4,USECASE_AUDIO_RECORD_COMPRESS5" snd_device="SND_DEVICE_IN_HANDSET_6MIC_AND_EC_REF_LOOPBACK" fe_id="1,18,19,28,29" >
+    <custom_mtmx_params param_id="0" in_channel_count="8" out_channel_count="10" usecase="USECASE_AUDIO_RECORD,USECASE_AUDIO_RECORD_COMPRESS2,USECASE_AUDIO_RECORD_COMPRESS3,USECASE_AUDIO_RECORD_COMPRESS4,USECASE_AUDIO_RECORD_COMPRESS5,USECASE_AUDIO_RECORD_COMPRESS6" snd_device="SND_DEVICE_IN_HANDSET_6MIC_AND_EC_REF_LOOPBACK" fe_id="1,18,19,28,29,30" >
         <custom_mtmx_param_coeffs out_channel_index="0"  values="16384 0 0 0 0 0 0 0"/>
         <custom_mtmx_param_coeffs out_channel_index="1"  values="0 16384 0 0 0 0 0 0"/>
         <custom_mtmx_param_coeffs out_channel_index="2"  values="0 0 16384 0 0 0 0 0"/>
@@ -214,7 +215,7 @@
         <custom_mtmx_param_coeffs out_channel_index="9" values="0 0 0 0 0 0 0 0"/>
     </custom_mtmx_params>
 
-    <custom_mtmx_params param_id="0" in_channel_count="6" out_channel_count="6" usecase="USECASE_AUDIO_RECORD,USECASE_AUDIO_RECORD_COMPRESS2,USECASE_AUDIO_RECORD_COMPRESS3,USECASE_AUDIO_RECORD_COMPRESS4,USECASE_AUDIO_RECORD_COMPRESS5" snd_device="SND_DEVICE_IN_HANDSET_QMIC_AND_EC_REF_LOOPBACK" fe_id="1,18,19,28,29" >
+    <custom_mtmx_params param_id="0" in_channel_count="6" out_channel_count="6" usecase="USECASE_AUDIO_RECORD,USECASE_AUDIO_RECORD_COMPRESS2,USECASE_AUDIO_RECORD_COMPRESS3,USECASE_AUDIO_RECORD_COMPRESS4,USECASE_AUDIO_RECORD_COMPRESS5,USECASE_AUDIO_RECORD_COMPRESS6" snd_device="SND_DEVICE_IN_HANDSET_QMIC_AND_EC_REF_LOOPBACK" fe_id="1,18,19,28,29,30" >
         <custom_mtmx_param_coeffs out_channel_index="0"  values="16384 0 0 0 0 0"/>
         <custom_mtmx_param_coeffs out_channel_index="1"  values="0 16384 0 0 0 0"/>
         <custom_mtmx_param_coeffs out_channel_index="2"  values="0 0 16384 0 0 0"/>
@@ -223,7 +224,7 @@
         <custom_mtmx_param_coeffs out_channel_index="5"  values="0 0 0 0 0 16384"/>
     </custom_mtmx_params>
 
-    <custom_mtmx_params param_id="0" in_channel_count="8" out_channel_count="8" usecase="USECASE_AUDIO_RECORD,USECASE_AUDIO_RECORD_COMPRESS2,USECASE_AUDIO_RECORD_COMPRESS3,USECASE_AUDIO_RECORD_COMPRESS4,USECASE_AUDIO_RECORD_COMPRESS5" snd_device="SND_DEVICE_IN_HANDSET_6MIC_AND_EC_REF_LOOPBACK" fe_id="1,18,19,28,29" >
+    <custom_mtmx_params param_id="0" in_channel_count="8" out_channel_count="8" usecase="USECASE_AUDIO_RECORD,USECASE_AUDIO_RECORD_COMPRESS2,USECASE_AUDIO_RECORD_COMPRESS3,USECASE_AUDIO_RECORD_COMPRESS4,USECASE_AUDIO_RECORD_COMPRESS5,USECASE_AUDIO_RECORD_COMPRESS6" snd_device="SND_DEVICE_IN_HANDSET_6MIC_AND_EC_REF_LOOPBACK" fe_id="1,18,19,28,29,30" >
         <custom_mtmx_param_coeffs out_channel_index="0"  values="16384 0 0 0 0 0 0 0"/>
         <custom_mtmx_param_coeffs out_channel_index="1"  values="0 16384 0 0 0 0 0 0"/>
         <custom_mtmx_param_coeffs out_channel_index="2"  values="0 0 16384 0 0 0 0 0"/>
@@ -234,17 +235,17 @@
         <custom_mtmx_param_coeffs out_channel_index="7"  values="0 0 0 0 0 0 0 16384"/>
     </custom_mtmx_params>
 
-    <custom_mtmx_in_params usecase="USECASE_AUDIO_RECORD,USECASE_AUDIO_RECORD_COMPRESS2,USECASE_AUDIO_RECORD_COMPRESS3,USECASE_AUDIO_RECORD_COMPRESS4,USECASE_AUDIO_RECORD_COMPRESS5" out_channel_count="10" >
+    <custom_mtmx_in_params usecase="USECASE_AUDIO_RECORD,USECASE_AUDIO_RECORD_COMPRESS2,USECASE_AUDIO_RECORD_COMPRESS3,USECASE_AUDIO_RECORD_COMPRESS4,USECASE_AUDIO_RECORD_COMPRESS5,USECASE_AUDIO_RECORD_COMPRESS6" out_channel_count="10" >
         <custom_mtmx_param_in_chs in_channel_index="0" channel_count="6" device="AUDIO_DEVICE_IN_BUILTIN_MIC" interface="VA_CDC_DMA_TX_0" />
         <custom_mtmx_param_in_chs in_channel_index="1" channel_count="2" device="AUDIO_DEVICE_IN_LOOPBACK" interface="AFE_LOOPBACK_TX" />
     </custom_mtmx_in_params>
 
-    <custom_mtmx_in_params usecase="USECASE_AUDIO_RECORD,USECASE_AUDIO_RECORD_COMPRESS2,USECASE_AUDIO_RECORD_COMPRESS3,USECASE_AUDIO_RECORD_COMPRESS4,USECASE_AUDIO_RECORD_COMPRESS5" out_channel_count="6" >
+    <custom_mtmx_in_params usecase="USECASE_AUDIO_RECORD,USECASE_AUDIO_RECORD_COMPRESS2,USECASE_AUDIO_RECORD_COMPRESS3,USECASE_AUDIO_RECORD_COMPRESS4,USECASE_AUDIO_RECORD_COMPRESS5,USECASE_AUDIO_RECORD_COMPRESS6" out_channel_count="6" >
         <custom_mtmx_param_in_chs in_channel_index="0" channel_count="4" device="AUDIO_DEVICE_IN_BUILTIN_MIC" interface="VA_CDC_DMA_TX_0" />
         <custom_mtmx_param_in_chs in_channel_index="1" channel_count="2" device="AUDIO_DEVICE_IN_LOOPBACK" interface="AFE_LOOPBACK_TX" />
     </custom_mtmx_in_params>
 
-    <custom_mtmx_in_params usecase="USECASE_AUDIO_RECORD,USECASE_AUDIO_RECORD_COMPRESS2,USECASE_AUDIO_RECORD_COMPRESS3,USECASE_AUDIO_RECORD_COMPRESS4,USECASE_AUDIO_RECORD_COMPRESS5" out_channel_count="8" >
+    <custom_mtmx_in_params usecase="USECASE_AUDIO_RECORD,USECASE_AUDIO_RECORD_COMPRESS2,USECASE_AUDIO_RECORD_COMPRESS3,USECASE_AUDIO_RECORD_COMPRESS4,USECASE_AUDIO_RECORD_COMPRESS5,USECASE_AUDIO_RECORD_COMPRESS6" out_channel_count="8" >
         <custom_mtmx_param_in_chs in_channel_index="0" channel_count="6" device="AUDIO_DEVICE_IN_BUILTIN_MIC" interface="VA_CDC_DMA_TX_0" />
         <custom_mtmx_param_in_chs in_channel_index="1" channel_count="2" device="AUDIO_DEVICE_IN_LOOPBACK" interface="AFE_LOOPBACK_TX" />
     </custom_mtmx_in_params>
