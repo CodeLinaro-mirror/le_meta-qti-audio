@@ -1,19 +1,18 @@
-inherit autotools pkgconfig
-
-DESCRIPTION = "Tinycompress Library"
+inherit autotools
+SUMMARY = "ALSA sound library for compress format"
 LICENSE = "BSD & LGPLv2.1"
-LIC_FILES_CHKSUM = "file://COPYING;md5=cf9105c1a2d4405cbe04bbe3367373a0"
+LIC_FILES_CHKSUM = "file://COPYING;md5=7b60fb27ed2ff685a5c5f41b8b59cca6"
 
-PR = "r1"
+PVR = "v1.1.0"
 
-SRCREV = "5de00c7a52325158072edf128b87319328bb930d"
+SRCREV = "e605f5684997565ba50cf9ad57df2a7980b5e327"
 SRC_URI = "git://codeaurora.org/quic/le/platform/external/tinycompress.git;protocol=git;branch=alsa-project/master\
-           file://0001-compress-add-support-for-plugins.patch"
+           file://0001-Tinycompress-Update-tinycompress-with-bug-fixes-enha.patch\
+           file://0001-Tinycompress-Add-compress_set_next_track_param-funct.patch\
+           file://0001-Tinycompress-Add-get_metadata-and-set_metadata-API-s.patch"
+
+EXTRA_OECONF_append = " --with-sanitized-headers=${STAGING_KERNEL_BUILDDIR}/usr/include"
 
 S = "${WORKDIR}/git"
 
-EXTRA_OEMAKE = "DEFAULT_INCLUDES=-I${WORKDIR}/git/include/"
-EXTRA_OECONF_append = " --with-sanitized-headers=${STAGING_KERNEL_BUILDDIR}/usr/include"
-
-DEPENDS = "virtual/kernel glib-2.0"
-EXTRA_OECONF += "--with-glib"
+DEPENDS = "virtual/kernel"
