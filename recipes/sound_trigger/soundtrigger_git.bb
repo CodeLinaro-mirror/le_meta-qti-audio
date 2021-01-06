@@ -34,7 +34,7 @@ EXTRA_OECONF_append_apq8017 = " BOARD_SUPPORTS_SOUND_TRIGGER_ARM=true"
 EXTRA_OECONF_append_apq8009 = " BOARD_SUPPORTS_SOUND_TRIGGER_ARM=true"
 EXTRA_OECONF_append_apq8009 = " ENABLE_KEEP_ALIVE=true"
 EXTRA_OECONF_append_apq8009 = " BOARD_SUPPORTS_SOUND_TRIGGER_CPU_AFFINITY_SET=true"
-EXTRA_OECONF_append_qrb5165 = " --enable-feature_sva_multistage"
+EXTRA_OECONF_append_kona = " --enable-feature_sva_multistage"
 EXTRA_OECONF_append_qcs40x = " --enable-deferred_stop"
 EXTRA_OECONF_append_qcs40x = " --enable-feature_sva_multistage"
 
