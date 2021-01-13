@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<!-- Copyright (c) 2015-2020, The Linux Foundation. All rights reserved.    -->
+<!-- Copyright (c) 2015-2021, The Linux Foundation. All rights reserved.    -->
 <!--                                                                        -->
 <!-- Redistribution and use in source and binary forms, with or without     -->
 <!-- modification, are permitted provided that the following conditions are -->
@@ -56,18 +56,21 @@
     <ctl name="Incall_Music Audio Mixer MultiMedia4" value="0" />
 
     <!-- ctl to configure secondary TDM mode.
-        Slave = 1
-        Master = 0
+        slave/master
     -->
     <ctl name="SEC_TDM Mode" value="slave" />
 
     <!-- ctl to configure TDM slots-->
     <ctl name="SEC_TDM SlotNumber" value="Two" />
     <ctl name="SEC_TDM SlotWidth" value="16" />
-    <ctl name="SEC_TDM_RX_0 SlotMapping" value="0" />
-    <ctl name="SEC_TDM_RX_1 SlotMapping" value="2" />
-    <ctl name="SEC_TDM_TX_0 SlotMapping" value="0" />
-    <ctl name="SEC_TDM_TX_1 SlotMapping" value="2" />
+    <ctl name="SEC_TDM_RX_0 Channels" value="One" />
+    <ctl name="SEC_TDM_TX_0 Channels" value="One" />
+    <ctl name="SEC_TDM_RX_1 Channels" value="One" />
+    <ctl name="SEC_TDM_TX_1 Channels" value="One" />
+    <ctl name="SEC_TDM_RX_0 SlotMapping" id="0" value="0" />
+    <ctl name="SEC_TDM_RX_1 SlotMapping" id="0" value="2" />
+    <ctl name="SEC_TDM_TX_0 SlotMapping" id="0" value="0" />
+    <ctl name="SEC_TDM_TX_1 SlotMapping" id="0" value="2" />
 
     <!-- Audio ctl -->
     <ctl name="MultiMedia1 Mixer PRI_MI2S_TX" value="0" />
@@ -105,7 +108,7 @@
       <ctl name="PRI_MI2S_RX_Voice Mixer DTMF" value="1" />
    </path>
 
-    <path name="voicemmode1-call voice-speaker">
+    <path name="voicemmode1-call speaker">
         <ctl name="PGA Capture Volume" value="80 80" />
         <ctl name="PCM Playback Volume" value="100 100" />
         <ctl name="VoiceMMode1_Tx Mixer PRI_MI2S_TX_MMode1" value="1" />
@@ -113,23 +116,19 @@
         <ctl name="PRI_MI2S_RX_Voice Mixer DTMF" value="1" />
     </path>
 
-    <path name="voicemmode1-call voice-secondary_tdm_0">
-        <ctl name="PGA Capture Volume" value="80 80" />
-        <ctl name="PCM Playback Volume" value="100 100" />
+    <path name="voicemmode1-call secondary_tdm_0">
         <ctl name="VoiceMMode1_Tx Mixer SEC_TDM_TX_0_MMode1" value="1" />
         <ctl name="SEC_TDM_RX_0_Voice Mixer VoiceMMode1" value="1" />
         <ctl name="SEC_TDM_RX_0_Voice Mixer DTMF" value="1" />
     </path>
 
-    <path name="voicemmode1-call voice-secondary_tdm_1">
-        <ctl name="PGA Capture Volume" value="80 80" />
-        <ctl name="PCM Playback Volume" value="100 100" />
+    <path name="voicemmode1-call secondary_tdm_1">
         <ctl name="VoiceMMode1_Tx Mixer SEC_TDM_TX_1_MMode1" value="1" />
         <ctl name="SEC_TDM_RX_1_Voice Mixer VoiceMMode1" value="1" />
         <ctl name="SEC_TDM_RX_1_Voice Mixer DTMF" value="1" />
     </path>
 
-    <path name="voicemmode2-call voice-speaker">
+    <path name="voicemmode2-call speaker">
         <ctl name="PGA Capture Volume" value="80 80" />
         <ctl name="PCM Playback Volume" value="100 100" />
         <ctl name="VoiceMMode2_Tx Mixer PRI_MI2S_TX_MMode2" value="1" />
@@ -137,17 +136,13 @@
         <ctl name="PRI_MI2S_RX_Voice Mixer DTMF" value="1" />
     </path>
 
-    <path name="voicemmode2-call voice-secondary_tdm_0">
-        <ctl name="PGA Capture Volume" value="80 80" />
-        <ctl name="PCM Playback Volume" value="100 100" />
+    <path name="voicemmode2-call secondary_tdm_0">
         <ctl name="VoiceMMode2_Tx Mixer SEC_TDM_TX_0_MMode2" value="1" />
         <ctl name="SEC_TDM_RX_0_Voice Mixer VoiceMMode2" value="1" />
         <ctl name="SEC_TDM_RX_0_Voice Mixer DTMF" value="1" />
     </path>
 
-    <path name="voicemmode2-call voice-secondary_tdm_1">
-        <ctl name="PGA Capture Volume" value="80 80" />
-        <ctl name="PCM Playback Volume" value="100 100" />
+    <path name="voicemmode2-call secondary_tdm_1">
         <ctl name="VoiceMMode2_Tx Mixer SEC_TDM_TX_1_MMode2" value="1" />
         <ctl name="SEC_TDM_RX_1_Voice Mixer VoiceMMode2" value="1" />
         <ctl name="SEC_TDM_RX_1_Voice Mixer DTMF" value="1" />
@@ -181,12 +176,10 @@
     </path>
 
     <path name="audio-record secondary_tdm_0">
-        <ctl name="PGA Capture Volume" value="80 80" />
         <ctl name="MultiMedia1 Mixer SEC_TDM_TX_0" value="1" />
     </path>
 
     <path name="audio-record secondary_tdm_1">
-        <ctl name="PGA Capture Volume" value="80 80" />
         <ctl name="MultiMedia1 Mixer SEC_TDM_TX_1" value="1" />
     </path>
 
@@ -196,12 +189,10 @@
     </path>
 
     <path name="deep-buffer-playback secondary_tdm_0">
-        <ctl name="PCM Playback Volume" value="100 100" />
         <ctl name="SEC_TDM_RX_0 Audio Mixer MultiMedia1" value="1" />
     </path>
 
     <path name="deep-buffer-playback secondary_tdm_1">
-        <ctl name="PCM Playback Volume" value="100 100" />
         <ctl name="SEC_TDM_RX_1 Audio Mixer MultiMedia1" value="1" />
     </path>
 
