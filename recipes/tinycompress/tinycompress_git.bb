@@ -7,7 +7,7 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=cf9105c1a2d4405cbe04bbe3367373a0"
 PR = "r1"
 
 SRCREV = "5de00c7a52325158072edf128b87319328bb930d"
-SRC_URI = "git://codeaurora.org/quic/le/platform/external/tinycompress.git;protocol=https;branch=alsa-project/master\
+SRC_URI = "git://source.codeaurora.org/quic/le/platform/external/tinycompress.git;protocol=https;branch=alsa-project/master\
            file://0001-compress-add-support-for-plugins.patch"
 
 S = "${WORKDIR}/git"
