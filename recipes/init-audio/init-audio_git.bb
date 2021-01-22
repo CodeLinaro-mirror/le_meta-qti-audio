@@ -10,6 +10,7 @@ DEPENDS_append_mdm9635 +="alsa-intf"
 SRC_URI = "file://init_qcom_audio"
 SRC_URI += "file://init_audio.service"
 SRC_URI += "file://msm-audio-node.rules"
+SRC_URI += "file://${BASEMACHINE}/"
 
 do_compile[noexec] = "1"
 
@@ -25,6 +26,8 @@ do_install() {
         install -m 0644 ${S}/msm-audio-node.rules -D ${D}${sysconfdir}/udev/rules.d/msm-audio-node.rules
         install -m 0644 ${S}/init_audio.service -D ${D}${systemd_unitdir}/system/init_audio.service
         install -d ${D}/${systemd_unitdir}/system/sysinit.target.wants
+        install -d ${D}${sysconfdir}/initscripts
+        install -m 0755 ${WORKDIR}/${MACHINE}/start_audio_le ${D}${sysconfdir}/initscripts
         ln -sf ${systemd_unitdir}/system/init_audio.service ${D}${systemd_unitdir}/system/sysinit.target.wants/init_audio.service
         echo "\
         # Create directory in /data/audio for location with audio:audio permissions
@@ -42,3 +45,5 @@ do_install() {
 }
 
 FILES_${PN} += "${systemd_unitdir}/system/*"
+FILES_${PN}+="/etc/initscripts/start_audio_le"
+
