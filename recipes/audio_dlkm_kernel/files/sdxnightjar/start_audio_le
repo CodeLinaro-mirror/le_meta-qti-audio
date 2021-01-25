@@ -35,25 +35,21 @@ case "$1" in
         echo -n "Starting/Loading audio module: "
 
         echo "audio:start/load" > /dev/kmsg
-        insmod $MODULE_BASE/kernel/sound/core/snd-compress.ko
-        insmod $MODULE_BASE/kernel/sound/soc/snd-soc-core.ko
-        insmod $MODULE_BASE/kernel/sound/core/snd-hwdep.ko
         insmod $MODULE_BASE/extra/q6_notifier_dlkm.ko
+        insmod $MODULE_BASE/extra/snd_event_dlkm.ko
         insmod $MODULE_BASE/extra/apr_dlkm.ko
         insmod $MODULE_BASE/extra/adsp_loader_dlkm.ko
         insmod $MODULE_BASE/extra/q6_dlkm.ko
         insmod $MODULE_BASE/extra/platform_dlkm.ko
         insmod $MODULE_BASE/extra/native_dlkm.ko
-        insmod $MODULE_BASE/extra/pinctrl_wcd_dlkm.ko
         insmod $MODULE_BASE/extra/swr_dlkm.ko
         insmod $MODULE_BASE/extra/stub_dlkm.ko
         insmod $MODULE_BASE/extra/wcd_core_dlkm.ko
         insmod $MODULE_BASE/extra/mbhc_dlkm.ko
         insmod $MODULE_BASE/extra/wcd9xxx_dlkm.ko
         insmod $MODULE_BASE/extra/swr_ctrl_dlkm.ko
-        insmod $MODULE_BASE/extra/wcd934x_dlkm.ko
+        insmod $MODULE_BASE/extra/wcd9335_dlkm.ko
         insmod $MODULE_BASE/extra/wsa881x_dlkm.ko
-        insmod $MODULE_BASE/extra/machine_dlkm.ko
 
         echo "done loading audio_kernel module"
         ;;
