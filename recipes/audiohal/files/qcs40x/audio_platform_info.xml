@@ -159,6 +159,7 @@
         <device name="SND_DEVICE_IN_UNPROCESSED_THREE_MIC" interface="VA_CDC_DMA_TX_0"/>
         <device name="SND_DEVICE_IN_UNPROCESSED_QUAD_MIC" interface="VA_CDC_DMA_TX_0"/>
         <device name="SND_DEVICE_IN_UNPROCESSED_HEADSET_MIC" interface="VA_CDC_DMA_TX_0"/>
+        <device name="SND_DEVICE_IN_VOICE_SPEAKER_MIC_HFP" interface="VA_CDC_DMA_TX_0"/>
 
         <device name="SND_DEVICE_OUT_BT_SCO_WB" backend="bt-sco-wb" interface="SLIMBUS_7_RX"/>
         <device name="SND_DEVICE_OUT_BT_SCO" backend="bt-sco" interface="SLIMBUS_7_RX"/>
