@@ -158,6 +158,7 @@
         <device name="SND_DEVICE_IN_UNPROCESSED_HEADSET_MIC" interface="VA_CDC_DMA_TX_0"/>
         <device name="SND_DEVICE_IN_HDMI_MIC" interface="QUAT_MI2S_TX"/>
         <device name="SND_DEVICE_IN_HDMI_MIC_DSD" backend="hdmi-in-dsd" interface="QUAT_MI2S_TX"/>
+        <device name="SND_DEVICE_IN_VOICE_SPEAKER_MIC_HFP" interface="VA_CDC_DMA_TX_0"/>
 
         <device name="SND_DEVICE_OUT_BT_SCO_WB" backend="bt-sco-wb" interface="SLIMBUS_7_RX"/>
         <device name="SND_DEVICE_OUT_BT_SCO" backend="bt-sco" interface="SLIMBUS_7_RX"/>
