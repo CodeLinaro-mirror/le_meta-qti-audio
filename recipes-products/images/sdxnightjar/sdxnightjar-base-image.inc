@@ -1,7 +1,7 @@
 
 # Rootfs creation.
 
-IMAGE_INSTALL += "init-audio"
+#IMAGE_INSTALL += "init-audio"
 
 # Following packages support only 32-bit compilation.
 # When 32-bit multilib is enabled, compile them with lib32- prefix.
