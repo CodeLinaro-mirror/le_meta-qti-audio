@@ -39,6 +39,7 @@ case "$1" in
         insmod $MODULE_BASE/extra/snd_event_dlkm.ko
         insmod $MODULE_BASE/extra/apr_dlkm.ko
         insmod $MODULE_BASE/extra/adsp_loader_dlkm.ko
+        echo 1 > /sys/kernel/boot_adsp/boot
         insmod $MODULE_BASE/extra/q6_dlkm.ko
         insmod $MODULE_BASE/extra/platform_dlkm.ko
         insmod $MODULE_BASE/extra/native_dlkm.ko
@@ -50,6 +51,7 @@ case "$1" in
         insmod $MODULE_BASE/extra/swr_ctrl_dlkm.ko
         insmod $MODULE_BASE/extra/wcd9335_dlkm.ko
         insmod $MODULE_BASE/extra/wsa881x_dlkm.ko
+        insmod $MODULE_BASE/extra/machine_dlkm.ko
 
         echo "done loading audio_kernel module"
         ;;
