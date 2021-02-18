@@ -105,8 +105,8 @@
 
 <!-- voice and audio paths -->
    <path name="voice-call">
-      <ctl name="PRI_MI2S_RX_Voice Mixer CSVoice" value="1" />
-      <ctl name="Voice_Tx Mixer PRI_MI2S_TX_Voice" value="1" />
+        <ctl name="VoiceMMode1_Tx Mixer PRI_MI2S_TX_MMode1" value="1" />
+        <ctl name="PRI_MI2S_RX_Voice Mixer VoiceMMode1" value="1" />
    </path>
 
     <path name="voicemmode1-call">
