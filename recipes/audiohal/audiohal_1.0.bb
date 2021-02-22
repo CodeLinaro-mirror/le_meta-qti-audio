@@ -15,13 +15,14 @@ PR = "r0"
 HALBINSUFFIX = "${@bb.utils.contains('TUNE_ARCH', 'aarch64', '_64bit', '', d)}"
 DEPENDS = "glib-2.0 tinycompress tinyalsa expat qal acdbdata libhardware media-headers audio-utils qahw"
 
-EXTRA_OEMAKE = "DEFAULT_INCLUDES= CPPFLAGS="-I. -I${STAGING_KERNEL_BUILDDIR}/usr/include -I${STAGING_KERNEL_BUILDDIR}/usr/techpack/audio/include -I${STAGING_INCDIR}/surround_sound_3mic -I${STAGING_INCDIR}/sound_trigger -I${WORKSPACE}/vendor/qcom/opensource/qal -I${S}/hal-qal/audio_extn -I $(PKG_CONFIG_SYSROOT_DIR)/usr/include/acdbdata -I${S}/hal/audio_extn/ -I${STAGING_INCDIR}""
+EXTRA_OEMAKE = "DEFAULT_INCLUDES= CPPFLAGS="-I. -I${STAGING_KERNEL_BUILDDIR}/usr/techpack/audio/include -I${STAGING_INCDIR}/surround_sound_3mic -I${STAGING_INCDIR}/sound_trigger -I${WORKSPACE}/vendor/qcom/opensource/qal -I${S}/hal-qal/audio_extn -I $(PKG_CONFIG_SYSROOT_DIR)/usr/include/acdbdata -I${S}/hal/audio_extn/ -I${STAGING_INCDIR}""
 EXTRA_OECONF += "--with-sanitized-headers=${STAGING_KERNEL_BUILDDIR}/usr/include"
 EXTRA_OECONF += "--with-glib --program-suffix=${HALBINSUFFIX}"
 
 EXTRA_OECONF += "TARGET_SUPPORT=${BASEMACHINE}"
 EXTRA_OECONF += "BOARD_SUPPORTS_QAHW=true"
 EXTRA_OECONF_append = " AUDIO_FEATURE_ENABLED_INSTANCE_ID=true"
+EXTRA_OECONF_append = " AUDIO_FEATURE_ENABLED_QAHW_1_0=true"
 
 do_install_append() {
    if [ -d "${WORKDIR}/${BASEMACHINE}" ] && [ $(ls -1  ${WORKDIR}/${BASEMACHINE} | wc -l) -ne 0 ]; then
