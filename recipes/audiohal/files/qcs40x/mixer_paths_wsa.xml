@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<!-- Copyright (c) 2015-2020, The Linux Foundation. All rights reserved.    -->
+<!-- Copyright (c) 2015-2021, The Linux Foundation. All rights reserved.    -->
 <!--                                                                        -->
 <!-- Redistribution and use in source and binary forms, with or without     -->
 <!-- modification, are permitted provided that the following conditions are -->
@@ -1027,16 +1027,32 @@
         <ctl name="MultiMedia18 Mixer SLIM_0_TX" value="1" />
     </path>
 
+    <path name="audio-record-compress3">
+        <ctl name="MultiMedia19 Mixer VA_CDC_DMA_TX_0" value="1" />
+    </path>
+
     <path name="audio-record-compress3 line-in">
         <ctl name="MultiMedia19 Mixer SLIM_0_TX" value="1" />
+    </path>
+
+    <path name="audio-record-compress4">
+        <ctl name="MultiMedia28 Mixer VA_CDC_DMA_TX_0" value="1" />
     </path>
 
     <path name="audio-record-compress4 line-in">
         <ctl name="MultiMedia28 Mixer SLIM_0_TX" value="1" />
     </path>
 
+    <path name="audio-record-compress5">
+        <ctl name="MultiMedia29 Mixer VA_CDC_DMA_TX_0" value="1" />
+    </path>
+
     <path name="audio-record-compress5 line-in">
         <ctl name="MultiMedia29 Mixer SLIM_0_TX" value="1" />
+    </path>
+
+    <path name="audio-record-compress6">
+        <ctl name="MultiMedia30 Mixer VA_CDC_DMA_TX_0" value="1" />
     </path>
 
     <path name="audio-record-compress6 line-in">
