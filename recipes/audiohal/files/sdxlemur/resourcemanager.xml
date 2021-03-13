@@ -26,7 +26,6 @@
 <!-- IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.                             -->
 <resource_manager_info>
     <config_params>
-        <param key="native_audio_mode" value="multiple_mix_dsp"/>
         <param key="max_sessions" value="128"/>
     </config_params>
     <config_voice>
