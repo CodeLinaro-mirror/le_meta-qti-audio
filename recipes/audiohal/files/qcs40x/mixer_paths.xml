@@ -590,6 +590,10 @@
         <ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia4" value="1" />
     </path>
 
+    <path name="compress-offload-playback line-44.1">
+        <ctl name="SLIMBUS_5_RX Audio Mixer MultiMedia4" value="1" />
+    </path>
+
     <path name="compress-offload-playback headphones">
         <ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia4" value="1" />
     </path>
@@ -645,6 +649,10 @@
 
     <path name="compress-offload-playback2 line">
         <ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia7" value="1" />
+    </path>
+
+    <path name="compress-offload-playback2 line-44.1">
+        <ctl name="SLIMBUS_5_RX Audio Mixer MultiMedia7" value="1" />
     </path>
 
     <path name="compress-offload-playback2 headphones">
@@ -704,6 +712,10 @@
         <ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia15" value="1" />
     </path>
 
+    <path name="compress-offload-playback3 line-44.1">
+        <ctl name="SLIMBUS_5_RX Audio Mixer MultiMedia15" value="1" />
+    </path>
+
     <path name="compress-offload-playback3 headphones">
         <ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia15" value="1" />
     </path>
@@ -759,6 +771,10 @@
 
     <path name="compress-offload-playback4 line">
         <ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia11" value="1" />
+    </path>
+
+    <path name="compress-offload-playback4 line-44.1">
+        <ctl name="SLIMBUS_5_RX Audio Mixer MultiMedia11" value="1" />
     </path>
 
     <path name="compress-offload-playback4 headphones">
@@ -818,6 +834,10 @@
         <ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia12" value="1" />
     </path>
 
+    <path name="compress-offload-playback5 line-44.1">
+        <ctl name="SLIMBUS_5_RX Audio Mixer MultiMedia12" value="1" />
+    </path>
+
     <path name="compress-offload-playback5 headphones">
         <ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia12" value="1" />
     </path>
@@ -875,6 +895,10 @@
         <ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia13" value="1" />
     </path>
 
+    <path name="compress-offload-playback6 line-44.1">
+        <ctl name="SLIMBUS_5_RX Audio Mixer MultiMedia13" value="1" />
+    </path>
+
     <path name="compress-offload-playback6 headphones">
         <ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia13" value="1" />
     </path>
@@ -930,6 +954,10 @@
 
     <path name="compress-offload-playback7 line">
         <ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia14" value="1" />
+    </path>
+
+    <path name="compress-offload-playback7 line-44.1">
+        <ctl name="SLIMBUS_5_RX Audio Mixer MultiMedia14" value="1" />
     </path>
 
     <path name="compress-offload-playback7 headphones">
@@ -1576,6 +1604,19 @@
         <ctl name="VA DMIC MUX0" value="DMIC0" />
         <ctl name="VA DMIC MUX1" value="DMIC1" />
         <ctl name="VA DMIC MUX2" value="DMIC2" />
+    </path>
+
+    <path name="line-44.1">
+        <ctl name="SLIM RX3 MUX" value="AIF3_PB" />
+        <ctl name="SLIM RX4 MUX" value="AIF3_PB" />
+        <ctl name="SLIM_5_RX Channels" value="Two" />
+        <ctl name="SLIM_5_RX SampleRate" value="KHZ_44P1" />
+        <ctl name="RX INT3_1 MIX1 INP0" value="RX3" />
+        <ctl name="RX INT4_1 MIX1 INP1" value="RX4" />
+        <ctl name="SPL SRC0 MUX" value="SRC_IN_LO1" />
+        <ctl name="SPL SRC1 MUX" value="SRC_IN_LO2" />
+        <ctl name="RX INT3 SPLINE MIX LO1 Switch" value="1" />
+        <ctl name="RX INT4 SPLINE MIX LO2 Switch" value="1" />
     </path>
 
     <path name="line">
