@@ -41,7 +41,6 @@ case "$1" in
         echo 1 > /sys/kernel/boot_adsp/boot
         insmod $MODULE_BASE/extra/q6_dlkm.ko
         insmod $MODULE_BASE/extra/platform_dlkm.ko
-        insmod $MODULE_BASE/extra/native_dlkm.ko
         insmod $MODULE_BASE/extra/swr_dlkm.ko
         insmod $MODULE_BASE/extra/stub_dlkm.ko
         insmod $MODULE_BASE/extra/wcd_core_dlkm.ko
