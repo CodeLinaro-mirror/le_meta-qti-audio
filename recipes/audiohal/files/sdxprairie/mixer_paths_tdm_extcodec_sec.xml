@@ -293,7 +293,7 @@
         <ctl name="SEC_TDM_RX_1 Port Mixer SEC_TDM_TX_1" value="1" />
     </path>
 
-    <path name="audio-dtmf-playback">
+    <path name="audio-dtmf-playback speaker">
         <ctl name="PRI_MI2S_RX Audio Mixer DTMF" value="1" />
     </path>
 
