@@ -827,7 +827,7 @@
 
     <path name="compress-offload-playback4 line-44.1">
         <ctl name="SLIMBUS_5_RX Audio Mixer MultiMedia11" value="1" />
-    </path
+    </path>
 
     <path name="compress-offload-playback4 headphones">
         <ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia11" value="1" />
