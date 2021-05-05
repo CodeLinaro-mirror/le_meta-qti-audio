@@ -2034,8 +2034,8 @@
         <ctl name="SLIM RX0 MUX" value="AIF_MIX1_PB" />
         <ctl name="SLIM RX1 MUX" value="AIF_MIX1_PB" />
         <ctl name="SLIM_0_RX Channels" value="Two" />
-        <ctl name="RX INT3_1 MIX1 INP0" value="RX0" />
-        <ctl name="RX INT4_1 MIX1 INP0" value="RX1" />
+        <ctl name="RX INT3_2 MUX" value="RX0" />
+        <ctl name="RX INT4_2 MUX" value="RX1" />
         <ctl name="COMP3 Switch" value="1" />
         <ctl name="COMP4 Switch" value="1" />
     </path>
