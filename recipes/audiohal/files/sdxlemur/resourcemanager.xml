@@ -39,18 +39,18 @@
     </config_voice>
     <device_profile>
         <in-device>
-            <id>QAL_DEVICE_IN_HANDSET_MIC</id>
+            <id>PAL_DEVICE_IN_HANDSET_MIC</id>
             <back_end_name>MI2S-LPAIF-TX-PRIMARY</back_end_name>
             <max_channels>2</max_channels>
             <channels>1</channels>
             <snd_device_name>handset-mic</snd_device_name>
             <usecase>
-                <name>QAL_STREAM_LOW_LATENCY</name>
+                <name>PAL_STREAM_LOW_LATENCY</name>
                 <devicePP-metadata>
                 </devicePP-metadata>
             </usecase>
             <usecase>
-                <name>QAL_STREAM_DEEP_BUFFER</name>
+                <name>PAL_STREAM_DEEP_BUFFER</name>
                 <devicePP-metadata>
                     <kvpair key="0xAD000000" value="0xAD000002"/>
                     <!-- AUDIO_FLUENCE_SMECNS -->
@@ -58,7 +58,7 @@
                 </devicePP-metadata>
             </usecase>
             <usecase>
-                <name>QAL_STREAM_VOIP_TX</name>
+                <name>PAL_STREAM_VOIP_TX</name>
                 <devicePP-metadata>
                     <kvpair key="0xAD000000" value="0xAD000007"/>
                     <!-- VOIP_FLUENCE_SMECNS -->
@@ -66,7 +66,7 @@
                 </devicePP-metadata>
             </usecase>
             <usecase>
-                <name>QAL_STREAM_VOICE_CALL</name>
+                <name>PAL_STREAM_VOICE_CALL</name>
                 <sidetone_mode>HW</sidetone_mode>
                 <devicePP-metadata>
                     <kvpair key="0xAD000000" value="0xAD000008"/>
@@ -75,24 +75,24 @@
                 </devicePP-metadata>
             </usecase>
             <usecase>
-                <name>QAL_STREAM_ULTRA_LOW_LATENCY</name>
+                <name>PAL_STREAM_ULTRA_LOW_LATENCY</name>
                 <devicePP-metadata>
                 </devicePP-metadata>
             </usecase>
         </in-device>
         <in-device>
-            <id>QAL_DEVICE_IN_SPEAKER_MIC</id>
+            <id>PAL_DEVICE_IN_SPEAKER_MIC</id>
             <back_end_name>MI2S-LPAIF-TX-PRIMARY</back_end_name>
             <max_channels>4</max_channels>
             <channels>1</channels>
             <snd_device_name>speaker-mic</snd_device_name>
             <usecase>
-                <name>QAL_STREAM_LOW_LATENCY</name>
+                <name>PAL_STREAM_LOW_LATENCY</name>
                 <devicePP-metadata>
                 </devicePP-metadata>
             </usecase>
             <usecase>
-                <name>QAL_STREAM_DEEP_BUFFER</name>
+                <name>PAL_STREAM_DEEP_BUFFER</name>
                 <devicePP-metadata>
                     <kvpair key="0xAD000000" value="0xAD000002"/>
                     <!-- AUDIO_FLUENCE_SMECNS -->
@@ -100,7 +100,7 @@
                 </devicePP-metadata>
             </usecase>
             <usecase>
-                <name>QAL_STREAM_VOIP_TX</name>
+                <name>PAL_STREAM_VOIP_TX</name>
                 <devicePP-metadata>
                     <kvpair key="0xAD000000" value="0xAD000007"/>
                     <!-- VOIP_FLUENCE_SMECNS -->
@@ -108,7 +108,7 @@
                 </devicePP-metadata>
             </usecase>
             <usecase>
-                <name>QAL_STREAM_VOICE_CALL</name>
+                <name>PAL_STREAM_VOICE_CALL</name>
                 <sidetone_mode>OFF</sidetone_mode>
                 <devicePP-metadata>
                     <kvpair key="0xAD000000" value="0xAD000008"/>
@@ -117,29 +117,29 @@
                 </devicePP-metadata>
             </usecase>
             <usecase>
-                <name>QAL_STREAM_LOOPBACK</name>
+                <name>PAL_STREAM_LOOPBACK</name>
                 <devicePP-metadata>
                 </devicePP-metadata>
             </usecase>
             <usecase>
-                <name>QAL_STREAM_ULTRA_LOW_LATENCY</name>
+                <name>PAL_STREAM_ULTRA_LOW_LATENCY</name>
                 <devicePP-metadata>
                 </devicePP-metadata>
             </usecase>
         </in-device>
         <in-device>
-            <id>QAL_DEVICE_IN_WIRED_HEADSET</id>
+            <id>PAL_DEVICE_IN_WIRED_HEADSET</id>
             <back_end_name>MI2S-LPAIF-TX-PRIMARY</back_end_name>
             <max_channels>1</max_channels>
             <channels>1</channels>
             <snd_device_name>headset-mic</snd_device_name>
             <usecase>
-                <name>QAL_STREAM_LOW_LATENCY</name>
+                <name>PAL_STREAM_LOW_LATENCY</name>
                 <devicePP-metadata>
                 </devicePP-metadata>
             </usecase>
             <usecase>
-                <name>QAL_STREAM_DEEP_BUFFER</name>
+                <name>PAL_STREAM_DEEP_BUFFER</name>
                 <devicePP-metadata>
                     <kvpair key="0xAD000000" value="0xAD000002"/>
                     <!-- AUDIO_FLUENCE_SMECNS -->
@@ -147,7 +147,7 @@
                 </devicePP-metadata>
             </usecase>
             <usecase>
-                <name>QAL_STREAM_VOIP_TX</name>
+                <name>PAL_STREAM_VOIP_TX</name>
                 <devicePP-metadata>
                     <kvpair key="0xAD000000" value="0xAD000007"/>
                     <!-- VOIP_FLUENCE_SMECNS -->
@@ -155,7 +155,7 @@
                 </devicePP-metadata>
             </usecase>
             <usecase>
-                <name>QAL_STREAM_VOICE_CALL</name>
+                <name>PAL_STREAM_VOICE_CALL</name>
                 <sidetone_mode>HW</sidetone_mode>
                 <devicePP-metadata>
                     <kvpair key="0xAD000000" value="0xAD000008"/>
@@ -164,20 +164,20 @@
                 </devicePP-metadata>
             </usecase>
             <usecase>
-                <name>QAL_STREAM_ULTRA_LOW_LATENCY</name>
+                <name>PAL_STREAM_ULTRA_LOW_LATENCY</name>
                 <devicePP-metadata>
                 </devicePP-metadata>
             </usecase>
         </in-device>
         <in-device>
-            <id>QAL_DEVICE_IN_VI_FEEDBACK</id>
+            <id>PAL_DEVICE_IN_VI_FEEDBACK</id>
             <back_end_name>CODEC_DMA-LPAIF_WSA-TX-0</back_end_name>
             <max_channels>2</max_channels>
             <channels>2</channels>
             <snd_device_name>vi-feedback</snd_device_name>
         </in-device>
         <out-device>
-            <id>QAL_DEVICE_OUT_SPEAKER</id>
+            <id>PAL_DEVICE_OUT_SPEAKER</id>
             <back_end_name>MI2S-LPAIF-RX-PRIMARY</back_end_name>
             <max_channels>2</max_channels>
             <channels>2</channels>
@@ -187,21 +187,21 @@
             <ras_enabled>0</ras_enabled> <!-- RAS should be enabled with speaker protection always -->
         </out-device>
         <out-device>
-            <id>QAL_DEVICE_OUT_HANDSET</id>
+            <id>PAL_DEVICE_OUT_HANDSET</id>
             <back_end_name>MI2S-LPAIF-RX-PRIMARY</back_end_name>
             <max_channels>2</max_channels>
             <channels>1</channels>
             <snd_device_name>handset</snd_device_name>
         </out-device>
         <out-device>
-            <id>QAL_DEVICE_OUT_WIRED_HEADPHONE</id>
+            <id>PAL_DEVICE_OUT_WIRED_HEADPHONE</id>
             <back_end_name>MI2S-LPAIF-RX-PRIMARY</back_end_name>
             <max_channels>2</max_channels>
             <channels>2</channels>
             <snd_device_name>headphones</snd_device_name>
         </out-device>
         <out-device>
-            <id>QAL_DEVICE_OUT_WIRED_HEADSET</id>
+            <id>PAL_DEVICE_OUT_WIRED_HEADSET</id>
             <back_end_name>MI2S-LPAIF-RX-PRIMARY</back_end_name>
             <max_channels>2</max_channels>
             <channels>2</channels>
@@ -210,19 +210,19 @@
     </device_profile>
     <in_streams>
         <in_stream>
-            <name>QAL_STREAM_VOIP_TX</name>
+            <name>PAL_STREAM_VOIP_TX</name>
                 <policies>
                     <ec_ref>
-                        <disabled_stream>QAL_STREAM_LOW_LATENCY</disabled_stream>
-                        <disabled_stream>QAL_STREAM_VOIP_RX</disabled_stream>
+                        <disabled_stream>PAL_STREAM_LOW_LATENCY</disabled_stream>
+                        <disabled_stream>PAL_STREAM_VOIP_RX</disabled_stream>
                     </ec_ref>
                 </policies>
         </in_stream>
         <in_stream>
-            <name>QAL_STREAM_DEEP_BUFFER</name>
+            <name>PAL_STREAM_DEEP_BUFFER</name>
                 <policies>
                     <ec_ref>
-                        <disabled_stream>QAL_STREAM_LOW_LATENCY</disabled_stream>
+                        <disabled_stream>PAL_STREAM_LOW_LATENCY</disabled_stream>
                     </ec_ref>
                 </policies>
         </in_stream>
