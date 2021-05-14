@@ -84,6 +84,8 @@
         <param key="hfp_pcm_dev_id" value="36"/>
         <param key="input_mic_max_count" value="4"/>
         <param key="capture_device_chmap" value="8, 1, 2, 6, 3, 4, 5, 8, 9"/>
+        <param key="native_audio_mode" value="multiple_mix_dsp"/>
+        <param key="audio.nat.codec.enabled" value="true"/>
     </config_params>
 
     <gain_db_to_level_mapping>
