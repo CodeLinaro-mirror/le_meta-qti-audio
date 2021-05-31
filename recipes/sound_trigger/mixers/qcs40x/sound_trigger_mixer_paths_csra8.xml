@@ -251,13 +251,13 @@
         <ctl name="VA_AIF1_CAP Mixer DEC4" value="1" />
         <ctl name="VA_AIF1_CAP Mixer DEC5" value="1" />
         <ctl name="VA DMIC MUX2" value="DMIC2" />
-        <ctl name="VA_DEC2 Volume" value="90" />
+        <ctl name="VA_DEC2 Volume" value="84" />
         <ctl name="VA DMIC MUX3" value="DMIC3" />
-        <ctl name="VA_DEC3 Volume" value="90" />
+        <ctl name="VA_DEC3 Volume" value="84" />
         <ctl name="VA DMIC MUX4" value="DMIC4" />
-        <ctl name="VA_DEC4 Volume" value="90" />
+        <ctl name="VA_DEC4 Volume" value="84" />
         <ctl name="VA DMIC MUX5" value="DMIC5" />
-        <ctl name="VA_DEC5 Volume" value="90" />
+        <ctl name="VA_DEC5 Volume" value="84" />
     </path>
 
     <path name="listen-ape-handset-6mic">
