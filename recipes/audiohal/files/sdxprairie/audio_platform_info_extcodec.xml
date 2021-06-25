@@ -62,6 +62,23 @@
     <backend_names>
         <device name="SND_DEVICE_OUT_VOICE_TX" backend="voice-tx" interface="VOICE_PLAYBACK_TX"/>
         <device name="SND_DEVICE_OUT_VOICE2_TX" backend="voice2-tx" interface="VOICE2_PLAYBACK_TX"/>
+        <device name="SND_DEVICE_OUT_SPEAKER" interface="PRI_MI2S_RX"/>
+        <device name="SND_DEVICE_OUT_HANDSET" interface="PRI_MI2S_RX"/>
+        <device name="SND_DEVICE_OUT_HEADPHONES" interface="PRI_MI2S_RX"/>
+        <device name="SND_DEVICE_OUT_VOICE_SPEAKER" interface="PRI_MI2S_RX"/>
+        <device name="SND_DEVICE_OUT_VOICE_HEADPHONES" interface="PRI_MI2S_RX"/>
+        <device name="SND_DEVICE_OUT_VOICE_HANDSET" interface="PRI_MI2S_RX"/>
+        <device name="SND_DEVICE_OUT_ECALL_HANDSET" interface="PRI_MI2S_RX"/>
+        <device name="SND_DEVICE_OUT_ECALL_SPEAKER" interface="PRI_MI2S_RX"/>
+        <device name="SND_DEVICE_OUT_ECALL_HEADPHONES" interface="PRI_MI2S_RX"/>
+        <device name="SND_DEVICE_IN_HANDSET_MIC" interface="PRI_MI2S_TX"/>
+        <device name="SND_DEVICE_IN_HEADSET_MIC" interface="PRI_MI2S_TX"/>
+        <device name="SND_DEVICE_IN_SPEAKER_MIC" interface="PRI_MI2S_TX"/>
+        <device name="SND_DEVICE_IN_VOICE_SPEAKER_MIC" interface="PRI_MI2S_TX"/>
+        <device name="SND_DEVICE_IN_ECALL_HANDSET_MIC" interface="PRI_MI2S_TX"/>
+        <device name="SND_DEVICE_IN_ECALL_SPEAKER_MIC" interface="PRI_MI2S_TX"/>
+        <device name="SND_DEVICE_IN_ECALL_HEADSET_MIC" interface="PRI_MI2S_TX"/>
+        <device name="SND_DEVICE_IN_VOICE_HEADSET_MIC" interface="PRI_MI2S_TX"/>
         <!-- These devices are mapped for secondary i2s based test cases -->
         <!-- Uncomment this if required to test secondary I2S devices -->
         <!--device name="SND_DEVICE_OUT_VOICE_HANDSET" backend="secondary"/-->
