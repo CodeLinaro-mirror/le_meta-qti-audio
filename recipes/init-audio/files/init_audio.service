@@ -28,7 +28,7 @@
 
 [Unit]
 Description=Audio Init Service
-After=firmware.mount
+After=firmware.mount audio.service
 Requires=firmware.mount
 StartLimitBurst=10
 
