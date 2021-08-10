@@ -175,6 +175,11 @@
         <ctl name="MultiMedia1 Mixer PRI_MI2S_TX" value="1" />
     </path>
 
+    <path name="audio-record">
+        <ctl name="PGA Capture Volume" value="80 80" />
+        <ctl name="MultiMedia1 Mixer PRI_MI2S_TX" value="1" />
+    </path>
+
     <path name="audio-record secondary_tdm_0">
         <ctl name="MultiMedia1 Mixer SEC_TDM_TX_0" value="1" />
     </path>
