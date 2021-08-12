@@ -1,0 +1,62 @@
+From 3ddb71e099318eca7cc23672ecbb9dd872c94308 Mon Sep 17 00:00:00 2001
+From: Ramu Gottipati <ramug@codeaurora.org>
+Date: Thu, 12 Aug 2021 17:44:14 +0530
+Subject: [PATCH] tinyalsa: Add 24bit recording support
+
+- Add 24bit recording support in tinycap
+  utility without padding the bit format.
+
+Signed-off-by: Ramu Gottipati <ramug@codeaurora.org>
+---
+ git/utils/tinycap.c | 12 ++++++++++--
+ 1 file changed, 10 insertions(+), 2 deletions(-)
+
+diff --git a/git/utils/tinycap.c b/git/utils/tinycap.c
+index 39c6f57..6151ef6 100644
+--- a/git/utils/tinycap.c
++++ b/git/utils/tinycap.c
+@@ -29,6 +29,7 @@
+ #include <tinyalsa/asoundlib.h>
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <stdbool.h>
+ #include <stdint.h>
+ #include <signal.h>
+ #include <string.h>
+@@ -87,10 +88,11 @@ int main(int argc, char **argv)
+     unsigned int capture_time = UINT_MAX;
+     enum pcm_format format;
+     int no_header = 0;
++    bool bits_packed = false;
+
+     if (argc < 2) {
+         fprintf(stderr, "Usage: %s {file.wav | --} [-D card] [-d device] [-c channels] "
+-                "[-r rate] [-b bits] [-p period_size] [-n n_periods] [-t time_in_seconds]\n\n"
++                "[-r rate] [-b bits] [-a bits_packed] [-p period_size] [-n n_periods] [-t time_in_seconds]\n\n"
+                 "Use -- for filename to send raw PCM to stdout\n", argv[0]);
+         return 1;
+     }
+@@ -126,6 +128,9 @@ int main(int argc, char **argv)
+             argv++;
+             if (*argv)
+                 bits = atoi(*argv);
++        } else if (strcmp(*argv, "-a") == 0) {
++            argv++;
++                bits_packed = true;
+         } else if (strcmp(*argv, "-D") == 0) {
+             argv++;
+             if (*argv)
+@@ -161,7 +166,10 @@ int main(int argc, char **argv)
+         format = PCM_FORMAT_S32_LE;
+         break;
+     case 24:
+-        format = PCM_FORMAT_S24_LE;
++       if (bits_packed)
++            format = PCM_FORMAT_S24_3LE;
++       else
++            format = PCM_FORMAT_S24_LE;
+         break;
+     case 16:
+         format = PCM_FORMAT_S16_LE;
+--
+2.17.1
