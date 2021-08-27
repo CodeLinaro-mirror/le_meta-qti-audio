@@ -43,7 +43,7 @@
     <ctl name="RX2 Digital Volume" value="84" />
     <ctl name="RX3 Digital Volume" value="84" />
     <ctl name="RX4 Digital Volume" value="84" />
-    <ctl name="ADC2 Volume" value="19" />
+    <ctl name="ADC2 Volume" value="14" />
     <ctl name="DEC5 Volume" value="84" />
     <ctl name="DEC10 Volume" value="84" />
     <ctl name="COMP0 Switch" value="0" />
@@ -86,7 +86,7 @@
     </path>
 
     <path name="speaker">
-        <ctl name="RX7 Digital Volume" value="75" />
+        <ctl name="RX7 Digital Volume" value="84" />
         <ctl name="I2S RX0 MUX" value="AIF1_PB" />
         <ctl name="CDC_IF RX0 MUX" value="I2S RX0" />
         <ctl name="RX INT7_1 MIX1 INP0" value="RX0" />
@@ -99,7 +99,7 @@
 
     <path name="speaker-mic">
         <path name="dmic2" />
-        <ctrl name="DEC6 Volume" value="84" />
+        <ctl name="DEC6 Volume" value="110" />
     </path>
 
     <path name="handset">
