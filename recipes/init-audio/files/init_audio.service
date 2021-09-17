@@ -36,7 +36,7 @@ StartLimitBurst=10
 Type=forking
 Restart=on-failure
 RemainAfterExit=yes
-ExecStartPre= /bin/sh -c '/bin/echo 0 > /sys/module/subsystem_restart/parameters/enable_debug'
+ExecStartPre= /bin/sh -c '/bin/echo 0 > /sys/module/subsys_pil_tz/parameters/enable_debug'
 ExecStart= /bin/sh -c " if [ \"$(/bin/ls -A /firmware)\" ]; then /bin/echo 1 > /sys/kernel/boot_adsp/boot; else /bin/echo \"init_audio: adsp firmware not found\" > /dev/kmsg; exit 1; fi "
 
 [Install]
