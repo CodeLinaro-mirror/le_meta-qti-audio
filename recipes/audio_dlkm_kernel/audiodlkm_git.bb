@@ -86,6 +86,20 @@ do_install_append_mdm() {
    ${D}${systemd_unitdir}/system/multi-user.target.wants/audio.service
 }
 
+do_install_append_sa410m() {
+    if ${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'true', 'false', d)}; then
+      install -d ${D}${sysconfdir}/initscripts
+       install -m 0755 ${WORKDIR}/sa410m/start_audio_le ${D}${sysconfdir}/initscripts
+       install -m 0644 ${WORKDIR}/sa410m/audio.service -D ${D}${systemd_unitdir}/system/audio.service
+       install -d ${D}${systemd_unitdir}/system/multi-user.target.wants/
+ # enable the service for multi-user.target
+       ln -sf ${systemd_unitdir}/system/audio.service \
+       ${D}${systemd_unitdir}/system/multi-user.target.wants/audio.service
+     else
+       install -m 0755 ${WORKDIR}/sa410m/audio_load.conf -D ${D}${sysconfdir}/modules/audio_load.conf
+     fi
+}
+
 # The inherit of module.bbclass will automatically name module packages with
 # kernel-module-" prefix as required by the oe-core build environment. Also it
 # replaces '_' with '-' in the module name.
@@ -133,3 +147,6 @@ RPROVIDES_${PN} += "${@'kernel-module-tx-macro-dlkm-${KERNEL_VERSION}'.replace('
 RPROVIDES_${PN} += "${@'kernel-module-wcd937x-dlkm-${KERNEL_VERSION}'.replace('_', '-')}"
 RPROVIDES_${PN} += "${@'kernel-module-wcd937x-slave-dlkm-${KERNEL_VERSION}'.replace('_', '-')}"
 RPROVIDES_${PN} += "${@'kernel-module-machine-digcdc-dlkm-${KERNEL_VERSION}'.replace('_', '-')}"
+RPROVIDES_${PN} += "${@'kernel-module-pm2250-spmi-dlkm-${KERNEL_VERSION}'.replace('_', '-')}"
+RPROVIDES_${PN} += "${@'kernel-module-rouleur-dlkm-${KERNEL_VERSION}'.replace('_', '-')}"
+RPROVIDES_${PN} += "${@'kernel-module-rouleur-slave-dlkm-${KERNEL_VERSION}'.replace('_', '-')}"
