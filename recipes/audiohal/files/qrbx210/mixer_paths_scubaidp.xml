@@ -291,7 +291,7 @@
     <ctl name="RX_MACRO RX2 MUX" value="ZERO" />
     <ctl name="RX INT2_1 MIX1 INP0" value="ZERO" />
     <ctl name="LO_RDAC Switch" value="0" />
-    <ctl name="SpkrLeft WSA_RDAC" value="ZERO" />
+    <ctl name="SpkrMono WSA_RDAC" value="ZERO" />
     <ctl name="SpkrMono BOOST Switch" value="1" />
 
     <!-- RX Controls -->
@@ -2515,7 +2515,7 @@
         <ctl name="RX INT0_1 MIX1 INP0" value="RX0" />
         <ctl name="RX INT0 DEM MUX" value="CLSH_DSM_OUT" />
         <ctl name="LO_RDAC Switch" value="1" />
-        <ctl name="SpkrLeft WSA_RDAC" value="Switch" />
+        <ctl name="SpkrMono WSA_RDAC" value="Switch" />
     </path>
 
     <path name="speaker-mono">
@@ -2717,7 +2717,7 @@
         <ctl name="HPHL_RDAC Switch" value="1" />
         <ctl name="HPHR_RDAC Switch" value="1" />
         <ctl name="LO_RDAC Switch" value="1" />
-        <ctl name="SpkrLeft WSA_RDAC" value="Switch" />
+        <ctl name="SpkrMono WSA_RDAC" value="Switch" />
     </path>
 
     <path name="speaker-and-headphones-hifi-filter">
