@@ -1,0 +1,24 @@
+From 7cbad3eee9c963b85aa578aa308d4227cb857ea1 Mon Sep 17 00:00:00 2001
+From: Zun Qiao <zqiao@codeaurora.org>
+Date: Wed, 28 Jul 2021 09:38:41 +0530
+Subject: [PATCH] Tinycompress-remove-compr_passthr-fix-build-error
+
+---
+ src/utils/cplay.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/src/utils/cplay.c b/src/utils/cplay.c
+index 01a7097..aeea5bb 100644
+--- a/src/utils/cplay.c
++++ b/src/utils/cplay.c
+@@ -233,7 +233,6 @@ void play_samples(char *name, unsigned int card, unsigned int device,
+ 	codec.ch_in = channels;
+ 	codec.ch_out = channels;
+ 	codec.sample_rate = rate;
+-        codec.compr_passthr = 0;
+ 	if (!codec.sample_rate) {
+ 		fprintf(stderr, "invalid sample rate %d\n", rate);
+ 		fclose(file);
+-- 
+2.7.4
+
