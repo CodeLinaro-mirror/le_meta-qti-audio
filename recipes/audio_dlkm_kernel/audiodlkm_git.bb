@@ -57,7 +57,7 @@ do_install_append() {
   cp -fr ${S}/linux/* ${STAGING_KERNEL_BUILDDIR}/audio-kernel/linux
   install -m 0644 ${S}/sound/* ${STAGING_KERNEL_BUILDDIR}/audio-kernel/sound
 
-  if [ ${BASEMACHINE} != "sdxprairie" ];then
+  if [ ${BASEMACHINE} != "sdxprairie" && ${BASEMACHINE} != "sa410m" ];then
     if ${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'true', 'false', d)}; then
       install -m 0755 ${WORKDIR}/${BASEMACHINE}/audio_load.conf -D ${D}${sysconfdir}/modules-load.d/audio_load.conf
     else
