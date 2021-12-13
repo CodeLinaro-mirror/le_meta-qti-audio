@@ -29,13 +29,17 @@ do_install() {
         install -d ${D}${sysconfdir}/initscripts
         install -m 0755 ${WORKDIR}/${MACHINE}/start_audio_le ${D}${sysconfdir}/initscripts
         ln -sf ${systemd_unitdir}/system/init_audio.service ${D}${systemd_unitdir}/system/sysinit.target.wants/init_audio.service
-        echo "\
-        # Change selinux context of new directory. Use Z to apply for subdirectories as well.
-        T /data/audio - - - - security.selinux="system_u:object_r:audio_data_file_t:s0"
-        " > ${WORKDIR}/${BPN}.conf
+        if ${@bb.utils.contains('DISTRO_FEATURES', 'selinux', 'true', 'false', d)}; then
+            echo "\
+            # Change selinux context of new directory. Use Z to apply for subdirectories as well.
+            T /data/audio - - - - security.selinux="system_u:object_r:audio_data_file_t:s0"
+            " > ${WORKDIR}/${BPN}.conf
+        fi
         ## Install systemd-tmpfiles config file
         install -d ${D}${sysconfdir}/tmpfiles.d/
-        install -m 0644 ${WORKDIR}/${BPN}.conf ${D}${sysconfdir}/tmpfiles.d/${BPN}.conf
+        if ${@bb.utils.contains('DISTRO_FEATURES', 'selinux', 'true', 'false', d)}; then
+            install -m 0644 ${WORKDIR}/${BPN}.conf ${D}${sysconfdir}/tmpfiles.d/${BPN}.conf
+        fi
     else
         install -m 0755 ${S}/init_qcom_audio -D ${D}${sysconfdir}/init.d/init_qcom_audio
     fi
