@@ -64,15 +64,15 @@
     </config_params>
 
     <backend_names>
-        <device name="SND_DEVICE_OUT_SPEAKER" backend="speaker"/>
-        <device name="SND_DEVICE_OUT_HEADPHONES" backend="secondary_tdm_0"/>
-        <device name="SND_DEVICE_OUT_HANDSET" backend="secondary_tdm_1"/>
-        <device name="SND_DEVICE_IN_SPEAKER_MIC" backend="speaker-mic"/>
-        <device name="SND_DEVICE_IN_HEADSET_MIC" backend="secondary_tdm_0"/>
-        <device name="SND_DEVICE_IN_HANDSET_MIC" backend="secondary_tdm_1"/>
-        <device name="SND_DEVICE_OUT_VOICE_SPEAKER" backend="speaker"/>
-        <device name="SND_DEVICE_OUT_VOICE_HEADPHONES" backend="secondary_tdm_0"/>
-        <device name="SND_DEVICE_OUT_VOICE_HANDSET" backend="secondary_tdm_1"/>
+        <device name="SND_DEVICE_OUT_SPEAKER" backend="speaker" interface="PRI_MI2S_RX"/>
+        <device name="SND_DEVICE_OUT_HEADPHONES" backend="secondary_tdm_0" interface="SEC_TDM_RX_0"/>
+        <device name="SND_DEVICE_OUT_HANDSET" backend="secondary_tdm_1" interface="SEC_TDM_RX_1"/>
+        <device name="SND_DEVICE_IN_SPEAKER_MIC" backend="speaker-mic" interface="PRI_MI2S_TX"/>
+        <device name="SND_DEVICE_IN_HEADSET_MIC" backend="secondary_tdm_0" interface="SEC_TDM_TX_0"/>
+        <device name="SND_DEVICE_IN_HANDSET_MIC" backend="secondary_tdm_1" interface="SEC_TDM_TX_1"/>
+        <device name="SND_DEVICE_OUT_VOICE_SPEAKER" backend="speaker" interface="PRI_MI2S_RX"/>
+        <device name="SND_DEVICE_OUT_VOICE_HEADPHONES" backend="secondary_tdm_0" interface="SEC_TDM_RX_0"/>
+        <device name="SND_DEVICE_OUT_VOICE_HANDSET" backend="secondary_tdm_1" interface="SEC_TDM_RX_1"/>
 
         </backend_names>
 </audio_platform_info_i2s>
