@@ -1356,6 +1356,10 @@
         <ctl name="MultiMedia1 Mixer SLIM_0_TX" value="1" />
     </path>
 
+    <path name="audio-record line-in">
+        <ctl name="MultiMedia1 Mixer SLIM_0_TX" value="1" />
+    </path>
+
     <path name="audio-record handset-6mic-and-speaker-mic2">
         <ctl name="MultiMedia1 Mixer SLIM_0_TX" value="1" />
         <ctl name="MultiMedia1 Mixer TERT_MI2S_TX" value="1" />
@@ -2604,6 +2608,10 @@
     <path name="handset-6mic">
         <ctl name="SLIM_0_TX Channels" value="Six" />
         <path name="4dmic" />
+        <path name="2amic" />
+    </path>
+
+    <path name="line-in">
         <path name="2amic" />
     </path>
 
