@@ -35,14 +35,17 @@ case "$1" in
         echo -n "Starting/Loading audio module: "
 
         echo "audio:start/load" > /dev/kmsg
+        modprobe adsp_loader_dlkm
+        echo 1 > /sys/kernel/boot_adsp/boot
+        modprobe q6_pdr_dlkm
         modprobe q6_notifier_dlkm
         modprobe snd_event_dlkm
         modprobe apr_dlkm
-        modprobe adsp_loader_dlkm
         modprobe q6_dlkm
         modprobe native_dlkm
         modprobe pinctrl_lpi_dlkm
         modprobe swr_dlkm
+        modprobe platform_dlkm
         modprobe stub_dlkm
         modprobe wsa881x_analog_dlkm
         modprobe bolero_cdc_dlkm
@@ -53,10 +56,11 @@ case "$1" in
         modprobe rouleur_dlkm
         modprobe rouleur_slave_dlkm
         modprobe machine_dlkm
-        echo "done loading audio_kernel module"
+        echo "done loading audio_kernel module" > /dev/kmsg
         ;;
   stop)
         echo -n "Bypassing Unloading of  audio_kernel modules "
+        echo 0 > /sys/kernel/boot_adsp/boot
         ;;
   restart)
         $0 stop
