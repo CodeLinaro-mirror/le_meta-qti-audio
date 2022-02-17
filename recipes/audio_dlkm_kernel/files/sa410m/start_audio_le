@@ -45,6 +45,7 @@ case "$1" in
         modprobe native_dlkm
         modprobe pinctrl_lpi_dlkm
         modprobe swr_dlkm
+        modprobe swr_ctrl_dlkm
         modprobe platform_dlkm
         modprobe stub_dlkm
         modprobe wsa881x_analog_dlkm
