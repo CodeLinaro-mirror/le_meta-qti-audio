@@ -27,8 +27,8 @@ do_install() {
         install -d ${D}/${systemd_unitdir}/system/sysinit.target.wants
         ln -sf ${systemd_unitdir}/system/init_audio.service ${D}${systemd_unitdir}/system/sysinit.target.wants/init_audio.service
         echo "\
-        # Create directory in /data/audio for location with audio:audio permissions
-        d /data/audio 0755 audio audio - -
+        # Create directory in /data/audio for location with pulse:pulse permissions
+        d /data/audio 0755 pulse pulse - -
         # Change selinux context of new directory. Use Z to apply for subdirectories as well.
         T /data/audio - - - - security.selinux="system_u:object_r:audio_data_file_t:s0"
         " > ${WORKDIR}/${BPN}.conf

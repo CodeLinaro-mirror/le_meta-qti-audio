@@ -13,6 +13,7 @@ SRC_URI     =  "file://hardware/qcom/audio/mm-audio/"
 S = "${WORKDIR}/hardware/qcom/audio/mm-audio/"
 AUDIO_KERNEL_HEADERS="${STAGING_KERNEL_BUILDDIR}/audio-kernel"
 AUDIO_KERNEL_HEADERS_qrbx210="${STAGING_KERNEL_BUILDDIR}/audio-kernel/audio"
+AUDIO_KERNEL_HEADERS_sdmsteppe="${STAGING_KERNEL_BUILDDIR}/audio-kernel/audio"
 CFLAGS += "-I${AUDIO_KERNEL_HEADERS}"
 
 EXTRA_OECONF_append += "--with-sanitized-headers=${STAGING_KERNEL_BUILDDIR}/usr/include"

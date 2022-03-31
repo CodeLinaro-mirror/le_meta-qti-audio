@@ -20,10 +20,12 @@ DEPENDS_append_apq8017 = " ffv qti-audio-server binder"
 DEPENDS_append_apq8009 = " qti-audio-server binder"
 DEPENDS_append_apq8053 = " qti-audio-server binder"
 DEPENDS_append_qrbx210 = " audio-parsers"
+DEPENDS_append_sdmsteppe = " audio-parsers"
 DEPENDS_append = "${@bb.utils.contains('DISTRO_FEATURES', 'audio-dlkm', ' audiodlkm', '', d)}"
 DEPENDS_append = "${@bb.utils.contains('DISTRO_FEATURES', 'qti-audio', ' audio-route audio-utils libutils', ' system-media', d)}"
 
 CFLAGS_append_qrbx210 = " -I${STAGING_INCDIR}/audio/mm-audio/audio-parsers"
+CFLAGS_append_sdmsteppe = " -I${STAGING_INCDIR}/audio/mm-audio/audio-parsers"
 #apq8098 doesn't need surround sound recording
 DEPENDS_remove_apq8098 = "surround-sound-3mic"
 #sdxprairie doesn't need surround sound recording
@@ -33,6 +35,7 @@ do_configure[depends] += "audiodlkm:do_install"
 
 AUDIO_KERNEL_HEADERS="${STAGING_KERNEL_BUILDDIR}/audio-kernel"
 AUDIO_KERNEL_HEADERS_qrbx210="${STAGING_KERNEL_BUILDDIR}/audio-kernel/audio"
+AUDIO_KERNEL_HEADERS_sdmsteppe="${STAGING_KERNEL_BUILDDIR}/audio-kernel/audio"
 CFLAGS += "-I${AUDIO_KERNEL_HEADERS}"
 
 EXTRA_OEMAKE = "DEFAULT_INCLUDES= CPPFLAGS="-I. -I${STAGING_KERNEL_BUILDDIR}/usr/include -I${STAGING_KERNEL_BUILDDIR}/usr/techpack/audio/include -I${STAGING_INCDIR}/surround_sound_3mic -I${STAGING_INCDIR}/sound_trigger""
@@ -95,6 +98,13 @@ EXTRA_OECONF_append_qcs40x = " AUDIO_FEATURE_ENABLED_INSTANCE_ID=true"
 EXTRA_OECONF_append_sdxprairie = " AUDIO_FEATURE_ENABLED_SSR=false"
 EXTRA_OECONF_append_qcs40x = " AUDIO_USE_LL_AS_PRIMARY_OUTPUT=true"
 EXTRA_OECONF_append_sdmsteppe = " AUDIO_FEATURE_ENABLED_INSTANCE_ID=true"
+EXTRA_OECONF_append_sdmsteppe = " AUDIO_FEATURE_ENABLED_PARSER=true"
+EXTRA_OECONF_append_sdmsteppe = " AUDIO_FEATURE_ENABLED_DTSHD_PARSER=true"
+EXTRA_OECONF_append_sdmsteppe = " AUDIO_FEATURE_ENABLED_COMPRESS_VOIP=true"
+EXTRA_OECONF_append_sdmsteppe = " AUDIO_FEATURE_ENABLED_USBAUDIO=true"
+EXTRA_OECONF_append_sdmsteppe = " AUDIO_FEATURE_ENABLED_GKI=true"
+EXTRA_OECONF_append_sdmsteppe = " AUDIO_FEATURE_ENABLED_FM_POWER_OPT=true"
+EXTRA_OECONF_append_sdmsteppe = " AUDIO_FEATURE_ENABLED_EXTENDED_COMPRESS_FORMAT=true"
 EXTRA_OECONF_append_qrbx210 = " AUDIO_FEATURE_DISABLE_COMPRESS_FORMAT=true"
 EXTRA_OECONF_append_qrbx210 = " AUDIO_FEATURE_ENABLED_GKI=true"
 EXTRA_OECONF_append_qrbx210 = " AUDIO_FEATURE_ENABLED_PARSER=true"
@@ -116,5 +126,6 @@ do_install_append() {
 }
 
 FILES_${PN} += "${libdir}/audio.primary.default.so ${userfsdatadir}/*"
+FILES_${PN} += "${libdir}/audio.spkr.prot.so"
 SOLIBS = ".so"
 FILES_SOLIBSDEV = ""
