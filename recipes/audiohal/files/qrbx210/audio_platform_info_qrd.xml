@@ -24,6 +24,42 @@
 <!-- BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,  -->
 <!-- OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN -->
 <!-- IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.                          -->
+
+<!--
+Changes from Qualcomm Innovation Center are provided under the following license:
+
+Copyright (c) 2022 Qualcomm Innovation Center, Inc. All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted (subject to the limitations in the
+disclaimer below) provided that the following conditions are met:
+
+   * Redistributions of source code must retain the above copyright
+     notice, this list of conditions and the following disclaimer.
+
+   * Redistributions in binary form must reproduce the above
+     copyright notice, this list of conditions and the following
+     disclaimer in the documentation and/or other materials provided
+     with the distribution.
+
+   * Neither the name of Qualcomm Innovation Center, Inc. nor the names of its
+     contributors may be used to endorse or promote products derived
+     from this software without specific prior written permission.
+
+NO EXPRESS OR IMPLIED LICENSES TO ANY PARTY'S PATENT RIGHTS ARE
+GRANTED BY THIS LICENSE. THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT
+HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED
+WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR
+ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE
+GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER
+IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
+IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
 <audio_platform_info>
     <bit_width_configs>
         <device name="SND_DEVICE_OUT_SPEAKER" bit_width="24"/>
@@ -69,6 +105,8 @@
         <usecase name="USECASE_INCALL_REC_UPLINK" type="in" id="23" />
         <usecase name="USECASE_INCALL_REC_DOWNLINK" type="in" id="23" />
         <usecase name="USECASE_INCALL_REC_UPLINK_AND_DOWNLINK" type="in" id="23" />
+        <usecase name="USECASE_AUDIO_SPKR_CALIB_RX" type="out" id="30" />
+        <usecase name="USECASE_AUDIO_SPKR_CALIB_TX" type="in" id="39" />
     </pcm_ids>
     <config_params>
         <!-- In the below value string, the value indicates default mono -->
@@ -209,9 +247,9 @@
         <device name="SND_DEVICE_IN_QUAD_MIC" interface="TX_CDC_DMA_TX_3"/>
         <device name="SND_DEVICE_IN_HANDSET_STEREO_DMIC" interface="TX_CDC_DMA_TX_3"/>
         <device name="SND_DEVICE_IN_SPEAKER_STEREO_DMIC" interface="TX_CDC_DMA_TX_3"/>
-        <device name="SND_DEVICE_IN_CAPTURE_VI_FEEDBACK" interface="WSA_CDC_DMA_TX_0"/>
-        <device name="SND_DEVICE_IN_CAPTURE_VI_FEEDBACK_MONO_1" interface="WSA_CDC_DMA_TX_0"/>
-        <device name="SND_DEVICE_IN_CAPTURE_VI_FEEDBACK_MONO_2" interface="WSA_CDC_DMA_TX_0"/>
+        <device name="SND_DEVICE_IN_CAPTURE_VI_FEEDBACK" interface="TX_CDC_DMA_TX_4"/>
+        <device name="SND_DEVICE_IN_CAPTURE_VI_FEEDBACK_MONO_1" interface="TX_CDC_DMA_TX_4"/>
+        <device name="SND_DEVICE_IN_CAPTURE_VI_FEEDBACK_MONO_2" interface="TX_CDC_DMA_TX_4"/>
         <device name="SND_DEVICE_IN_VOICE_SPEAKER_DMIC_BROADSIDE" interface="TX_CDC_DMA_TX_3"/>
         <device name="SND_DEVICE_IN_SPEAKER_DMIC_BROADSIDE" interface="TX_CDC_DMA_TX_3"/>
         <device name="SND_DEVICE_IN_SPEAKER_DMIC_AEC_BROADSIDE" interface="TX_CDC_DMA_TX_3"/>
@@ -400,4 +438,7 @@
             </input_snd_device_mic_mapping>
         </input_snd_device>
     </snd_devices>
+    <config_params>
+        <param key="spkr_1_tz_name" value="wsa881x.0e"/>
+    </config_params>
 </audio_platform_info>
