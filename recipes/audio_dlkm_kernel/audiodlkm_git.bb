@@ -127,4 +127,5 @@ RPROVIDES_${PN} += "${@'kernel-module-wcd938x-slave-dlkm-${KERNEL_VERSION}'.repl
 RPROVIDES_${PN} += "${@'kernel-module-pm2250-spmi-dlkm-${KERNEL_VERSION}'.replace('_', '-')}"
 RPROVIDES_${PN} += "${@'kernel-module-rouleur-dlkm-${KERNEL_VERSION}'.replace('_', '-')}"
 RPROVIDES_${PN} += "${@'kernel-module-rouleur-slave-dlkm-${KERNEL_VERSION}'.replace('_', '-')}"
+RPROVIDES_${PN} += "${@'kernel-module-bt_fm_slim-dlkm-${KERNEL_VERSION}'.replace('_', '-')}"
 do_configure[depends] += "virtual/kernel:do_shared_workdir"
