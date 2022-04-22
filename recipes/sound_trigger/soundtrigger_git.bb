@@ -35,6 +35,7 @@ EXTRA_OECONF_append_qrbx210 = " SUPPORTS_SOUND_TRIGGER_DEVICE_API_VERSION_1_0=tr
 EXTRA_OECONF_append_qcs40x = " --enable-deferred_stop"
 EXTRA_OECONF_append_qcs40x = " --enable-feature_sva_multistage"
 EXTRA_OECONF_append_sdmsteppe = " --enable-feature_sva_multistage"
+EXTRA_OECONF_append_sdmsteppe = " SUPPORTS_SOUND_TRIGGER_APE=true"
 
 EXTRA_OEMAKE = "DEFAULT_INCLUDES= CPPFLAGS="-I. -I${STAGING_KERNEL_BUILDDIR}/usr/include -I${STAGING_INCDIR}/graphite-client/gcs -I${STAGING_INCDIR}/graphite-client/osal""
 
