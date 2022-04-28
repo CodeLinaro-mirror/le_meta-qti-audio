@@ -100,6 +100,20 @@ do_install_append_sa410m() {
      fi
 }
 
+do_install_append_sa515m() {
+    if ${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'true', 'false', d)}; then
+      install -d ${D}${sysconfdir}/initscripts
+       install -m 0755 ${WORKDIR}/sa515m/start_audio_le ${D}${sysconfdir}/initscripts
+       install -m 0644 ${WORKDIR}/sa515m/audio.service -D ${D}${systemd_unitdir}/system/audio.service
+       install -d ${D}${systemd_unitdir}/system/multi-user.target.wants/
+ # enable the service for multi-user.target
+       ln -sf ${systemd_unitdir}/system/audio.service \
+       ${D}${systemd_unitdir}/system/multi-user.target.wants/audio.service
+     else
+       install -m 0755 ${WORKDIR}/sa515m/audio_load.conf -D ${D}${sysconfdir}/modules/audio_load.conf
+     fi
+}
+
 # The inherit of module.bbclass will automatically name module packages with
 # kernel-module-" prefix as required by the oe-core build environment. Also it
 # replaces '_' with '-' in the module name.
