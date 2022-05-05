@@ -63,6 +63,7 @@ case "$1" in
         ;;
   stop)
         echo -n "Bypassing Unloading of  audio_kernel modules "
+	echo 0 > /sys/kernel/boot_adsp/boot
         ;;
   restart)
         $0 stop
