@@ -28,7 +28,7 @@ DEPENDS_remove_sdxprairie = "surround-sound-3mic"
 
 do_configure[depends] += "audiodlkm:do_install"
 
-AUDIO_KERNEL_HEADERS="${STAGING_KERNEL_BUILDDIR}/audio-kernel"
+AUDIO_KERNEL_HEADERS="${STAGING_INCDIR}/audio-kernel"
 CFLAGS += "-I${AUDIO_KERNEL_HEADERS}"
 
 EXTRA_OEMAKE = "DEFAULT_INCLUDES= CPPFLAGS="-I. -I${STAGING_KERNEL_BUILDDIR}/usr/include -I${STAGING_KERNEL_BUILDDIR}/usr/techpack/audio/include -I${STAGING_INCDIR}/surround_sound_3mic -I${STAGING_INCDIR}/sound_trigger""
