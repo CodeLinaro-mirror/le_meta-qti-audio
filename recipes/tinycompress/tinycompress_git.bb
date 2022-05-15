@@ -12,6 +12,7 @@ SRC_URI = "git://codeaurora.org/quic/le/platform/external/tinycompress.git;proto
            file://0001-Tinycompress-Add-get_metadata-and-set_metadata-API-s.patch"
 
 SRC_URI_append_qrbx210 += "file://0001-Tinycompress-remove-compr_passthr-fix-build-error.patch"
+SRC_URI_append_qrb5165 += "file://0001-Tinycompress-remove-compr_passthr-fix-build-error.patch"
 SRC_URI_append_sdmsteppe += "file://0001-Tinycompress-remove-compr_passthr-fix-build-error.patch"
 
 EXTRA_OECONF_append = " --with-sanitized-headers=${STAGING_KERNEL_BUILDDIR}/usr/include"
