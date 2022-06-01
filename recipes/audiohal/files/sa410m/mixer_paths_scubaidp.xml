@@ -2486,6 +2486,15 @@
     <path name="audio-dtmf-playback">
         <ctl name="RX_CDC_DMA_RX_0 Audio Mixer DTMF" value="1" />
     </path>
+
+    <path name="audio-dtmf-playback handset">
+        <ctl name="RX_CDC_DMA_RX_0 Audio Mixer DTMF" value="1" />
+    </path>
+
+    <path name="audio-dtmf-playback headphones">
+        <ctl name="RX_CDC_DMA_RX_0 Audio Mixer DTMF" value="1" />
+    </path>
+
     <!-- These are actual sound device specific mixer settings -->
     <path name="amic2">
         <ctl name="TX DEC0 MUX" value="SWR_MIC" />
