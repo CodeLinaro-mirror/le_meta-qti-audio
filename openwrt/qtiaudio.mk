@@ -1,0 +1,1 @@
+QTIAUDIO:=tinyalsa tinycompress qahw hal-pal qahw-api
