@@ -27,7 +27,7 @@ do_install() {
         install -m 0644 ${S}/init_audio.service -D ${D}${systemd_unitdir}/system/init_audio.service
         install -d ${D}/${systemd_unitdir}/system/sysinit.target.wants
         install -d ${D}${sysconfdir}/initscripts
-        install -m 0755 ${WORKDIR}/${MACHINE}/start_audio_le ${D}${sysconfdir}/initscripts
+        install -m 0755 ${WORKDIR}/${BASEMACHINE}/start_audio_le ${D}${sysconfdir}/initscripts
         ln -sf ${systemd_unitdir}/system/init_audio.service ${D}${systemd_unitdir}/system/sysinit.target.wants/init_audio.service
         if ${@bb.utils.contains('DISTRO_FEATURES', 'selinux', 'true', 'false', d)}; then
             echo "\
