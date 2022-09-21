@@ -58,6 +58,7 @@ endef
 
 define Package/qahw-api/install
 	$(INSTALL_DIR) $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/bin/
 	$(CP) $(PKG_BUILD_DIR)/hal_play_test $(1)/usr/bin/
 	$(CP) $(PKG_BUILD_DIR)/hal_rec_test $(1)/usr/bin/
 	$(CP) $(PKG_BUILD_DIR)/hal_voice_test $(1)/usr/bin/
