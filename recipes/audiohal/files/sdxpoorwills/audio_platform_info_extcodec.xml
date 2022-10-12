@@ -25,14 +25,18 @@
 <!-- WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE      -->
 <!-- OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN    -->
 <!-- IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.                             -->
+<!--                                                                           -->
+<!-- Changes from Qualcomm Innovation Center are provided under the following license: -->
+<!-- Copyright (c) 2022 Qualcomm Innovation Center, Inc. All rights reserved. -->
+
 <audio_platform_info_i2s>
     <pcm_ids>
-        <usecase name="USECASE_VOICEMMODE1_CALL" type="in" id="11"/>
-        <usecase name="USECASE_VOICEMMODE1_CALL" type="out" id="11"/>
-        <usecase name="USECASE_VOICEMMODE2_CALL" type="in" id="12"/>
-        <usecase name="USECASE_VOICEMMODE2_CALL" type="out" id="12"/>
-        <usecase name="USECASE_AUDIO_PLAYBACK_OFFLOAD2" type="in" id="7"/>
-        <usecase name="USECASE_AUDIO_PLAYBACK_OFFLOAD2" type="out" id="7"/>
+        <usecase name="USECASE_VOICEMMODE1_CALL" type="in" id="2"/>
+        <usecase name="USECASE_VOICEMMODE1_CALL" type="out" id="2"/>
+        <usecase name="USECASE_VOICEMMODE2_CALL" type="in" id="14"/>
+        <usecase name="USECASE_VOICEMMODE2_CALL" type="out" id="14"/>
+        <usecase name="USECASE_AUDIO_PLAYBACK_OFFLOAD2" type="in" id="33"/>
+        <usecase name="USECASE_AUDIO_PLAYBACK_OFFLOAD2" type="out" id="33"/>
     </pcm_ids>
 
     <config_params>
@@ -50,7 +54,14 @@
         <!-- In the below value string, the value indicates fluence mode -->
         <!-- It can be set to endfire or broadside.                      -->
         <param key="fluence_mode" value="endfire"/>
+        <!-- In the below value strings, the value indicates Multi offload-->
+        <!-- features. It can be set to true or false.                   -->
+        <param key="multi_offload_enable" value="false"/>
     </config_params>
+
+    <backend_names>
+        <device name="SND_DEVICE_OUT_VOICE_TX" backend="voice-tx" interface="VOICE_PLAYBACK_TX"/>
+    </backend_names>
 
 </audio_platform_info_i2s>
 

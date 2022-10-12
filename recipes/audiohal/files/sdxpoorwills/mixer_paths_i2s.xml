@@ -25,6 +25,10 @@
 <!-- WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE   -->
 <!-- OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN -->
 <!-- IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.                          -->
+<!--                                                                           -->
+<!-- Changes from Qualcomm Innovation Center are provided under the following license: -->
+<!-- Copyright (c) 2022 Qualcomm Innovation Center, Inc. All rights reserved. -->
+
 <mixer>
     <!-- These are the initial mixer settings -->
     <ctl name="Voice Rx Device Mute" id="0" value="0" />
@@ -68,6 +72,10 @@
     <ctl name="SLIM RX4 MUX" value="AIF1_PB" />
     <ctl name="SLIM RX3 MUX" value="AIF1_PB" />
     <ctl name="CLASS_H_DSM MUX" value="ZERO" />
+    <ctl name="PRI_MI2S_RX Port Mixer PRI_MI2S_TX" value="0" />
+    <ctl name="PRI_MI2S_RX Audio Mixer DTMF" value="0" />
+    <ctl name="Incall_Music Audio Mixer MultiMedia2" value="0" />
+    <ctl name="Incall_Music Audio Mixer MultiMedia4" value="0" />
 
     <!-- Audio ctl -->
     <ctl name="MultiMedia1 Mixer PRI_MI2S_TX" value="0" />
@@ -77,32 +85,41 @@
     <!-- Multimode Voice1 -->
     <ctl name="VoiceMMode1_Tx Mixer PRI_MI2S_TX_MMode1" value="0" />
     <ctl name="PRI_MI2S_RX_Voice Mixer VoiceMMode1" value="0" />
+    <ctl name="PRI_MI2S_RX_Voice Mixer DTMF" value="0" />
     <!-- Miltimode Voice1 end-->
 
     <!-- Multimode Voice2 -->
     <ctl name="VoiceMMode2_Tx Mixer PRI_MI2S_TX_MMode2" value="0" />
     <ctl name="PRI_MI2S_RX_Voice Mixer VoiceMMode2" value="0" />
+    <ctl name="PRI_MI2S_RX_Voice Mixer DTMF" value="0" />
     <!-- Multimode Voice2 end-->
 
     <!-- CS voice -->
       <ctl name="PRI_MI2S_RX_Voice Mixer CSVoice" value="0" />
+      <ctl name="PRI_MI2S_RX_Voice Mixer DTMF" value="0" />
       <ctl name="Voice_Tx Mixer PRI_MI2S_TX_Voice" value="0" />
     <!-- CS voice end -->
+
+    <ctl name="Incall_Music_DL Audio Mixer MultiMedia4" value="0" />
+    <ctl name="Incall_Music_DL Audio Mixer MultiMedia7" value="0" />
 
 <!-- voice and audio paths -->
    <path name="voice-call">
       <ctl name="PRI_MI2S_RX_Voice Mixer CSVoice" value="1" />
+      <ctl name="PRI_MI2S_RX_Voice Mixer DTMF" value="1" />
       <ctl name="Voice_Tx Mixer PRI_MI2S_TX_Voice" value="1" />
    </path>
 
     <path name="voicemmode1-call">
         <ctl name="VoiceMMode1_Tx Mixer PRI_MI2S_TX_MMode1" value="1" />
         <ctl name="PRI_MI2S_RX_Voice Mixer VoiceMMode1" value="1" />
+        <ctl name="PRI_MI2S_RX_Voice Mixer DTMF" value="1" />
     </path>
 
     <path name="voicemmode2-call">
         <ctl name="VoiceMMode2_Tx Mixer PRI_MI2S_TX_MMode2" value="1" />
         <ctl name="PRI_MI2S_RX_Voice Mixer VoiceMMode2" value="1" />
+        <ctl name="PRI_MI2S_RX_Voice Mixer DTMF" value="1" />
     </path>
 
     <path name="audio-record">
@@ -113,7 +130,7 @@
         <ctl name="PRI_MI2S_RX Audio Mixer MultiMedia1" value="1" />
     </path>
 
-     <path name="compress-offload-playback">
+    <path name="compress-offload-playback">
         <ctl name="PRI_MI2S_RX Audio Mixer MultiMedia4" value="1" />
     </path>
 
@@ -121,21 +138,12 @@
         <ctl name="AFE_PCM_RX Audio Mixer MultiMedia4" value="1" />
     </path>
 
-    <path name="compress-offload-playback usb-headphones">
-        <ctl name="USB_AUDIO_RX Audio Mixer MultiMedia4" value="1" />
-    </path>
-
-    <path name="compress-offload-playback usb-headset">
-        <ctl name="USB_AUDIO_RX Audio Mixer MultiMedia4" value="1" />
-    </path>
-
-    <path name="compress-offload-playback speaker-and-usb-headphones">
-        <path name="compress-offload-playback usb-headphones" />
-        <path name="compress-offload-playback" />
-    </path>
-
      <path name="compress-offload-playback2">
-        <ctl name="PRI_MI2S_RX Audio Mixer MultiMedia4" value="1" />
+        <ctl name="PRI_MI2S_RX Audio Mixer MultiMedia7" value="1" />
+    </path>
+
+    <path name="compress-offload-playback2 afe-proxy">
+        <ctl name="AFE_PCM_RX Audio Mixer MultiMedia7" value="1" />
     </path>
 
     <!-- These are actual sound device specific mixer settings -->
@@ -149,7 +157,7 @@
 
     <path name="dmic1">
         <ctl name="AIF1_CAP Mixer I2S TX6" value="1"/>
-        <ctl name="PRI_MI2S_TX Channels" value="One" />
+        <ctl name="MI2S_TX Channels" value="One" />
         <ctl name="CDC_IF TX6 MUX" value="DEC6" />
         <ctl name="ADC MUX6" value="DMIC" />
         <ctl name="DMIC MUX6" value="DMIC1" />
@@ -157,13 +165,14 @@
 
     <path name="dmic2">
         <ctl name="AIF1_CAP Mixer I2S TX6" value="1"/>
-        <ctl name="PRI_MI2S_TX Channels" value="One" />
+        <ctl name="MI2S_TX Channels" value="One" />
         <ctl name="CDC_IF TX6 MUX" value="DEC6" />
         <ctl name="ADC MUX6" value="DMIC" />
         <ctl name="DMIC MUX6" value="DMIC2" />
     </path>
 
     <path name="speaker">
+        <ctl name="RX8 Digital Volume" value="75" />
         <ctl name="I2S RX0 MUX" value="AIF1_PB" />
         <ctl name="MI2S_RX Channels" value="One" />
         <ctl name="CDC_IF RX0 MUX" value="I2S RX0" />
@@ -176,8 +185,8 @@
     </path>
 
     <path name="speaker-mic">
-        <path name="dmic1" />
-        <ctrl name="DEC6 Volume" value="102" />
+        <path name="dmic2" />
+        <ctrl name="DEC6 Volume" value="84" />
     </path>
 
     <path name="handset">
@@ -213,7 +222,7 @@
 
     <path name="headset-mic">
         <path name="adc2" />
-        <ctl name="ADC2 Volume" value="13" />
+        <ctl name="DEC6 Volume" value="84" />
     </path>
 
     <path name="voice-speaker">
@@ -260,15 +269,15 @@
     </path>
 
     <path name="speaker-dmic-endfire">
-        <ctl name="AIF1_CAP Mixer SLIM TX7" value="1" />
-        <ctl name="AIF1_CAP Mixer SLIM TX8" value="1" />
+        <ctl name="AIF1_CAP Mixer I2S TX6" value="1" />
+        <ctl name="AIF1_CAP Mixer I2S TX7" value="1" />
+        <ctl name="CDC_IF TX6 MUX" value="DEC6" />
+        <ctl name="ADC MUX6" value="DMIC" />
+        <ctl name="DMIC MUX6" value="DMIC1" />
         <ctl name="CDC_IF TX7 MUX" value="DEC7" />
         <ctl name="ADC MUX7" value="DMIC" />
-        <ctl name="DMIC MUX7" value="DMIC1" />
-        <ctl name="CDC_IF TX8 MUX" value="DEC8" />
-        <ctl name="ADC MUX8" value="DMIC" />
-        <ctl name="DMIC MUX8" value="DMIC5" />
-        <ctl name="SLIM_0_TX Channels" value="Two" />
+        <ctl name="DMIC MUX7" value="DMIC2" />
+        <ctl name="MI2S_TX Channels" value="Two" />
     </path>
 
     <path name="dmic-endfire">
@@ -352,5 +361,48 @@
 
     <path name="voice-speaker-dmic-broadside">
         <path name="dmic-broadside" />
+    </path>
+
+    <path name="audio-afe-loopback">
+        <ctl name="PRI_MI2S_RX Port Mixer PRI_MI2S_TX" value="1" />
+    </path>
+
+    <path name="audio-dtmf-playback">
+        <ctl name="PRI_MI2S_RX Audio Mixer DTMF" value="1" />
+    </path>
+
+    <path name="incall_music_uplink">
+        <ctl name="Incall_Music Audio Mixer MultiMedia2" value="1" />
+    </path>
+
+    <path name="incall_music_uplink voice-tx">
+        <path name="incall_music_uplink" />
+    </path>
+
+    <path name="compress-offload-playback voice-tx">
+        <ctl name="Incall_Music Audio Mixer MultiMedia4" value="1" />
+    </path>
+
+    <path name="compress-offload-playback2 voice-tx">
+        <ctl name="Incall_Music Audio Mixer MultiMedia7" value="1" />
+    </path>
+
+    <path name="incall-rec-downlink">
+        <ctl name="MultiMedia1 Mixer VOC_REC_DL" value="1" />
+    </path>
+
+    <path name="incall-rec-downlink incall-rec-rx">
+        <path name="incall-rec-downlink" />
+    </path>
+
+    <path name="compress-offload-playback voice-dl-tx">
+        <ctl name="Incall_Music_DL Audio Mixer MultiMedia4" value="1" />
+    </path>
+
+    <path name="compress-offload-playback2 voice-dl-tx">
+        <ctl name="Incall_Music_DL Audio Mixer MultiMedia7" value="1" />
+    </path>
+
+    <path name="afe-proxy-record afe-proxy">
     </path>
 </mixer>
