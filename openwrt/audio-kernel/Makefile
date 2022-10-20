@@ -36,22 +36,24 @@ define Build/Compile
 endef
 
 define Build/InstallDev
-	@true
+	$(INSTALL_DIR) $(STAGING_DIR)
+	mkdir -p $(1)/usr/include/audio-kernel/
+	$(CP) $(PKG_BUILD_DIR)/include/* $(1)/usr/include/audio-kernel/
 endef
 
 define KernelPackage/audio-kernel/install
-	$(INSTALL_DIR) $(1)/lib/modules/$(LINUX_VERSION)/kernel/techpack/audio/asoc
-	$(INSTALL_DIR) $(1)/lib/modules/$(LINUX_VERSION)/kernel/techpack/audio/asoc/codecs/wcd934x/
-	$(INSTALL_DIR) $(1)/lib/modules/$(LINUX_VERSION)/kernel/techpack/audio/asoc/codecs/
-	$(INSTALL_DIR) $(1)/lib/modules/$(LINUX_VERSION)/kernel/techpack/audio/dsp/
-	$(INSTALL_DIR) $(1)/lib/modules/$(LINUX_VERSION)/kernel/techpack/audio/soc/
-	$(INSTALL_DIR) $(1)/lib/modules/$(LINUX_VERSION)/kernel/techpack/audio/ipc/
-	$(INSTALL_BIN) $(PKG_BUILD_DIR)/asoc/*.ko $(1)/lib/modules/$(LINUX_VERSION)/kernel/techpack/audio/asoc/
-	$(INSTALL_BIN) $(PKG_BUILD_DIR)/asoc/codecs/wcd934x/*.ko $(1)/lib/modules/$(LINUX_VERSION)/kernel/techpack/audio/asoc/codecs/wcd934x/
-	$(INSTALL_BIN) $(PKG_BUILD_DIR)/asoc/codecs/*.ko $(1)/lib/modules/$(LINUX_VERSION)/kernel/techpack/audio/asoc/codecs/
-	$(INSTALL_BIN) $(PKG_BUILD_DIR)/dsp/*.ko $(1)/lib/modules/$(LINUX_VERSION)/kernel/techpack/audio/dsp/
-	$(INSTALL_BIN) $(PKG_BUILD_DIR)/soc/*.ko $(1)/lib/modules/$(LINUX_VERSION)/kernel/techpack/audio/soc/
-	$(INSTALL_BIN) $(PKG_BUILD_DIR)/ipc/*.ko $(1)/lib/modules/$(LINUX_VERSION)/kernel/techpack/audio/ipc/
+	$(INSTALL_DIR) $(1)/lib/modules/$(LINUX_VERSION)-debug/kernel/techpack/audio/asoc
+	$(INSTALL_DIR) $(1)/lib/modules/$(LINUX_VERSION)-debug/kernel/techpack/audio/asoc/codecs/wcd934x/
+	$(INSTALL_DIR) $(1)/lib/modules/$(LINUX_VERSION)-debug/kernel/techpack/audio/asoc/codecs/
+	$(INSTALL_DIR) $(1)/lib/modules/$(LINUX_VERSION)-debug/kernel/techpack/audio/dsp/
+	$(INSTALL_DIR) $(1)/lib/modules/$(LINUX_VERSION)-debug/kernel/techpack/audio/soc/
+	$(INSTALL_DIR) $(1)/lib/modules/$(LINUX_VERSION)-debug/kernel/techpack/audio/ipc/
+	$(CP) $(PKG_BUILD_DIR)/asoc/*.ko $(1)/lib/modules/$(LINUX_VERSION)-debug/kernel/techpack/audio/asoc/
+	$(CP) $(PKG_BUILD_DIR)/asoc/codecs/wcd934x/*.ko $(1)/lib/modules/$(LINUX_VERSION)-debug/kernel/techpack/audio/asoc/codecs/wcd934x/
+	$(CP) $(PKG_BUILD_DIR)/asoc/codecs/*.ko $(1)/lib/modules/$(LINUX_VERSION)-debug/kernel/techpack/audio/asoc/codecs/
+	$(CP) $(PKG_BUILD_DIR)/dsp/*.ko $(1)/lib/modules/$(LINUX_VERSION)-debug/kernel/techpack/audio/dsp/
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/soc/*.ko $(1)/lib/modules/$(LINUX_VERSION)-debug/kernel/techpack/audio/soc/
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/ipc/*.ko $(1)/lib/modules/$(LINUX_VERSION)-debug/kernel/techpack/audio/ipc/
 endef
 
 $(eval $(call KernelPackage,audio-kernel))
