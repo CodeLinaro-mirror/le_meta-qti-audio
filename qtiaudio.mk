@@ -1,0 +1,1 @@
+QTIAUDIO:=init-audio kmod-audio-kernel tinyalsa tinycompress qahw hal-pal qahw-api
