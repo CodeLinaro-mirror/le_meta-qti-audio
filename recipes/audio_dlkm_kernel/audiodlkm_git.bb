@@ -10,6 +10,8 @@ LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/${LICENSE};md5
 PR = "r0"
 
 DEPENDS = "virtual/kernel"
+DEPENDS += "${@bb.utils.contains_any('BASEMACHINE', 'sa525m', 'rsync-native', '', d)}"
+DEPENDS += "${@bb.utils.contains_any('BASEMACHINE', 'sa525m', 'audiodevicetree', '', d)}"
 
 FILESPATH =+ "${WORKSPACE}:"
 SRC_URI = "file://vendor/qcom/opensource/audio-kernel/"
@@ -29,7 +31,20 @@ do_configure() {
   cp -f ${WORKDIR}/vendor/qcom/opensource/audio-kernel/Makefile.am ${WORKDIR}/vendor/qcom/opensource/audio-kernel/Makefile
 }
 
-do_install_append() {
+do_compile_sa525m() {
+    cd ${WORKSPACE}/kernel-${PREFERRED_VERSION_linux-msm}/kernel_platform  && \
+    BUILD_CONFIG=${KERNEL_BUILD_CONFIG} \
+    TARGET_SUPPORT=sa525m \
+    EXT_MODULES=../../vendor/qcom/opensource/audio-kernel \
+    ROOTDIR=${WORKDIR}/ \
+    MODULE_OUT=${WORKDIR}/vendor/qcom/opensource/audio-kernel \
+    OUT_DIR=${KERNEL_OUT_PATH}/ \
+    KERNEL_UAPI_HEADERS_DIR=${STAGING_KERNEL_BUILDDIR} \
+    INSTALL_MODULE_HEADERS=1 \
+    ./build/build_module.sh
+}
+
+do_install() {
   install -d ${D}${includedir}/audio-kernel/
   install -d ${D}${includedir}/audio-kernel/linux
   install -d ${D}${includedir}/audio-kernel/linux/mfd
@@ -37,14 +52,18 @@ do_install_append() {
   install -d ${D}${includedir}/audio-kernel/sound
   install -d ${D}${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra
 
-  cp -fr ${S}/linux/* ${D}${includedir}/audio-kernel/linux
-  install -m 0644 ${S}/sound/* ${D}${includedir}/audio-kernel/sound
-
-  install -m 0755 ${WORKDIR}/${BASEMACHINE}/audio_load.conf -D ${D}${sysconfdir}/modules-load.d/audio_load.conf
-
-   for i in $(find ${D}/${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra/. -name "*.ko"); do
-   mv ${i} ${D}/${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra/
+  if [ ${BASEMACHINE} != "sa525m" ];then
+    cp -fr ${S}/linux/* ${D}${includedir}/audio-kernel/linux
+    install -m 0644 ${S}/sound/* ${D}${includedir}/audio-kernel/sound
+    install -m 0755 ${WORKDIR}/${BASEMACHINE}/audio_load.conf -D ${D}${sysconfdir}/modules-load.d/audio_load.conf
+    for i in $(find ${D}/${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra/. -name "*.ko"); do
+      mv ${i} ${D}/${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra/
+    done
+  else
+   for i in $(find ${WORKDIR}/vendor/qcom/opensource/audio-kernel/. -name "*.ko"); do
+   install -m 0755 ${i} ${D}/${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra/
    done
+  fi
 
    rm -fr ${D}/${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra/asoc
    rm -fr ${D}/${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra/dsp
@@ -65,6 +84,14 @@ do_module_signing() {
    done
   fi
 }
+do_deploy_sa525m() {
+# Deploy unstripped kernel modules into ${DEPLOYDIR}/kernel_modules for debugging purposes
+    install -d ${DEPLOYDIR}/kernel_modules
+    for kmod in $(find ${D} -name "*.ko") ; do
+        install -m 0644 $kmod ${DEPLOYDIR}/kernel_modules
+    done
+}
+
 
 addtask do_module_signing after do_package before do_package_write_ipk
 
@@ -72,6 +99,12 @@ addtask do_module_signing after do_package before do_package_write_ipk
 # kernel-module-" prefix as required by the oe-core build environment. Also it
 # replaces '_' with '-' in the module name.
 
+RPROVIDES_${PN} += "${@'kernel-module-spf-core-dlkm-${KERNEL_VERSION}'.replace('_', '-')}"
+RPROVIDES_${PN} += "${@'kernel-module-audio-pkt-dlkm-${KERNEL_VERSION}'.replace('_', '-')}"
+RPROVIDES_${PN} += "${@'kernel-module-audio-prm-dlkm-${KERNEL_VERSION}'.replace('_', '-')}"
+RPROVIDES_${PN} += "${@'kernel-module-audpkt-ion-dlkm-${KERNEL_VERSION}'.replace('_', '-')}"
+RPROVIDES_${PN} += "${@'kernel-module-gpr-dlkm-${KERNEL_VERSION}'.replace('_', '-')}"
+RPROVIDES_${PN} += "${@'kernel-module-cdc-pin-dlkm-${KERNEL_VERSION}'.replace('_', '-')}"
 RPROVIDES_${PN} += "${@'kernel-module-adsp-loader-dlkm-${KERNEL_VERSION}'.replace('_', '-')}"
 RPROVIDES_${PN} += "${@'kernel-module-apr-dlkm-${KERNEL_VERSION}'.replace('_', '-')}"
 RPROVIDES_${PN} += "${@'kernel-module-bolero-cdc-dlkm-${KERNEL_VERSION}'.replace('_', '-')}"
