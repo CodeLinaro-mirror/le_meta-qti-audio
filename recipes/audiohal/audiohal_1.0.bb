@@ -31,13 +31,16 @@ DEPENDS_remove_sdxpoorwills = "surround-sound-3mic"
 do_configure[depends] += "audiodlkm:do_install"
 
 AUDIO_KERNEL_HEADERS="${STAGING_KERNEL_BUILDDIR}/audio-kernel"
+AUDIO_KERNEL_HEADERS1="${STAGING_KERNEL_BUILDDIR}/usr/include/audio"
 CFLAGS += "-I${AUDIO_KERNEL_HEADERS}"
+CFLAGS_append_sa410m += "-I${AUDIO_KERNEL_HEADERS1}"
 
 EXTRA_OEMAKE = "DEFAULT_INCLUDES= CPPFLAGS="-I. -I${STAGING_KERNEL_BUILDDIR}/usr/include -I${STAGING_KERNEL_BUILDDIR}/usr/techpack/audio/include -I${STAGING_INCDIR}/surround_sound_3mic -I${STAGING_INCDIR}/sound_trigger""
 EXTRA_OECONF += "--with-sanitized-headers=${STAGING_KERNEL_BUILDDIR}/usr/include"
 EXTRA_OECONF += "--with-sanitized-headers=${STAGING_KERNEL_BUILDDIR}/usr/techpack/audio/include"
 EXTRA_OECONF += "--with-glib --program-suffix=${HALBINSUFFIX}"
 EXTRA_OECONF += " --with-audio-kernel-headers=${AUDIO_KERNEL_HEADERS}"
+EXTRA_OECONF_append_sa410m += " --with-audio-kernel-headers=${AUDIO_KERNEL_HEADERS1}"
 EXTRA_OECONF += " --with-ion=${PKG_CONFIG_SYSROOT_DIR}/usr/include/ion_headers/ion"
 
 EXTRA_OECONF += "TARGET_SUPPORT=${BASEMACHINE}"
