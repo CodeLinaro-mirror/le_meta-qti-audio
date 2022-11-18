@@ -3,19 +3,14 @@
 #Copyright (c) 2022 Qualcomm Innovation Center, Inc. All rights reserved.
 #SPDX-License-Identifier: BSD-3-Clause-Clear.
 
-START=30
-STOP=69
+START=03
+STOP=96
 
-USE_PROCD=1
-
-start_service() {
-	procd_open_instance
-	procd_set_param command /etc/initscripts/start_audio_le
-	procd_set_param respawn ${respawn_threshold:-3600} ${respawn_timeout:-5} ${respawn_retry:-5}
-	procd_close_instance
+start() {
+	/etc/initscripts/start_audio_le start
 }
 
-stop_service() {
+stop() {
 	echo "Stopping init_qcom_audio:"
 	# commands to kill application
 }
