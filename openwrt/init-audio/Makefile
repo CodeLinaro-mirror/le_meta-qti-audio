@@ -26,7 +26,7 @@ define Package/init-audio/install
 	$(INSTALL_DIR) $(1)/etc/udev/rules.d/
 	$(INSTALL_BIN) ./files/init_audio.init $(1)/etc/init.d/
 	$(INSTALL_BIN) ./files/init_qcom_audio $(1)/etc/init.d/
-	$(CP) ./files/start_audio_le  $(1)/etc/initscripts/
+	$(INSTALL_BIN) ./files/start_audio_le  $(1)/etc/initscripts/
 	$(CP) ./files/msm-audio-node.rules  $(1)/etc/udev/rules.d/
 endef
 
