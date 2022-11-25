@@ -39,10 +39,10 @@
         <usecase name="USECASE_AUDIO_PLAYBACK_OFFLOAD2" type="out" id="33"/>
         <usecase name="USECASE_AUDIO_RECORD_AFE_PROXY" type="in" id="8"/>
         <usecase name="USECASE_AUDIO_RECORD_AFE_PROXY" type="out" id="7"/>
-        <usecase name="USECASE_AUDIO_PLAYBACK_AFE_PROXY]" type="in" id="8"/>
-        <usecase name="USECASE_AUDIO_PLAYBACK_AFE_PROXY]" type="out" id="7"/>
-        <usecase name="USECASE_AUDIO_AFE_LOOPBACK]" type="in" id="12"/>
-        <usecase name="USECASE_AUDIO_AFE_LOOPBACK]" type="out" id="5"/>
+        <usecase name="USECASE_AUDIO_PLAYBACK_AFE_PROXY" type="in" id="8"/>
+        <usecase name="USECASE_AUDIO_PLAYBACK_AFE_PROXY" type="out" id="7"/>
+        <usecase name="USECASE_AUDIO_AFE_LOOPBACK" type="in" id="12"/>
+        <usecase name="USECASE_AUDIO_AFE_LOOPBACK" type="out" id="5"/>
     </pcm_ids>
 
     <config_params>
