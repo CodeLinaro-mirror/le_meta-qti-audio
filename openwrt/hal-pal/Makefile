@@ -46,14 +46,19 @@ define Build/InstallDev
 	$(INSTALL_DIR) $(STAGING_DIR)
 	mkdir -p $(1)/usr/include/hal-pal/
 	mkdir -p $(1)/usr/lib/
+	mkdir -p $(1)/etc
 	$(CP) $(PKG_BUILD_DIR)/*.h $(1)/usr/include/hal-pal/
 	$(CP) $(PKG_BUILD_DIR)/audio_extn/*.h $(1)/usr/include/hal-pal/
 	$(CP) $(PKG_BUILD_DIR)/.libs/audio.primary.default.so* $(1)/usr/lib/
+	$(CP) ./files/sdxpinn/* $(1)/etc
 endef
 
 define Package/hal-pal/install
 	$(INSTALL_DIR) $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/etc
+	$(INSTALL_DIR) $(1)/data/audio
 	$(CP) $(PKG_BUILD_DIR)/.libs/audio.primary.default.so* $(1)/usr/lib/
+	$(CP) ./files/sdxpinn/* $(1)/etc
 endef
 
 $(eval $(call BuildPackage,hal-pal))
