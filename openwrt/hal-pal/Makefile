@@ -50,7 +50,11 @@ define Build/InstallDev
 	$(CP) $(PKG_BUILD_DIR)/*.h $(1)/usr/include/hal-pal/
 	$(CP) $(PKG_BUILD_DIR)/audio_extn/*.h $(1)/usr/include/hal-pal/
 	$(CP) $(PKG_BUILD_DIR)/.libs/audio.primary.default.so* $(1)/usr/lib/
+ifeq ($(TARGET_MACHINE),sdx35)
+	$(CP) ./files/sdxbaagha/* $(1)/etc
+else ifeq ($(TARGET_MACHINE),sdx75)
 	$(CP) ./files/sdxpinn/* $(1)/etc
+endif
 endef
 
 define Package/hal-pal/install
@@ -58,7 +62,11 @@ define Package/hal-pal/install
 	$(INSTALL_DIR) $(1)/etc
 	$(INSTALL_DIR) $(1)/data/audio
 	$(CP) $(PKG_BUILD_DIR)/.libs/audio.primary.default.so* $(1)/usr/lib/
+ifeq ($(TARGET_MACHINE),sdx35)
+	$(CP) ./files/sdxbaagha/* $(1)/etc
+else ifeq ($(TARGET_MACHINE),sdx75)
 	$(CP) ./files/sdxpinn/* $(1)/etc
+endif
 endef
 
 $(eval $(call BuildPackage,hal-pal))
