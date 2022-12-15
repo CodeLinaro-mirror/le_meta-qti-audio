@@ -37,14 +37,26 @@ define Build/InstallDev
 	mkdir -p $(1)/usr/include
 	mkdir -p $(1)/usr/include/tinyalsa
 	mkdir -p $(1)/usr/lib
+	mkdir -p $(1)/usr/bin
 	$(CP) $(PKG_BUILD_DIR)/*.h $(1)/usr/include/tinyalsa
 	$(CP) $(PKG_BUILD_DIR)/include/tinyalsa/*.h $(1)/usr/include/tinyalsa
-	$(CP) $(PKG_BUILD_DIR)/.libs/* $(1)/usr/lib/
+	$(CP) $(PKG_BUILD_DIR)/.libs/lib* $(1)/usr/lib/
+	$(CP) $(PKG_BUILD_DIR)/.libs/qtitinycap $(1)/usr/bin/
+	$(CP) $(PKG_BUILD_DIR)/.libs/qtitinyhostless $(1)/usr/bin/
+	$(CP) $(PKG_BUILD_DIR)/.libs/qtitinymix $(1)/usr/bin/
+	$(CP) $(PKG_BUILD_DIR)/.libs/qtitinypcminfo $(1)/usr/bin/
+	$(CP) $(PKG_BUILD_DIR)/.libs/qtitinyplay $(1)/usr/bin/
 endef
 
 define Package/tinyalsa/install
+	$(INSTALL_DIR) $(1)/usr/bin/
 	$(INSTALL_DIR) $(1)/usr/lib/
-	$(CP) $(PKG_BUILD_DIR)/.libs/* $(1)/usr/lib/
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/.libs/qtitinycap $(1)/usr/bin/
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/.libs/qtitinyhostless $(1)/usr/bin/
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/.libs/qtitinymix $(1)/usr/bin/
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/.libs/qtitinypcminfo $(1)/usr/bin/
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/.libs/qtitinyplay $(1)/usr/bin/
+	$(CP) $(PKG_BUILD_DIR)/.libs/lib* $(1)/usr/lib/
 endef
 
 $(eval $(call BuildPackage,tinyalsa))
