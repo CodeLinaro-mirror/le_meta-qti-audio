@@ -44,12 +44,8 @@ do_compile() {
 
 do_install() {
     install -d ${D}${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra
-
-    for module_path in `find  ${WORKDIR}/vendor -name *ko`
-    do
-        Module_name=`echo ${module_path} | grep -P "[^/]+ko" -o`
-        install -m 0755 ${module_path} -D ${WORKDIR}/${Module_name}
-        install -m 0755 ${WORKDIR}/${Module_name} -D ${D}${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra/${Module_name}
+    for i in $(find ${WORKDIR}/vendor/qcom/opensource/audio-kernel/. -name "*.ko"); do
+        install -m 0755 ${i} -D ${D}/${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra/
     done
 }
 
