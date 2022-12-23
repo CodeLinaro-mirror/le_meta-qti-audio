@@ -27,7 +27,7 @@
 <!--                                                                        -->
 <!-- Changes from Qualcomm Innovation Center are provided under the         -->
 <!-- following license:                                                     -->
-<!-- Copyright (c) 2022 Qualcomm Innovation Center, Inc. All rights         -->
+<!-- Copyright (c) 2022-2023, Qualcomm Innovation Center, Inc. All rights   -->
 <!-- reserved.                                                              -->
 <!--                                                                        -->
 <!-- Redistribution and use in source and binary forms, with or without     -->
@@ -169,10 +169,7 @@
     <ctl name="RX_CDC_DMA_RX_0 Channels" value="One" />
     <ctl name="RX_CDC_DMA_RX_0 Channels" value="One" />
     <ctl name="VI_FEED_TX Channels" value="One" />
-    <ctl name="WSA_AIF_VI Mixer WSA_SPKR_VI_1" value="0" />
-    <ctl name="WSA_AIF_VI Mixer WSA_SPKR_VI_2" value="0" />
     <ctl name="RX_CDC_DMA_RX_0 Format" value="UNPACKED" />
-    <ctl name="WSA_CDC_DMA_TX_0 Format" value="UNPACKED" />
     <ctl name="RX_CDC_DMA_RX_0 Format" value="UNPACKED" />
     <ctl name="TX_CDC_DMA_TX_3 Format" value="UNPACKED" />
     <ctl name="RX_CDC_DMA_RX_0 Port Mixer TX_CDC_DMA_TX_3" value="0" />
@@ -306,13 +303,6 @@
     <ctl name="AFE_PCM_RX Audio Mixer MultiMedia3" value="0" />
 
     <!-- Codec controls -->
-    <!-- WSA controls -->
-    <ctl name="RX_CDC_DMA_RX_0 Channels" value="One" />
-    <ctl name="RX_MACRO RX2 MUX" value="ZERO" />
-    <ctl name="RX INT2_1 MIX1 INP0" value="ZERO" />
-    <ctl name="LO_RDAC Switch" value="0" />
-    <ctl name="SpkrMono WSA_RDAC" value="ZERO" />
-    <ctl name="SpkrMono BOOST Switch" value="1" />
 
     <!-- RX Controls -->
     <ctl name="RX_MACRO RX0 MUX" value="ZERO" />
@@ -2468,10 +2458,6 @@
         <path name="audio-record-voip bt-sco" />
     </path>
 
-    <path name="audio-record-voip headset-mic">
-        <ctl name="MultiMedia10 Mixer TX_CDC_DMA_TX_4" value="1" />
-    </path>
-
     <path name="spkr-rx-calib">
         <ctl name="RX_CDC_DMA_RX_0_DL_HL Switch"  value="1" />
     </path>
@@ -2499,7 +2485,7 @@
     <!-- These are actual sound device specific mixer settings -->
     <path name="amic1">
         <ctl name="TX DEC2 MUX" value="SWR_MIC" />
-        <ctl name="TX SMIC MUX2" value="SWR_MIC0" />
+        <ctl name="TX SMIC MUX2" value="SWR_MIC4" />
         <ctl name="TX_CDC_DMA_TX_3 Channels" value="One" />
         <ctl name="TX_AIF1_CAP Mixer DEC2" value="1" />
         <ctl name="ADC1_MIXER Switch" value="1" />
@@ -2518,7 +2504,7 @@
     <path name="amic3">
         <ctl name="TX DEC2 MUX" value="SWR_MIC" />
         <ctl name="TX SMIC MUX2" value="SWR_MIC1" />
-        <ctl name="TX_CDC_DMA_TX_4 Channels" value="One" />
+        <ctl name="TX_CDC_DMA_TX_3 Channels" value="One" />
         <ctl name="TX_AIF1_CAP Mixer DEC2" value="1" />
         <ctl name="ADC2_MIXER Switch" value="1" />
         <ctl name="ADC2 MUX" value="INP3" />
@@ -2530,7 +2516,6 @@
         <ctl name="RX INT0_1 MIX1 INP0" value="RX0" />
         <ctl name="RX INT0 DEM MUX" value="CLSH_DSM_OUT" />
         <ctl name="LO_RDAC Switch" value="1" />
-        <ctl name="SpkrMono WSA_RDAC" value="Switch" />
     </path>
 
     <path name="speaker-mono">
@@ -2738,7 +2723,6 @@
         <ctl name="HPHL_RDAC Switch" value="1" />
         <ctl name="HPHR_RDAC Switch" value="1" />
         <ctl name="LO_RDAC Switch" value="1" />
-        <ctl name="SpkrMono WSA_RDAC" value="Switch" />
     </path>
 
     <path name="speaker-and-headphones-hifi-filter">
