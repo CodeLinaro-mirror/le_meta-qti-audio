@@ -14,4 +14,6 @@ PACKAGES = ' \
 
 RDEPENDS:packagegroup-qti-audio += ' \
     ar-audiodlkm \
+    tinyalsa \
+    tinycompress \
 '
