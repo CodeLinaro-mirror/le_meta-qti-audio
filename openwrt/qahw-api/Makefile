@@ -47,21 +47,17 @@ define Build/InstallDev
 	$(INSTALL_DIR) $(STAGING_DIR)
 	mkdir -p $(1)/usr/include/qahw-api/
 	mkdir -p $(1)/usr/lib/
-	mkdir -p $(1)/usr/bin/
 	$(CP) $(PKG_BUILD_DIR)/inc/*.h $(1)/usr/include/qahw-api/
 	$(CP) $(PKG_BUILD_DIR)/test/*.h $(1)/usr/include/qahw-api/
-	$(CP) $(PKG_BUILD_DIR)/hal_play_test $(1)/usr/bin/
-	$(CP) $(PKG_BUILD_DIR)/hal_rec_test $(1)/usr/bin/
-	$(CP) $(PKG_BUILD_DIR)/hal_voice_test $(1)/usr/bin/
 	$(CP) $(PKG_BUILD_DIR)/.libs/libqahw.so* $(1)/usr/lib/
 endef
 
 define Package/qahw-api/install
-	$(INSTALL_DIR) $(1)/usr/lib/
 	$(INSTALL_DIR) $(1)/usr/bin/
-	$(CP) $(PKG_BUILD_DIR)/hal_play_test $(1)/usr/bin/
-	$(CP) $(PKG_BUILD_DIR)/hal_rec_test $(1)/usr/bin/
-	$(CP) $(PKG_BUILD_DIR)/hal_voice_test $(1)/usr/bin/
+	$(INSTALL_DIR) $(1)/usr/lib/
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/.libs/hal_play_test $(1)/usr/bin/
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/.libs/hal_rec_test $(1)/usr/bin/
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/.libs/hal_voice_test $(1)/usr/bin/
 	$(CP) $(PKG_BUILD_DIR)/.libs/libqahw.so* $(1)/usr/lib/
 endef
 

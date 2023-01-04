@@ -38,23 +38,21 @@ case "$1" in
         echo -n "Starting/Loading audio module: "
 
         echo "audio:start/load" > /dev/kmsg
-        modprobe snd_event_dlkm.ko
-        modprobe pinctrl_wcd_dlkm.ko
-        modprobe q6_dlkm.ko
-        modprobe q6_pdr_dlkm.ko
-        modprobe q6_notifier_dlkm.ko
-        modprobe gpr_dlkm.ko
-        modprobe spf_core_dlkm.ko
-        modprobe audio_prm_dlkm.ko
-        modprobe audpkt_ion_dlkm.ko
-        modprobe audio_pkt_dlkm.ko
-        modprobe adsp_loader_dlkm.ko
-        modprobe mvm.ko
-        modprobe stub_dlkm.ko
+        modprobe snd_event_dlkm
+        modprobe pinctrl_wcd_dlkm
+        modprobe q6_dlkm
+        modprobe q6_pdr_dlkm
+        modprobe q6_notifier_dlkm
+        modprobe gpr_dlkm
+        modprobe spf_core_dlkm
+        modprobe audio_prm_dlkm
+        modprobe audpkt_ion_dlkm
+        modprobe audio_pkt_dlkm
+        modprobe adsp_loader_dlkm
+        modprobe stub_dlkm
         echo 1 > /sys/kernel/boot_adsp/boot
-        modprobe stub_dlkm.ko
-        modprobe platform_dlkm.ko
-        modprobe machine_dlkm.ko
+        modprobe platform_dlkm
+        modprobe machine_dlkm
 
 
         echo "done loading audio_kernel module"
