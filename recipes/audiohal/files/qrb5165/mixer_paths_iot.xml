@@ -2313,6 +2313,13 @@
         <path name="mmap-playback" />
     </path>
 
+    <path name="audio-record hdmi-in">
+        <ctl name="MultiMedia1 Mixer QUAT_MI2S_TX" value="1" />
+    </path>
+
+    <path name="hdmi-in">
+    </path>
+
     <path name="mmap-playback speaker-and-display-port">
         <path name="mmap-playback display-port" />
         <path name="mmap-playback" />
