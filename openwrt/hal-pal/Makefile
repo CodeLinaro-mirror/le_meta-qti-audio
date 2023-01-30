@@ -42,6 +42,7 @@ define Build/Prepare
 	$(CP) $(LOCAL_SRC)/* $(PKG_BUILD_DIR)/
 endef
 
+ifeq ($(BOARD),sdx75)
 define Build/InstallDev
 	$(INSTALL_DIR) $(STAGING_DIR)
 	mkdir -p $(1)/usr/include/hal-pal/
@@ -50,23 +51,53 @@ define Build/InstallDev
 	$(CP) $(PKG_BUILD_DIR)/*.h $(1)/usr/include/hal-pal/
 	$(CP) $(PKG_BUILD_DIR)/audio_extn/*.h $(1)/usr/include/hal-pal/
 	$(CP) $(PKG_BUILD_DIR)/.libs/audio.primary.default.so* $(1)/usr/lib/
-ifeq ($(TARGET_MACHINE),sdx35)
-	$(CP) ./files/sdxbaagha/* $(1)/etc
-else ifeq ($(TARGET_MACHINE),sdx75)
-	$(CP) ./files/sdxpinn/* $(1)/etc
-endif
+	$(CP) ./files/sdxpinn/audio_platform_info_extcodec.xml $(1)/etc
+	$(CP) ./files/sdxpinn/backend_conf.xml $(1)/etc
+	$(CP) ./files/sdxpinn/card-defs.xml $(1)/etc
+	$(CP) ./files/sdxpinn/mixer_paths.xml $(1)/etc
+	$(CP) ./files/sdxpinn/resourcemanager.xml $(1)/etc
 endef
+else ifeq ($(BOARD),sdx35)
+define Build/InstallDev
+	$(INSTALL_DIR) $(STAGING_DIR)
+	mkdir -p $(1)/usr/include/hal-pal/
+	mkdir -p $(1)/usr/lib/
+	mkdir -p $(1)/etc
+	$(CP) $(PKG_BUILD_DIR)/*.h $(1)/usr/include/hal-pal/
+	$(CP) $(PKG_BUILD_DIR)/audio_extn/*.h $(1)/usr/include/hal-pal/
+	$(CP) $(PKG_BUILD_DIR)/.libs/audio.primary.default.so* $(1)/usr/lib/
+	$(CP) ./files/sdxbaagha/audio_platform_info_extcodec.xml $(1)/etc
+	$(CP) ./files/sdxbaagha/backend_conf.xml $(1)/etc
+	$(CP) ./files/sdxbaagha/card-defs.xml $(1)/etc
+	$(CP) ./files/sdxbaagha/mixer_paths.xml $(1)/etc
+	$(CP) ./files/sdxbaagha/resourcemanager.xml $(1)/etc
+endef
+endif
 
+ifeq ($(BOARD),sdx75)
 define Package/hal-pal/install
 	$(INSTALL_DIR) $(1)/usr/lib/
 	$(INSTALL_DIR) $(1)/etc
 	$(INSTALL_DIR) $(1)/data/audio
 	$(CP) $(PKG_BUILD_DIR)/.libs/audio.primary.default.so* $(1)/usr/lib/
-ifeq ($(TARGET_MACHINE),sdx35)
-	$(CP) ./files/sdxbaagha/* $(1)/etc
-else ifeq ($(TARGET_MACHINE),sdx75)
-	$(CP) ./files/sdxpinn/* $(1)/etc
-endif
+	$(CP) ./files/sdxpinn/audio_platform_info_extcodec.xml $(1)/etc
+	$(CP) ./files/sdxpinn/backend_conf.xml $(1)/etc
+	$(CP) ./files/sdxpinn/card-defs.xml $(1)/etc
+	$(CP) ./files/sdxpinn/mixer_paths.xml $(1)/etc
+	$(CP) ./files/sdxpinn/resourcemanager.xml $(1)/etc
 endef
+else ifeq ($(BOARD),sdx35)
+define Package/hal-pal/install
+	$(INSTALL_DIR) $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/etc
+	$(INSTALL_DIR) $(1)/data/audio
+	$(CP) $(PKG_BUILD_DIR)/.libs/audio.primary.default.so* $(1)/usr/lib/
+	$(CP) ./files/sdxbaagha/audio_platform_info_extcodec.xml $(1)/etc
+	$(CP) ./files/sdxbaagha/backend_conf.xml $(1)/etc
+	$(CP) ./files/sdxbaagha/card-defs.xml $(1)/etc
+	$(CP) ./files/sdxbaagha/mixer_paths.xml $(1)/etc
+	$(CP) ./files/sdxbaagha/resourcemanager.xml $(1)/etc
+endef
+endif
 
 $(eval $(call BuildPackage,hal-pal))
