@@ -13,7 +13,7 @@ define Package/tinyalsa
   CATEGORY:=AUDIO
   MAINTAINER:=QTI MM Audio
   TITLE:=TINYALSA
-  DEPENDS:= +libcutils +glib2 +libexpat +agm +ar-gsl
+  DEPENDS:= +libcutils +glib2 +sndparser +libutils
 endef
 
 define Package/tinyalsa/description
