@@ -17,6 +17,7 @@ SRC_URI = "file://vendor/qcom/opensource/audio-kernel/"
 SRC_URI:append = " file://audio_load.conf"
 
 S = "${WORKDIR}/vendor/qcom/opensource/audio-kernel"
+EXT_MODULES = "${@os.path.relpath("${S}", "${KERNEL_PLATFORM_PATH}")}"
 
 inherit linux-kernel-base deploy
 
@@ -30,15 +31,18 @@ do_configure() {
     cp -f ${WORKSPACE}/vendor/qcom/opensource/audio-kernel/Makefile.am ${WORKDIR}/vendor/qcom/opensource/audio-kernel/Makefile
 }
 
+do_compile[depends]   += "virtual/kernel:do_shared_workdir"
+do_compile[cleandirs] += "${WORKDIR}/out/${KERNEL_DEFCONFIG}"
 do_compile() {
     echo ${EXTRA_OEMAKE}
-    cd ${KERNEL_PLATFORM_PATH}  && \
+    cd ${KERNEL_PLATFORM_PATH}
     KBUILD_OPTIONS+="TARGET_SUPPORT=${BASEMACHINE}" \
     BUILD_CONFIG="msm-kernel/${KERNEL_CONFIG}" \
-    EXT_MODULES=${WORKDIR}/vendor/qcom/opensource/audio-kernel \
+    EXT_MODULES=${EXT_MODULES} \
     ROOTDIR=${WORKDIR}/ \
-    MODULE_OUT=${WORKDIR}/vendor/qcom/opensource/audio-kernel \
-    OUT_DIR=${KERNEL_PREBUILT_PATH} \
+    KERNEL_KIT=${KERNEL_PREBUILT_PATH} \
+    OUT_DIR=${WORKDIR}/out/${KERNEL_DEFCONFIG} \
+    INPLACE_COMPILE=y \
     KERNEL_UAPI_HEADERS_DIR=${STAGING_KERNEL_BUILDDIR} \
     KBUILD_EXTRA_SYMBOLS=${STAGING_DIR_HOST}/lib/modules/${KERNEL_VERSION}/mm-drivers/Module.symvers \
     ./build/build_module.sh
