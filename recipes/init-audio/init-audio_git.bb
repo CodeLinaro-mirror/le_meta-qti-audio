@@ -6,7 +6,7 @@ LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/\
 ${LICENSE};md5=fe8b41221d7524c70688f7d059ff6d87"
 PR = "r5"
 
-DEPENDS:append_mdm9635 +="alsa-intf"
+DEPENDS:append:mdm9635 +="alsa-intf"
 
 SRC_URI = "file://init_qcom_audio"
 SRC_URI += "file://init_audio.service"
