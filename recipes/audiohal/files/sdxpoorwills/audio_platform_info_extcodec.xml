@@ -27,7 +27,7 @@
 <!-- IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.                             -->
 <!--                                                                           -->
 <!-- Changes from Qualcomm Innovation Center are provided under the following license: -->
-<!-- Copyright (c) 2022 Qualcomm Innovation Center, Inc. All rights reserved. -->
+<!-- Copyright (c) 2022-2023 Qualcomm Innovation Center, Inc. All rights reserved. -->
 
 <audio_platform_info_i2s>
     <pcm_ids>
@@ -67,6 +67,23 @@
 
     <backend_names>
         <device name="SND_DEVICE_OUT_VOICE_TX" backend="voice-tx" interface="VOICE_PLAYBACK_TX"/>
+        <device name="SND_DEVICE_OUT_SPEAKER" interface="PRI_MI2S_RX"/>
+        <device name="SND_DEVICE_OUT_HANDSET" interface="PRI_MI2S_RX"/>
+        <device name="SND_DEVICE_OUT_HEADPHONES" interface="PRI_MI2S_RX"/>
+        <device name="SND_DEVICE_OUT_VOICE_SPEAKER" interface="PRI_MI2S_RX"/>
+        <device name="SND_DEVICE_OUT_VOICE_HEADPHONES" interface="PRI_MI2S_RX"/>
+        <device name="SND_DEVICE_OUT_VOICE_HANDSET" interface="PRI_MI2S_RX"/>
+        <device name="SND_DEVICE_OUT_ECALL_HANDSET" interface="PRI_MI2S_RX"/>
+        <device name="SND_DEVICE_OUT_ECALL_SPEAKER" interface="PRI_MI2S_RX"/>
+        <device name="SND_DEVICE_OUT_ECALL_HEADPHONES" interface="PRI_MI2S_RX"/>
+        <device name="SND_DEVICE_IN_HANDSET_MIC" interface="PRI_MI2S_TX"/>
+        <device name="SND_DEVICE_IN_HEADSET_MIC" interface="PRI_MI2S_TX"/>
+        <device name="SND_DEVICE_IN_SPEAKER_MIC" interface="PRI_MI2S_TX"/>
+        <device name="SND_DEVICE_IN_VOICE_SPEAKER_MIC" interface="PRI_MI2S_TX"/>
+        <device name="SND_DEVICE_IN_ECALL_HANDSET_MIC" interface="PRI_MI2S_TX"/>
+        <device name="SND_DEVICE_IN_ECALL_SPEAKER_MIC" interface="PRI_MI2S_TX"/>
+        <device name="SND_DEVICE_IN_ECALL_HEADSET_MIC" interface="PRI_MI2S_TX"/>
+        <device name="SND_DEVICE_IN_VOICE_HEADSET_MIC" interface="PRI_MI2S_TX"/>
     </backend_names>
 
 </audio_platform_info_i2s>
