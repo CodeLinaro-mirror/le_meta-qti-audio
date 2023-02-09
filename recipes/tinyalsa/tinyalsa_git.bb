@@ -1,9 +1,9 @@
 inherit autotools
 
 DESCRIPTION = "Tinyalsa Library"
-LICENSE = "BSD"
+LICENSE = "BSD-Source-Code"
 LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/\
-${LICENSE};md5=3775480a712fc46a69647678acb234cb"
+${LICENSE};md5=fe8b41221d7524c70688f7d059ff6d87"
 PR = "r1"
 
 SRCREV = "1369a0ff9979cfbdaa0ca88e4696265655cd198b"
