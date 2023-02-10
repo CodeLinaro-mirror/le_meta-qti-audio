@@ -25,6 +25,11 @@
 <!-- WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE   -->
 <!-- OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN -->
 <!-- IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.                          -->
+<!--                                                                        -->
+<!-- Changes from Qualcomm Innovation Center are provided under the         -->
+<!-- following license:                                                     -->
+<!-- Copyright (c) 2023 Qualcomm Innovation Center, Inc.                    -->
+<!-- All rights reserved.                                                   -->
 <mixer>
     <!-- These are the initial mixer settings -->
     <ctl name="PCM Playback Volume" value="0xffffe732 0xffffe732" />
@@ -108,6 +113,7 @@
     </path>
 
     <path name="compress-offload-playback">
+        <ctl name="PCM Playback Volume" value="100 100" />
         <ctl name="PRI_MI2S_RX Audio Mixer MultiMedia4" value="1" />
     </path>
 
