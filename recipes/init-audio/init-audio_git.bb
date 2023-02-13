@@ -6,7 +6,7 @@ LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/\
 ${LICENSE};md5=fe8b41221d7524c70688f7d059ff6d87"
 PR = "r5"
 
-DEPENDS:append_mdm9635 +="alsa-intf"
+DEPENDS:append:mdm9635 +="alsa-intf"
 
 SRC_URI = "file://init_qcom_audio"
 SRC_URI += "file://init_audio.service"
@@ -28,10 +28,13 @@ do_install() {
         install -d ${D}/${systemd_unitdir}/system/sysinit.target.wants
         ln -sf ${systemd_unitdir}/system/init_audio.service ${D}${systemd_unitdir}/system/sysinit.target.wants/init_audio.service
         echo "\
-        # Create directory in /data/audio for location with audio:audio permissions
+        # Create directory for location with audio:audio permissions
         d /data/audio 0755 audio audio - -
+        d /data/misc 0755 - - - -
+        d /data/misc/audio 0775 audio audio - -
         # Change selinux context of new directory. Use Z to apply for subdirectories as well.
         T /data/audio - - - - security.selinux="system_u:object_r:audio_data_file_t:s0"
+        T /data/misc/audio - - - - security.selinux="system_u:object_r:audio_data_file_t:s0"
         " > ${WORKDIR}/${BPN}.conf
         ## Install systemd-tmpfiles config file
         install -d ${D}${sysconfdir}/tmpfiles.d/
