@@ -43,6 +43,7 @@ case "$1" in
         modprobe apr_dlkm
         modprobe q6_dlkm
         modprobe native_dlkm
+        modprobe wcd9xxx_dlkm
         modprobe pinctrl_lpi_dlkm
         modprobe swr_dlkm
         modprobe swr_ctrl_dlkm
