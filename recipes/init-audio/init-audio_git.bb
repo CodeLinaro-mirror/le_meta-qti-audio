@@ -30,6 +30,7 @@ do_install() {
         echo "\
         # Create directory for location with audio:audio permissions
         d /data/audio 0755 audio audio - -
+        d /data/audio/delta 0755 audio audio - -
         d /data/misc 0755 - - - -
         d /data/misc/audio 0775 audio audio - -
         # Change selinux context of new directory. Use Z to apply for subdirectories as well.
