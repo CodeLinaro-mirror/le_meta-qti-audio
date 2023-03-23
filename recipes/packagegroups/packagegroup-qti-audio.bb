@@ -19,6 +19,9 @@ PULSEAUDIO_PKGS = " \
     pulseaudio-module-combine-sink \
     pulseaudio-module-switch-on-port-available \
     pulseaudio-misc \
+    pulseaudio-module-role-cork \
+    pulseaudio-module-role-exclusive \
+    pulseaudio-module-role-ignore \
 "
 
 RDEPENDS:packagegroup-qti-audio += ' \
