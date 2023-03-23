@@ -1,6 +1,6 @@
 inherit autotools
 SUMMARY = "ALSA sound library for compress format"
-LICENSE = "BSD & LGPLv2.1"
+LICENSE = "BSD & LGPL-2.1-only"
 LIC_FILES_CHKSUM = "file://COPYING;md5=7b60fb27ed2ff685a5c5f41b8b59cca6"
 
 PVR = "v1.1.0"
@@ -11,11 +11,10 @@ SRC_URI = "git://git.codelinaro.org/clo/le/platform/external/tinycompress.git;pr
            file://0001-Tinycompress-Add-compress_set_next_track_param-funct.patch\
            file://0001-Tinycompress-Add-get_metadata-and-set_metadata-API-s.patch"
 
-SRC_URI_append_qrbx210 += "file://0001-Tinycompress-remove-compr_passthr-fix-build-error.patch"
-SRC_URI_append_qrb5165 += "file://0001-Tinycompress-remove-compr_passthr-fix-build-error.patch"
-SRC_URI_append_sdmsteppe += "file://0001-Tinycompress-remove-compr_passthr-fix-build-error.patch"
+SRC_URI:append:qrbx210 += "file://0001-Tinycompress-remove-compr_passthr-fix-build-error.patch"
+SRC_URI:append:sdmsteppe += "file://0001-Tinycompress-remove-compr_passthr-fix-build-error.patch"
 
-EXTRA_OECONF_append = " --with-sanitized-headers=${STAGING_KERNEL_BUILDDIR}/usr/include"
+EXTRA_OECONF:append = " --with-sanitized-headers=${STAGING_KERNEL_BUILDDIR}/usr/include"
 
 S = "${WORKDIR}/git"
 
