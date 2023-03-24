@@ -1,6 +1,9 @@
-SUMMARY = "Audio Drivers Kernel Modules for Elite"
-DESCRIPTION = "This is the Elite based audio driver based on ASoC architecture, used to communicate with DSP."
+inherit module
 
+# if is TARGET_KERNEL_ARCH is set inherit qtikernel-arch to compile for that arch.
+inherit ${@bb.utils.contains('TARGET_KERNEL_ARCH', 'aarch64', 'qtikernel-arch', '', d)}
+
+DESCRIPTION = "QTI Audio drivers"
 LICENSE = "GPL-2.0-only"
 LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/${LICENSE};md5=801f80980d171dd6425610833a22dbe6"
 DEPENDS = "virtual/kernel"
@@ -11,22 +14,16 @@ SRC_URI = "file://vendor/qcom/opensource/audio-kernel/legacy"
 SRC_URI += "file://${BASEMACHINE}/"
 
 S = "${WORKDIR}/vendor/qcom/opensource/audio-kernel/legacy"
-EXT_MODULES = "${@os.path.relpath("${S}", "${KERNEL_PLATFORM_PATH}")}"
 
-inherit linux-kernel-base deploy module
-
-# if is TARGET_KERNEL_ARCH is set inherit qtikernel-arch to compile for that arch.
 FILES:${PN} += "${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra/*"
 FILES:${PN} += "${sysconfdir}/*"
 
+EXT_MODULES = "${@os.path.relpath("${S}", "${KERNEL_PLATFORM_PATH}")}"
 EXTRA_OEMAKE += "TARGET_SUPPORT=${BASEMACHINE}"
-
-KERNEL_VERSION = "${@get_kernelversion_file("${STAGING_KERNEL_BUILDDIR}")}"
 
 # Disable parallel make
 PARALLEL_MAKE = "-j1"
 
-do_configure[depends] = "virtual/kernel:do_shared_workdir"
 do_configure() {
   cp -f ${WORKDIR}/vendor/qcom/opensource/audio-kernel/legacy/Makefile.am ${WORKDIR}/vendor/qcom/opensource/audio-kernel/legacy/Makefile
 }
@@ -48,44 +45,34 @@ do_compile() {
     ./build/build_module.sh
 }
 
-do_install() {
-    install -d ${D}${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra
-    for i in $(find ${WORKDIR}/vendor/qcom/opensource/audio-kernel/legacy/. -name "*.ko"); do
-        install -m 0755 ${i} -D ${D}/${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra/
-    done
-}
-
 do_install:append() {
-    install -d -p ${D}${includedir}/audio-kernel/audio/linux
-    install -d -p ${D}${includedir}/audio-kernel/audio/linux/mfd/wcd9xxx
-    install -d -p ${D}${includedir}/audio-kernel/audio/sound
+  install -d ${D}${includedir}/audio-kernel/audio
+  install -d ${D}${includedir}/audio-kernel/audio/linux
+  install -d ${D}${includedir}/audio-kernel/audio/linux/mfd
+  install -d ${D}${includedir}/audio-kernel/audio/linux/mfd/wcd9xxx
+  install -d ${D}${includedir}/audio-kernel/audio/sound
+  install -d ${STAGING_KERNEL_BUILDDIR}/audio-kernel/audio
+  install -d ${STAGING_KERNEL_BUILDDIR}/audio-kernel/audio/linux
+  install -d ${STAGING_KERNEL_BUILDDIR}/audio-kernel/audio/linux/mfd
+  install -d ${STAGING_KERNEL_BUILDDIR}/audio-kernel/audio/linux/mfd/wcd9xxx
+  install -d ${STAGING_KERNEL_BUILDDIR}/audio-kernel/audio/sound
+  install -d ${D}${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra
 
-    process_headers "${S}/include/uapi/audio/linux" "${D}${includedir}/audio-kernel/audio/linux"
-    process_headers "${S}/include/uapi/audio/linux/mfd/wcd9xxx" "${D}${includedir}/audio-kernel/audio/linux/mfd/wcd9xxx"
-    process_headers "${S}/include/uapi/audio/sound" "${D}${includedir}/audio-kernel/audio/sound"
+  cp -fr ${S}/linux/* ${D}${includedir}/audio-kernel/audio/linux
+  install -m 0644 ${S}/sound/* ${D}${includedir}/audio-kernel/audio/sound
+  cp -fr ${S}/linux/* ${STAGING_KERNEL_BUILDDIR}/audio-kernel/audio/linux
+  install -m 0644 ${S}/sound/* ${STAGING_KERNEL_BUILDDIR}/audio-kernel/audio/sound
 
-    if ${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'true', 'false', d)}; then
-        install -m 0755 ${WORKDIR}/${BASEMACHINE}/audio_load.conf -D ${D}${sysconfdir}/modules-load.d/audio_load.conf
-    else
-        install -m 0755 ${WORKDIR}/${BASEMACHINE}/audio_load.conf -D ${D}${sysconfdir}/modules/audio_load.conf
-    fi
+  install -m 0755 ${WORKDIR}/${BASEMACHINE}/audio_load.conf -D ${D}${sysconfdir}/modules-load.d/audio_load.conf
 
-    rm -fr ${D}${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra/asoc
-    rm -fr ${D}${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra/dsp
-    rm -fr ${D}${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra/ipc
-    rm -fr ${D}${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra/soc
-}
+   for i in $(find ${D}/${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra/. -name "*.ko"); do
+   mv ${i} ${D}/${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra/
+   done
 
-do_deploy() {
-    cp -rp ${WORKDIR}/*.ko ${DEPLOYDIR}/
-}
-
-process_headers() {
-    cd ${KERNEL_PLATFORM_PATH}/../out/${KERNEL_DEFCONFIG}/msm-kernel/
-    for name in $(ls $1/*.h); do
-        echo ${STAGING_KERNEL_DIR}
-        ${STAGING_KERNEL_DIR}/scripts/headers_install.sh $1/$(basename $name) $2/$(basename $name)
-    done
+   rm -fr ${D}/${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra/asoc
+   rm -fr ${D}/${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra/dsp
+   rm -fr ${D}/${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra/ipc
+   rm -fr ${D}/${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra/soc
 }
 
 do_module_signing() {
@@ -157,3 +144,4 @@ RPROVIDES:${PN} += "${@'kernel-module-pm2250-spmi-dlkm-${KERNEL_VERSION}'.replac
 RPROVIDES:${PN} += "${@'kernel-module-rouleur-dlkm-${KERNEL_VERSION}'.replace('_', '-')}"
 RPROVIDES:${PN} += "${@'kernel-module-rouleur-slave-dlkm-${KERNEL_VERSION}'.replace('_', '-')}"
 RPROVIDES:${PN} += "${@'kernel-module-bt_fm_slim-dlkm-${KERNEL_VERSION}'.replace('_', '-')}"
+do_configure[depends] += "virtual/kernel:do_shared_workdir"
