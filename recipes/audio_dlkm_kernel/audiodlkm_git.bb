@@ -23,6 +23,8 @@ EXTRA_OEMAKE += "TARGET_SUPPORT=${BASEMACHINE}"
 
 KERNEL_VERSION = "${@get_kernelversion_file("${STAGING_KERNEL_BUILDDIR}")}"
 
+PARALLEL_MAKE = "-j1"
+
 do_configure() {
   cp -f ${WORKDIR}/vendor/qcom/opensource/audio-kernel/legacy/Makefile.am ${WORKDIR}/vendor/qcom/opensource/audio-kernel/legacy/Makefile
 }
@@ -41,7 +43,7 @@ do_compile() {
     INPLACE_COMPILE=y \
     KERNEL_UAPI_HEADERS_DIR=${STAGING_KERNEL_BUILDDIR} \
     KBUILD_EXTRA_SYMBOLS=${STAGING_DIR_HOST}/lib/modules/${KERNEL_VERSION}/Module.symvers \
-    ./build/build_module.sh
+    ./build/build_module.sh ${EXTRA_OEMAKE}
 }
 
 do_install() {
