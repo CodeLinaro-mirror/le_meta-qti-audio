@@ -13,7 +13,7 @@ SRC_URI += "file://${BASEMACHINE}/"
 S = "${WORKDIR}/vendor/qcom/opensource/audio-kernel/legacy"
 EXT_MODULES = "${@os.path.relpath("${S}", "${KERNEL_PLATFORM_PATH}")}"
 
-inherit linux-kernel-base deploy
+inherit linux-kernel-base deploy module
 
 # if is TARGET_KERNEL_ARCH is set inherit qtikernel-arch to compile for that arch.
 FILES:${PN} += "${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra/*"
@@ -54,13 +54,21 @@ do_install() {
 }
 
 do_install:append() {
+    install -d -p ${D}${includedir}/audio-kernel/audio/
     install -d -p ${D}${includedir}/audio-kernel/audio/linux
+    install -d -p ${D}${includedir}/audio-kernel/audio/linux/mfd
     install -d -p ${D}${includedir}/audio-kernel/audio/linux/mfd/wcd9xxx
     install -d -p ${D}${includedir}/audio-kernel/audio/sound
+    install -d ${STAGING_KERNEL_BUILDDIR}/audio-kernel/audio
+    install -d ${STAGING_KERNEL_BUILDDIR}/audio-kernel/audio/linux
+    install -d ${STAGING_KERNEL_BUILDDIR}/audio-kernel/audio/linux/mfd
+    install -d ${STAGING_KERNEL_BUILDDIR}/audio-kernel/audio/linux/mfd/wcd9xxx
+    install -d ${STAGING_KERNEL_BUILDDIR}/audio-kernel/audio/sound
 
-    process_headers "${S}/include/uapi/audio/linux" "${D}${includedir}/audio-kernel/audio/linux"
-    process_headers "${S}/include/uapi/audio/linux/mfd/wcd9xxx" "${D}${includedir}/audio-kernel/audio/linux/mfd/wcd9xxx"
-    process_headers "${S}/include/uapi/audio/sound" "${D}${includedir}/audio-kernel/audio/sound"
+    cp -fr ${S}/linux/* ${D}${includedir}/audio-kernel/audio/linux
+    install -m 0644 ${S}/sound/* ${D}${includedir}/audio-kernel/audio/sound
+    cp -fr ${S}/linux/* ${STAGING_KERNEL_BUILDDIR}/audio-kernel/audio/linux
+    install -m 0644 ${S}/sound/* ${STAGING_KERNEL_BUILDDIR}/audio-kernel/audio/sound
 
     if ${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'true', 'false', d)}; then
         install -m 0755 ${WORKDIR}/${BASEMACHINE}/audio_load.conf -D ${D}${sysconfdir}/modules-load.d/audio_load.conf
@@ -76,14 +84,6 @@ do_install:append() {
 
 do_deploy() {
     cp -rp ${WORKDIR}/*.ko ${DEPLOYDIR}/
-}
-
-process_headers() {
-    cd ${KERNEL_PLATFORM_PATH}/../out/${KERNEL_DEFCONFIG}/msm-kernel/
-    for name in $(ls $1/*.h); do
-        echo ${STAGING_KERNEL_DIR}
-        ${STAGING_KERNEL_DIR}/scripts/headers_install.sh $1/$(basename $name) $2/$(basename $name)
-    done
 }
 
 # The inherit of module.bbclass will automatically name module packages with
