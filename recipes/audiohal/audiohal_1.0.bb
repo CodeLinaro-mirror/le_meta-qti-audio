@@ -140,5 +140,7 @@ do_install:append() {
 
 FILES:${PN} += "${libdir}/audio.primary.default.so ${userfsdatadir}/*"
 FILES:${PN} += "${libdir}/audio.spkr.prot.so"
+FILES:${PN} += "${libdir}/*.so"
+FILES:${PN} += "/data"
 SOLIBS = ".so"
 FILES_SOLIBSDEV = ""
