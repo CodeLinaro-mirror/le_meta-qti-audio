@@ -439,6 +439,6 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         </input_snd_device>
     </snd_devices>
     <config_params>
-        <param key="spkr_1_tz_name" value="wsa881x.0e"/>
+        <param key="spkr_1_tz_name" value="wsa881x.0f"/>
     </config_params>
 </audio_platform_info>

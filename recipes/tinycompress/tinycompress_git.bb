@@ -14,6 +14,7 @@ SRC_URI = "git://git.codelinaro.org/clo/le/platform/external/tinycompress.git;pr
 SRC_URI_append_qrbx210 += "file://0001-Tinycompress-remove-compr_passthr-fix-build-error.patch"
 SRC_URI_append_qrb5165 += "file://0001-Tinycompress-remove-compr_passthr-fix-build-error.patch"
 SRC_URI_append_sdmsteppe += "file://0001-Tinycompress-remove-compr_passthr-fix-build-error.patch"
+SRC_URI_append_qcs6490 += "file://0001-Tinycompress-remove-compr_passthr-fix-build-error.patch"
 
 EXTRA_OECONF_append = " --with-sanitized-headers=${STAGING_KERNEL_BUILDDIR}/usr/include"
 
