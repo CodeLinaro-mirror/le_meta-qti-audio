@@ -11,6 +11,7 @@ SRC_URI += "file://${BASEMACHINE}/"
 
 S = "${WORKDIR}/vendor/qcom/opensource/tinyalsa/"
 PR = "r0"
+PV = "1.0.c9"
 
 DEPENDS = "libcutils glib-2.0"
 
