@@ -3,7 +3,7 @@ DESCRIPTION = "This is the Elite based audio driver based on ASoC architecture, 
 
 LICENSE = "GPL-2.0-only"
 LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/${LICENSE};md5=801f80980d171dd6425610833a22dbe6"
-DEPENDS = "virtual/kernel"
+DEPENDS = "virtual/kernel linux-msm-headers"
 PR = "r0"
 
 FILESPATH =+ "${WORKSPACE}:"
@@ -65,10 +65,10 @@ do_install:append() {
     install -d ${STAGING_KERNEL_BUILDDIR}/audio-kernel/audio/linux/mfd/wcd9xxx
     install -d ${STAGING_KERNEL_BUILDDIR}/audio-kernel/audio/sound
 
-    cp -fr ${S}/linux/* ${D}${includedir}/audio-kernel/audio/linux
-    install -m 0644 ${S}/sound/* ${D}${includedir}/audio-kernel/audio/sound
-    cp -fr ${S}/linux/* ${STAGING_KERNEL_BUILDDIR}/audio-kernel/audio/linux
-    install -m 0644 ${S}/sound/* ${STAGING_KERNEL_BUILDDIR}/audio-kernel/audio/sound
+    cp -fr ${S}/include/uapi/audio/linux/* ${D}${includedir}/audio-kernel/audio/linux
+    install -m 0644 ${S}/include/uapi/audio/sound/* ${D}${includedir}/audio-kernel/audio/sound
+    cp -fr ${S}/include/uapi/audio/linux/* ${STAGING_KERNEL_BUILDDIR}/audio-kernel/audio/linux
+    install -m 0644 ${S}/include/uapi/audio/sound/* ${STAGING_KERNEL_BUILDDIR}/audio-kernel/audio/sound
 
     if ${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'true', 'false', d)}; then
         install -m 0755 ${WORKDIR}/${BASEMACHINE}/audio_load.conf -D ${D}${sysconfdir}/modules-load.d/audio_load.conf
