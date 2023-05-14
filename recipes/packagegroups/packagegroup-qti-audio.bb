@@ -14,14 +14,10 @@ PACKAGES = ' \
 
 # Support encoders only on selected SOCs.
 OMX_ENCODERS  = "False"
-OMX_ENCODERS:qcs610  = "True"
+OMX_ENCODERS_qcs610  = "True"
 
 RDEPENDS:packagegroup-qti-audio = ' \
-     audiodlkm \
-     tinyalsa \
+    ${@bb.utils.contains("COMBINED_FEATURES", "qti-audio", "audiodlkm init-audio audiohal encoders", "", d)} \
+    ${@bb.utils.contains("COMBINED_FEATURES", "qti-audio qti-audio-encoder", "encoders", "", d)} \
+    ${@bb.utils.contains("OMX_ENCODERS", "True", "encoders", "", d)} \
 '
-#RDEPENDS:packagegroup-qti-audio = ' \
-#    ${@bb.utils.contains("COMBINED_FEATURES", "qti-audio", "audiodlkm init-audio audiohal encoders", "", d)} \
-#    ${@bb.utils.contains("COMBINED_FEATURES", "qti-audio qti-audio-encoder", "encoders", "", d)} \
-#    ${@bb.utils.contains("OMX_ENCODERS", "True", "encoders", "", d)} \
-#'
