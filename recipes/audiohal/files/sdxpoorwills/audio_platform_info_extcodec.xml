@@ -84,6 +84,8 @@
         <device name="SND_DEVICE_IN_ECALL_SPEAKER_MIC" interface="PRI_MI2S_TX"/>
         <device name="SND_DEVICE_IN_ECALL_HEADSET_MIC" interface="PRI_MI2S_TX"/>
         <device name="SND_DEVICE_IN_VOICE_HEADSET_MIC" interface="PRI_MI2S_TX"/>
+        <device name="SND_DEVICE_IN_SPEAKER_DMIC_STEREO" interface="PRI_MI2S_TX"/>
+        <device name="SND_DEVICE_IN_HANDSET_DMIC_STEREO" interface="PRI_MI2S_TX"/>
     </backend_names>
 
 </audio_platform_info_i2s>
