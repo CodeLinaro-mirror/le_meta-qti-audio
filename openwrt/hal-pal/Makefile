@@ -79,6 +79,7 @@ define Package/hal-pal/install
 	$(INSTALL_DIR) $(1)/usr/lib/
 	$(INSTALL_DIR) $(1)/etc
 	$(INSTALL_DIR) $(1)/data/audio
+	$(INSTALL_DIR) $(1)/mnt/sdcard
 	$(CP) $(PKG_BUILD_DIR)/.libs/audio.primary.default.so* $(1)/usr/lib/
 	$(CP) ./files/sdxpinn/audio_platform_info_extcodec.xml $(1)/etc
 	$(CP) ./files/sdxpinn/backend_conf.xml $(1)/etc
@@ -91,6 +92,7 @@ define Package/hal-pal/install
 	$(INSTALL_DIR) $(1)/usr/lib/
 	$(INSTALL_DIR) $(1)/etc
 	$(INSTALL_DIR) $(1)/data/audio
+	$(INSTALL_DIR) $(1)/mnt/sdcard
 	$(CP) $(PKG_BUILD_DIR)/.libs/audio.primary.default.so* $(1)/usr/lib/
 	$(CP) ./files/sdxbaagha/audio_platform_info_extcodec.xml $(1)/etc
 	$(CP) ./files/sdxbaagha/backend_conf.xml $(1)/etc
