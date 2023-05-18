@@ -33,9 +33,11 @@ do_install() {
         d /data/audio/delta 0770 audio audio - -
         d /data/misc 0755 - - - -
         d /data/misc/audio 0775 audio audio - -
+        d /data/vendor/audio 0775 audio audio - -
         # Change selinux context of new directory. Use Z to apply for subdirectories as well.
         T /data/audio - - - - security.selinux="system_u:object_r:audio_data_file_t:s0"
         T /data/misc/audio - - - - security.selinux="system_u:object_r:audio_data_file_t:s0"
+        T /data/vendor/audio - - - - security.selinux="system_u:object_r:audio_data_file_t:s0"
         " > ${WORKDIR}/${BPN}.conf
         ## Install systemd-tmpfiles config file
         install -d ${D}${sysconfdir}/tmpfiles.d/
