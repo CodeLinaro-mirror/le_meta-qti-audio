@@ -24,6 +24,10 @@
 <!-- BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,  -->
 <!-- OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN -->
 <!-- IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.                          -->
+<!--                                                                        -->
+<!-- Changes from Qualcomm Innovation Center are provided under the following license: -->
+<!-- Copyright (c) 2023 Qualcomm Innovation Center, Inc. All rights reserved. -->
+<!-- SPDX-License-Identifier: BSD-3-Clause-Clear -->
 <audio_platform_info>
     <bit_width_configs>
         <device name="SND_DEVICE_OUT_SPEAKER" bit_width="32"/>
@@ -37,6 +41,7 @@
         <device name="SND_DEVICE_IN_UNPROCESSED_THREE_MIC" acdb_id="145"/>
         <device name="SND_DEVICE_IN_UNPROCESSED_QUAD_MIC" acdb_id="146"/>
         <device name="SND_DEVICE_IN_UNPROCESSED_HEADSET_MIC" acdb_id="147"/>
+        <device name="SND_DEVICE_IN_LINE" acdb_id="8"/>
     </acdb_ids>
 
     <pcm_ids>
@@ -59,7 +64,11 @@
         <usecase name="USECASE_AUDIO_RECORD_VOIP" type="in" id="16" />
         <usecase name="USECASE_AUDIO_PLAYBACK_MMAP" type="out" id="33" />
         <usecase name="USECASE_AUDIO_RECORD_MMAP" type="in" id="33" />
-        <usecase name="USECASE_AUDIO_RECORD_COMPRESS2" type="in" id="38"/>
+        <usecase name="USECASE_AUDIO_RECORD_COMPRESS2" type="in" id="39"/>
+        <usecase name="USECASE_AUDIO_RECORD_COMPRESS3" type="in" id="42"/>
+        <usecase name="USECASE_AUDIO_RECORD_COMPRESS4" type="in" id="43"/>
+        <usecase name="USECASE_AUDIO_RECORD_COMPRESS5" type="in" id="44"/>
+        <usecase name="USECASE_AUDIO_RECORD_COMPRESS6" type="in" id="46"/>
         <usecase name="USECASE_AUDIO_HFP_SCO" type="in" id="38"/>
         <usecase name="USECASE_AUDIO_HFP_SCO_WB" type="in" id="38"/>
     </pcm_ids>
@@ -78,6 +87,9 @@
         <param key="usb_sidetone_gain" value="35"/>
         <param key="hfp_pcm_dev_id" value="36"/>
         <param key="input_mic_max_count" value="4"/>
+        <param key="capture_device_chmap" value="8, 1, 2, 6, 3, 4, 5, 8, 9"/>
+        <param key="native_audio_mode" value="multiple_mix_dsp"/>
+        <param key="audio.nat.codec.enabled" value="true"/>
     </config_params>
 
     <gain_db_to_level_mapping>
@@ -140,5 +152,7 @@
         <device name="SND_DEVICE_OUT_SPEAKER_AND_BT_SCO" backend="speaker-and-bt-sco" interface="PRI_MI2S_RX-and-SLIMBUS_7_RX"/>
         <device name="SND_DEVICE_OUT_SPEAKER_AND_BT_SCO_WB" backend="speaker-and-bt-sco-wb" interface="PRI_MI2S_RX-and-SLIMBUS_7_RX"/>
         <device name="SND_DEVICE_IN_LINE" backend="line-in" interface="SLIMBUS_0_TX"/>
+        <device name="SND_DEVICE_IN_SPEAKER_MIC2" backend="speaker-mic2" interface="QUAT_TDM_TX_0"/>
+        <device name="SND_DEVICE_IN_SPEAKER_MIC3" backend="speaker-mic3" interface="SEN_TDM_TX_0"/>
     </backend_names>
 </audio_platform_info>
