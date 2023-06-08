@@ -19,7 +19,8 @@ SRC_URI = "git://git.codelinaro.org/clo/le/platform/external/tinyalsa.git;protoc
            file://0001-audio-Add-new-pcm-functions.patch \
            file://0001-tinyalsa-Add-pcm_ioctl-support-for-pcm-driver.patch \
            file://0001-tinyalsa-Fix-tinyplay-runtime-issue.patch \
-           file://0001-tinyalsa-Add-24bit-recording-support.patch"
+           file://0001-tinyalsa-Add-24bit-recording-support.patch \
+           file://0001-fix-mixer_get_array-failed-issue.patch"
 
 S = "${WORKDIR}"
 
