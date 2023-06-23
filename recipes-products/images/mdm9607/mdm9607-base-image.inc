@@ -1,6 +1,11 @@
 # Rootfs creation.
 
-IMAGE_INSTALL += "audiohal"
-IMAGE_INSTALL += "tinyalsa"
-IMAGE_INSTALL += "tinycompress"
-IMAGE_INSTALL += "alsa-intf"
+IMAGE_INSTALL += "init-audio"
+
+# Following packages support only 32-bit compilation.
+# When 32-bit multilib is enabled, compile them with lib32- prefix.
+
+IMAGE_INSTALL += "${@bb.utils.contains('MULTILIB_VARIANTS', 'lib32', 'lib32-audiodlkm', 'audiodlkm', d)}"
+IMAGE_INSTALL += "${@bb.utils.contains('MULTILIB_VARIANTS', 'lib32', 'lib32-alsa-intf', 'alsa-intf', d)}"
+
+IMAGE_INSTALL_append_auto += "binder"

@@ -27,6 +27,7 @@ DEPENDS_remove_apq8098 = "surround-sound-3mic"
 DEPENDS_remove_sdxprairie = "surround-sound-3mic"
 DEPENDS_remove_sa410m = "surround-sound-3mic"
 DEPENDS_remove_sdxpoorwills = "surround-sound-3mic"
+DEPENDS_remove_mdm9607 = "surround-sound-3mic"
 
 do_configure[depends] += "audiodlkm:do_install"
 
