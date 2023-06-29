@@ -129,4 +129,7 @@ RPROVIDES_${PN} += "${@'kernel-module-pm2250-spmi-dlkm-${KERNEL_VERSION}'.replac
 RPROVIDES_${PN} += "${@'kernel-module-rouleur-dlkm-${KERNEL_VERSION}'.replace('_', '-')}"
 RPROVIDES_${PN} += "${@'kernel-module-rouleur-slave-dlkm-${KERNEL_VERSION}'.replace('_', '-')}"
 RPROVIDES_${PN} += "${@'kernel-module-bt_fm_slim-dlkm-${KERNEL_VERSION}'.replace('_', '-')}"
+RPROVIDES_${PN} += "${@'kernel-module-swr-dmic-dlkm-${KERNEL_VERSION}'.replace('_', '-')}"
+RPROVIDES_${PN} += "${@'kernel-module-swr-haptics-dlkm-${KERNEL_VERSION}'.replace('_', '-')}"
+RPROVIDES_${PN} += "${@'kernel-module-wsa883x-dlkm-${KERNEL_VERSION}'.replace('_', '-')}"
 do_configure[depends] += "virtual/kernel:do_shared_workdir"
