@@ -23,6 +23,11 @@
 # BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
 # OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+# Changes from Qualcomm Innovation Center are provided under the following license:
+# Copyright (c) 2023 Qualcomm Innovation Center, Inc. All rights reserved.
+# SPDX-License-Identifier: BSD-3-Clause-Clear
+
 #RAS_TEST_SPKR_PHONE_SPKR_STEREO
 acdb_dev_id:136
 !Playback
@@ -30,8 +35,8 @@ Rxdevice:0
 
 enable
 PRI_MI2S_RX Audio Mixer MultiMedia1:1
-PRI_MI2S_RX Channels:Two
-CSRA_12 PA VOLUME:281
+PRIM_MI2S_RX Channels:Two
+CSRA_12 PA VOLUME:361
 CSRA_12 PA BASS GAIN:0
 CSRA_12 PA BASS_XOVER FREQ:0
 CSRA_12 PA TREBLE GAIN:0
