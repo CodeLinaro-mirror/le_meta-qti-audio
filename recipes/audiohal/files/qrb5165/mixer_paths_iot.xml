@@ -1001,7 +1001,7 @@
     </path>
 
     <path name="compress-offload-playback3">
-        <ctl name="WSA_CDC_DMA_RX_0 Audio Mixer MultiMedia10" value="1" />
+        <ctl name="WSA_CDC_DMA_RX_0 Audio Mixer MultiMedia15" value="1" />
     </path>
 
     <path name="compress-offload-playback3 handset">
@@ -1013,7 +1013,7 @@
     </path>
 
     <path name="compress-offload-playback3 bt-sco">
-        <ctl name="SLIMBUS_7_RX Audio Mixer MultiMedia10" value="1" />
+        <ctl name="SLIMBUS_7_RX Audio Mixer MultiMedia15" value="1" />
     </path>
 
     <path name="compress-offload-playback3 bt-sco-wb">
@@ -2134,7 +2134,7 @@
     </path>
 
     <path name="compress-offload-playback3 bt-a2dp">
-        <ctl name="SLIMBUS_7_RX Audio Mixer MultiMedia10" value="1" />
+        <ctl name="SLIMBUS_7_RX Audio Mixer MultiMedia15" value="1" />
     </path>
 
     <path name="compress-offload-playback4 bt-a2dp">
