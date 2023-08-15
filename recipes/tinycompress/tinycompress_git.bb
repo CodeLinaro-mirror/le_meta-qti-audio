@@ -10,7 +10,7 @@ SRC_URI += "file://${BASEMACHINE}/"
 
 S = "${WORKDIR}/vendor/qcom/opensource/tinycompress/"
 PR = "r0"
-PV = "1.0.c9"
+PV = "1.0"
 
 DEPENDS = "virtual/kernel glib-2.0"
 
