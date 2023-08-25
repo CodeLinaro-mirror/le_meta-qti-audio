@@ -269,6 +269,7 @@
     <ctl name="VA_AIF1_CAP Mixer DEC5" value="0" />
     <ctl name="VA_AIF1_CAP Mixer DEC6" value="0" />
     <ctl name="VA_AIF1_CAP Mixer DEC7" value="0" />
+    <ctl name="LPI Enable" value="0" />
     <ctl name="VA DEC0 MUX" value="MSM_DMIC" />
     <ctl name="VA DMIC MUX0" value="ZERO" />
     <ctl name="VA DEC1 MUX" value="MSM_DMIC" />
@@ -994,6 +995,7 @@
 
     <path name="audio-record">
         <ctl name="MultiMedia1 Mixer VA_CDC_DMA_TX_0" value="1" />
+        <ctl name="LPI Enable" value="1" />
     </path>
 
     <path name="audio-record line-in">
