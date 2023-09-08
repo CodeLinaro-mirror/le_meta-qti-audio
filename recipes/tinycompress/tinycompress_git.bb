@@ -12,7 +12,7 @@ S = "${WORKDIR}/vendor/qcom/opensource/tinycompress/"
 PR = "r0"
 PV = "1.0"
 
-DEPENDS = "virtual/kernel glib-2.0"
+DEPENDS = "linux-msm-headers glib-2.0"
 
 EXTRA_OECONF += "--with-glib"
 
