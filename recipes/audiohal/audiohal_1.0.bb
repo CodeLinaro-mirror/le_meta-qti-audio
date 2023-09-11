@@ -141,9 +141,21 @@ EXTRA_OECONF_append_qcs6490 = " AUDIO_FEATURE_ENABLED_EXTENDED_COMPRESS_FORMAT=t
 EXTRA_OECONF_append_qcs6490 = " AUDIO_FEATURE_ENABLED_INSTANCE_ID=true"
 
 do_install_append() {
-   if [ -d "${WORKDIR}/${BASEMACHINE}" ] && [ $(ls -1  ${WORKDIR}/${BASEMACHINE} | wc -l) -ne 0 ]; then
-      install -d ${D}${sysconfdir}
-      install -m 0755 ${WORKDIR}/${BASEMACHINE}/* ${D}${sysconfdir}/
+
+   if [ "${BASEMACHINE}" == "qcs6490" ];then
+       python ${WORKDIR}/hardware/qcom/audio/configs/common/mixer_xml_utils.py --generate combine --base ${WORKDIR}/hardware/qcom/audio/configs/common/base/mixer_paths_base.xml --overlay ${WORKDIR}/hardware/qcom/audio/configs/lahaina/yupik_overlay/mixer_paths_yupikidp_overlay.xml ${WORKDIR}/hardware/qcom/audio/configs/lahaina/yupik_overlay/mixer_paths_yupikqrd_overlay.xml --out_dir ${WORKDIR}/hardware/qcom/audio/configs/lahaina --out mixer_paths_yupikidp.xml mixer_paths_yupikqrd.xml
+
+       python ${WORKDIR}/hardware/qcom/audio/configs/common/mixer_xml_utils.py --generate combine --base ${WORKDIR}/hardware/qcom/audio/configs/common/base/sound_trigger_mixer_paths_base.xml --overlay ${WORKDIR}/hardware/qcom/audio/configs/lahaina/yupik_overlay/sound_trigger_mixer_paths_yupikidp_overlay.xml ${WORKDIR}/hardware/qcom/audio/configs/lahaina/yupik_overlay/sound_trigger_mixer_paths_yupikqrd_overlay.xml --out_dir ${WORKDIR}/hardware/qcom/audio/configs/lahaina --out sound_trigger_mixer_paths_yupikidp.xml sound_trigger_mixer_paths_yupikqrd.xml
+
+       install -d ${D}${sysconfdir}
+       install -m 0755 ${WORKDIR}/hardware/qcom/audio/configs/lahaina/*.xml ${D}${sysconfdir}/
+       install -m 0755 ${WORKDIR}/hardware/qcom/audio/configs/lahaina/*.conf ${D}${sysconfdir}/
+       install -m 0755 ${WORKDIR}/hardware/qcom/audio/configs/lahaina/*.txt ${D}${sysconfdir}/
+   else
+       if [ -d "${WORKDIR}/${BASEMACHINE}" ] && [ $(ls -1  ${WORKDIR}/${BASEMACHINE} | wc -l) -ne 0 ]; then
+          install -d ${D}${sysconfdir}
+          install -m 0755 ${WORKDIR}/${BASEMACHINE}/* ${D}${sysconfdir}/
+       fi
    fi
 
    #create /data/audio folder
