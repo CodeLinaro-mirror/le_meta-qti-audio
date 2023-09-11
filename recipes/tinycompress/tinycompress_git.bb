@@ -7,18 +7,14 @@ PVR = "v1.1.0"
 
 SRCREV = "e605f5684997565ba50cf9ad57df2a7980b5e327"
 
-SRC_URI = "git://git.codelinaro.org/clo/le/platform/external/tinycompress.git;protocol=git;branch=caf_migration/alsa-project/master"
+SRC_URI = "git://git.codelinaro.org/clo/le/platform/external/tinycompress.git;protocol=git;branch=caf_migration/alsa-project/master\
+           file://0001-Tinycompress-Update-tinycompress-with-bug-fixes-enha.patch\
+           file://0001-Tinycompress-Add-compress_set_next_track_param-funct.patch\
+           file://0001-Tinycompress-Add-get_metadata-and-set_metadata-API-s.patch\
+           file://0001-Tinycompress-remove-compr_passthr-fix-build-error.patch"
 
-#SRC_URI = "git://git.codelinaro.org/clo/le/platform/external/tinycompress.git;protocol=git;branch=caf_migration/alsa-project/master\
-#           file://0001-Tinycompress-Update-tinycompress-with-bug-fixes-enha.patch\
-#           file://0001-Tinycompress-Add-compress_set_next_track_param-funct.patch\
-#           file://0001-Tinycompress-Add-get_metadata-and-set_metadata-API-s.patch"
-
-SRC_URI:append:qrbx210 += "file://0001-Tinycompress-remove-compr_passthr-fix-build-error.patch"
-SRC_URI:append:sdmsteppe += "file://0001-Tinycompress-remove-compr_passthr-fix-build-error.patch"
-
-#EXTRA_OECONF:append = " --with-sanitized-headers=${STAGING_KERNEL_BUILDDIR}/usr/include"
+EXTRA_OECONF:append = " --with-sanitized-headers=${STAGING_KERNEL_BUILDDIR}/audio-kernel/audio"
 
 S = "${WORKDIR}/git"
 
-DEPENDS = "virtual/kernel"
+DEPENDS = "virtual/kernel audiodlkm"
