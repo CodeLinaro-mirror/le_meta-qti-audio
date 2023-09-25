@@ -43,6 +43,7 @@ case "$1" in
         modprobe snd-hwdep
         modprobe apr_dlkm
         modprobe adsp_loader_dlkm
+        modprobe stub_dlkm
         echo 1 > /sys/kernel/boot_adsp/boot
         modprobe platform_dlkm
         modprobe native_dlkm
