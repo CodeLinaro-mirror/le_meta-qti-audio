@@ -92,8 +92,8 @@
         <usecase name="USECASE_AUDIO_PLAYBACK_SILENCE" type="out" id="23" />
         <usecase name="USECASE_AUDIO_PLAYBACK_VOIP" type="out" id="12" />
         <usecase name="USECASE_AUDIO_RECORD_VOIP" type="in" id="12" />
-        <usecase name="USECASE_AUDIO_HFP_SCO" type="in" id="40" />
-        <usecase name="USECASE_AUDIO_HFP_SCO_WB" type="in" id="40" />
+        <usecase name="USECASE_AUDIO_HFP_SCO" type="in" id="36" />
+        <usecase name="USECASE_AUDIO_HFP_SCO_WB" type="in" id="36" />
         <usecase name="USECASE_AUDIO_HFP_SCO" type="out" id="30" />
         <usecase name="USECASE_AUDIO_HFP_SCO_WB" type="out" id="30" />
         <usecase name="USECASE_AUDIO_PLAYBACK_MMAP" type="out" id="29" />
@@ -109,7 +109,7 @@
         <param key="true_32_bit" value="true"/>
         <param key="hifi_filter" value="false"/>
         <param key="native_audio_mode" value="multiple_mix_dsp"/>
-        <param key="hfp_pcm_dev_id" value="38"/>
+        <param key="hfp_pcm_dev_id" value="34"/>
         <param key="input_mic_max_count" value="4"/>
         <param key="afe_loopback" value="1"/>
     </config_params>
