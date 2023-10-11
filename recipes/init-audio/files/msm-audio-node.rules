@@ -34,4 +34,6 @@ SUBSYSTEM=="misc", KERNEL=="msm_g711mlaw", OWNER="system", GROUP="audio", MODE="
 SUBSYSTEM=="misc", KERNEL=="msm_g711mlaw_in", OWNER="system", GROUP="audio", MODE="0660"
 SUBSYSTEM=="misc", KERNEL=="msm_mp3", OWNER="system", GROUP="audio", MODE="0660"
 SUBSYSTEM=="misc", KERNEL=="msm_voicememo", OWNER="system", GROUP="audio", MODE="0660"
-SUBSYSTEM=="avtimer", KERNEL=="avtimer", OWNER="system", GROUP="audio", MODE="0660
+SUBSYSTEM=="avtimer", KERNEL=="avtimer", OWNER="system", GROUP="audio", MODE="0660"
+SUBSYSTEM=="audio-pkt", KERNEL=="aud_pasthru_modem", OWNER="audio", GROUP="audio", MODE="0660"
+SUBSYSTEM=="msm_audio_ion", KERNEL=="msm_audio_ion", OWNER="audio", GROUP="audio", MODE="0660"
