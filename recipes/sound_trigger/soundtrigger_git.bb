@@ -39,7 +39,7 @@ EXTRA_OECONF:append:sdmsteppe = " --enable-feature_sva_multistage"
 EXTRA_OECONF:append:sdmsteppe = " SUPPORTS_SOUND_TRIGGER_APE=true"
 EXTRA_OECONF:append:qrb5165 = " AUDIO_FEATURE_ENABLED_AUDIO_LEGACY_TECHPACK=true"
 
-EXTRA_OEMAKE = "DEFAULT_INCLUDES= CPPFLAGS="-I. -I${STAGING_KERNEL_BUILDDIR}/usr/include -I${STAGING_INCDIR}/graphite-client/gcs -I${STAGING_INCDIR}/graphite-client/osal""
+EXTRA_OEMAKE = "DEFAULT_INCLUDES= CPPFLAGS="-I. -I${STAGING_KERNEL_BUILDDIR}/usr/include -I${STAGING_KERNEL_BUILDDIR}/audio-kernel/audio -I${STAGING_INCDIR}/graphite-client/gcs -I${STAGING_INCDIR}/graphite-client/osal""
 
 do_install:append () {
   if [ -d "${WORKDIR}/mixers/${BASEMACHINE}" ] && [ $(ls -1 ${WORKDIR}/mixers/${BASEMACHINE} | wc -l) -ne 0 ]; then
