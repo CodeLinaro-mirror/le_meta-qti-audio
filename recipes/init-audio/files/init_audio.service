@@ -30,7 +30,6 @@
 Description=Audio Init Service
 After=firmware.mount
 Requires=firmware.mount
-Before=systemd-udev-trigger.service
 StartLimitBurst=10
 
 [Service]
