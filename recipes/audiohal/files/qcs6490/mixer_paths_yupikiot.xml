@@ -2124,12 +2124,19 @@
     </path>
 
     <path name="hfp-sco">
+        <path name="echo-reference" />
+        <ctl name="WSA_CDC_DMA_RX_0 Port Mixer SLIM_7_TX" value="1" />
+        <ctl name="SLIMBUS_7_RX Audio Mixer MultiMedia6" value="1" />
+        <ctl name="MultiMedia6 Mixer TX_CDC_DMA_TX_3" value="1" />
+        <ctl name="HFP_SLIM7_UL_HL Switch" value="1" />
+        <ctl name="WSA_CDC_DMA_RX_0_DL_HL Switch" value="1" />
     </path>
 
     <path name="hfp-sco headphones">
     </path>
 
    <path name="hfp-sco-wb">
+        <ctl name="BT SampleRate" value="KHZ_16" />
         <path name="hfp-sco" />
    </path>
 
@@ -2637,22 +2644,19 @@
     <path name="dmic2">
         <ctl name="TX_CDC_DMA_TX_3 Channels" value="One" />
         <ctl name="TX_AIF1_CAP Mixer DEC2" value="1" />
-        <ctl name="TX DMIC MUX2" value="DMIC2" />
+        <ctl name="TX DMIC MUX2" value="DMIC1" />
     </path>
 
     <path name="dmic3">
         <ctl name="TX_CDC_DMA_TX_3 Channels" value="One" />
         <ctl name="TX_AIF1_CAP Mixer DEC4" value="1" />
-        <ctl name="TX DMIC MUX4" value="DMIC4" />
+        <ctl name="TX DMIC MUX4" value="DMIC2" />
     </path>
 
     <path name="dmic4">
         <ctl name="TX_CDC_DMA_TX_3 Channels" value="One" />
         <ctl name="TX_AIF1_CAP Mixer DEC2" value="1" />
-        <ctl name="TX DEC2 MUX" value="SWR_MIC" />
-        <ctl name="TX SMIC MUX2" value="SWR_MIC11" />
-        <ctl name="SWR_MIC3 HIFI PortMap" value="SWRM_TX3_CH4" />
-        <ctl name="SWR_MIC3 SWR_DMIC_MIXER Switch" value="1" />
+        <ctl name="TX DMIC MUX2" value="DMIC3" />
     </path>
 
     <path name="speaker">
@@ -3870,6 +3874,15 @@
     </path>
 
     <path name="call-proxy-in">
+    </path>
+
+    <!-- Added for Client -->
+    <path name="voice-speaker-mic-hfp">
+        <path name="speaker-mic" />
+    </path>
+
+    <path name="voice-speaker-hfp">
+        <path name="speaker" />
     </path>
 
 </mixer>
