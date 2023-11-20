@@ -50,7 +50,6 @@ case "$1" in
         modprobe audio_pkt_dlkm
         modprobe adsp_loader_dlkm
         modprobe stub_dlkm
-        echo 1 > /sys/kernel/boot_adsp/boot
         modprobe platform_dlkm
         modprobe machine_dlkm
 
@@ -59,7 +58,6 @@ case "$1" in
         ;;
   stop)
         echo -n "Bypassing Unloading of  audio_kernel modules "
-	echo 0 > /sys/kernel/boot_adsp/boot
         ;;
   restart)
         $0 stop
