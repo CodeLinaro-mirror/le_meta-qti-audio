@@ -84,8 +84,14 @@ do_install:append() {
 }
 
 do_deploy() {
-    cp -rp ${WORKDIR}/*.ko ${DEPLOYDIR}/
+# Deploy unstripped kernel modules into ${DEPLOYDIR}/kernel_modules for debugging purposes
+    install -d ${DEPLOYDIR}/kernel_modules
+    for i in $(find ${WORKDIR}/vendor/qcom/opensource/audio-kernel/legacy/. -name "*.ko"); do
+        cp -rp ${i} ${DEPLOYDIR}/kernel_modules
+    done
 }
+
+addtask deploy after do_install before do_package
 
 # The inherit of module.bbclass will automatically name module packages with
 # kernel-module-" prefix as required by the oe-core build environment. Also it

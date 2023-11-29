@@ -1561,41 +1561,49 @@
     <!-- For VA macro, DMIC numbered from 0 to 7 -->
     <path name="dmic1">
         <ctl name="VA_AIF1_CAP Mixer DEC0" value="1" />
+        <ctl name="LPI Enable" value="1" />
         <ctl name="VA DMIC MUX0" value="DMIC0" />
     </path>
 
     <path name="dmic2">
         <ctl name="VA_AIF1_CAP Mixer DEC0" value="1" />
+        <ctl name="LPI Enable" value="1" />
         <ctl name="VA DMIC MUX0" value="DMIC1" />
     </path>
 
     <path name="dmic3">
         <ctl name="VA_AIF1_CAP Mixer DEC0" value="1" />
+        <ctl name="LPI Enable" value="1" />
         <ctl name="VA DMIC MUX0" value="DMIC2" />
     </path>
 
     <path name="dmic4">
         <ctl name="VA_AIF1_CAP Mixer DEC0" value="1" />
+        <ctl name="LPI Enable" value="1" />
         <ctl name="VA DMIC MUX0" value="DMIC3" />
     </path>
 
     <path name="dmic5">
         <ctl name="VA_AIF1_CAP Mixer DEC0" value="1" />
+        <ctl name="LPI Enable" value="1" />
         <ctl name="VA DMIC MUX0" value="DMIC4" />
     </path>
 
     <path name="dmic6">
         <ctl name="VA_AIF1_CAP Mixer DEC0" value="1" />
+        <ctl name="LPI Enable" value="1" />
         <ctl name="VA DMIC MUX0" value="DMIC5" />
     </path>
 
     <path name="dmic7">
         <ctl name="VA_AIF1_CAP Mixer DEC0" value="1" />
+        <ctl name="LPI Enable" value="1" />
         <ctl name="VA DMIC MUX0" value="DMIC6" />
     </path>
 
     <path name="dmic8">
         <ctl name="VA_AIF1_CAP Mixer DEC0" value="1" />
+        <ctl name="LPI Enable" value="1" />
         <ctl name="VA DMIC MUX0" value="DMIC7" />
     </path>
 
@@ -1678,6 +1686,7 @@
 
     <path name="three-mic">
         <ctl name="VA_CDC_DMA_TX_0 Channels" value="Three" />
+        <ctl name="LPI Enable" value="1" />
         <ctl name="VA_AIF1_CAP Mixer DEC0" value="1" />
         <ctl name="VA_AIF1_CAP Mixer DEC1" value="1" />
         <ctl name="VA_AIF1_CAP Mixer DEC2" value="1" />
@@ -1810,6 +1819,7 @@
     <!-- Dual MIC devices -->
     <path name="handset-dmic-endfire">
         <ctl name="VA_CDC_DMA_TX_0 Channels" value="Two" />
+        <ctl name="LPI Enable" value="1" />
         <ctl name="VA_AIF1_CAP Mixer DEC0" value="1" />
         <ctl name="VA_AIF1_CAP Mixer DEC1" value="1" />
         <ctl name="VA DMIC MUX0" value="DMIC2" />
@@ -1818,6 +1828,7 @@
 
     <path name="speaker-dmic-endfire">
         <ctl name="VA_CDC_DMA_TX_0 Channels" value="Two" />
+        <ctl name="LPI Enable" value="1" />
         <ctl name="VA_AIF1_CAP Mixer DEC0" value="1" />
         <ctl name="VA_AIF1_CAP Mixer DEC1" value="1" />
         <ctl name="VA DMIC MUX0" value="DMIC1" />
@@ -1858,6 +1869,7 @@
 
     <path name="speaker-dmic-broadside">
         <ctl name="VA_CDC_DMA_TX_0 Channels" value="Two" />
+        <ctl name="LPI Enable" value="1" />
         <ctl name="VA_AIF1_CAP Mixer DEC0" value="1" />
         <ctl name="VA_AIF1_CAP Mixer DEC1" value="1" />
         <ctl name="VA DMIC MUX0" value="DMIC1" />
@@ -1875,6 +1887,7 @@
     <!-- Quad MIC devices -->
     <path name="speaker-qmic">
         <ctl name="VA_CDC_DMA_TX_0 Channels" value="Four" />
+        <ctl name="LPI Enable" value="1" />
         <ctl name="VA_AIF1_CAP Mixer DEC0" value="1" />
         <ctl name="VA_AIF1_CAP Mixer DEC1" value="1" />
         <ctl name="VA_AIF1_CAP Mixer DEC2" value="1" />
@@ -1915,6 +1928,7 @@
 
     <path name="handset-6mic">
         <ctl name="VA_CDC_DMA_TX_0 Channels" value="Six" />
+        <ctl name="LPI Enable" value="1" />
         <ctl name="VA_AIF1_CAP Mixer DEC0" value="1" />
         <ctl name="VA_AIF1_CAP Mixer DEC1" value="1" />
         <ctl name="VA_AIF1_CAP Mixer DEC2" value="1" />
@@ -1931,6 +1945,7 @@
 
     <path name="handset-8mic">
         <ctl name="VA_CDC_DMA_TX_0 Channels" value="Eight" />
+        <ctl name="LPI Enable" value="1" />
         <ctl name="VA_AIF1_CAP Mixer DEC0" value="1" />
         <ctl name="VA_AIF1_CAP Mixer DEC1" value="1" />
         <ctl name="VA_AIF1_CAP Mixer DEC2" value="1" />
