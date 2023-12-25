@@ -25,6 +25,8 @@ EXTRA_OEMAKE += "AR_SUPPORT=${@bb.utils.contains('MACHINE_FEATURES', 'qti-audio-
 
 # Disable parallel make
 PARALLEL_MAKE = "-j1"
+# Enable parallel make for qcs6490
+PARALLEL_MAKE_qcs6490 = "${@oe.utils.less_or_equal('CPU_COUNT', '20', '-j ${CPU_COUNT}', '-j 20', d)}"
 
 do_configure() {
   cp -f ${WORKDIR}/vendor/qcom/opensource/audio-kernel/Makefile.am ${WORKDIR}/vendor/qcom/opensource/audio-kernel/Makefile
