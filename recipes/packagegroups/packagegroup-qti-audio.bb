@@ -19,5 +19,7 @@ OMX_ENCODERS:qrb5165  = "True"
 
 RDEPENDS:packagegroup-qti-audio = ' \
     ${@bb.utils.contains("COMBINED_FEATURES", "qti-audio", "audiodlkm init-audio audiohal", "", d)} \
+    ${@bb.utils.contains("BASEMACHINE", "mdm9607", "alsa-intf" , "", d)} \
     ${@bb.utils.contains("OMX_ENCODERS", "True", "encoders", "", d)} \
 '
+
