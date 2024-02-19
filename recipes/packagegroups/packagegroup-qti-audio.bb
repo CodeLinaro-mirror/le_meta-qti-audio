@@ -21,12 +21,3 @@ RDEPENDS:packagegroup-qti-audio = ' \
     ${@bb.utils.contains("COMBINED_FEATURES", "qti-audio", "audiodlkm init-audio audiohal", "", d)} \
     ${@bb.utils.contains("OMX_ENCODERS", "True", "encoders", "", d)} \
 '
-<<<<<<< HEAD   (b02643 Merge "meta-qti-audio: qcs405: Add LPI enable mixer ctrl.")
-=======
-RDEPENDS:packagegroup-qti-audio:mdm9607 = ' \
-    ${@bb.utils.contains("MACHINE_FEATURES", "qti-audio", "audiodlkm tinyalsa alsa-intf", "", d)} \
-    ${@bb.utils.contains("OMX_ENCODERS", "True", "encoders", "", d)} \
-'
-RDEPENDS:packagegroup-qti-audio:remove:mdm9607 = "audcal audiodevicetree audio-datamgr audio-ftm soundtrigger qsthw qsthw-api "
-RDEPENDS:packagegroup-qti-audio:remove:mdm9607 = "pa-qti-stt pa-qti-soundtrigger audio-generic-effect-framework audio-effects-noship pa-qti-effect"
->>>>>>> CHANGE (e8a646 Hack to build only audio_dlkm, tinyalsa and alsa-intf)
