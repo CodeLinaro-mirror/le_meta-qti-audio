@@ -11,15 +11,15 @@ FILESPATH   =+ "${WORKSPACE}/:"
 SRC_URI     =  "file://vendor/qcom/opensource/audio-hal/primary-hal/mm-audio"
 
 S = "${WORKDIR}/vendor/qcom/opensource/audio-hal/primary-hal/mm-audio"
-EXTRA_OECONF_append += "--with-sanitized-headers=${STAGING_KERNEL_BUILDDIR}/usr/include"
-EXTRA_OECONF_append += "--with-glib"
+EXTRA_OECONF:append += "--with-sanitized-headers=${STAGING_KERNEL_BUILDDIR}/usr/include"
+EXTRA_OECONF:append += "--with-glib"
 
 
 DEPENDS = "glib-2.0 system-core media"
 
-DEPENDS_append = "${@bb.utils.contains('DISTRO_FEATURES', 'audio-dlkm', ' audiodlkm', '', d)}"
+DEPENDS:append = "${@bb.utils.contains('DISTRO_FEATURES', 'audio-dlkm', ' audiodlkm', '', d)}"
 
-RDEPENDS_${PN} = "media"
+RDEPENDS:${PN} = "media"
 
 SOLIBS = ".so"
 FILES_SOLIBSDEV = ""
