@@ -13,7 +13,7 @@ PACKAGES = ' \
     packagegroup-qti-audio \
 '
 
-RDEPENDS_packagegroup-qti-audio += ' \
+RDEPENDS:packagegroup-qti-audio += ' \
     tinyalsa \
     tinycompress \
     ${@bb.utils.contains("BASEMACHINE", "sa525m", "", "audiohal", d)} \
