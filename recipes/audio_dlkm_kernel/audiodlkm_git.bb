@@ -85,17 +85,17 @@ do_install:append() {
     install -d -p ${D}${includedir}/audio-kernel/audio/linux
     install -d -p ${D}${includedir}/audio-kernel/audio/linux/mfd
     install -d -p ${D}${includedir}/audio-kernel/audio/linux/mfd/wcd9xxx
-    install -d -p ${D}${includedir}/audio-kernel/audio/sound
+    install -d -p ${D}${includedir}/audio-kernel/sound
     install -d ${STAGING_KERNEL_BUILDDIR}/audio-kernel/audio
     install -d ${STAGING_KERNEL_BUILDDIR}/audio-kernel/audio/linux
     install -d ${STAGING_KERNEL_BUILDDIR}/audio-kernel/audio/linux/mfd
     install -d ${STAGING_KERNEL_BUILDDIR}/audio-kernel/audio/linux/mfd/wcd9xxx
-    install -d ${STAGING_KERNEL_BUILDDIR}/audio-kernel/audio/sound
+    install -d ${STAGING_KERNEL_BUILDDIR}/audio-kernel/sound
 
     cp -fr ${S}/include/uapi/audio/linux/* ${D}${includedir}/audio-kernel/audio/linux
-    install -m 0644 ${S}/include/uapi/audio/sound/* ${D}${includedir}/audio-kernel/audio/sound
+    install -m 0644 ${S}/include/uapi/sound/* ${D}${includedir}/audio-kernel/sound
     cp -fr ${S}/include/uapi/audio/linux/* ${STAGING_KERNEL_BUILDDIR}/audio-kernel/audio/linux
-    install -m 0644 ${S}/include/uapi/audio/sound/* ${STAGING_KERNEL_BUILDDIR}/audio-kernel/audio/sound
+    install -m 0644 ${S}/include/uapi/sound/* ${STAGING_KERNEL_BUILDDIR}/audio-kernel/sound
 
     if ${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'true', 'false', d)}; then
         install -m 0755 ${WORKDIR}/${BASEMACHINE}/audio_load.conf -D ${D}${sysconfdir}/modules-load.d/audio_load.conf

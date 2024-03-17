@@ -13,7 +13,7 @@ SRC_URI = "git://git.codelinaro.org/clo/le/platform/external/tinycompress.git;pr
            file://0001-Tinycompress-Add-get_metadata-and-set_metadata-API-s.patch\
            file://0001-Tinycompress-remove-compr_passthr-fix-build-error.patch"
 
-EXTRA_OECONF:append = " --with-sanitized-headers=${STAGING_KERNEL_BUILDDIR}/audio-kernel/audio"
+EXTRA_OECONF:append = " --with-sanitized-headers=${STAGING_KERNEL_BUILDDIR}/audio-kernel"
 
 S = "${WORKDIR}/git"
 
