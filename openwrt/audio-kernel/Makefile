@@ -4,6 +4,7 @@ include $(INCLUDE_DIR)/kernel.mk
 PKG_NAME:=audio-kernel
 PKG_VERSION:=1.0
 PKG_RELEASE:=1
+PKG_LICENSE:=GPL-2.0
 PKG_FIXUP:=autoreconf
 
 LOCAL_SRC ?= $(TOPDIR)/src/vendor/qcom/opensource/audio-kernel
