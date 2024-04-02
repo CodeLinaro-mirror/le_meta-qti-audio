@@ -19,10 +19,7 @@ OMX_ENCODERS:qrb5165  = "True"
 
 RDEPENDS:packagegroup-qti-audio = ' \
     ${@bb.utils.contains("COMBINED_FEATURES", "qti-audio", "audiodlkm init-audio audiohal", "", d)} \
-    ${@bb.utils.contains("OMX_ENCODERS", "True", "encoders", "", d)} \
-'
-RDEPENDS:packagegroup-qti-audio:mdm9607 = ' \
-    ${@bb.utils.contains("MACHINE_FEATURES", "qti-audio", "audiodlkm tinyalsa alsa-intf", "", d)} \
+    ${@bb.utils.contains("BASEMACHINE", "mdm9607", "alsa-intf" , "", d)} \
     ${@bb.utils.contains("OMX_ENCODERS", "True", "encoders", "", d)} \
 '
 

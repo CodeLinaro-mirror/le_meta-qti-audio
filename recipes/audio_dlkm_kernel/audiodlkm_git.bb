@@ -17,16 +17,12 @@ EXT_MODULES = "${@os.path.relpath("${S}", "${KERNEL_PLATFORM_PATH}")}"
 inherit linux-kernel-base deploy
 
 # if is TARGET_KERNEL_ARCH is set inherit qtikernel-arch to compile for that arch.
+FILES:${PN} += "${@bb.utils.contains('TARGET_BOARD_PLATFORM','mdm9607', "${nonarch_base_libdir}/modules/audio/*", "", d)}"
 FILES:${PN} += "${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra/*"
 FILES:${PN} += "${sysconfdir}/*"
 FILES:${PN} += "/etc/initscripts/start_audio_le"
 FILES:${PN} += "${systemd_unitdir}/system/audio.service"
 FILES:${PN} += "${systemd_unitdir}/system/multi-user.target.wants/audio.service"
-FILES:${PN}:mdm9607 += "${nonarch_base_libdir}/modules/audio/*"
-FILES:${PN}:mdm9607 += "${sysconfdir}/*"
-FILES:${PN}:mdm9607 += "/etc/initscripts/start_audio_le"
-FILES:${PN}:mdm9607 += "${systemd_unitdir}/system/audio.service"
-FILES:${PN}:mdm9607 += "${systemd_unitdir}/system/multi-user.target.wants/audio.service"
 
 EXTRA_OEMAKE += "TARGET_SUPPORT=${BASEMACHINE}"
 
@@ -37,9 +33,6 @@ PARALLEL_MAKE = "-j1"
 do_configure() {
   cp -f ${WORKDIR}/vendor/qcom/opensource/audio-kernel/legacy/Makefile.am ${WORKDIR}/vendor/qcom/opensource/audio-kernel/legacy/Makefile
 }
-
-INITSCRIPT_NAME = "start_audio_le"
-INITSCRIPT_PARAMS = "start 35 5 . stop 15 0 1 6 ."
 
 do_compile[depends]   += "virtual/kernel:do_shared_workdir"
 do_compile[cleandirs] += "${WORKDIR}/out/${KERNEL_DEFCONFIG}"
@@ -104,12 +97,10 @@ do_install:append() {
     cp -fr ${S}/include/uapi/audio/linux/* ${STAGING_KERNEL_BUILDDIR}/audio-kernel/audio/linux
     install -m 0644 ${S}/include/uapi/audio/sound/* ${STAGING_KERNEL_BUILDDIR}/audio-kernel/audio/sound
 
-    if [ ${BASEMACHINE} != "sdxprairie" && ${BASEMACHINE} != "sa410m" && ${BASEMACHINE} != "sdxpoorwills" && ${BASEMACHINE} != "mdm9607" ];then
-        if ${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'true', 'false', d)}; then
-            install -m 0755 ${WORKDIR}/${BASEMACHINE}/audio_load.conf -D ${D}${sysconfdir}/modules-load.d/audio_load.conf
-        else
-            install -m 0755 ${WORKDIR}/${BASEMACHINE}/audio_load.conf -D ${D}${sysconfdir}/modules/audio_load.conf
-        fi
+    if ${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'true', 'false', d)}; then
+        install -m 0755 ${WORKDIR}/${BASEMACHINE}/audio_load.conf -D ${D}${sysconfdir}/modules-load.d/audio_load.conf
+    else
+        install -m 0755 ${WORKDIR}/${BASEMACHINE}/audio_load.conf -D ${D}${sysconfdir}/modules/audio_load.conf
     fi
 
     rm -fr ${D}${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra/asoc
@@ -120,16 +111,14 @@ do_install:append() {
 
 do_install:append:mdm9607() {
     if ${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'true', 'false', d)}; then
-      install -d ${D}${sysconfdir}/initscripts
+       install -d ${D}${sysconfdir}/initscripts
        install -m 0755 ${WORKDIR}/mdm9607/start_audio_le ${D}${sysconfdir}/initscripts
        install -m 0644 ${WORKDIR}/mdm9607/audio.service -D ${D}${systemd_unitdir}/system/audio.service
        install -d ${D}${systemd_unitdir}/system/multi-user.target.wants/
  # enable the service for multi-user.target
        ln -sf ${systemd_unitdir}/system/audio.service \
        ${D}${systemd_unitdir}/system/multi-user.target.wants/audio.service
-     else
-       install -m 0755 ${WORKDIR}/mdm9607/audio_load.conf -D ${D}${sysconfdir}/modules/audio_load.conf
-     fi
+    fi
 }
 
 do_deploy() {

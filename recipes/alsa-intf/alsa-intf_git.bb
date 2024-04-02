@@ -19,17 +19,4 @@ EXTRA_OECONF += "--prefix=/etc \
 EXTRA_OEMAKE:mdm9607 += "DEFAULT_INCLUDES= CPPFLAGS="-I. -I${PKG_CONFIG_SYSROOT_DIR}/usr/include/acdbloader""
 
 FILES_${PN} += "${prefix}/snd_soc_msm/*"
-do_install:append:msm8610() {
-    mv ${D}/usr/bin/aplay ${D}/usr/bin/qc-aplay
-    mv ${D}/usr/bin/amix ${D}/usr/bin/qc-amix
-    mv ${D}/usr/bin/arec ${D}/usr/bin/qc-arec
-    mv ${D}/usr/bin/alsaucm_test ${D}/usr/bin/qc-alsaucm_test
-}
-
-do_install:append:msm8226() {
-    mv ${D}/usr/bin/aplay ${D}/usr/bin/qc-aplay
-    mv ${D}/usr/bin/amix ${D}/usr/bin/qc-amix
-    mv ${D}/usr/bin/arec ${D}/usr/bin/qc-arec
-    mv ${D}/usr/bin/alsaucm_test ${D}/usr/bin/qc-alsaucm_test
-}
 
