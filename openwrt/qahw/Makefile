@@ -2,6 +2,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=qahw
 PKG_RELEASE:=1
+PKG_LICENSE:=BSD-3-Clause
 PKG_FIXUP:=autoreconf
 
 LOCAL_SRC ?= $(TOPDIR)/src/vendor/qcom/opensource/audio-hal/primary-hal/qahw/
