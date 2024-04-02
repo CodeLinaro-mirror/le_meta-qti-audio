@@ -27,7 +27,7 @@
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 # Changes from Qualcomm Innovation Center, Inc. are provided under the following license:
-# Copyright (c) 2022-2023 Qualcomm Innovation Center, Inc. All rights reserved.
+# Copyright (c) 2022-2024 Qualcomm Innovation Center, Inc. All rights reserved.
 # SPDX-License-Identifier: BSD-3-Clause-Clear
 #
 
@@ -37,33 +37,51 @@ set -e
 case "$1" in
   start)
         echo -n "Starting/Loading audio module: "
-	
-	echo "audio:start/load" > /dev/kmsg
-	insmod /lib/modules/audio/snd_event_dlkm.ko
-	insmod /lib/modules/audio/q6_notifier_dlkm.ko
-	insmod /lib/modules/audio/apr_dlkm.ko
-	insmod /lib/modules/audio/adsp_loader_dlkm.ko
-	insmod /lib/modules/audio/stub_dlkm.ko
-	echo 1 > /sys/kernel/boot_adsp/boot
-	insmod /lib/modules/audio/q6_dlkm.ko
-	insmod /lib/modules/audio/platform_dlkm.ko
-	insmod /lib/modules/audio/native_dlkm.ko
-	insmod /lib/modules/audio/wcd_core_dlkm.ko
-	insmod /lib/modules/audio/wcd9xxx_dlkm.ko
-	insmod /lib/modules/audio/wcd9330_dlkm.ko
-	insmod /lib/modules/audio/machine_dlkm.ko
-	insmod /lib/modules/audio/pinctrl_wcd_dlkm.ko
-	insmod /lib/modules/audio/mbhc_dlkm.ko
-	insmod /lib/modules/audio/swr_dlkm.ko
-	insmod /lib/modules/audio/swr_ctrl_dlkm.ko
-	
+
+        echo "audio:start/load" > /dev/kmsg
+        insmod /lib/modules/audio/snd_event_dlkm.ko
+        insmod /lib/modules/audio/q6_notifier_dlkm.ko
+        insmod /lib/modules/audio/apr_dlkm.ko
+        insmod /lib/modules/audio/adsp_loader_dlkm.ko
+        insmod /lib/modules/audio/stub_dlkm.ko
+        echo 1 > /sys/kernel/boot_adsp/boot
+        insmod /lib/modules/audio/q6_dlkm.ko
+        insmod /lib/modules/audio/platform_dlkm.ko
+        insmod /lib/modules/audio/native_dlkm.ko
+        insmod /lib/modules/audio/wcd_core_dlkm.ko
+        insmod /lib/modules/audio/wcd9xxx_dlkm.ko
+        insmod /lib/modules/audio/wcd9330_dlkm.ko
+        insmod /lib/modules/audio/machine_dlkm.ko
+        insmod /lib/modules/audio/pinctrl_wcd_dlkm.ko
+        insmod /lib/modules/audio/mbhc_dlkm.ko
+        insmod /lib/modules/audio/swr_dlkm.ko
+        insmod /lib/modules/audio/swr_ctrl_dlkm.ko
+
         echo "done loading audio_kernel module"
         ;;
   stop)
-        echo "Unloading of  audio_kernel modules "  > /dev/kmsg
+        echo "Unloading of audio_kernel modules "  > /dev/kmsg
+        rmmod swr_ctrl_dlkm
+        rmmod swr_dlkm
+        rmmod mbhc_dlkm
+        rmmod pinctrl_wcd_dlkm
+        rmmod machine_dlkm
+        rmmod wcd9330_dlkm
+        rmmod wcd9xxx_dlkm
+        rmmod wcd_core_dlkm
+        rmmod native_dlkm
+        rmmod platform_dlkm
+        rmmod q6_dlkm
+        echo "audio: unvoting for adsp" > /dev/kmsg
         echo 0 > /sys/kernel/boot_adsp/boot
+        echo "Unloading adsp_loader and apr" > /dev/kmsg
+        rmmod stub_dlkm
+        rmmod adsp_loader_dlkm
+        rmmod apr_dlkm
+        rmmod q6_notifier_dlkm
+        rmmod snd_event_dlkm
 
-        echo -n "Unloading done audio_kernel modules "
+        echo -n "Unloading audio_kernel modules completed"
         ;;
   restart)
         $0 stop
