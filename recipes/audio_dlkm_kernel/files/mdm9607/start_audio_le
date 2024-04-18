@@ -83,6 +83,11 @@ case "$1" in
 
         echo -n "Unloading audio_kernel modules completed"
         ;;
+  verify)
+        echo "Verifying remote proc1 state" > /dev/kmsg
+        cat /sys/class/remoteproc/remoteproc1/state  > /dev/kmsg
+        echo "Verification done" > /dev/kmsg
+        ;;
   restart)
         $0 stop
         $0 start

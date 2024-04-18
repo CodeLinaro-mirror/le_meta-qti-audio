@@ -1,7 +1,7 @@
 [Unit]
 Description= Audio DLKM kernel service
 SourcePath=/etc/initscripts/start_audio_le
-After=firmware.mount
+After=firmware.mount diag-router.service
 Requires=firmware.mount
 
 [Service]
@@ -12,6 +12,8 @@ RemainAfterExit=yes
 ExecStartPre=/bin/sleep 10
 ExecStart=/etc/initscripts/start_audio_le start
 ExecStop=/etc/initscripts/start_audio_le stop
+ExecStop=/bin/sh -c ' for d in /sys/class/remoteproc/remoteproc*/; do if [ \"$(cat \"$d/name\")\" ==  \"4080000.remoteproc-mss\" ]; then echo stop > $d/state; fi; done '
+ExecStop=/etc/initscripts/start_audio_le verify
 
 [Install]
 WantedBy=multi-user.target
