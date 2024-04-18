@@ -4,6 +4,7 @@ include $(INCLUDE_DIR)/kernel.mk
 PKG_NAME:=audio-kernel-ko
 PKG_VERSION:=1.0
 PKG_RELEASE:=1
+PKG_LICENSE:=GPL-2.0
 PKG_FIXUP:=autoreconf
 
 LOCAL_SRC ?= $(TOPDIR)/src/kernel/msm-5.4/techpack/audio
