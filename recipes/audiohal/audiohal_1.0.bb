@@ -47,7 +47,7 @@ AUDIO_KERNEL_HEADERS:qrbx210="${STAGING_KERNEL_BUILDDIR}/audio-kernel/audio"
 AUDIO_KERNEL_HEADERS:qrb5165="${STAGING_KERNEL_BUILDDIR}/audio-kernel/audio"
 AUDIO_KERNEL_HEADERS:sdmsteppe="${STAGING_KERNEL_BUILDDIR}/audio-kernel/audio"
 AUDIO_KERNEL_HEADERS:qcs40x="${STAGING_KERNEL_BUILDDIR}/audio-kernel/audio"
-AUDIO_KERNEL_HEADERS:mdm9607="${WORKSPACE}/vendor/qcom/opensource/audio-kernel/legacy/include/uapi"
+AUDIO_KERNEL_HEADERS:mdm9607="${STAGING_KERNEL_BUILDDIR}/audio-kernel/audio"
 CFLAGS += "-I${AUDIO_KERNEL_HEADERS}"
 
 EXTRA_OEMAKE = "DEFAULT_INCLUDES= CPPFLAGS="-I. -I${STAGING_KERNEL_BUILDDIR}/usr/include/audio -I${STAGING_KERNEL_BUILDDIR}/usr/techpack/audio/include -I${STAGING_INCDIR}/surround_sound_3mic -I${STAGING_INCDIR}/sound_trigger""
@@ -152,7 +152,6 @@ EXTRA_OECONF:append:mdm9607 = "AUDIO_FEATURE_ENABLED_DTMF=true"
 EXTRA_OECONF:append:mdm9607 = "AUDIO_FEATURE_ADSP_HDLR_ENABLED=true"
 EXTRA_OECONF:append:mdm9607 = " AUDIO_FEATURE_ENABLED_PARSER=true"
 EXTRA_OECONF:append:mdm9607 = " AUDIO_FEATURE_ENABLED_DTSHD_PARSER=true"
-EXTRA_OECONF:append:mdm9607 = " AUDIO_FEATURE_ENABLED_GKI=true"
 
 do_install:append() {
    if [ -d "${WORKDIR}/${BASEMACHINE}" ] && [ $(ls -1  ${WORKDIR}/${BASEMACHINE} | wc -l) -ne 0 ]; then
