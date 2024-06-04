@@ -98,9 +98,9 @@ do_install:append() {
       cp -fr ${S}/include/uapi/linux/* ${STAGING_KERNEL_BUILDDIR}/audio-kernel/audio/linux
       install -m 0644 ${S}/include/uapi/sound/* ${STAGING_KERNEL_BUILDDIR}/audio-kernel/audio/sound
     else
-    cp -fr ${S}/include/uapi/audio/linux/* ${D}${includedir}/audio-kernel/audio/linux
+      cp -fr ${S}/include/uapi/audio/linux/* ${D}${includedir}/audio-kernel/audio/linux
       install -m 0644 ${S}/include/uapi/audio/sound/* ${D}${includedir}/audio-kernel/audio/sound
-    cp -fr ${S}/include/uapi/audio/linux/* ${STAGING_KERNEL_BUILDDIR}/audio-kernel/audio/linux
+      cp -fr ${S}/include/uapi/audio/linux/* ${STAGING_KERNEL_BUILDDIR}/audio-kernel/audio/linux
       install -m 0644 ${S}/include/uapi/audio/sound/* ${STAGING_KERNEL_BUILDDIR}/audio-kernel/audio/sound
     fi
 
