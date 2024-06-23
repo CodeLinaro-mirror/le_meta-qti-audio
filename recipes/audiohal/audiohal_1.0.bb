@@ -21,10 +21,10 @@ EXTRA_OECONF += "--with-glib --program-suffix=${HALBINSUFFIX}"
 
 EXTRA_OECONF += "TARGET_SUPPORT=${BASEMACHINE}"
 EXTRA_OECONF += "BOARD_SUPPORTS_QAHW=true"
-EXTRA_OECONF_append = " AUDIO_FEATURE_ENABLED_INSTANCE_ID=true"
-EXTRA_OECONF_append = " AUDIO_FEATURE_ENABLED_QAHW_1_0=true"
+EXTRA_OECONF:append = " AUDIO_FEATURE_ENABLED_INSTANCE_ID=true"
+EXTRA_OECONF:append = " AUDIO_FEATURE_ENABLED_QAHW_1_0=true"
 
-do_install_append() {
+do_install:append() {
    if [ -d "${WORKDIR}/${BASEMACHINE}" ] && [ $(ls -1  ${WORKDIR}/${BASEMACHINE} | wc -l) -ne 0 ]; then
       install -d ${D}${sysconfdir}
       install -m 0755 ${WORKDIR}/${BASEMACHINE}/* ${D}${sysconfdir}/
@@ -34,7 +34,7 @@ do_install_append() {
    install -m 0755 -o root -g root -d ${D}${userfsdatadir}/audio
 }
 
-FILES_${PN} += "${libdir}/audio.primary.default.so ${userfsdatadir}/*"
+FILES:${PN} += "${libdir}/audio.primary.default.so ${userfsdatadir}/*"
 SOLIBS = ".so"
 FILES_SOLIBSDEV = ""
 
