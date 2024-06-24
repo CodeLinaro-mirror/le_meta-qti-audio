@@ -1,11 +1,12 @@
 inherit autotools update-rc.d systemd
 
 DESCRIPTION = "Installing audio init script"
-LICENSE = "BSD"
-LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/BSD;md5=3775480a712fc46a69647678acb234cb"
+LICENSE = "BSD-3-Clause"
+LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/\
+${LICENSE};md5=550794465ba0ec5312d6919e203a55f9"
 PR = "r5"
 
-DEPENDS_append_mdm9635 +="alsa-intf"
+DEPENDS:append:mdm9635 +="alsa-intf"
 
 SRC_URI = "file://init_qcom_audio"
 SRC_URI += "file://init_audio.service"
@@ -18,13 +19,13 @@ S = "${WORKDIR}"
 
 INITSCRIPT_NAME = "init_qcom_audio"
 INITSCRIPT_PARAMS = "start 99 2 3 4 5 . stop 1 0 1 6 ."
-INITSCRIPT_NAME_apq8009 = "init_qcom_audio"
-INITSCRIPT_PARAMS_apq8009 = "start 38 2 3 4 5 . stop 1 0 1 6 ."
+INITSCRIPT_NAME:apq8009 = "init_qcom_audio"
+INITSCRIPT_PARAMS:apq8009 = "start 38 2 3 4 5 . stop 1 0 1 6 ."
 
 do_install() {
     if ${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'true', 'false', d)}; then
         install -m 0644 ${S}/msm-audio-node.rules -D ${D}${sysconfdir}/udev/rules.d/msm-audio-node.rules
-        install -m 0644 ${S}/init_audio.service -D ${D}${systemd_unitdir}/system/init_audio.service
+        install -m 0644 ${S}/${BASEMACHINE}/init_audio.service -D ${D}${systemd_unitdir}/system/init_audio.service
         install -d ${D}/${systemd_unitdir}/system/sysinit.target.wants
         install -d ${D}${sysconfdir}/initscripts
         install -m 0755 ${WORKDIR}/${BASEMACHINE}/start_audio_le ${D}${sysconfdir}/initscripts
@@ -46,6 +47,6 @@ do_install() {
 
 }
 
-FILES_${PN} += "${systemd_unitdir}/system/*"
-FILES_${PN}+="/etc/initscripts/start_audio_le"
+FILES:${PN} += "${systemd_unitdir}/system/*"
+FILES:${PN}+="/etc/initscripts/start_audio_le"
 
