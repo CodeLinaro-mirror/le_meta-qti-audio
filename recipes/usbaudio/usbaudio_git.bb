@@ -14,5 +14,5 @@ PR = "r0"
 
 DEPENDS = "tinyalsa system-media libhardware"
 
-FILES_${PN} += "${libdir}/*.so"
-INSANE_SKIP_${PN} = "dev-deps"
+FILES:${PN} += "${libdir}/*.so"
+INSANE_SKIP:${PN} = "dev-deps"

@@ -1,7 +1,7 @@
 #SUMMARY = "QTI Audio Package Group"
 SUMMARY = "QTI Audio Package Group"
 
-LICENSE = "BSD-3-Clause & LGPL-2.1 "
+LICENSE = "BSD-3-Clause & (LGPL-2.1 | LGPL-2.1-only) "
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
@@ -13,7 +13,7 @@ PACKAGES = ' \
     packagegroup-qti-audio \
 '
 
-RDEPENDS_packagegroup-qti-audio += ' \
+RDEPENDS:packagegroup-qti-audio += ' \
     tinyalsa \
     tinycompress \
     ${@bb.utils.contains("BASEMACHINE", "sa525m", "", "audiohal", d)} \
