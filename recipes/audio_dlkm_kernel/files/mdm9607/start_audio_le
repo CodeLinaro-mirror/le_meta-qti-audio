@@ -54,15 +54,11 @@ case "$1" in
         insmod /lib/modules/audio/machine_dlkm.ko
         insmod /lib/modules/audio/pinctrl_wcd_dlkm.ko
         insmod /lib/modules/audio/mbhc_dlkm.ko
-        insmod /lib/modules/audio/swr_dlkm.ko
-        insmod /lib/modules/audio/swr_ctrl_dlkm.ko
 
         echo "done loading audio_kernel module"
         ;;
   stop)
         echo "Unloading of audio_kernel modules "  > /dev/kmsg
-        rmmod swr_ctrl_dlkm
-        rmmod swr_dlkm
         rmmod mbhc_dlkm
         rmmod pinctrl_wcd_dlkm
         rmmod machine_dlkm
@@ -82,6 +78,11 @@ case "$1" in
         rmmod snd_event_dlkm
 
         echo -n "Unloading audio_kernel modules completed"
+        ;;
+  verify)
+        echo "Verifying remote proc1 state" > /dev/kmsg
+        cat /sys/class/remoteproc/remoteproc1/state  > /dev/kmsg
+        echo "Verification done" > /dev/kmsg
         ;;
   restart)
         $0 stop
