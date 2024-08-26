@@ -12,6 +12,8 @@ SRC_URI += "file://${BASEMACHINE}/"
 
 S = "${WORKDIR}/hardware/qcom/audio/"
 PR = "r0"
+PACKAGE_ARCH    ?= "${MACHINE_ARCH}"
+
 HALBINSUFFIX = "${@bb.utils.contains('TUNE_ARCH', 'aarch64', '_64bit', '', d)}"
 DEPENDS = "glib-2.0 tinycompress tinyalsa expat libhardware acdbloader surround-sound-3mic qahw"
 DEPENDS:append:apq8098 = " audio-qaf audio-parsers audio-qap-wrapper audio-ip-handler"
@@ -25,23 +27,27 @@ DEPENDS:append:sdmsteppe = " audio-parsers"
 DEPENDS:append:qcs40x = " audio-parsers"
 DEPENDS:append = "${@bb.utils.contains('DISTRO_FEATURES', 'audio-dlkm', ' audiodlkm', '', d)}"
 DEPENDS:append = "${@bb.utils.contains('DISTRO_FEATURES', 'qti-audio', ' audio-route audio-utils libutils', ' system-media', d)}"
+DEPENDS:remove:mdm9607 = " system-media"
 
 CFLAGS:append:qrbx210 = " -I${STAGING_INCDIR}/audio/mm-audio/audio-parsers"
 CFLAGS:append:qrb5165 = " -I${STAGING_INCDIR}/audio/mm-audio/audio-parsers"
 CFLAGS:append:sdmsteppe = " -I${STAGING_INCDIR}/audio/mm-audio/audio-parsers"
 CFLAGS:append:qcs40x = " -I${STAGING_INCDIR}/audio/mm-audio/audio-parsers"
+CFLAGS:append:mdm9607 = " -I${STAGING_INCDIR}/audio/mm-audio/audio-parsers"
 #apq8098 doesn't need surround sound recording
 DEPENDS:remove:apq8098 = "surround-sound-3mic"
 #sdxprairie doesn't need surround sound recording
 DEPENDS:remove:sdxprairie = "surround-sound-3mic"
+DEPENDS:append:mdm9607 = " audio-parsers"
 
 do_configure[depends] += "audiodlkm:do_install"
-
+CFLAGS:append = " -fcommon"
 AUDIO_KERNEL_HEADERS="${STAGING_KERNEL_BUILDDIR}/audio-kernel"
 AUDIO_KERNEL_HEADERS:qrbx210="${STAGING_KERNEL_BUILDDIR}/audio-kernel/audio"
 AUDIO_KERNEL_HEADERS:qrb5165="${STAGING_KERNEL_BUILDDIR}/audio-kernel/audio"
 AUDIO_KERNEL_HEADERS:sdmsteppe="${STAGING_KERNEL_BUILDDIR}/audio-kernel/audio"
 AUDIO_KERNEL_HEADERS:qcs40x="${STAGING_KERNEL_BUILDDIR}/audio-kernel/audio"
+AUDIO_KERNEL_HEADERS:mdm9607="${STAGING_KERNEL_BUILDDIR}/audio-kernel/audio"
 CFLAGS += "-I${AUDIO_KERNEL_HEADERS}"
 
 EXTRA_OEMAKE = "DEFAULT_INCLUDES= CPPFLAGS="-I. -I${STAGING_KERNEL_BUILDDIR}/usr/include/audio -I${STAGING_KERNEL_BUILDDIR}/usr/techpack/audio/include -I${STAGING_INCDIR}/surround_sound_3mic -I${STAGING_INCDIR}/sound_trigger""
@@ -137,6 +143,15 @@ EXTRA_OECONF:append:qcs40x = " AUDIO_FEATURE_ENABLED_DTSHD_PARSER=true"
 EXTRA_OECONF:append:qcs40x = " AUDIO_FEATURE_ENABLED_AHAL_EXT=true"
 EXTRA_OECONF:append:qcs40x = " AUDIO_FEATURE_ENABLED_EXTENDED_COMPRESS_FORMAT=true"
 #EXTRA_OECONF:append:qcs40x = " AUDIO_FEATURE_ENABLED_NON_TUNNEL_ADSP_PROCESSING=true"
+EXTRA_OECONF:append:mdm9607 = " AUDIO_FEATURE_ENABLED_EXTN_AMR_DECODER=true"
+EXTRA_OECONF:append:mdm9607 = " AUDIO_FEATURE_ENABLED_QAHW_1_0=true"
+EXTRA_OECONF:append:mdm9607 = " AUDIO_FEATURE_ENABLED_INSTANCE_ID=true"
+EXTRA_OECONF:append:mdm9607 = " AUDIO_FEATURE_ENABLED_SND_MONITOR=true"
+EXTRA_OECONF:append:mdm9607 = " AUDIO_FEATURE_ENABLED_AFE_LOOPBACK=true"
+EXTRA_OECONF:append:mdm9607 = " AUDIO_FEATURE_ENABLED_DTMF=true"
+EXTRA_OECONF:append:mdm9607 = " AUDIO_FEATURE_ADSP_HDLR_ENABLED=true"
+EXTRA_OECONF:append:mdm9607 = " AUDIO_FEATURE_ENABLED_PARSER=true"
+EXTRA_OECONF:append:mdm9607 = " AUDIO_FEATURE_ENABLED_DTSHD_PARSER=true"
 
 do_install:append() {
    if [ -d "${WORKDIR}/${BASEMACHINE}" ] && [ $(ls -1  ${WORKDIR}/${BASEMACHINE} | wc -l) -ne 0 ]; then

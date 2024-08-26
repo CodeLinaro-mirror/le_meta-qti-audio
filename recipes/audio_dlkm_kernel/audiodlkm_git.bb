@@ -17,8 +17,12 @@ EXT_MODULES = "${@os.path.relpath("${S}", "${KERNEL_PLATFORM_PATH}")}"
 inherit linux-kernel-base deploy
 
 # if is TARGET_KERNEL_ARCH is set inherit qtikernel-arch to compile for that arch.
+FILES:${PN} += "${@bb.utils.contains('TARGET_BOARD_PLATFORM','mdm9607', "${nonarch_base_libdir}/modules/audio/*", "", d)}"
 FILES:${PN} += "${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra/*"
 FILES:${PN} += "${sysconfdir}/*"
+FILES:${PN} += "/etc/initscripts/start_audio_le"
+FILES:${PN} += "${systemd_unitdir}/system/audio.service"
+FILES:${PN} += "${systemd_unitdir}/system/multi-user.target.wants/audio.service"
 
 EXTRA_OEMAKE += "TARGET_SUPPORT=${BASEMACHINE}"
 
@@ -46,11 +50,33 @@ do_compile() {
     KBUILD_EXTRA_SYMBOLS=${STAGING_DIR_HOST}/lib/modules/${KERNEL_VERSION}/mm-drivers/Module.symvers \
     ./build/build_module.sh ${EXTRA_OEMAKE}
 }
+do_compile:mdm9607() {
+    cd ${KERNEL_PLATFORM_PATH}
+    ENABLE_DDK_BUILD=${ENABLE_DDK_BUILD} \
+    TARGET_BOARD_PLATFORM=${TARGET_BOARD_PLATFORM} \
+    KBUILD_OPTIONS+="TARGET_SUPPORT=${BASEMACHINE}" \
+    BUILD_CONFIG=${KERNEL_BUILD_CONFIG} \
+    EXT_MODULES=${EXT_MODULES} \
+    KERNEL_KIT=${KERNEL_PREBUILT_PATH} \
+    OUT_DIR=${KERNEL_OUT_PATH} \
+    MODULE_OUT=${WORKDIR}/vendor/qcom/opensource/audio-kernel/legacy \
+    INPLACE_COMPILE=y \
+    KERNEL_UAPI_HEADERS_DIR=${STAGING_KERNEL_BUILDDIR} \
+    KBUILD_EXTRA_SYMBOLS=${STAGING_DIR_HOST}/lib/modules/${KERNEL_VERSION}/mm-drivers/Module.symvers \
+    ./build/build_module.sh ${EXTRA_OEMAKE}
+}
 
 do_install() {
     install -d ${D}${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra
     for i in $(find ${WORKDIR}/vendor/qcom/opensource/audio-kernel/legacy/. -name "*.ko"); do
         install -m 0755 ${i} -D ${D}/${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra/
+    done
+}
+
+do_install:mdm9607() {
+    install -d ${D}${nonarch_base_libdir}/modules/audio
+    for i in $(find ${WORKDIR}/vendor/qcom/opensource/audio-kernel/legacy/. -name "*.ko"); do
+        install -m 0755 ${i} -D ${D}/${nonarch_base_libdir}/modules/audio/
     done
 }
 
@@ -66,10 +92,17 @@ do_install:append() {
     install -d ${STAGING_KERNEL_BUILDDIR}/audio-kernel/audio/linux/mfd/wcd9xxx
     install -d ${STAGING_KERNEL_BUILDDIR}/audio-kernel/audio/sound
 
-    cp -fr ${S}/include/uapi/audio/linux/* ${D}${includedir}/audio-kernel/audio/linux
-    install -m 0644 ${S}/include/uapi/audio/sound/* ${D}${includedir}/audio-kernel/audio/sound
-    cp -fr ${S}/include/uapi/audio/linux/* ${STAGING_KERNEL_BUILDDIR}/audio-kernel/audio/linux
-    install -m 0644 ${S}/include/uapi/audio/sound/* ${STAGING_KERNEL_BUILDDIR}/audio-kernel/audio/sound
+    if [ ${BASEMACHINE} = "mdm9607" ];then
+      cp -fr ${S}/include/uapi/linux/* ${D}${includedir}/audio-kernel/audio/linux
+      install -m 0644 ${S}/include/uapi/sound/* ${D}${includedir}/audio-kernel/audio/sound
+      cp -fr ${S}/include/uapi/linux/* ${STAGING_KERNEL_BUILDDIR}/audio-kernel/audio/linux
+      install -m 0644 ${S}/include/uapi/sound/* ${STAGING_KERNEL_BUILDDIR}/audio-kernel/audio/sound
+    else
+      cp -fr ${S}/include/uapi/audio/linux/* ${D}${includedir}/audio-kernel/audio/linux
+      install -m 0644 ${S}/include/uapi/audio/sound/* ${D}${includedir}/audio-kernel/audio/sound
+      cp -fr ${S}/include/uapi/audio/linux/* ${STAGING_KERNEL_BUILDDIR}/audio-kernel/audio/linux
+      install -m 0644 ${S}/include/uapi/audio/sound/* ${STAGING_KERNEL_BUILDDIR}/audio-kernel/audio/sound
+    fi
 
     if ${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'true', 'false', d)}; then
         install -m 0755 ${WORKDIR}/${BASEMACHINE}/audio_load.conf -D ${D}${sysconfdir}/modules-load.d/audio_load.conf
@@ -81,6 +114,18 @@ do_install:append() {
     rm -fr ${D}${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra/dsp
     rm -fr ${D}${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra/ipc
     rm -fr ${D}${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra/soc
+}
+
+do_install:append:mdm9607() {
+    if ${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'true', 'false', d)}; then
+       install -d ${D}${sysconfdir}/initscripts
+       install -m 0755 ${WORKDIR}/mdm9607/start_audio_le ${D}${sysconfdir}/initscripts
+       install -m 0644 ${WORKDIR}/mdm9607/audio.service -D ${D}${systemd_unitdir}/system/audio.service
+       install -d ${D}${systemd_unitdir}/system/multi-user.target.wants/
+ # enable the service for multi-user.target
+       ln -sf ${systemd_unitdir}/system/audio.service \
+       ${D}${systemd_unitdir}/system/multi-user.target.wants/audio.service
+    fi
 }
 
 do_deploy() {
@@ -128,6 +173,7 @@ RPROVIDES:${PN} += "${@'kernel-module-mbhc-dlkm-${KERNEL_VERSION}'.replace('_', 
 RPROVIDES:${PN} += "${@'kernel-module-stub-dlkm-${KERNEL_VERSION}'.replace('_', '-')}"
 RPROVIDES:${PN} += "${@'kernel-module-wcd-core-dlkm-${KERNEL_VERSION}'.replace('_', '-')}"
 RPROVIDES:${PN} += "${@'kernel-module-wcd-cpe-dlkm-${KERNEL_VERSION}'.replace('_', '-')}"
+RPROVIDES:${PN} += "${@'kernel-module-wcd9330-dlkm-${KERNEL_VERSION}'.replace('_', '-')}"
 RPROVIDES:${PN} += "${@'kernel-module-wcd9335-dlkm-${KERNEL_VERSION}'.replace('_', '-')}"
 RPROVIDES:${PN} += "${@'kernel-module-wcd9xxx-dlkm-${KERNEL_VERSION}'.replace('_', '-')}"
 RPROVIDES:${PN} += "${@'kernel-module-wsa881x-analog-dlkm-${KERNEL_VERSION}'.replace('_', '-')}"
