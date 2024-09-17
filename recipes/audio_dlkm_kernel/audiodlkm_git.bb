@@ -30,6 +30,8 @@ do_configure() {
 }
 
 do_compile:sa525m() {
+    oe_runmake clean
+
     cd ${WORKSPACE}/kernel-${PREFERRED_VERSION_linux-msm}/kernel_platform  && \
     BUILD_CONFIG=${KERNEL_BUILD_CONFIG} \
     TARGET_SUPPORT=sa525m \
