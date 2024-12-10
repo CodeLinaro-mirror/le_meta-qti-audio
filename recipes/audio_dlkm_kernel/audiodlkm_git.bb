@@ -5,6 +5,7 @@ LICENSE = "GPL-2.0-only"
 LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/${LICENSE};md5=801f80980d171dd6425610833a22dbe6"
 DEPENDS = "virtual/kernel linux-msm-headers"
 DEPENDS:append:qrb5165 = " mmdlkm"
+DEPENDS:append:mdm9607 = " securemsmdlkm"
 PR = "r0"
 
 FILESPATH =+ "${WORKSPACE}:"
