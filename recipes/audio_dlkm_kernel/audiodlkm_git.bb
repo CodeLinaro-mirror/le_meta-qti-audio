@@ -1,4 +1,4 @@
-inherit module
+#inherit module
 
 # if is TARGET_KERNEL_ARCH is set inherit qtikernel-arch to compile for that arch.
 inherit ${@bb.utils.contains('TARGET_KERNEL_ARCH', 'aarch64', 'qtikernel-arch', '', d)}
@@ -10,20 +10,27 @@ LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/${LICENSE};md5
 
 PR = "r0"
 
-DEPENDS = "virtual/kernel"
-DEPENDS += "${@bb.utils.contains_any('BASEMACHINE', 'sa525m', 'rsync-native', '', d)}"
-DEPENDS += "${@bb.utils.contains_any('BASEMACHINE', 'sa525m', 'audiodevicetree', '', d)}"
+DEPENDS = "virtual/kernel linux-msm-headers"
+DEPENDS += "${@bb.utils.contains_any('BASEMACHINE', "sa525m sa510m", 'rsync-native', '', d)}"
+DEPENDS += "${@bb.utils.contains_any('BASEMACHINE', "sa525m sa510m", 'audiodevicetree', '', d)}"
 
 FILESPATH =+ "${WORKSPACE}:"
 SRC_URI = "file://vendor/qcom/opensource/audio-kernel/"
-SRC_URI += "file://${BASEMACHINE}/"
 
 S = "${WORKDIR}/vendor/qcom/opensource/audio-kernel"
+EXT_MODULES = "${@os.path.relpath("${S}", "${KERNEL_PLATFORM_PATH}")}"
 
+inherit linux-kernel-base deploy
+
+FILES:${PN} += "${@bb.utils.contains('TARGET_BOARD_PLATFORM','sa510m', "${nonarch_base_libdir}/modules/audio/*", "", d)}"
 FILES:${PN} += "${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra/*"
 FILES:${PN} += "${sysconfdir}/*"
 
 EXTRA_OEMAKE += "TARGET_SUPPORT=${BASEMACHINE}"
+
+KERNEL_VERSION = "${@get_kernelversion_file("${STAGING_KERNEL_BUILDDIR}")}"
+
+PARALLEL_MAKE = "-j1"
 
 do_configure() {
   cp -f ${WORKDIR}/vendor/qcom/opensource/audio-kernel/Makefile.am ${WORKDIR}/vendor/qcom/opensource/audio-kernel/Makefile
@@ -44,6 +51,20 @@ do_compile:sa525m() {
     ./build/build_module.sh
 }
 
+do_compile:sa510m() {
+    cd ${KERNEL_PLATFORM_PATH}
+    TARGET_BOARD_PLATFORM=${TARGET_BOARD_PLATFORM} \
+    KBUILD_OPTIONS+="TARGET_SUPPORT=${BASEMACHINE}" \
+    BUILD_CONFIG=${KERNEL_BUILD_CONFIG} \
+    EXT_MODULES=${EXT_MODULES} \
+    KERNEL_KIT=${KERNEL_PREBUILT_PATH} \
+    OUT_DIR=${KERNEL_OUT_PATH} \
+    MODULE_OUT=${WORKDIR}/vendor/qcom/opensource/audio-kernel \
+    KERNEL_UAPI_HEADERS_DIR=${STAGING_KERNEL_BUILDDIR} \
+    TARGET_SUPPORT=sa510m \
+    ./build/build_module.sh
+}
+
 do_install() {
   install -d ${D}${includedir}/audio-kernel/
   install -d ${D}${includedir}/audio-kernel/linux
@@ -52,7 +73,7 @@ do_install() {
   install -d ${D}${includedir}/audio-kernel/sound
   install -d ${D}${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra
 
-  if [ ${BASEMACHINE} != "sa525m" ];then
+  if [ ${BASEMACHINE} != "sa525m" && ${BASEMACHINE} != "sa510m"];then
     cp -fr ${S}/linux/* ${D}${includedir}/audio-kernel/linux
     install -m 0644 ${S}/sound/* ${D}${includedir}/audio-kernel/sound
     install -m 0755 ${WORKDIR}/${BASEMACHINE}/audio_load.conf -D ${D}${sysconfdir}/modules-load.d/audio_load.conf
@@ -65,6 +86,8 @@ do_install() {
    done
   fi
 
+   cp -fr ${S}/include/ ${STAGING_KERNEL_BUILDDIR}/usr
+
    rm -fr ${D}/${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra/asoc
    rm -fr ${D}/${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra/dsp
    rm -fr ${D}/${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra/ipc
@@ -72,15 +95,17 @@ do_install() {
 }
 
 do_module_signing() {
+  export LD_LIBRARY_PATH="${KERNEL_PREBUILT_DISTDIR}"
   if [ -f ${STAGING_KERNEL_BUILDDIR}/signing_key.priv ]; then
     for i in ${PKGDEST}/${PN}/${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra/*
       do
-        ${STAGING_KERNEL_DIR}/scripts/sign-file sha512 ${STAGING_KERNEL_BUILDDIR}/signing_key.priv ${STAGING_KERNEL_BUILDDIR}/signing_key.x509 ${i}
+        ${STAGING_KERNEL_DIR}/scripts/sign-file sha1 ${STAGING_KERNEL_BUILDDIR}/signing_key.priv ${STAGING_KERNEL_BUILDDIR}/signing_key.x509 ${i}
       done
   elif [ -f ${STAGING_KERNEL_BUILDDIR}/certs/signing_key.pem ]; then
     for i in $(find ${PKGDEST}/${PN}/${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra/* -name "*.ko");
       do
-   ${STAGING_KERNEL_BUILDDIR}/scripts/sign-file sha512 ${STAGING_KERNEL_BUILDDIR}/certs/signing_key.pem ${STAGING_KERNEL_BUILDDIR}/certs/signing_key.x509 ${i}
+   ${STAGING_KERNEL_BUILDDIR}/scripts/sign-file sha1 ${STAGING_KERNEL_BUILDDIR}/certs/signing_key.pem ${STAGING_KERNEL_BUILDDIR}/certs/signing_key.x509 ${i}
+   bbnote "Signing ${i} module"
    done
   fi
 }
@@ -92,6 +117,13 @@ do_deploy:sa525m() {
     done
 }
 
+do_deploy:sa510m() {
+# Deploy unstripped kernel modules into ${DEPLOYDIR}/kernel_modules for debugging purposes
+    install -d ${DEPLOYDIR}/kernel_modules
+    for kmod in $(find ${D} -name "*.ko") ; do
+        install -m 0644 $kmod ${DEPLOYDIR}/kernel_modules
+    done
+}
 
 addtask do_module_signing after do_package before do_package_write_ipk
 
