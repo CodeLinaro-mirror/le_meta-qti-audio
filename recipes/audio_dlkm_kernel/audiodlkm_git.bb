@@ -61,7 +61,6 @@ do_compile:mdm9607() {
     KERNEL_KIT=${KERNEL_PREBUILT_PATH} \
     OUT_DIR=${KERNEL_OUT_PATH} \
     MODULE_OUT=${WORKDIR}/vendor/qcom/opensource/audio-kernel/legacy \
-    INPLACE_COMPILE=y \
     KERNEL_UAPI_HEADERS_DIR=${STAGING_KERNEL_BUILDDIR} \
     KBUILD_EXTRA_SYMBOLS=${STAGING_DIR_HOST}/lib/modules/${KERNEL_VERSION}/mm-drivers/Module.symvers \
     ./build/build_module.sh ${EXTRA_OEMAKE}
