@@ -1,9 +1,9 @@
 inherit autotools pkgconfig
 
 DESCRIPTION = "usbaudio"
-LICENSE = "BSD-Source-Code"
+LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/\
-${LICENSE};md5=fe8b41221d7524c70688f7d059ff6d87"
+${LICENSE};md5=89aea4e17d99a7cacdbeed46a0096b10"
 
 FILESPATH =+ "${WORKSPACE}:"
 
