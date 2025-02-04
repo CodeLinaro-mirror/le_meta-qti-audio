@@ -1,6 +1,6 @@
 DESCRIPTION      = "QTI Audio devicetree"
 LICENSE          = "BSD-3-Clause"
-LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/qcom-licenses/\
+LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/\
 ${LICENSE};md5=550794465ba0ec5312d6919e203a55f9"
 
 inherit linux-kernel-base deploy
@@ -17,8 +17,8 @@ EXTRA_OEMAKE += "TARGET_SUPPORT=${BASEMACHINE}"
 
 KERNEL_VERSION = "${@get_kernelversion_file("${STAGING_KERNEL_BUILDDIR}")}"
 
-PARALLEL_MAKE = "-j1"
-RM_WORK_EXCLUDE += "${PN}"
+#PARALLEL_MAKE = "-j1"
+#RM_WORK_EXCLUDE += "${PN}"
 
 do_configure[noexec] = "1"
 do_configure[depends] = "virtual/kernel:do_shared_workdir"
