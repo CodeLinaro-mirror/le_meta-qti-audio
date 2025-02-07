@@ -11,7 +11,7 @@ SRC_URI += "file://${BASEMACHINE}/"
 S = "${WORKDIR}/vendor/qcom/opensource/tinycompress"
 PR = "r0"
 
-DEPENDS = "virtual/kernel glib-2.0"
+DEPENDS = "linux-msm-headers glib-2.0"
 
 EXTRA_OECONF += "--with-glib"
 
