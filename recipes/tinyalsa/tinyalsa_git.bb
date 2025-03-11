@@ -7,7 +7,6 @@ ${LICENSE};md5=550794465ba0ec5312d6919e203a55f9"
 
 FILESPATH =+ "${WORKSPACE}/:"
 SRC_URI = "file://vendor/qcom/opensource/tinyalsa"
-SRC_URI += "file://${BASEMACHINE}/"
 
 S = "${WORKDIR}/vendor/qcom/opensource/tinyalsa"
 PR = "r0"
