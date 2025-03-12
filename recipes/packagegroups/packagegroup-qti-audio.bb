@@ -14,7 +14,6 @@ PACKAGES = ' \
 
 RDEPENDS_packagegroup-qti-audio = ' \
     ${@bb.utils.contains("COMBINED_FEATURES", "qti-audio", "audiodlkm init-audio audiohal", "", d)} \
-    ${@bb.utils.contains("BASEMACHINE", "sdxpoorwills", "alsa-intf" , "", d)} \
-    ${@bb.utils.contains("BASEMACHINE", "mdm9607", "alsa-intf" , "", d)} \
+    ${@bb.utils.contains_any("BASEMACHINE", ["sdxpoorwills","mdm9607","mdm9650"], "alsa-intf" , "", d)} \
     ${@bb.utils.contains("COMBINED_FEATURES", "qti-audio qti-audio-encoder", "encoders", "", d)} \
 '
