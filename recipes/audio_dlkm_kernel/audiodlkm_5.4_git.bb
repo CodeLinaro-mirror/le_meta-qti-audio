@@ -17,6 +17,7 @@ SRC_URI += "file://${BASEMACHINE}/"
 SRC_URI_append_sa515m += "file://${MACHINE}/"
 SRC_URI_append_sa415m += "file://${MACHINE}/"
 SRC_URI_append_mdm9607 += "file://${MACHINE}/"
+SRC_URI_append_mdm9650 += "file://${MACHINE}/"
 
 S = "${WORKDIR}/vendor/qcom/opensource/audio-kernel"
 
@@ -59,7 +60,7 @@ do_install_append() {
   cp -fr ${S}/linux/* ${STAGING_KERNEL_BUILDDIR}/audio-kernel/linux
   install -m 0644 ${S}/sound/* ${STAGING_KERNEL_BUILDDIR}/audio-kernel/sound
 
-  if [ ${BASEMACHINE} != "sdxprairie" && ${BASEMACHINE} != "sa410m" && ${BASEMACHINE} != "sdxpoorwills" && ${BASEMACHINE} != "mdm9607" ];then
+  if [ ${BASEMACHINE} != "sdxprairie" && ${BASEMACHINE} != "sa410m" && ${BASEMACHINE} != "sdxpoorwills" && ${BASEMACHINE} != "mdm9607" && ${BASEMACHINE} != "mdm9650" ];then
     if ${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'true', 'false', d)}; then
       install -m 0755 ${WORKDIR}/${BASEMACHINE}/audio_load.conf -D ${D}${sysconfdir}/modules-load.d/audio_load.conf
     else
@@ -143,6 +144,21 @@ do_install_append_mdm9607() {
        install -m 0755 ${WORKDIR}/mdm9607/audio_load.conf -D ${D}${sysconfdir}/modules/audio_load.conf
      fi
 }
+
+do_install_append_mdm9650() {
+    if ${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'true', 'false', d)}; then
+      install -d ${D}${sysconfdir}/initscripts
+       install -m 0755 ${WORKDIR}/mdm9650/start_audio_le ${D}${sysconfdir}/initscripts
+       install -m 0644 ${WORKDIR}/mdm9650/audio.service -D ${D}${systemd_unitdir}/system/audio.service
+       install -d ${D}${systemd_unitdir}/system/multi-user.target.wants/
+ # enable the service for multi-user.target
+       ln -sf ${systemd_unitdir}/system/audio.service \
+       ${D}${systemd_unitdir}/system/multi-user.target.wants/audio.service
+     else
+       install -m 0755 ${WORKDIR}/mdm9650/audio_load.conf -D ${D}${sysconfdir}/modules/audio_load.conf
+     fi
+}
+
 
 # The inherit of module.bbclass will automatically name module packages with
 # kernel-module-" prefix as required by the oe-core build environment. Also it
