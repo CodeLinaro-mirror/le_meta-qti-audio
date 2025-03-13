@@ -1,15 +1,17 @@
 inherit autotools pkgconfig
 
 DESCRIPTION = "Tinycompress Library"
-LICENSE = "BSD & LGPLv2.1"
-LIC_FILES_CHKSUM = "file://NOTICE;md5=862096b6f5c1999f0a0fe356f0907cf6"
+LICENSE = "BSD-3-Clause"
+LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/${LICENSE};md5=550794465ba0ec5312d6919e203a55f9"
 
 FILESPATH =+ "${WORKSPACE}/:"
 SRC_URI += "file://vendor/qcom/opensource/tinycompress"
-SRC_URI += "file://${BASEMACHINE}/"
 
 S = "${WORKDIR}/vendor/qcom/opensource/tinycompress"
 PR = "r0"
+
+FILES:${PN} += "${libdir}/libtinycompress.so.0.0.0 ${libdir}/libtinycompress.so.0"
+FILES:${PN}-dev += "${libdir}/libtinycompress.so"
 
 DEPENDS = "virtual/kernel glib-2.0"
 

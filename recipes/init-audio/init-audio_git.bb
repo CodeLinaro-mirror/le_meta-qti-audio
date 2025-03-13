@@ -1,11 +1,11 @@
 inherit autotools update-rc.d systemd
 
 DESCRIPTION = "Installing audio init script"
-LICENSE = "BSD"
-LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/BSD;md5=3775480a712fc46a69647678acb234cb"
+LICENSE = "BSD-3-Clause"
+LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/${LICENSE};md5=550794465ba0ec5312d6919e203a55f9"
 PR = "r5"
 
-DEPENDS_append_mdm9635 +="alsa-intf"
+DEPENDS:append_mdm9635 ="alsa-intf"
 
 SRC_URI = "file://init_qcom_audio"
 SRC_URI += "file://init_audio.service"
@@ -41,4 +41,4 @@ do_install() {
 
 }
 
-FILES_${PN} += "${systemd_unitdir}/system/*"
+FILES:${PN} += "${systemd_unitdir}/system/*"
