@@ -12,9 +12,7 @@ PACKAGES = ' \
     packagegroup-qti-audio \
 '
 
-RDEPENDS_packagegroup-qti-audio += ' \
+RDEPENDS:packagegroup-qti-audio += ' \
     audiodlkm \
-    init-audio \
-    tinyalsa \
-    tinycompress \
+    audiodevicetree \
 '

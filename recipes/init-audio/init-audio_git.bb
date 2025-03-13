@@ -5,11 +5,11 @@ LICENSE = "BSD"
 LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/BSD;md5=3775480a712fc46a69647678acb234cb"
 PR = "r5"
 
-DEPENDS_append_mdm9635 +="alsa-intf"
+DEPENDS:append_mdm9635 ="alsa-intf"
 
 SRC_URI = "file://init_qcom_audio"
-SRC_URI += "file://init_audio.service"
-SRC_URI += "file://msm-audio-node.rules"
+SRC_URI:append = "file://init_audio.service"
+SRC_URI:append = "file://msm-audio-node.rules"
 
 do_compile[noexec] = "1"
 

@@ -4,7 +4,7 @@ inherit module
 inherit ${@bb.utils.contains('TARGET_KERNEL_ARCH', 'aarch64', 'qtikernel-arch', '', d)}
 
 DESCRIPTION = "QTI Audio drivers"
-LICENSE = "GPL-2.0"
+LICENSE = "GPL-2.0-only"
 LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/${LICENSE};md5=801f80980d171dd6425610833a22dbe6"
 
 PR = "r0"
@@ -13,12 +13,15 @@ DEPENDS = "virtual/kernel"
 
 FILESPATH =+ "${WORKSPACE}:"
 SRC_URI = "file://vendor/qcom/opensource/audio-kernel/"
-SRC_URI += "file://${BASEMACHINE}/"
 
 S = "${WORKDIR}/vendor/qcom/opensource/audio-kernel"
 
-FILES_${PN} += "${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra/*"
-FILES_${PN} += "${sysconfdir}/*"
+FILES:${PN} += "${nonarch_base_libdir}/*"
+FILES:${PN} += "${nonarch_base_libdir}/modules/*"
+FILES:${PN} += "${nonarch_base_libdir}/modules/${KERNEL_VERSION}/*"
+FILES:${PN} += "${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra/*"
+FILES:${PN} += "${nonarch_base_libdir}/modules/${KERNEL_VERSION}/updates/*"
+FILES:${PN} += "${sysconfdir}/*"
 
 EXTRA_OEMAKE += "TARGET_SUPPORT=${BASEMACHINE}"
 
@@ -29,7 +32,7 @@ do_configure() {
   cp -f ${WORKDIR}/vendor/qcom/opensource/audio-kernel/Makefile.am ${WORKDIR}/vendor/qcom/opensource/audio-kernel/Makefile
 }
 
-do_install_append() {
+do_install:append() {
   install -d ${D}${includedir}/audio-kernel/
   install -d ${D}${includedir}/audio-kernel/linux
   install -d ${D}${includedir}/audio-kernel/linux/mfd
@@ -40,7 +43,6 @@ do_install_append() {
   cp -fr ${S}/linux/* ${D}${includedir}/audio-kernel/linux
   install -m 0644 ${S}/sound/* ${D}${includedir}/audio-kernel/sound
 
-  install -m 0755 ${WORKDIR}/${BASEMACHINE}/audio_load.conf -D ${D}${sysconfdir}/modules-load.d/audio_load.conf
 
    for i in $(find ${D}/${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra/. -name "*.ko"); do
    mv ${i} ${D}/${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra/

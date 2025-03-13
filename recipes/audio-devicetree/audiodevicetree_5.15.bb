@@ -1,6 +1,6 @@
 DESCRIPTION      = "QTI Audio devicetree"
 LICENSE          = "BSD-3-Clause"
-LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/BSD;md5=3775480a712fc46a69647678acb234cb"
+LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/BSD-3-Clause;md5=550794465ba0ec5312d6919e203a55f9"
 
 inherit linux-kernel-base deploy
 
@@ -31,10 +31,11 @@ do_compile() {
 }
 
 do_deploy() {
-    install -d ${DEPLOYDIR}/build-artifacts/techpack-dtbos
+    install -d ${DEPLOYDIR}/tech_dtbs
     install -m 0644 \
     ${WORKDIR}/vendor/qcom/opensource/audio-devicetree/*.dtbo \
-    ${DEPLOYDIR}/build-artifacts/techpack-dtbos/
+    ${DEPLOYDIR}/tech_dtbs
 }
 
 addtask do_deploy after do_install
+ALLOW_EMPTY:${PN} = "1"
