@@ -16,8 +16,8 @@ PACKAGES = ' \
 RDEPENDS:packagegroup-qti-audio += ' \
     tinyalsa \
     tinycompress \
-    ${@bb.utils.contains("BASEMACHINE", "sa525m", "", "audiohal", d)} \
-    ${@bb.utils.contains("BASEMACHINE", "sa525m", "", "qahw", d)} \
-    ${@bb.utils.contains("BASEMACHINE", "sa525m", "audiodlkm", "", d)} \
     init-audio \
+    ${@bb.utils.contains_any("BASEMACHINE", "sa525m sa510m", "", "audiohal", d)} \
+    ${@bb.utils.contains_any("BASEMACHINE", "sa525m sa510m", "", "qahw", d)} \
+    ${@bb.utils.contains_any("BASEMACHINE", "sa525m sa510m", "audiodlkm", "", d)} \
 '
