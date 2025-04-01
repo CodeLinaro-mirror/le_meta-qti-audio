@@ -95,7 +95,7 @@ do_install() {
 }
 
 do_module_signing() {
-  export LD_LIBRARY_PATH="${KERNEL_PREBUILT_DISTDIR}"
+  export LD_LIBRARY_PATH="${KERNEL_PREBUILT_DISTDIR}/openssl/lib64/"
   if [ -f ${STAGING_KERNEL_BUILDDIR}/signing_key.priv ]; then
     for i in ${PKGDEST}/${PN}/${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra/*
       do
