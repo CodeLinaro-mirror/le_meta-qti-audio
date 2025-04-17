@@ -6,7 +6,6 @@ DESCRIPTION = "This is the AudioReach based audio driver based on ASoC architect
 LICENSE = "GPL-2.0-only"
 LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/${LICENSE};md5=801f80980d171dd6425610833a22dbe6"
 DEPENDS += "virtual/kernel"
-DEPENDS += "mmdlkm"
 SRCREV = "${AUTOREV}"
 PR = "r0"
 
@@ -48,7 +47,6 @@ do_compile() {
     INPLACE_COMPILE=y \
     KERNEL_UAPI_HEADERS_DIR=${STAGING_KERNEL_BUILDDIR} \
     BOARD_PLATFORM=${BASEMACHINE} \
-    KBUILD_EXTRA_SYMBOLS=${STAGING_DIR_HOST}/usr/lib/modules/${KERNEL_VERSION}/mm-drivers/Module.symvers \
     ./build/build_module.sh
 }
 
