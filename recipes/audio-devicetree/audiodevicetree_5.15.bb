@@ -31,10 +31,10 @@ do_compile() {
 }
 
 do_deploy() {
-    install -d ${DEPLOYDIR}/build-artifacts/techpack-dtbos
+    install -d ${DEPLOYDIR}/tech_dtbs/
     install -m 0644 \
     ${WORKDIR}/vendor/qcom/opensource/audio-devicetree/*.dtbo \
-    ${DEPLOYDIR}/build-artifacts/techpack-dtbos/
+    ${DEPLOYDIR}/tech_dtbs/
 }
 
 addtask do_deploy after do_install
