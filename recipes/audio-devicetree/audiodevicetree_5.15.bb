@@ -26,15 +26,16 @@ do_compile() {
     ROOTDIR=${WORKDIR}/ \
     TARGET_SUPPORT=${BASEMACHINE} \
     MODULE_OUT=${WORKDIR}/vendor/qcom/opensource/audio-devicetree \
+    KBUILD_OPTIONS+="ANDROID_BUILD_TOP=${WORKSPACE}" \
     OUT_DIR=${KERNEL_OUT_PATH}/ \
     ./build/build_module.sh
 }
 
 do_deploy() {
-    install -d ${DEPLOYDIR}/tech_dtbs/
+    install -d ${DEPLOYDIR}/build-artifacts/techpack-dtbos
     install -m 0644 \
     ${WORKDIR}/vendor/qcom/opensource/audio-devicetree/*.dtbo \
-    ${DEPLOYDIR}/tech_dtbs/
+    ${DEPLOYDIR}/build-artifacts/techpack-dtbos/
 }
 
 addtask do_deploy after do_install
