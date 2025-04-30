@@ -26,6 +26,7 @@ do_compile() {
     ROOTDIR=${WORKDIR}/ \
     TARGET_SUPPORT=${BASEMACHINE} \
     MODULE_OUT=${WORKDIR}/vendor/qcom/opensource/audio-devicetree \
+    KBUILD_OPTIONS+="ANDROID_BUILD_TOP=${WORKSPACE}" \
     OUT_DIR=${KERNEL_OUT_PATH}/ \
     ./build/build_module.sh
 }
