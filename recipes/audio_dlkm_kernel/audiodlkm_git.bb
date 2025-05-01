@@ -13,14 +13,12 @@ DEPENDS = "virtual/kernel"
 
 FILESPATH =+ "${WORKSPACE}:"
 SRC_URI = "file://vendor/qcom/opensource/audio-kernel/"
+SRC_URI += "file://${BASEMACHINE}/"
 
 S = "${WORKDIR}/vendor/qcom/opensource/audio-kernel"
 
-FILES:${PN} += "${nonarch_base_libdir}/*"
-FILES:${PN} += "${nonarch_base_libdir}/modules/*"
 FILES:${PN} += "${nonarch_base_libdir}/modules/${KERNEL_VERSION}/*"
 FILES:${PN} += "${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra/*"
-FILES:${PN} += "${nonarch_base_libdir}/modules/${KERNEL_VERSION}/updates/*"
 FILES:${PN} += "${sysconfdir}/*"
 
 EXTRA_OEMAKE += "TARGET_SUPPORT=${BASEMACHINE}"
@@ -43,6 +41,7 @@ do_install:append() {
   cp -fr ${S}/linux/* ${D}${includedir}/audio-kernel/linux
   install -m 0644 ${S}/sound/* ${D}${includedir}/audio-kernel/sound
 
+  install -m 0755 ${WORKDIR}/${BASEMACHINE}/audio_load.conf -D ${D}${sysconfdir}/modules-load.d/audio_load.conf
 
    for i in $(find ${D}/${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra/. -name "*.ko"); do
    mv ${i} ${D}/${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra/
