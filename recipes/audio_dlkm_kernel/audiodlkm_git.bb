@@ -49,7 +49,22 @@ do_compile:qcm2290-mtp() {
     BOARD_PLATFORM=${BASEMACHINE} \
     ./build/build_module.sh
 }
- 
+
+do_compile:qcm4325-mtp() {
+    cd ${KERNEL_PLATFORM_PATH}
+
+    KBUILD_OPTIONS+="TARGET_SUPPORT=${BASEMACHINE}" \
+    BUILD_CONFIG=msm-kernel/${KERNEL_CONFIG} \
+    EXT_MODULES=${EXT_MODULES} \
+    MODULE_OUT=${EXT_MODULES} \
+    ROOTDIR=${WORKDIR}/ \
+    KERNEL_KIT=${KERNEL_PREBUILT_PATH} \
+    OUT_DIR=${INTERMEDIAT_KERNEL_PATH} \
+    INPLACE_COMPILE=y \
+    KERNEL_UAPI_HEADERS_DIR=${STAGING_KERNEL_BUILDDIR} \
+    BOARD_PLATFORM=${BASEMACHINE} \
+    ./build/build_module.sh
+}
 
 do_install() {
     install -d ${D}${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra
