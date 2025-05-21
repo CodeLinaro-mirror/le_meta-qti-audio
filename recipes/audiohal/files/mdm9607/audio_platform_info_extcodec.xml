@@ -27,8 +27,13 @@
 <audio_platform_info>
     <pcm_ids>
         <usecase name="USECASE_AUDIO_PLAYBACK_OFFLOAD" type="out" id="27"/>
+	<usecase name="USECASE_AUDIO_RECORD" type="in" id="0"/>
         <usecase name="USECASE_VOLTE_CALL" type="out" id="4"/>
         <usecase name="USECASE_VOLTE_CALL" type="in" id="4"/>
     </pcm_ids>
+    <backend_names>
+       <device name="SND_DEVICE_IN_HANDSET_MIC" backend="handset-mic" interface="PRI_MI2S_TX"/>
+       <device name="SND_DEVICE_IN_HEADSET_MIC" backend="headset-mic" interface="PRI_MI2S_TX"/>
+    </backend_names>
 </audio_platform_info>
 
