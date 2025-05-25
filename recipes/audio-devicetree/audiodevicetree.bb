@@ -1,6 +1,6 @@
 DESCRIPTION      = "QTI Audio devicetree"
-LICENSE          = "GPL-2.0-only"
-LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/${LICENSE};md5=801f80980d171dd6425610833a22dbe6"
+LICENSE          = "BSD-3-Clause"
+LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/BSD-3-Clause;md5=550794465ba0ec5312d6919e203a55f9"
 
 inherit linux-kernel-base deploy
 
@@ -38,3 +38,4 @@ do_deploy() {
 }
 
 addtask do_deploy after do_install
+ALLOW_EMPTY:${PN} = "1"
