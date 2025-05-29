@@ -1,4 +1,4 @@
-inherit cmake pkgconfig
+inherit autotools pkgconfig
 
 DESCRIPTION = "Tinyalsa Library"
 LICENSE = "BSD-3-Clause"
@@ -9,9 +9,6 @@ SRC_URI += "file://vendor/qcom/opensource/tinyalsa"
 
 S = "${WORKDIR}/vendor/qcom/opensource/tinyalsa"
 PR = "r0"
-
-FILES:${PN} += "${libdir}/libtinyalsa.so.2.0.0 ${libdir}/libtinyalsa.so.2"
-FILES:${PN}-dev += "${libdir}/libtinyalsa.so"
 
 DEPENDS = "libcutils glib-2.0 "
 
