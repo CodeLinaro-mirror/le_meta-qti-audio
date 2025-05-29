@@ -10,9 +10,6 @@ SRC_URI += "file://vendor/qcom/opensource/tinycompress"
 S = "${WORKDIR}/vendor/qcom/opensource/tinycompress"
 PR = "r0"
 
-FILES:${PN} += "${libdir}/libtinycompress.so.0.0.0 ${libdir}/libtinycompress.so.0"
-FILES:${PN}-dev += "${libdir}/libtinycompress.so"
-
 DEPENDS = "virtual/kernel glib-2.0"
 
 EXTRA_OECONF += "--with-glib"
