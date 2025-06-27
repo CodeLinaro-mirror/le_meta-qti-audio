@@ -18,6 +18,7 @@ RM_WORK_EXCLUDE += "${PN}"
 do_configure[noexec] = "1"
 do_configure[depends] = "virtual/kernel:do_shared_workdir"
 do_compile[lockfiles] = "${TMPDIR}/techpack-dtbs-compile.lock"
+do_compile[cleandirs] += "${WORKDIR}/out/${KERNEL_DEFCONFIG}"
 
 do_compile() {
     cd ${WORKSPACE}/kernel-${PREFERRED_VERSION_linux-msm}/kernel_platform  && \

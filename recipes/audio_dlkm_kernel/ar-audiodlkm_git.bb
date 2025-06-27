@@ -55,6 +55,7 @@ do_install() {
     for i in $(find ${WORKDIR}/vendor/qcom/opensource/audio-kernel/. -name "*.ko"); do
         install -m 0755 ${i} -D ${D}/${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra/
     done
+    install ${WORKDIR}/vendor/qcom/opensource/audio-kernel/Module.symvers -D ${D}${base_libdir}/modules/${KERNEL_VERSION}/extra/Module.symvers
 }
 
 do_install:append() {
