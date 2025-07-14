@@ -82,6 +82,7 @@
     <ctl name="SLIM RX4 MUX" value="AIF1_PB" />
     <ctl name="SLIM RX3 MUX" value="AIF1_PB" />
     <ctl name="CLASS_H_DSM MUX" value="ZERO" />
+    <ctl name="PRI_MI2S_RX Port Mixer PRI_MI2S_TX" value="0" />
 
     <!-- Audio ctl -->
     <ctl name="MultiMedia1 Mixer PRI_MI2S_TX" value="0" />
@@ -91,32 +92,38 @@
     <!-- Multimode Voice1 -->
     <ctl name="VoiceMMode1_Tx Mixer PRI_MI2S_TX_MMode1" value="0" />
     <ctl name="PRI_MI2S_RX_Voice Mixer VoiceMMode1" value="0" />
+    <ctl name="PRI_MI2S_RX_Voice Mixer DTMF" value="0" />
     <!-- Miltimode Voice1 end-->
 
     <!-- Multimode Voice2 -->
     <ctl name="VoiceMMode2_Tx Mixer PRI_MI2S_TX_MMode2" value="0" />
     <ctl name="PRI_MI2S_RX_Voice Mixer VoiceMMode2" value="0" />
+    <ctl name="PRI_MI2S_RX_Voice Mixer DTMF" value="0" />
     <!-- Multimode Voice2 end-->
 
     <!-- CS voice -->
       <ctl name="PRI_MI2S_RX_Voice Mixer CSVoice" value="0" />
+      <ctl name="PRI_MI2S_RX_Voice Mixer DTMF" value="0" />
       <ctl name="Voice_Tx Mixer PRI_MI2S_TX_Voice" value="0" />
     <!-- CS voice end -->
 
 <!-- voice and audio paths -->
    <path name="voice-call">
       <ctl name="PRI_MI2S_RX_Voice Mixer CSVoice" value="1" />
+      <ctl name="PRI_MI2S_RX_Voice Mixer DTMF" value="1" />
       <ctl name="Voice_Tx Mixer PRI_MI2S_TX_Voice" value="1" />
    </path>
 
     <path name="voicemmode1-call">
         <ctl name="VoiceMMode1_Tx Mixer PRI_MI2S_TX_MMode1" value="1" />
         <ctl name="PRI_MI2S_RX_Voice Mixer VoiceMMode1" value="1" />
+        <ctl name="PRI_MI2S_RX_Voice Mixer DTMF" value="1" />
     </path>
 
     <path name="voicemmode2-call">
         <ctl name="VoiceMMode2_Tx Mixer PRI_MI2S_TX_MMode2" value="1" />
         <ctl name="PRI_MI2S_RX_Voice Mixer VoiceMMode2" value="1" />
+        <ctl name="PRI_MI2S_RX_Voice Mixer DTMF" value="1" />
     </path>
 
     <path name="audio-record">
@@ -229,4 +236,16 @@
         <path name="speaker" />
     </path>
 
+    <path name="audio-afe-loopback">
+        <ctl name="PRI_MI2S_RX Port Mixer PRI_MI2S_TX" value="1" />
+    </path>
+    <path name="audio-afe-loopback secondary">
+        <ctl name="SEC_MI2S_RX Port Mixer SEC_MI2S_TX" value="1" />
+    </path>
+    <path name="audio-dtmf-playback">
+        <ctl name="PRI_MI2S_RX Audio Mixer DTMF" value="1" />
+    </path>
+    <path name="audio-dtmf-playback secondary">
+        <ctl name="SEC_MI2S_RX Audio Mixer DTMF" value="1" />
+    </path>
 </mixer>
