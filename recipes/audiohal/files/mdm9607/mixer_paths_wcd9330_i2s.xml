@@ -591,8 +591,8 @@
         <ctl name="MI2S_TX Channels" value="One" />
         <ctl name="SLIM TX7 MUX" value="DEC8" />
         <ctl name="DEC8 MUX" value="ADC5" />
-        <ctl name="DEC8 Volume" value="84" />
-        <ctl name="ADC5 Volume" value="84" />
+        <ctl name="DEC8 Volume" value="100" />
+        <ctl name="ADC5 Volume" value="100" />
     </path>
 
     <path name="headphones">
@@ -616,7 +616,7 @@
         <ctl name="AIF1_CAP Mixer SLIM TX7" value="1" />
         <ctl name="SLIM TX7 MUX" value="DEC5" />
         <ctl name="DEC5 MUX" value="ADC2" />
-        <ctl name="DEC5 Volume" value="84" />
+        <ctl name="DEC5 Volume" value="100" />
         <ctl name="ADC2 Volume" value="100" />
     </path>
 
