@@ -21,11 +21,13 @@ do_install() {
     install -d -p ${D}${includedir}/audio-kernel/audio/linux/mfd/wcd9xxx
     install -d -p ${D}${includedir}/audio-kernel/audio/sound
     install -d -p ${D}${includedir}/bindings
+    install -d -p ${D}${includedir}/soc
 
     install ${S}/include/uapi/audio/linux/*.h ${D}${includedir}/audio-kernel/audio/linux
 #    install -m "${S}/include/uapi/audio/linux/mfd/wcd9xxx" "${D}${includedir}/audio-kernel/audio/linux/mfd/wcd9xxx"
     install ${S}/include/uapi/audio/sound/*.h ${D}${includedir}/audio-kernel/audio/sound
     install ${S}/include/bindings/*.h ${D}${includedir}/bindings
+    install ${S}/include/soc/*.h ${D}${includedir}/soc
 }
 
 process_headers() {

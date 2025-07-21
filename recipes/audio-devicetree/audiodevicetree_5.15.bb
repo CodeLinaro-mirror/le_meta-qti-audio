@@ -5,37 +5,40 @@ LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/BSD-3-Clause;m
 inherit linux-kernel-base deploy
 
 PR = "r0"
+PACKAGE_ARCH = "${MACHINE_ARCH}"
 
-FILESPATH   =+ "${WORKSPACE}:"
-SRC_URI = "\
-    file://vendor/qcom/opensource/audio-devicetree/ \
-"
-
+FILESEXTRAPATHS:prepend := "${WORKSPACE}:"
+SRC_URI += "file://vendor/qcom/opensource/audio-devicetree/"
 S = "${WORKDIR}/vendor/qcom/opensource/audio-devicetree"
+DEPENDS += "virtual/kernel"
 
-RM_WORK_EXCLUDE += "${PN}"
+KERNEL_VERSION = "${@get_kernelversion_file("${STAGING_KERNEL_BUILDDIR}")}"
+EXT_MODULES = "${@os.path.relpath("${S}", "${KERNEL_PLATFORM_PATH}")}"
 
-do_configure[noexec] = "1"
-do_configure[depends] = "virtual/kernel:do_shared_workdir"
-do_compile[lockfiles] = "${TMPDIR}/techpack-dtbs-compile.lock"
+EXTRA_OEMAKE += "TARGET_SUPPORT=${BASEMACHINE}"
+
+do_compile[depends]   += "virtual/kernel:do_shared_workdir"
+do_compile[cleandirs] += "${WORKDIR}/out/${KERNEL_DEFCONFIG}"
+
+do_configure () {
+	:
+}
 
 do_compile() {
-    cd ${WORKSPACE}/kernel-${PREFERRED_VERSION_linux-msm}/kernel_platform  && \
-    BUILD_CONFIG=${KERNEL_BUILD_CONFIG} \
-    EXT_MODULES=../../vendor/qcom/opensource/audio-devicetree \
-    ROOTDIR=${WORKDIR}/ \
-    TARGET_SUPPORT=${BASEMACHINE} \
-    MODULE_OUT=${WORKDIR}/vendor/qcom/opensource/audio-devicetree \
+    cd ${KERNEL_PLATFORM_PATH}
+    BUILD_CONFIG=msm-kernel/${KERNEL_CONFIG} \
+    EXT_MODULES=${EXT_MODULES} \
+    KERNEL_KIT=${KERNEL_PREBUILT_PATH} \
+    OUT_DIR=${WORKDIR}/out/${KERNEL_DEFCONFIG} \
+    INPLACE_COMPILE=y \
+    MODULE_OUT=${S} \
     KBUILD_OPTIONS+="ANDROID_BUILD_TOP=${WORKSPACE}" \
-    OUT_DIR=${KERNEL_OUT_PATH}/ \
     ./build/build_module.sh
 }
 
 do_deploy() {
     install -d ${DEPLOYDIR}/tech_dtbs/
-    install -m 0644 \
-    ${WORKDIR}/vendor/qcom/opensource/audio-devicetree/*.dtbo \
-    ${DEPLOYDIR}/tech_dtbs/
+    install -m 0644 ${B}/*.dtbo ${DEPLOYDIR}/tech_dtbs
 }
 
 addtask do_deploy after do_install
