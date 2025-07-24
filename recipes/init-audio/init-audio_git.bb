@@ -45,4 +45,8 @@ do_install() {
 
 }
 
+do_install:append:sdmsteppe() {
+        sed -i '/^\[Service\]/i# Prevent starting if node is not available\nConditionPathExists=/sys/kernel/boot_adsp/boot\n' ${D}${systemd_unitdir}/system/init_audio.service
+}
+
 FILES:${PN} += "${systemd_unitdir}/system/*"
