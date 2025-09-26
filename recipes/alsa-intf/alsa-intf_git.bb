@@ -30,19 +30,19 @@ EXTRA_OECONF += "--with-sanitized-headers=${STAGING_KERNEL_BUILDDIR}/usr/techpac
 EXTRA_OECONF += " --with-audio-kernel-headers=${AUDIO_KERNEL_HEADERS}"
 EXTRA_OECONF += ""DEFAULT_INCLUDES= CPPFLAGS= "-I."
 EXTRA_OECONF += " --with-ion=${PKG_CONFIG_SYSROOT_DIR}/usr/include/ion_headers/ion"
-FILES_${PN} += "${prefix}/snd_soc_msm/*"
-FILES_${PN} += "${libdir}/libamrnbtest.so ${prefix}/*"
-FILES_${PN} += "${libdir}/libamrwbtest.so ${prefix}/*"
-FILES_${PN} += "${libdir}/libamrwbplustest.so ${prefix}/*"
+FILES:${PN} += "${prefix}/snd_soc_msm/*"
+FILES:${PN} += "${libdir}/libamrnbtest.so ${prefix}/*"
+FILES:${PN} += "${libdir}/libamrwbtest.so ${prefix}/*"
+FILES:${PN} += "${libdir}/libamrwbplustest.so ${prefix}/*"
 
-do_install_append_msm8610() {
+do_install:append:msm8610() {
     mv ${D}/usr/bin/aplay ${D}/usr/bin/qc-aplay
     mv ${D}/usr/bin/amix ${D}/usr/bin/qc-amix
     mv ${D}/usr/bin/arec ${D}/usr/bin/qc-arec
     mv ${D}/usr/bin/alsaucm_test ${D}/usr/bin/qc-alsaucm_test
 }
 
-do_install_append_msm8226() {
+do_install:append:msm8226() {
     mv ${D}/usr/bin/aplay ${D}/usr/bin/qc-aplay
     mv ${D}/usr/bin/amix ${D}/usr/bin/qc-amix
     mv ${D}/usr/bin/arec ${D}/usr/bin/qc-arec

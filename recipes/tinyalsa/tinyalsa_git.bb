@@ -21,7 +21,7 @@ SRC_URI = "${CLO_LE_GIT}/platform/external/tinyalsa.git;protocol=https;branch=ca
            file://0001-tinyalsa-Fix-tinyplay-runtime-issue.patch \
            file://0001-tinyhostless.patch "
 
-SRC_URI_append_sdxprairie = "file://0001-tinymix_multi.patch \
+SRC_URI:append:sdxprairie = "file://0001-tinymix_multi.patch \
                              file://0001-tinyplay-lower-threshold-values.patch"
 
 S = "${WORKDIR}"

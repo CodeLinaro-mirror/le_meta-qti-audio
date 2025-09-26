@@ -8,7 +8,7 @@ PVR = "v1.1.0"
 SRCREV = "e605f5684997565ba50cf9ad57df2a7980b5e327"
 SRC_URI = "${CLO_LE_GIT}/platform/external/tinycompress.git;protocol=https;branch=caf_migration/alsa-project/master"
 
-EXTRA_OECONF_append = " --with-sanitized-headers=${STAGING_KERNEL_BUILDDIR}/usr/include"
+EXTRA_OECONF:append = " --with-sanitized-headers=${STAGING_KERNEL_BUILDDIR}/usr/include"
 
 S = "${WORKDIR}/git"
 

@@ -5,7 +5,7 @@ LICENSE = "BSD"
 LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/BSD;md5=3775480a712fc46a69647678acb234cb"
 PR = "r5"
 
-DEPENDS_append_mdm9635 +="alsa-intf"
+DEPENDS:append:mdm9635 +="alsa-intf"
 
 SRC_URI = "file://init_qcom_audio"
 SRC_URI += "file://init_audio.service"
@@ -18,8 +18,8 @@ S = "${WORKDIR}"
 
 INITSCRIPT_NAME = "init_qcom_audio"
 INITSCRIPT_PARAMS = "start 99 2 3 4 5 . stop 1 0 1 6 ."
-INITSCRIPT_NAME_apq8009 = "init_qcom_audio"
-INITSCRIPT_PARAMS_apq8009 = "start 38 2 3 4 5 . stop 1 0 1 6 ."
+INITSCRIPT_NAME:apq8009 = "init_qcom_audio"
+INITSCRIPT_PARAMS:apq8009 = "start 38 2 3 4 5 . stop 1 0 1 6 ."
 
 do_install() {
     if ${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'true', 'false', d)}; then
@@ -38,4 +38,4 @@ do_install() {
 
 }
 
-FILES_${PN} += "${systemd_unitdir}/system/*"
+FILES:${PN} += "${systemd_unitdir}/system/*"

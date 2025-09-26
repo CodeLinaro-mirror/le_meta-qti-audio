@@ -12,7 +12,7 @@ PACKAGES = ' \
     packagegroup-qti-audio \
 '
 
-RDEPENDS_packagegroup-qti-audio = ' \
+RDEPENDS:packagegroup-qti-audio = ' \
     ${@bb.utils.contains("COMBINED_FEATURES", "qti-audio", "audiodlkm init-audio audiohal", "", d)} \
     ${@bb.utils.contains("BASEMACHINE", "sdxpoorwills", "alsa-intf" , "", d)} \
     ${@bb.utils.contains("COMBINED_FEATURES", "qti-audio qti-audio-encoder", "encoders", "", d)} \
