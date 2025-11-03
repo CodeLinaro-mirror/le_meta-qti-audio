@@ -20,7 +20,7 @@ SRC_URI:append:sun = " file://display/vendor/qcom/opensource/mm-drivers/msm_ext_
 
 S = "${WORKDIR}/vendor/qcom/opensource/audio-kernel"
 
-KERNEL_VERSION = "${@get_kernelversion_file("${STAGING_KERNEL_BUILDDIR}")}"
+KERNEL_VERSION = "${@d.getVar('VM_KERNEL_VERSION')}"
 EXT_MODULES = "${@os.path.relpath("${S}", "${KERNEL_PLATFORM_PATH}")}"
 INTERMEDIAT_KERNEL_PATH = "${WORKDIR}/out/${KERNEL_DEFCONFIG}"
 EXTRA_OEMAKE += "TARGET_SUPPORT=${BASEMACHINE}"
@@ -38,7 +38,7 @@ do_compile[cleandirs] += "${WORKDIR}/out/${KERNEL_DEFCONFIG}"
 do_compile() {
     cd ${KERNEL_PLATFORM_PATH}
     KBUILD_OPTIONS+="TARGET_SUPPORT=${BASEMACHINE}" \
-    BUILD_CONFIG=msm-kernel/${KERNEL_CONFIG} \
+    BUILD_CONFIG=soc-repo/${KERNEL_CONFIG} \
     EXT_MODULES=${EXT_MODULES} \
     MODULE_OUT=${EXT_MODULES} \
     ROOTDIR=${WORKDIR}/ \
@@ -55,7 +55,7 @@ do_install() {
     for i in $(find ${WORKDIR}/vendor/qcom/opensource/audio-kernel/. -name "*.ko"); do
         install -m 0755 ${i} -D ${D}/${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra/
     done
-    install ${WORKDIR}/vendor/qcom/opensource/audio-kernel/Module.symvers -D ${D}${base_libdir}/modules/${KERNEL_VERSION}/extra/Module.symvers
+#    install ${WORKDIR}/vendor/qcom/opensource/audio-kernel/Module.symvers -D ${D}${base_libdir}/modules/${KERNEL_VERSION}/extra/Module.symvers
 }
 
 do_install:append() {
@@ -94,6 +94,11 @@ RPROVIDES:${PN} += "${@' kernel-module-stub-dlkm-${KERNEL_VERSION}'.replace('_',
 
 # install subdirectories under ${sysconfdir}
 FILES:${PN} += "${sysconfdir}/*"
-FILES:${PN} += "${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra/*"
+FILES:${PN} += " \
+            ${nonarch_base_libdir} \
+            ${nonarch_base_libdir}/modules \
+            ${nonarch_base_libdir}/modules/${KERNEL_VERSION} \
+            ${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra/* \
+            "
 
 KERNEL_CC += "-Wno-error=maybe-uninitialized"

@@ -12,10 +12,20 @@ PACKAGES = ' \
     packagegroup-qti-audio \
 '
 
+PULSEAUDIO_PKGS = " \
+    pulseaudio-server \
+    pulseaudio-module-loopback \
+    pulseaudio-module-null-source \
+    pulseaudio-module-combine-sink \
+    pulseaudio-module-switch-on-port-available \
+    pulseaudio-misc \
+    pulseaudio-module-role-cork \
+"
+
 RDEPENDS:packagegroup-qti-audio += ' \
     ar-audiodlkm \
     init-audio \
     tinyalsa \
     tinycompress \
-    audiodevicetree \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'pulseaudio', '${PULSEAUDIO_PKGS}', '', d)} \
 '
