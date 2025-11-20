@@ -10,7 +10,7 @@ FILESPATH =+ "${WORKSPACE}/:"
 SRC_URI  = "file://hardware/qcom/audio/"
 SRC_URI += "file://${BASEMACHINE}/"
 
-S = "${WORKDIR}/hardware/qcom/audio/"
+S = "${WORKDIR}/hardware/qcom/audio"
 PR = "r0"
 HALBINSUFFIX = "${@bb.utils.contains('TUNE_ARCH', 'aarch64', '_64bit', '', d)}"
 DEPENDS = "glib-2.0 tinycompress tinyalsa expat system-media libhardware acdbloader surround-sound-3mic qahw"

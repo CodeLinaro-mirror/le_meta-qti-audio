@@ -9,7 +9,7 @@ ${LICENSE};md5=3775480a712fc46a69647678acb234cb"
 FILESPATH =+ "${WORKSPACE}/:"
 SRC_URI  = "file://hardware/qcom/audio/qahw/"
 
-S = "${WORKDIR}/hardware/qcom/audio/qahw/"
+S = "${WORKDIR}/hardware/qcom/audio/qahw"
 PR = "r0"
 
 DEPENDS = "libhardware liblog libcutils system-media"
