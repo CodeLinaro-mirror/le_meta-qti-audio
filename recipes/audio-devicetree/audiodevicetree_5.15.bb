@@ -10,7 +10,7 @@ PACKAGE_ARCH = "${MACHINE_ARCH}"
 FILESEXTRAPATHS:prepend := "${WORKSPACE}:"
 SRC_URI += "file://vendor/qcom/opensource/audio-devicetree/"
 S = "${WORKDIR}/vendor/qcom/opensource/audio-devicetree"
-DEPENDS += "virtual/kernel"
+DEPENDS += "virtual/kernel rsync-native"
 
 KERNEL_VERSION = "${@get_kernelversion_file("${STAGING_KERNEL_BUILDDIR}")}"
 EXT_MODULES = "${@os.path.relpath("${S}", "${KERNEL_PLATFORM_PATH}")}"
@@ -26,14 +26,14 @@ do_configure () {
 
 do_compile() {
     cd ${KERNEL_PLATFORM_PATH}
-    BUILD_CONFIG=msm-kernel/${KERNEL_CONFIG} \
+    BUILD_CONFIG=${KERNEL_BUILD_CONFIG} \
     EXT_MODULES=${EXT_MODULES} \
     KERNEL_KIT=${KERNEL_PREBUILT_PATH} \
     OUT_DIR=${WORKDIR}/out/${KERNEL_DEFCONFIG} \
     INPLACE_COMPILE=y \
     MODULE_OUT=${S} \
     KBUILD_OPTIONS+="ANDROID_BUILD_TOP=${WORKSPACE}" \
-    ./build/build_module.sh
+    ./build/build_module.sh dtbs
 }
 
 do_deploy() {
