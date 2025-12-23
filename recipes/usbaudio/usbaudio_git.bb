@@ -8,7 +8,7 @@ ${LICENSE};md5=3775480a712fc46a69647678acb234cb"
 FILESPATH =+ "${WORKSPACE}:"
 
 SRC_URI   = "file://hardware/libhardware/modules/usbaudio/"
-S = "${WORKDIR}/hardware/libhardware/modules/usbaudio/"
+S = "${WORKDIR}/hardware/libhardware/modules/usbaudio"
 
 PR = "r0"
 
