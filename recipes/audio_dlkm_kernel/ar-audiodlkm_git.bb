@@ -34,6 +34,7 @@ EXTRA_OEMAKE += "TARGET_SUPPORT=${BASEMACHINE}"
 
 do_compile[depends]   += "virtual/kernel:do_shared_workdir"
 do_compile[cleandirs] += "${INTERMEDIAT_KERNEL_PATH}"
+do_compile[network] = "1"
 
 do_configure() {
     find . -name "*.cmd" -exec rm -rf {} \;
