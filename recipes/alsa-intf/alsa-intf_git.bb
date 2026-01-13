@@ -48,3 +48,4 @@ do_install:append:msm8226() {
     mv ${D}/usr/bin/arec ${D}/usr/bin/qc-arec
     mv ${D}/usr/bin/alsaucm_test ${D}/usr/bin/qc-alsaucm_test
 }
+ERROR_QA:remove = "unknown-configure-option"
