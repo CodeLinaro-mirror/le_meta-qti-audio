@@ -150,3 +150,18 @@ RPROVIDES:${PN} += "kernel-module-wcd937x-slave-dlkm-${KERNEL_VERSION}"
 RPROVIDES:${PN} += "kernel-module-machine-digcdc-dlkm-${KERNEL_VERSION}"
 
 do_configure[depends] += "virtual/kernel:do_shared_workdir"
+
+
+def get_relative_audio_root(d):
+    import os
+    s_dir = d.getVar('S')
+    k_dir = d.getVar('STAGING_KERNEL_BUILDDIR') or d.getVar('STAGING_KERNEL_DIR')
+
+    if s_dir and k_dir:
+        try:
+            return os.path.relpath(s_dir, k_dir)
+        except ValueError:
+            pass
+    return s_dir
+
+EXTRA_OEMAKE += "AUDIO_ROOT=${@get_relative_audio_root(d)}"
