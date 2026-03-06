@@ -18,6 +18,7 @@ EXT_MODULES = "${@os.path.relpath("${S}", "${KERNEL_PLATFORM_PATH}")}"
 EXTRA_OEMAKE += "TARGET_SUPPORT=${BASEMACHINE}"
 
 do_compile[depends]   += "virtual/kernel:do_shared_workdir"
+do_compile[lockfiles] = "${@ '${TMPDIR}/build_modules.lock' if d.getVar('MSM_KERNEL_VERSION') not in ['6.1', '6.6'] else ''}"
 do_compile[cleandirs] += "${WORKDIR}/out/${KERNEL_DEFCONFIG}"
 
 do_configure () {
