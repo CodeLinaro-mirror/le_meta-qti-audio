@@ -9,7 +9,6 @@ Restart=on-failure
 RemainAfterExit=yes
 # This service file has no binary and it is to execute the list of commands in <script>.
 # Use Script file only when there is NO binary or commands to be executed/ modules to be installed cases.
-ExecStartPre=/bin/sleep 10
 ExecStart=/etc/initscripts/start_audio_le start
 ExecStop=/etc/initscripts/start_audio_le stop
 
