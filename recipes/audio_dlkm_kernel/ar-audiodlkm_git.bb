@@ -5,14 +5,19 @@ DESCRIPTION = "This is the AudioReach based audio driver based on ASoC architect
 
 LICENSE = "GPL-2.0-only"
 LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/${LICENSE};md5=801f80980d171dd6425610833a22dbe6"
-DEPENDS += "virtual/kernel"
-DEPENDS += "mmdlkm"
+
 SRCREV = "${AUTOREV}"
 PR = "r0"
 
 INSANE_SKIP:${PN} = "ldflags"
 INHIBIT_PACKAGE_DEBUG_SPLIT = "1"
 INHIBIT_PACKAGE_STRIP = "1"
+
+#####Add for DDK
+DDK_BUILD ?= "false"
+DEPENDS += "${@bb.utils.contains('DDK_BUILD', 'false', \
+    'virtual/kernel mmdlkm', 'rsync-native', d)}"
+OVERRIDES:append = "${@':ddk_build' if d.getVar('DDK_BUILD') == 'true' else ''}"
 
 FILESPATH   =+ "${WORKSPACE}:"
 SRC_URI = "file://vendor/qcom/opensource/audio-kernel/"
@@ -24,10 +29,12 @@ S = "${WORKDIR}/vendor/qcom/opensource/audio-kernel"
 KERNEL_VERSION = "${@get_kernelversion_file("${STAGING_KERNEL_BUILDDIR}")}"
 EXT_MODULES = "${@os.path.relpath("${S}", "${KERNEL_PLATFORM_PATH}")}"
 INTERMEDIAT_KERNEL_PATH = "${WORKDIR}/out/${KERNEL_DEFCONFIG}"
+INTERMEDIATE_KERNEL_PATH = "${WORKDIR}/out/"
 EXTRA_OEMAKE += "TARGET_SUPPORT=${BASEMACHINE}"
 
 do_compile[depends]   += "virtual/kernel:do_shared_workdir"
 do_compile[cleandirs] += "${INTERMEDIAT_KERNEL_PATH}"
+do_compile[network] = "1"
 
 do_configure() {
     find . -name "*.cmd" -exec rm -rf {} \;
@@ -52,12 +59,32 @@ do_compile() {
     ./build/build_module.sh
 }
 
+do_compile:ddk_build() {
+    cd ${KERNEL_PLATFORM_PATH}
+    ENABLE_DDK_BUILD=${DDK_BUILD} \
+    TARGET_BOARD_PLATFORM=${TARGET_BOARD_PLATFORM} \
+    VARIANT=${KERNEL_DEFCONFIG_VARIANT} \
+    BUILD_CONFIG=soc-repo/${KERNEL_CONFIG} \
+    EXT_MODULES=${EXT_MODULES} \
+    KERNEL_KIT=${KERNEL_PREBUILT_PATH} \
+    OUT_DIR=${INTERMEDIAT_KERNEL_PATH} \
+    MODULE_OUT=${S} \
+    ./build/build_module.sh
+}
+
 do_install() {
     install -d ${D}${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra
     for i in $(find ${WORKDIR}/vendor/qcom/opensource/audio-kernel/. -name "*.ko"); do
         install -m 0755 ${i} -D ${D}/${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra/
     done
     install ${WORKDIR}/vendor/qcom/opensource/audio-kernel/Module.symvers -D ${D}${base_libdir}/modules/${KERNEL_VERSION}/extra/Module.symvers
+}
+
+do_install:ddk_build() {
+    install -d ${D}${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra
+    for i in $(find ${WORKDIR}/vendor/qcom/opensource/audio-kernel/. -name "*.ko"); do
+        install -m 0755 ${i} -D ${D}/${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra/
+    done
 }
 
 do_install:append() {
