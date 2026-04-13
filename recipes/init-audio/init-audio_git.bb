@@ -2,7 +2,7 @@ inherit autotools update-rc.d systemd
 
 DESCRIPTION = "Installing audio init script"
 LICENSE = "BSD-3-Clause"
-LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/BSD-3-Clause;md5=550794465ba0ec5312d6919e203a55f9"
+LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/${LICENSE};md5=550794465ba0ec5312d6919e203a55f9"
 PR = "r5"
 
 DEPENDS:append:mdm9635 +="alsa-intf"
@@ -29,8 +29,14 @@ do_install() {
         echo "\
         # Create directory in /data/audio for location with audio:audio permissions
         d /data/audio 0755 audio audio - -
+        d /data/audio/delta 0750 audio audio - -
+        d /data/vendor/audio 0750 audio audio - -
+        d /data/misc 0755 - - - -
+        d /data/misc/audio 0755 audio audio - -
         # Change selinux context of new directory. Use Z to apply for subdirectories as well.
         T /data/audio - - - - security.selinux="system_u:object_r:audio_data_file_t:s0"
+        T /data/misc/audio - - - - security.selinux="system_u:object_r:audio_data_file_t:s0"
+        T /data/vendor/audio - - - - security.selinux="system_u:object_r:audio_data_file_t:s0"
         " > ${WORKDIR}/${BPN}.conf
         ## Install systemd-tmpfiles config file
         install -d ${D}${sysconfdir}/tmpfiles.d/
@@ -42,3 +48,4 @@ do_install() {
 }
 
 FILES:${PN} += "${systemd_unitdir}/system/*"
+
