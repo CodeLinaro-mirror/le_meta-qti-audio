@@ -1,7 +1,7 @@
 inherit autotools pkgconfig
 
 DESCRIPTION = "Tinycompress Library"
-LICENSE = "BSD & LGPLv2.1"
+LICENSE = "BSD-3-Clause & LGPL-2.1-only"
 LIC_FILES_CHKSUM = "file://NOTICE;md5=862096b6f5c1999f0a0fe356f0907cf6"
 
 FILESPATH =+ "${WORKSPACE}/:"
