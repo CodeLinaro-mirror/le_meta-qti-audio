@@ -6,7 +6,6 @@ LIC_FILES_CHKSUM = "file://NOTICE;md5=862096b6f5c1999f0a0fe356f0907cf6"
 
 FILESPATH =+ "${WORKSPACE}/:"
 SRC_URI += "file://vendor/qcom/opensource/tinycompress"
-SRC_URI += "file://${BASEMACHINE}/"
 
 S = "${WORKDIR}/vendor/qcom/opensource/tinycompress"
 PR = "r0"
