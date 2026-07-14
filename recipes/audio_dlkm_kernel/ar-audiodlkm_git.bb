@@ -16,7 +16,7 @@ INHIBIT_PACKAGE_STRIP = "1"
 #####Add for DDK
 DDK_BUILD ?= "false"
 DEPENDS += "${@bb.utils.contains('DDK_BUILD', 'false', \
-    'virtual/kernel mmdlkm', 'rsync-native', d)}"
+    'virtual/kernel mmdlkm', '', d)}"
 OVERRIDES:append = "${@':ddk_build' if d.getVar('DDK_BUILD') == 'true' else ''}"
 
 FILESPATH   =+ "${WORKSPACE}:"
