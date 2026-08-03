@@ -19,5 +19,5 @@ RDEPENDS:packagegroup-qti-audio += ' \
     init-audio \
     ${@bb.utils.contains_any("BASEMACHINE", "sa525m sa510m", "", "audiohal", d)} \
     ${@bb.utils.contains_any("BASEMACHINE", "sa525m sa510m", "", "qahw", d)} \
-    ${@bb.utils.contains_any("BASEMACHINE", "sa525m sa510m", "audiodlkm", "", d)} \
+    ${@bb.utils.contains_any("BASEMACHINE", "sa525m sa510m sdxpinn", "audiodlkm", "", d)} \
 '

@@ -12,12 +12,19 @@ SRC_URI += "file://${BASEMACHINE}/"
 
 S = "${WORKDIR}/vendor/qcom/opensource/audio-hal/primary-hal"
 PR = "r0"
-HALBINSUFFIX = "${@bb.utils.contains('TUNE_ARCH', 'aarch64', '_64bit', '', d)}"
 DEPENDS = "glib-2.0 tinycompress tinyalsa expat pal acdbdata libhardware media-headers audio-utils qahw"
 
-EXTRA_OEMAKE = "DEFAULT_INCLUDES= CPPFLAGS="-I. -I${STAGING_KERNEL_BUILDDIR}/usr/techpack/audio/include -I${STAGING_INCDIR}/surround_sound_3mic -I${STAGING_INCDIR}/sound_trigger -I${WORKSPACE}/vendor/qcom/opensource/arpal-lx -I${S}/hal-pal/audio_extn -I $(PKG_CONFIG_SYSROOT_DIR)/usr/include/acdbdata -I${S}/hal/audio_extn/ -I${STAGING_INCDIR}""
+EXTRA_OEMAKE = "DEFAULT_INCLUDES= CPPFLAGS="-I. \
+-I${STAGING_KERNEL_BUILDDIR}/usr/techpack/audio/include \
+-I${STAGING_INCDIR}/surround_sound_3mic \
+-I${STAGING_INCDIR}/sound_trigger \
+-I${WORKSPACE}/vendor/qcom/opensource/arpal-lx \
+-I${S}/hal-pal/audio_extn \
+-I $(PKG_CONFIG_SYSROOT_DIR)/usr/include/acdbdata \
+-I${S}/hal/audio_extn/ -I${STAGING_INCDIR}""
+
 EXTRA_OECONF += "--with-sanitized-headers=${STAGING_KERNEL_BUILDDIR}/usr/include"
-EXTRA_OECONF += "--with-glib --program-suffix=${HALBINSUFFIX}"
+EXTRA_OECONF += "--with-glib"
 
 EXTRA_OECONF += "TARGET_SUPPORT=${BASEMACHINE}"
 EXTRA_OECONF += "BOARD_SUPPORTS_QAHW=true"
@@ -34,7 +41,7 @@ do_install:append() {
    install -m 0755 -o root -g root -d ${D}${userfsdatadir}/audio
 }
 
-FILES:${PN} += "${libdir}/audio.primary.default.so ${userfsdatadir}/*"
+FILES:${PN} += "${libdir}/audio.primary.default.so ${userfsdatadir}/* ${bindir}/*"
 SOLIBS = ".so"
 FILES_SOLIBSDEV = ""
 
