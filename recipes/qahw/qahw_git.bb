@@ -17,6 +17,9 @@ DEPENDS = "libhardware liblog libcutils media-headers audio-utils glib-2.0"
 EXTRA_OECONF = "--with-glib"
 EXTRA_OECONF:append:apq8009 = " BOARD_SUPPORTS_SVA_AUDIO_CONCURRENCY=true"
 EXTRA_OECONF:append:apq8017 = " BOARD_SUPPORTS_SVA_AUDIO_CONCURRENCY=true"
+EXTRA_OEMAKE += 'DEFAULT_INCLUDES= CFLAGS="${CFLAGS} -O2" \
+CPPFLAGS="-I${STAGING_INCDIR}/system -I${STAGING_INCDIR}/hardware \
+-I${STAGING_INCDIR}/audio_effects -I${STAGING_INCDIR}"'
 
 SOLIBS = ".so"
 FILES_SOLIBSDEV = ""
