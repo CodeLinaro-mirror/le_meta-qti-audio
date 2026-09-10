@@ -18,4 +18,5 @@ RDEPENDS:packagegroup-qti-audio += ' \
     tinyalsa \
     tinycompress \
     audiodevicetree \
+    audio-mcs \
 '
