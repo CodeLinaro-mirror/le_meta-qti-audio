@@ -8,7 +8,7 @@ FILESPATH =+ "${WORKSPACE}/:"
 SRC_URI += "file://vendor/qcom/opensource/tinycompress/"
 SRC_URI += "file://${BASEMACHINE}/"
 
-S = "${WORKDIR}/vendor/qcom/opensource/tinycompress/"
+S = "${UNPACKDIR}/vendor/qcom/opensource/tinycompress/"
 PR = "r0"
 PV = "1.0"
 

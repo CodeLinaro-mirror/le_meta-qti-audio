@@ -16,7 +16,7 @@ FILESPATH   =+ "${WORKSPACE}:"
 SRC_URI = "file://vendor/qcom/opensource/audio-kernel/"
 SRC_URI:append = " file://audio_load.conf"
 
-S = "${WORKDIR}/vendor/qcom/opensource/audio-kernel"
+S = "${UNPACKDIR}/vendor/qcom/opensource/audio-kernel"
 EXT_MODULES = "${@os.path.relpath("${S}", "${KERNEL_PLATFORM_PATH}")}"
 
 inherit linux-kernel-base deploy

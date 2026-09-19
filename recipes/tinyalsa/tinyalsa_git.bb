@@ -9,7 +9,7 @@ FILESPATH =+ "${WORKSPACE}/:"
 SRC_URI += "file://vendor/qcom/opensource/tinyalsa/"
 SRC_URI += "file://${BASEMACHINE}/"
 
-S = "${WORKDIR}/vendor/qcom/opensource/tinyalsa/"
+S = "${UNPACKDIR}/vendor/qcom/opensource/tinyalsa/"
 PR = "r0"
 PV = "1.0"
 

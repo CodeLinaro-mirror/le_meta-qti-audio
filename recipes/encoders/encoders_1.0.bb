@@ -10,7 +10,7 @@ PR = "r0"
 FILESPATH   =+ "${WORKSPACE}/:"
 SRC_URI     =  "file://vendor/qcom/opensource/audio-hal/primary-hal/mm-audio"
 
-S = "${WORKDIR}/vendor/qcom/opensource/audio-hal/primary-hal/mm-audio"
+S = "${UNPACKDIR}/vendor/qcom/opensource/audio-hal/primary-hal/mm-audio"
 EXTRA_OECONF:append += "--with-sanitized-headers=${STAGING_KERNEL_BUILDDIR}/usr/include"
 EXTRA_OECONF:append += "--with-glib"
 

@@ -15,7 +15,7 @@ FILESPATH =+ "${WORKSPACE}:"
 SRC_URI = "file://vendor/qcom/opensource/audio-kernel/"
 SRC_URI += "file://${BASEMACHINE}/"
 
-S = "${WORKDIR}/vendor/qcom/opensource/audio-kernel"
+S = "${UNPACKDIR}/vendor/qcom/opensource/audio-kernel"
 
 FILES:${PN} += "${nonarch_base_libdir}/modules/${KERNEL_VERSION}/extra/*"
 FILES:${PN} += "${sysconfdir}/*"

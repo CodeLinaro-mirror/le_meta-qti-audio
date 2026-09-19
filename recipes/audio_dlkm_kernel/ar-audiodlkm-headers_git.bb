@@ -14,7 +14,7 @@ do_configure[noexec] = "1"
 do_compile[noexec] = "1"
 
 SRC_URI = "file://vendor/qcom/opensource/audio-kernel/"
-S = "${WORKDIR}/vendor/qcom/opensource/audio-kernel"
+S = "${UNPACKDIR}/vendor/qcom/opensource/audio-kernel"
 
 do_install() {
     install -d -p ${D}${includedir}/audio-kernel/audio/linux
