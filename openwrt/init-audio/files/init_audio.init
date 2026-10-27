@@ -7,7 +7,7 @@ START=29
 STOP=70
 
 start() {
-	/etc/initscripts/start_audio_le start
+	/usr/bin/start_audio_le start
 }
 
 stop() {
